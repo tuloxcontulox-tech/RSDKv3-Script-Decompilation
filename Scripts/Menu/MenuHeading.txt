@@ -52,20 +52,20 @@ private alias 0 : RETRO_STANDARD
 reserve function MenuHeading_CheckTouchBack
 
 
-private function MenuHeading_CheckTouchBack	//This is used by other scripts to check if the back touch button is pressed
+public function MenuHeading_CheckTouchBack	//This is used by other scripts to check if the back touch button is pressed
 	if Engine.Message == MESSAGE_LOSTFOCUS
 		currentMenu.buttonPressed = -1
 	end if
 
-	tempValue0  = screen.xsize
-	tempValue0 -= 76
-	CheckTouchRect(tempValue0, 192, screen.xsize, screen.ysize)
+	temp0  = screen.xsize
+	temp0 -= 76
+	CheckTouchRect(temp0, 192, screen.xsize, screen.ysize)
 	if checkResult > -1
 		currentMenu.buttonPressed = 5
 		object.backTouchPress = true
 	else
 		object.backTouchPress = false
-		if tempValue3 < 0
+		if temp3 < 0
 			if currentMenu.buttonPressed == 5
 				keyPress[0].buttonB = true
 			end if
@@ -133,22 +133,22 @@ event ObjectDraw
 	DrawSpriteScreenXY(0, screen.xcenter, 20)
 
 #platform: Use_Decomp	// Small decomp change to extend the SONIC THE HEDGEHOG CD bar for wider resolutions
-	tempValue0  = screen.xcenter
-	tempValue0 += 200
-	DrawRect(tempValue0, 20, screen.XSize, 9, 0, 0, 0, 255)
+	temp0  = screen.xcenter
+	temp0 += 200
+	DrawRect(temp0, 20, screen.XSize, 9, 0, 0, 0, 255)
 #endplatform
 
-	tempValue0  = screen.xcenter
-	tempValue0 += 12
-	DrawRect(0, 212, tempValue0, 13, 0, 0, 0, 255)
+	temp0  = screen.xcenter
+	temp0 += 12
+	DrawRect(0, 212, temp0, 13, 0, 0, 0, 255)
 
 	//Draw Menu Header
 	object.SpriteSheet = object.gFX2
-	tempValue0   = screen.xcenter
-	tempValue0  -= 160
-	tempValue0 >>= 2
-	tempValue0  += object.xOffset
-	DrawSpriteScreenXY(object.frame, tempValue0, 194)
+	temp0   = screen.xcenter
+	temp0  -= 160
+	temp0 >>= 2
+	temp0  += object.xOffset
+	DrawSpriteScreenXY(object.frame, temp0, 194)
 
 	//Draw Detail Arrows (Standard) / Drag Arrows (Mobile)
 	object.SpriteSheet = object.gFX1
@@ -156,19 +156,19 @@ event ObjectDraw
 	object.angle += 4
 	object.angle &= 511
 
-	tempValue0  = screen.xsize
-	tempValue0 -= 40
+	temp0  = screen.xsize
+	temp0 -= 40
 	//Check if the menu needs dragging to reach all the buttons
 	if object.maxButtonCount > 4
-		Sin(tempValue1, object.angle)
-		tempValue1 >>= 6
-		tempValue1  += 96
-		DrawSpriteScreenFX(3, FX_INK, tempValue0, tempValue1)
+		Sin(temp1, object.angle)
+		temp1 >>= 6
+		temp1  += 96
+		DrawSpriteScreenFX(3, FX_INK, temp0, temp1)
 
-		Sin(tempValue1, object.angle)
-		tempValue1 /= -64
-		tempValue1 += 144
-		DrawSpriteScreenFX(4, FX_INK, 40, tempValue1)
+		Sin(temp1, object.angle)
+		temp1 /= -64
+		temp1 += 144
+		DrawSpriteScreenFX(4, FX_INK, 40, temp1)
 	end if
 end event
 

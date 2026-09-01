@@ -43,28 +43,28 @@ event ObjectUpdate
 		if object.timer < 14
 			object.timer++
 			//Width
-			tempValue0    = 300
-			tempValue0   -= object.width
-			tempValue0  >>= 3
-			object.width += tempValue0
+			temp0    = 300
+			temp0   -= object.width
+			temp0  >>= 3
+			object.width += temp0
 			//Height
-			tempValue0     = 224
-			tempValue0    -= object.height
-			tempValue0   >>= 3
-			object.height += tempValue0
+			temp0     = 224
+			temp0    -= object.height
+			temp0   >>= 3
+			object.height += temp0
 			//XPos
-			tempValue0   = screen.xcenter
-			tempValue0 <<= 16
-			tempValue0  -= object.xpos
-			tempValue0 >>= 2
-			object.xpos += tempValue0
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			temp0  -= object.xpos
+			temp0 >>= 2
+			object.xpos += temp0
 			//YPos
-			tempValue0   = screen.ycenter
-			tempValue0  -= 6
-			tempValue0 <<= 16
-			tempValue0  -= object.ypos
-			tempValue0 >>= 2
-			object.ypos += tempValue0
+			temp0   = screen.ycenter
+			temp0  -= 6
+			temp0 <<= 16
+			temp0  -= object.ypos
+			temp0 >>= 2
+			object.ypos += temp0
 		else
 			object.timer = 0
 			object.state++
@@ -75,34 +75,34 @@ event ObjectUpdate
 		if object.timer < 30
 			object.timer++
 			// Width
-			tempValue0    = 256
-			tempValue0   -= object.width
-			tempValue0  >>= 2
-			object.width += tempValue0
+			temp0    = 256
+			temp0   -= object.width
+			temp0  >>= 2
+			object.width += temp0
 			// Height
-			tempValue0     = 160
-			tempValue0    -= object.height
-			tempValue0   >>= 2
-			object.height += tempValue0
+			temp0     = 160
+			temp0    -= object.height
+			temp0   >>= 2
+			object.height += temp0
 			// XPos
-			tempValue0   = screen.xcenter
-			tempValue0 <<= 16
-			if object.xpos > tempValue0
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			if object.xpos > temp0
 				object.xpos -= 0x10000
 			end if
 
-			if object.xpos < tempValue0
+			if object.xpos < temp0
 				object.xpos += 0x10000
 			end if
 			// YPos
-			tempValue0   = screen.ycenter
-			tempValue0  -= 8
-			tempValue0 <<= 16
-			if object.ypos > tempValue0
+			temp0   = screen.ycenter
+			temp0  -= 8
+			temp0 <<= 16
+			if object.ypos > temp0
 				object.ypos -= 0x10000
 			end if
 
-			if object.ypos < tempValue0
+			if object.ypos < temp0
 				object.ypos += 0x10000
 			end if
 		else
@@ -119,25 +119,25 @@ event ObjectUpdate
 		if object.timer < 14
 			object.timer++
 			// Width
-			tempValue0   = 132
-			tempValue0  -= object.width
-			tempValue0 >>= 3
-			object.width += tempValue0
+			temp0   = 132
+			temp0  -= object.width
+			temp0 >>= 3
+			object.width += temp0
 			// Height
-			tempValue0   = 18
-			tempValue0  -= object.height
-			tempValue0 >>= 3
-			object.height += tempValue0
+			temp0   = 18
+			temp0  -= object.height
+			temp0 >>= 3
+			object.height += temp0
 			// XPos
-			tempValue0   = object.xOffset
-			tempValue0  -= object.xpos
-			tempValue0 >>= 2
-			object.xpos += tempValue0
+			temp0   = object.xOffset
+			temp0  -= object.xpos
+			temp0 >>= 2
+			object.xpos += temp0
 			// YPos
-			tempValue0   = object.yOffset
-			tempValue0  -= object.ypos
-			tempValue0 >>= 2
-			object.ypos += tempValue0
+			temp0   = object.yOffset
+			temp0  -= object.ypos
+			temp0 >>= 2
+			object.ypos += temp0
 		else
 			object.timer = 0
 			object.state++
@@ -148,15 +148,15 @@ event ObjectUpdate
 		if object.timer < 14
 			object.timer++
 			// Width
-			tempValue0   = 144
-			tempValue0  -= object.width
-			tempValue0 >>= 3
-			object.width += tempValue0
+			temp0   = 144
+			temp0  -= object.width
+			temp0 >>= 3
+			object.width += temp0
 			// Height
-			tempValue0   = 21
-			tempValue0   -= object.height
-			tempValue0 >>= 3
-			object.height += tempValue0
+			temp0   = 21
+			temp0   -= object.height
+			temp0 >>= 3
+			object.height += temp0
 			// XPos
 			if object.xpos > object.xOffset
 				object.xpos -= 0x10000
@@ -190,28 +190,28 @@ event ObjectUpdate
 		if object.timer < 14
 			object.timer++
 			// Width
-			tempValue0    = 300
-			tempValue0   -= object.width
-			tempValue0  >>= 3
-			object.width += tempValue0
+			temp0    = 300
+			temp0   -= object.width
+			temp0  >>= 3
+			object.width += temp0
 			// Height
-			tempValue0     = 192
-			tempValue0    -= object.height
-			tempValue0   >>= 3
-			object.height += tempValue0
+			temp0     = 192
+			temp0    -= object.height
+			temp0   >>= 3
+			object.height += temp0
 			// XPos
-			tempValue0   = screen.xcenter
-			tempValue0 <<= 16
-			tempValue0  -= object.xpos
-			tempValue0 >>= 2
-			object.xpos += tempValue0
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			temp0  -= object.xpos
+			temp0 >>= 2
+			object.xpos += temp0
 			// YPos
-			tempValue0   = screen.ycenter
-			tempValue0  -= 6
-			tempValue0 <<= 16
-			tempValue0  -= object.ypos
-			tempValue0 >>= 2
-			object.ypos += tempValue0
+			temp0   = screen.ycenter
+			temp0  -= 6
+			temp0 <<= 16
+			temp0  -= object.ypos
+			temp0 >>= 2
+			object.ypos += temp0
 		else
 			object.timer = 0
 			object.state++
@@ -222,32 +222,32 @@ event ObjectUpdate
 		if object.timer < 30
 			object.timer++
 			// Width
-			tempValue0    = 256
-			tempValue0   -= object.width
-			tempValue0  >>= 2
-			object.width += tempValue0
+			temp0    = 256
+			temp0   -= object.width
+			temp0  >>= 2
+			object.width += temp0
 			// Height
-			tempValue0     = 128
-			tempValue0    -= object.height
-			tempValue0   >>= 2
-			object.height += tempValue0
+			temp0     = 128
+			temp0    -= object.height
+			temp0   >>= 2
+			object.height += temp0
 			// XPos
-			tempValue0   = screen.xcenter
-			tempValue0 <<= 16
-			if object.xpos > tempValue0
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			if object.xpos > temp0
 				object.xpos -= 0x10000
 			end if
-			if object.xpos < tempValue0
+			if object.xpos < temp0
 				object.xpos += 0x10000
 			end if
 			// YPos
-			tempValue0   = screen.ycenter
-			tempValue0  -= 8
-			tempValue0 <<= 16
-			if object.ypos > tempValue0
+			temp0   = screen.ycenter
+			temp0  -= 8
+			temp0 <<= 16
+			if object.ypos > temp0
 				object.ypos -= 0x10000
 			end if
-			if object.ypos < tempValue0
+			if object.ypos < temp0
 				object.ypos += 0x10000
 			end if
 		else
@@ -262,59 +262,59 @@ end event
 
 event ObjectDraw
 	//Upper Left Border
-	tempValue0  = object.width
-	tempValue0 *= -0x8000
-	tempValue0 += object.xpos
-	tempValue1  = object.height
-	tempValue1 *= -0x8000
-	tempValue1 += object.ypos
-	DrawSpriteXY(0, tempValue0, tempValue1)
+	temp0  = object.width
+	temp0 *= -0x8000
+	temp0 += object.xpos
+	temp1  = object.height
+	temp1 *= -0x8000
+	temp1 += object.ypos
+	DrawSpriteXY(0, temp0, temp1)
 
 	//Upper Right Border
-	tempValue0   = object.width
-	tempValue0 <<= 15
-	tempValue0  += object.xpos
-	DrawSpriteXY(1, tempValue0, tempValue1)
+	temp0   = object.width
+	temp0 <<= 15
+	temp0  += object.xpos
+	DrawSpriteXY(1, temp0, temp1)
 
 	//Bottom Left Border
-	tempValue0   = object.width
-	tempValue0  *= -0x8000
-	tempValue0  += object.xpos
-	tempValue1   = object.height
-	tempValue1 <<= 15
-	tempValue1  += object.ypos
-	DrawSpriteXY(2, tempValue0, tempValue1)
+	temp0   = object.width
+	temp0  *= -0x8000
+	temp0  += object.xpos
+	temp1   = object.height
+	temp1 <<= 15
+	temp1  += object.ypos
+	DrawSpriteXY(2, temp0, temp1)
 
 	//Bottom Right Border
-	tempValue0   = object.width
-	tempValue0 <<= 15
-	tempValue0  += object.xpos
-	DrawSpriteXY(3, tempValue0, tempValue1)
+	temp0   = object.width
+	temp0 <<= 15
+	temp0  += object.xpos
+	DrawSpriteXY(3, temp0, temp1)
 
 	//Menu Filling
-	tempValue0   = object.width
-	tempValue0  *= -0x8000
-	tempValue0  += object.xpos
-	tempValue0 >>= 16
-	tempValue1   = object.height
-	tempValue1  *= -0x8000
-	tempValue1  += object.ypos
-	tempValue1  += 0xA0000
-	tempValue1 >>= 16
-	tempValue2   = object.width
-	tempValue2  -= 2
-	tempValue3   = object.height
-	tempValue3  -= 21
-	DrawRect(tempValue0, tempValue1, tempValue2, tempValue3, 96, 96, 128, 255)
+	temp0   = object.width
+	temp0  *= -0x8000
+	temp0  += object.xpos
+	temp0 >>= 16
+	temp1   = object.height
+	temp1  *= -0x8000
+	temp1  += object.ypos
+	temp1  += 0xA0000
+	temp1 >>= 16
+	temp2   = object.width
+	temp2  -= 2
+	temp3   = object.height
+	temp3  -= 21
+	DrawRect(temp0, temp1, temp2, temp3, 96, 96, 128, 255)
 
 	//Menu Shadow
-	tempValue0   = object.width
-	tempValue0 <<= 15
-	tempValue0  += object.xpos
-	tempValue0  -= 0x20000
-	tempValue0 >>= 16
-	tempValue2   = 2
-	DrawRect(tempValue0, tempValue1, tempValue2, tempValue3, 0, 0, 0, 255)
+	temp0   = object.width
+	temp0 <<= 15
+	temp0  += object.xpos
+	temp0  -= 0x20000
+	temp0 >>= 16
+	temp2   = 2
+	DrawRect(temp0, temp1, temp2, temp3, 0, 0, 0, 255)
 
 	object.inkEffect = INK_ALPHA
 	switch object.state
@@ -339,12 +339,12 @@ event ObjectDraw
 		break
 		
 	end switch
-	tempValue0  = screen.xsize
-	tempValue0 -= 48
+	temp0  = screen.xsize
+	temp0 -= 48
 	if object.backTouchPress == true
-		DrawSpriteScreenFX(5, FX_INK, tempValue0, 225)
+		DrawSpriteScreenFX(5, FX_INK, temp0, 225)
 	else
-		DrawSpriteScreenFX(4, FX_INK, tempValue0, 225)
+		DrawSpriteScreenFX(4, FX_INK, temp0, 225)
 	end if
 end event
 

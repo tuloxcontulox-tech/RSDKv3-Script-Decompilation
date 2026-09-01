@@ -25,14 +25,14 @@ event ObjectUpdate
 		if Engine.Message == MESSAGE_LOSTFOCUS
 			object.inputCheck = 0
 		end if
-		tempValue0   = object.xpos
-		tempValue0 >>= 16
-		tempValue1   = tempValue0
-		tempValue0  -= 18
-		tempValue0  -= screen.xoffset
-		tempValue1  += 18
-		tempValue1  -= screen.xoffset
-		CheckTouchRect(tempValue0, 0, tempValue1, 48)
+		temp0   = object.xpos
+		temp0 >>= 16
+		temp1   = temp0
+		temp0  -= 18
+		temp0  -= screen.xoffset
+		temp1  += 18
+		temp1  -= screen.xoffset
+		CheckTouchRect(temp0, 0, temp1, 48)
 		if checkResult > -1
 			 object.inputCheck = true
 		else
@@ -68,14 +68,14 @@ event ObjectStartup
 	SpriteFrame(-63, -39, 126, 78, 129, 385)	//#0 - Back Button
 	SpriteFrame(-60, -37, 120, 74, 260, 387)	//#1 - Pressed Back Button
 
-	tempValue0   = screen.xcenter
-	tempValue0  -= 160
-	tempValue0 <<= 16
+	temp0   = screen.xcenter
+	temp0  -= 160
+	temp0 <<= 16
 
 	arrayPos0 = 32
 	while arrayPos0 < 1056
 		if object[arrayPos0].type == TypeName[Exit Button]
-			object[arrayPos0].xpos += tempValue0
+			object[arrayPos0].xpos += temp0
 		end if
 		arrayPos0++
 	loop

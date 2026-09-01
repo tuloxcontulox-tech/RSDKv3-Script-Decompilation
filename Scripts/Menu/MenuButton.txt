@@ -148,14 +148,14 @@ event ObjectUpdate
 	object.buttonYOffSet *= 60
 	object.buttonYOffSet += menuControl.buttonYOffset
 
-	tempValue0  = screen.xcenter
-	tempValue0 -= 160
+	temp0  = screen.xcenter
+	temp0 -= 160
 	
 	object.buttonXOffSet  = object.buttonYOffSet
 	object.buttonXOffSet *= 54
 	object.buttonXOffSet /= 60
 	object.buttonXOffSet -= 16
-	object.buttonXOffSet += tempValue0
+	object.buttonXOffSet += temp0
 
 	switch object.state
 	case MENUBUTTON_DELAY
@@ -168,17 +168,17 @@ event ObjectUpdate
 		break
 
 	case MENUBUTTON_BUTTONS_IN
-		tempValue0   = object.buttonXOffSet
-		tempValue0 <<= 16
-		tempValue0  -= object.xpos
-		tempValue0 >>= 4
-		object.xpos += tempValue0
+		temp0   = object.buttonXOffSet
+		temp0 <<= 16
+		temp0  -= object.xpos
+		temp0 >>= 4
+		object.xpos += temp0
 
-		tempValue0   = object.buttonYOffSet
-		tempValue0 <<= 16
-		tempValue0  -= object.ypos
-		tempValue0 >>= 4
-		object.ypos += tempValue0
+		temp0   = object.buttonYOffSet
+		temp0 <<= 16
+		temp0  -= object.ypos
+		temp0 >>= 4
+		object.ypos += temp0
 
 		if object.timer < 80
 			object.timer++
@@ -210,19 +210,19 @@ event ObjectUpdate
 #endplatform
 
 		if checkResult == true
-			tempValue0  = object.buttonXOffSet
-			tempValue0 -= 16
-			tempValue1  = object.buttonXOffSet
-			tempValue1 += 176
-			tempValue2  = object.buttonYOffSet
-			tempValue2 -= 20
-			tempValue3  = object.buttonYOffSet
-			tempValue3 += 20
-			CheckTouchRect(tempValue0, tempValue2, tempValue1, tempValue3)
+			temp0  = object.buttonXOffSet
+			temp0 -= 16
+			temp1  = object.buttonXOffSet
+			temp1 += 176
+			temp2  = object.buttonYOffSet
+			temp2 -= 20
+			temp3  = object.buttonYOffSet
+			temp3 += 20
+			CheckTouchRect(temp0, temp2, temp1, temp3)
 			if checkResult > -1
-				tempValue0   = menuControl.smoothDrag
-				tempValue0 >>= 2
-				if tempValue0 == 0
+				temp0   = menuControl.smoothDrag
+				temp0 >>= 2
+				if temp0 == 0
 					if object.recenterValue == 0
 						menuControl.currentDrag = object.buttonYPos
 					end if
@@ -635,15 +635,15 @@ event ObjectUpdate
 		break
 
 	case MENUBUTTON_BUTTONS_OUT
-		tempValue0   = object.buttonLeaveXPos
-		tempValue0  -= object.xpos
-		tempValue0 >>= 4
-		object.xpos += tempValue0
+		temp0   = object.buttonLeaveXPos
+		temp0  -= object.xpos
+		temp0 >>= 4
+		object.xpos += temp0
 
-		tempValue0   = object.buttonLeaveYPos
-		tempValue0  -= object.ypos
-		tempValue0 >>= 4
-		object.ypos += tempValue0
+		temp0   = object.buttonLeaveYPos
+		temp0  -= object.ypos
+		temp0 >>= 4
+		object.ypos += temp0
 
 		if object.timer < 80
 			object.timer++
@@ -695,23 +695,23 @@ event ObjectDraw
 	case MENUBUTTON_BLANK
 	case MENUBUTTON_RESET
 		if object.buttonYPos == menuControl.currentSelection
-			tempValue0  = object.propertyValue
-			tempValue0 += 11
-			DrawSprite(tempValue0)
+			temp0  = object.propertyValue
+			temp0 += 11
+			DrawSprite(temp0)
 		else
 			DrawSprite(object.propertyValue)
 		end if
 		break
 
 	case MENUBUTTON_MENU_SELECTED
-		tempValue0   = object.timer
-		tempValue0  &= 3
-		tempValue0 >>= 1
-		if tempValue0 == 0
-			tempValue0  = object.propertyValue
-			tempValue0 += 11
+		temp0   = object.timer
+		temp0  &= 3
+		temp0 >>= 1
+		if temp0 == 0
+			temp0  = object.propertyValue
+			temp0 += 11
 
-			DrawSprite(tempValue0)
+			DrawSprite(temp0)
 		end if
 		break
 
@@ -924,31 +924,31 @@ event ObjectStartup
 	end switch
 
 	arrayPos0  = 34
-	tempValue0 = 0
-	while tempValue0 < object.buttonCount
-		object[arrayPos0].ButtonYPos = tempValue0
+	temp0 = 0
+	while temp0 < object.buttonCount
+		object[arrayPos0].ButtonYPos = temp0
 		object[arrayPos0].ButtonYPos++
 		arrayPos0++
-		tempValue0++
+		temp0++
 	loop
 
-	while tempValue0 < 9
+	while temp0 < 9
 		object[arrayPos0].type = TypeName[Blank Object]
 		arrayPos0++
-		tempValue0++
+		temp0++
 	loop
 
 	object.dragLimit   = object.buttonCount
 	object.dragLimit  *= -30
 	object.dragLimit <<= 8
 	SpriteFrame(0, -10, 144, 21, 259, 71)	// #0 - Button
-	tempValue0 = 0
-	tempValue1 = 18
+	temp0 = 0
+	temp1 = 18
 	// (#1 - #2) - Start Game, Time Attack
-	while tempValue0 < 2
-		SpriteFrame(19, -7, 128, 16, 1, tempValue1)
-		tempValue1 += 17
-		tempValue0++
+	while temp0 < 2
+		SpriteFrame(19, -7, 128, 16, 1, temp1)
+		temp1 += 17
+		temp0++
 	loop
 	
 	// #3 - Achievements/Trophies/Game Center
@@ -956,51 +956,51 @@ event ObjectStartup
 		SpriteFrame(19, -7, 128, 16, 1, 513)
 	else
 #platform: Use_Standalone
-		SpriteFrame(19, -7, 128, 16, 1, tempValue1)
+		SpriteFrame(19, -7, 128, 16, 1, temp1)
 #endplatform
 #platform: Use_Origins
 		if Engine.PlatformID != RETRO_IOS
-			SpriteFrame(19, -7, 128, 16, 1, tempValue1)
+			SpriteFrame(19, -7, 128, 16, 1, temp1)
 		else
 			SpriteFrame(19, -7, 128, 16, 291, 615)
 		end if
 #endplatform
 	end if
 
-	tempValue1 += 17
-	tempValue0++
+	temp1 += 17
+	temp0++
 	// #4 - Leaderboards
 	if Engine.OnlineActive == false
 		SpriteFrame(19, -7, 128, 16, 130, 460)
 	else
-		SpriteFrame(19, -7, 128, 16, 1, tempValue1)
+		SpriteFrame(19, -7, 128, 16, 1, temp1)
 	end if
-	tempValue1 += 17
-	tempValue0++
+	temp1 += 17
+	temp0++
 	// (#5 - #6) - Help & Options, Extras
-	while tempValue0 < 6
-		SpriteFrame(19, -7, 128, 16, 1, tempValue1)
-		tempValue1 += 17
-		tempValue0++
+	while temp0 < 6
+		SpriteFrame(19, -7, 128, 16, 1, temp1)
+		temp1 += 17
+		temp0++
 	loop
-	tempValue0 = 0
-	tempValue1 = 547
+	temp0 = 0
+	temp1 = 547
 	// (#7 - #10) - Remove Ads(Mobile)/Unlock Full Game(Console), Unlock Full Game(Mobile)/Return to Arcade(Xbox), Exit Game, Soundtrack
-	while tempValue0 < 4
-		SpriteFrame(19, -7, 128, 16, 1, tempValue1)
-		tempValue1 += 17
-		tempValue0++
+	while temp0 < 4
+		SpriteFrame(19, -7, 128, 16, 1, temp1)
+		temp1 += 17
+		temp0++
 	loop
 
 	SpriteFrame(19, -7, 128, 16, 162, 649)	// #11 - More Games
 	// Highlight Text
-	tempValue0 = 0
-	tempValue1 = 18
+	temp0 = 0
+	temp1 = 18
 	// (#11 - #12 Standard, #12 - #13 Mobile) - Start Game, Time Attack
-	while tempValue0 < 2
-		SpriteFrame(19, -7, 128, 16, 130, tempValue1)
-		tempValue1 += 17
-		tempValue0++
+	while temp0 < 2
+		SpriteFrame(19, -7, 128, 16, 130, temp1)
+		temp1 += 17
+		temp0++
 	loop
 
 	// (#13 Standard, #14 Mobile) - Achievements/Trophies/Game Center
@@ -1008,32 +1008,32 @@ event ObjectStartup
 		SpriteFrame(19, -7, 128, 16, 130, 513)
 	else
 #platform: Use_Standalone
-		SpriteFrame(19, -7, 128, 16, 130, tempValue1)
+		SpriteFrame(19, -7, 128, 16, 130, temp1)
 #endplatform
 #platform: Use_Origins
 		if Engine.PlatformID != RETRO_IOS
-			SpriteFrame(19, -7, 128, 16, 130, tempValue1)
+			SpriteFrame(19, -7, 128, 16, 130, temp1)
 		else
 			SpriteFrame(19, -7, 128, 16, 291, 632)
 		end if
 #endplatform
 	end if
 
-	tempValue1 += 17
-	tempValue0++
+	temp1 += 17
+	temp0++
 	// (#14 - #16 Standard, #15 - #17 Mobile) - Leaderboards, Help & Options, Extras
-	while tempValue0 < 6
-		SpriteFrame(19, -7, 128, 16, 130, tempValue1)
-		tempValue1 += 17
-		tempValue0++
+	while temp0 < 6
+		SpriteFrame(19, -7, 128, 16, 130, temp1)
+		temp1 += 17
+		temp0++
 	loop
-	tempValue0 = 0
-	tempValue1 = 547
+	temp0 = 0
+	temp1 = 547
 	// (#17 - #20 Standard, #18 - #21 Mobile) - Remove Ads(Mobile)/Unlock Full Game(Console), Unlock Full Game(Mobile)/Return to Arcade(Xbox), Exit Game, Soundtrack
-	while tempValue0 < 4
-		SpriteFrame(19, -7, 128, 16, 130, tempValue1)
-		tempValue1 += 17
-		tempValue0++
+	while temp0 < 4
+		SpriteFrame(19, -7, 128, 16, 130, temp1)
+		temp1 += 17
+		temp0++
 	loop
 
 	SpriteFrame(19, -7, 128, 16, 162, 666) 	// #22 - More Games

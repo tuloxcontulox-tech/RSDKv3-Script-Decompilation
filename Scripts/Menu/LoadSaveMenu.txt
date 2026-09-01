@@ -20,7 +20,7 @@ private alias object[-1].state : menuWindow.state
 private alias object[1].value4 : object.backTouchPress
 
 // Save File State
-private alias object.rotation : object.saveStatus // Meant to be used with [+ArrayPos0]
+private alias object.rotation : object.saveStatus // Meant to be used with [+arrayPos0]
 private alias object.rotation : object.saveOneStatus
 private alias object[+1].rotation : object.saveTwoStatus
 private alias object[+2].rotation : object.saveThreeStatus
@@ -147,7 +147,7 @@ reserve function LoadSaveMenu_SetShowDelete
 
 
 private function LoadSaveMenu_DrawSaveFiles
-	switch object[+arrayPos0].SaveStatus
+	switch object[+arrayPos0].saveStatus
 	case SAVE_DELETE
 		if object[+arrayPos0].stageListPos > 0
 			object.alpha = 64
@@ -158,53 +158,53 @@ private function LoadSaveMenu_DrawSaveFiles
 	case SAVE_NORMAL
 		if arrayPos0 == object.selectedOption
 			DrawSpriteScreenFX(9, FX_INK, object.xpos, object.ypos)
-			tempValue0 = object[+arrayPos0].stageListPos
+			temp0 = object[+arrayPos0].stageListPos
 			if object[+arrayPos0].stageListPos > 0 // Is this save used?
-				tempValue0--
-				tempValue0 /= 10
-				if tempValue0 >= 8
-					tempValue0 = 8
-					tempValue1 = object[+arrayPos0].specialListPos
+				temp0--
+				temp0 /= 10
+				if temp0 >= 8
+					temp0 = 8
+					temp1 = object[+arrayPos0].specialListPos
 				else
-					tempValue2  = tempValue0
-					tempValue2 *= 10
+					temp2  = temp0
+					temp2 *= 10
 
-					tempValue1   = object[+arrayPos0].stageListPos
-					tempValue1--
-					tempValue1  -= tempValue2
-					tempValue1 >>= 2
+					temp1   = object[+arrayPos0].stageListPos
+					temp1--
+					temp1  -= temp2
+					temp1 >>= 2
 				end if
-				tempValue0 += 21
-				tempValue1 += 67
-				DrawSpriteScreenFX(tempValue1, FX_INK, object.xpos, object.ypos)
+				temp0 += 21
+				temp1 += 67
+				DrawSpriteScreenFX(temp1, FX_INK, object.xpos, object.ypos)
 			else
-				tempValue0 += 20
+				temp0 += 20
 			end if
-			DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
+			DrawSpriteScreenFX(temp0, FX_INK, object.xpos, object.ypos)
 		else
-			tempValue0 = object[+arrayPos0].stageListPos
+			temp0 = object[+arrayPos0].stageListPos
 			if object[+arrayPos0].stageListPos > 0
-				tempValue0--
-				tempValue0 /= 10
-				if tempValue0 >= 8
-					tempValue0 = 8
-					tempValue1 = object[+arrayPos0].specialListPos
+				temp0--
+				temp0 /= 10
+				if temp0 >= 8
+					temp0 = 8
+					temp1 = object[+arrayPos0].specialListPos
 				else
-					tempValue2  = tempValue0
-					tempValue2 *= 10
+					temp2  = temp0
+					temp2 *= 10
 
-					tempValue1   = object[+arrayPos0].stageListPos
-					tempValue1--
-					tempValue1  -= tempValue2
-					tempValue1 >>= 2
+					temp1   = object[+arrayPos0].stageListPos
+					temp1--
+					temp1  -= temp2
+					temp1 >>= 2
 				end if
-				tempValue0 += 11
-				tempValue1 += 59
-				DrawSpriteScreenFX(tempValue1, FX_INK, object.xpos, object.ypos)
+				temp0 += 11
+				temp1 += 59
+				DrawSpriteScreenFX(temp1, FX_INK, object.xpos, object.ypos)
 			else
-				tempValue0 += 10
+				temp0 += 10
 			end if
-			DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
+			DrawSpriteScreenFX(temp0, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 
@@ -214,38 +214,38 @@ private function LoadSaveMenu_DrawSaveFiles
 		object.alpha = 255
 		// FallThrough
 	case SAVE_NORMAL_SELECTED
-		tempValue0   = object.fadeValue
-		tempValue0  &= 3
-		tempValue0 >>= 1
+		temp0   = object.fadeValue
+		temp0  &= 3
+		temp0 >>= 1
 
 		DrawSpriteScreenFX(9, FX_INK, object.xpos, object.ypos)
 
-		if tempValue0 == 0
-			tempValue0 = object[+arrayPos0].stageListPos // Is this save used?
+		if temp0 == 0
+			temp0 = object[+arrayPos0].stageListPos // Is this save used?
 			if object[+arrayPos0].stageListPos > 0
-				tempValue0--
-				tempValue0 /= 10
-				if tempValue0 >= 8 // Is this a special stage?
-					tempValue0 = 8
+				temp0--
+				temp0 /= 10
+				if temp0 >= 8 // Is this a special stage?
+					temp0 = 8
 
-					tempValue1 = object[+arrayPos0].specialListPos
+					temp1 = object[+arrayPos0].specialListPos
 				else
-					tempValue2  = tempValue0
-					tempValue2 *= 10
+					temp2  = temp0
+					temp2 *= 10
 
-					tempValue1   = object[+arrayPos0].stageListPos
-					tempValue1--
-					tempValue1  -= tempValue2
-					tempValue1 >>= 2
+					temp1   = object[+arrayPos0].stageListPos
+					temp1--
+					temp1  -= temp2
+					temp1 >>= 2
 				end if
-				tempValue0 += 21
+				temp0 += 21
 
-				tempValue1 += 67
-				DrawSpriteScreenFX(tempValue1, FX_INK, object.xpos, object.ypos)
+				temp1 += 67
+				DrawSpriteScreenFX(temp1, FX_INK, object.xpos, object.ypos)
 			else
-				tempValue0 += 20 // New Game
+				temp0 += 20 // New Game
 			end if
-			DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
+			DrawSpriteScreenFX(temp0, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 	end switch
@@ -253,26 +253,26 @@ private function LoadSaveMenu_DrawSaveFiles
 	DrawSpriteScreenFX(8, FX_INK, object.xpos, object.ypos)
 	
 	if object[+arrayPos0].stageListPos > 0 // Is this save used?
-		tempValue0   = object[+arrayPos0].playerListPos
-		tempValue0 <<= 1
-		tempValue0  += 4
+		temp0   = object[+arrayPos0].playerListPos
+		temp0 <<= 1
+		temp0  += 4
 
-		tempValue1   = object.animationTimer
-		tempValue1 >>= 5
-		tempValue0  += tempValue1
-		DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
+		temp1   = object.animationTimer
+		temp1 >>= 5
+		temp0  += temp1
+		DrawSpriteScreenFX(temp0, FX_INK, object.xpos, object.ypos)
 
-		tempValue0 = 0
-		tempValue1 = 38
-		while tempValue0 < 7
-			tempValue2 = tempValue1
-			GetBit(checkResult, object[+arrayPos0].timeStones, tempValue0)
+		temp0 = 0
+		temp1 = 38
+		while temp0 < 7
+			temp2 = temp1
+			GetBit(checkResult, object[+arrayPos0].timeStones, temp0)
 			if checkResult == false
-				tempValue2 += 7
+				temp2 += 7
 			end if
-			DrawSpriteScreenFX(tempValue2, FX_INK, object.xpos, object.ypos)
-			tempValue1++
-			tempValue0++
+			DrawSpriteScreenFX(temp2, FX_INK, object.xpos, object.ypos)
+			temp1++
+			temp0++
 		loop
 	else
 		DrawSpriteScreenFX(arrayPos0, FX_INK, object.xpos, object.ypos)
@@ -312,15 +312,15 @@ end function
 
 
 // This function is shared by other scripts
-private function LoadSaveMenu_CheckTouchSave
-	tempValue0 *= 40
-	tempValue0 += screen.ycenter
-	tempValue0 -= 87
-	tempValue1  = tempValue0
-	tempValue1 += 37
-	tempValue2  = object.xpos
-	tempValue2 += 250
-	CheckTouchRect(object.xpos, tempValue0, tempValue2, tempValue1)
+public function LoadSaveMenu_CheckTouchSave
+	temp0 *= 40
+	temp0 += screen.ycenter
+	temp0 -= 87
+	temp1  = temp0
+	temp1 += 37
+	temp2  = object.xpos
+	temp2 += 250
+	CheckTouchRect(object.xpos, temp0, temp2, temp1)
 end function
 
 
@@ -474,15 +474,15 @@ event ObjectUpdate
 			
 			// Check if the screen is touched (used to check if a touch was released)
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
-			tempValue3 = checkResult
+			temp3 = checkResult
 			
 			// Check if the delete button is touched
 			if object.showDeleteButton == true
-				tempValue0  = delete.xPos
-				tempValue0 -= 4
-				tempValue1  = tempValue0
-				tempValue1 += 72
-				CheckTouchRect(tempValue0, 0, tempValue1, 32)
+				temp0  = delete.xPos
+				temp0 -= 4
+				temp1  = temp0
+				temp1 += 72
+				CheckTouchRect(temp0, 0, temp1, 32)
 			else
 				checkResult = -1
 			end if
@@ -490,7 +490,7 @@ event ObjectUpdate
 			if checkResult > -1
 				object.selectedOption = BUTTON_DELETE
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == BUTTON_DELETE
 						keyPress[0].start = true
 					end if
@@ -502,12 +502,12 @@ event ObjectUpdate
 			end if
 			
 			// Check if save file 1 is touched
-			tempValue0 = BUTTON_SAVE_ONE
+			temp0 = BUTTON_SAVE_ONE
 			CallFunction(LoadSaveMenu_CheckTouchSave)
 			if checkResult > -1
 				object.selectedOption = BUTTON_SAVE_ONE
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == BUTTON_SAVE_ONE
 						keyPress[0].start = true
 					end if
@@ -519,12 +519,12 @@ event ObjectUpdate
 			end if
 			
 			// Check if save file 2 is touched
-			tempValue0 = BUTTON_SAVE_TWO
+			temp0 = BUTTON_SAVE_TWO
 			CallFunction(LoadSaveMenu_CheckTouchSave)
 			if checkResult > -1
 				object.selectedOption = BUTTON_SAVE_TWO
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == BUTTON_SAVE_TWO
 						keyPress[0].start = true
 					end if
@@ -536,12 +536,12 @@ event ObjectUpdate
 			end if
 			
 			// Check if save file 3 is touched
-			tempValue0 = BUTTON_SAVE_THREE
+			temp0 = BUTTON_SAVE_THREE
 			CallFunction(LoadSaveMenu_CheckTouchSave)
 			if checkResult > -1
 				object.selectedOption = BUTTON_SAVE_THREE
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == BUTTON_SAVE_THREE
 						keyPress[0].start = true
 					end if
@@ -553,12 +553,12 @@ event ObjectUpdate
 			end if
 			
 			// Check if save file 4 is touched
-			tempValue0 = BUTTON_SAVE_FOUR
+			temp0 = BUTTON_SAVE_FOUR
 			CallFunction(LoadSaveMenu_CheckTouchSave)
 			if checkResult > -1
 				object.selectedOption = BUTTON_SAVE_FOUR
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == BUTTON_SAVE_FOUR
 						keyPress[0].start = true
 					end if
@@ -625,7 +625,7 @@ event ObjectUpdate
 				case SAVEMODE_NORMAL
 					object.showDeleteButton = false
 					arrayPos0 = object.selectedOption
-					object[+arrayPos0].SaveStatus = SAVE_NORMAL_SELECTED
+					object[+arrayPos0].saveStatus = SAVE_NORMAL_SELECTED
 					object.state = STATE_SAVE_SELECTED
 					PlaySfx(SFX_G_SELECT, false)
 					if object[+arrayPos0].stageListPos > 0 // Is this save used?
@@ -646,7 +646,7 @@ event ObjectUpdate
 						object.saveTwoStatus		  = SAVE_NORMAL
 						object.saveThreeStatus		  = SAVE_NORMAL
 						object.saveFourStatus		  = SAVE_NORMAL
-						object[+arrayPos0].SaveStatus = SAVE_DELETE_SELECTED
+						object[+arrayPos0].saveStatus = SAVE_DELETE_SELECTED
 
 						object.saveMode = SAVEMODE_NORMAL
 						PlaySfx(SFX_G_LAMPPOST, false)
@@ -693,7 +693,7 @@ event ObjectUpdate
 		else
 			object.fadeValue = 0
 			arrayPos0 = object.selectedOption
-			object[+arrayPos0].SaveStatus = SAVE_NORMAL
+			object[+arrayPos0].saveStatus = SAVE_NORMAL
 			if object[+arrayPos0].stageListPos > 0 // Is this save used?
 				object.state = STATE_LOAD_SAVE
 			else
@@ -757,26 +757,26 @@ event ObjectUpdate
 
 				stage.listPos			= specialStage.listPos
 
-				tempValue0   = SpecialStage.NextZone
-				tempValue0  %= 10
-				tempValue0 >>= 2
-				if tempValue0 == 1
-					tempValue1   = SpecialStage.NextZone
-					tempValue1  /= 10
-					tempValue1 <<= 1
-					GetBit(tempValue0, good_Future_List, tempValue1)
-					Good_Future_Count += tempValue0
+				temp0   = SpecialStage.NextZone
+				temp0  %= 10
+				temp0 >>= 2
+				if temp0 == 1
+					temp1   = SpecialStage.NextZone
+					temp1  /= 10
+					temp1 <<= 1
+					GetBit(temp0, good_Future_List, temp1)
+					Good_Future_Count += temp0
 				end if
 			else
-				tempValue0   = stage.listPos
-				tempValue0  %= 10
-				tempValue0 >>= 2
-				if tempValue0 == 1
-					tempValue1   = stage.listPos
-					tempValue1  /= 10
-					tempValue1 <<= 1
-					GetBit(tempValue0, good_Future_List, tempValue1)
-					Good_Future_Count += tempValue0
+				temp0   = stage.listPos
+				temp0  %= 10
+				temp0 >>= 2
+				if temp0 == 1
+					temp1   = stage.listPos
+					temp1  /= 10
+					temp1 <<= 1
+					GetBit(temp0, good_Future_List, temp1)
+					Good_Future_Count += temp0
 				end if
 			end if
 			Stage.playerListPos = object[+arrayPos0].playerListPos
@@ -793,12 +793,12 @@ event ObjectUpdate
 		break
 		
 	case STATE_NEW_GAME_SELECTED
-		tempValue0  = screen.ycenter
-		tempValue0 -= 87
-		if object.ypos > tempValue0
+		temp0  = screen.ycenter
+		temp0 -= 87
+		if object.ypos > temp0
 			object.ypos -= 8
-			if object.ypos < tempValue0
-				object.ypos = tempValue0
+			if object.ypos < temp0
+				object.ypos = temp0
 			end if
 		else
 			object.state = STATE_FADEIN_CHARACTERSELECT
@@ -886,18 +886,18 @@ event ObjectUpdate
 			
 			// Check if Sonic is pressed
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
-			tempValue3  = checkResult
+			temp3  = checkResult
 
-			tempValue0  = screen.xcenter
-			tempValue0 -= 56
+			temp0  = screen.xcenter
+			temp0 -= 56
 
-			tempValue1  = screen.xcenter
-			tempValue1 -= 8
-			CheckTouchRect(tempValue0, 126, tempValue1, 184)
+			temp1  = screen.xcenter
+			temp1 -= 8
+			CheckTouchRect(temp0, 126, temp1, 184)
 			if checkResult > -1
 				object[+arrayPos0].playerListPos = PLAYER_SONIC_A
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object[+arrayPos0].playerListPos == PLAYER_SONIC_A
 						keyPress[0].start = true
 					end if
@@ -909,15 +909,15 @@ event ObjectUpdate
 			end if
 			
 			// Check if Tails is pressed
-			tempValue0  = screen.xcenter
-			tempValue0 += 8
-			tempValue1  = screen.xcenter
-			tempValue1 += 56
-			CheckTouchRect(tempValue0, 126, tempValue1, 184)
+			temp0  = screen.xcenter
+			temp0 += 8
+			temp1  = screen.xcenter
+			temp1 += 56
+			CheckTouchRect(temp0, 126, temp1, 184)
 			if checkResult > -1
 				object[+arrayPos0].playerListPos = PLAYER_TAILS_A
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object[+arrayPos0].playerListPos == PLAYER_TAILS_A
 						keyPress[0].start = true
 					end if
@@ -929,15 +929,15 @@ event ObjectUpdate
 			end if
 			
 			// Check if the back button is pressed
-			tempValue0  = screen.xsize
-			tempValue0 -= 76
-			CheckTouchRect(tempValue0, 192, screen.xsize, screen.ysize)
+			temp0  = screen.xsize
+			temp0 -= 76
+			CheckTouchRect(temp0, 192, screen.xsize, screen.ysize)
 			if checkResult > -1
 				object[+arrayPos0].playerListPos = PLAYER_BACK
 				object.backTouchPress = true
 			else
 				object.backTouchPress = false
-				if tempValue3 < 0
+				if temp3 < 0
 					if object[+arrayPos0].playerListPos == PLAYER_BACK
 						keyPress[0].buttonB = true
 					end if
@@ -1103,14 +1103,14 @@ event ObjectUpdate
 		break
 		
 	case STATE_RETURN_TO_SAVESEL
-		tempValue0  = object.selectedOption
-		tempValue0 *= 40
-		tempValue0 += screen.ycenter
-		tempValue0 -= 87
-		if object.ypos < tempValue0
+		temp0  = object.selectedOption
+		temp0 *= 40
+		temp0 += screen.ycenter
+		temp0 -= 87
+		if object.ypos < temp0
 			object.ypos += 8
-			if object.ypos > tempValue0
-				object.ypos = tempValue0
+			if object.ypos > temp0
+				object.ypos = temp0
 			end if
 			object.alpha = 0
 		else
@@ -1211,7 +1211,7 @@ event ObjectUpdate
 		else
 			object.fadeValue = 0
 			arrayPos0					  = object.selectedOption
-			object[+arrayPos0].SaveStatus = SAVE_DELETE
+			object[+arrayPos0].saveStatus = SAVE_DELETE
 
 			object.state = STATE_SLIDE_DELETE_SAVE
 
@@ -1223,12 +1223,12 @@ event ObjectUpdate
 		break
 		
 	case STATE_SLIDE_DELETE_SAVE
-		tempValue0  = screen.ycenter
-		tempValue0 -= 87
-		if object.ypos > tempValue0
+		temp0  = screen.ycenter
+		temp0 -= 87
+		if object.ypos > temp0
 			object.ypos -= 8
-			if object.ypos < tempValue0
-				object.ypos = tempValue0
+			if object.ypos < temp0
+				object.ypos = temp0
 			end if
 		else
 			object.state = STATE_FADEIN_DELETECONFIRM
@@ -1327,16 +1327,16 @@ event ObjectUpdate
 			
 			// Check if YES is touched
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
-			tempValue3  = checkResult
-			tempValue0  = screen.xcenter
-			tempValue0 -= 34
-			tempValue1  = screen.xcenter
-			tempValue1 += 34
-			CheckTouchRect(tempValue0, 110, tempValue1, 135)
+			temp3  = checkResult
+			temp0  = screen.xcenter
+			temp0 -= 34
+			temp1  = screen.xcenter
+			temp1 += 34
+			CheckTouchRect(temp0, 110, temp1, 135)
 			if checkResult > -1
 				deleteConfirm.highlight = DELETE_YES
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if deleteConfirm.highlight == DELETE_YES
 						keyPress[0].start = true
 					end if
@@ -1348,11 +1348,11 @@ event ObjectUpdate
 			end if
 			
 			// Check if NO is touched
-			CheckTouchRect(tempValue0, 144, tempValue1, 169)
+			CheckTouchRect(temp0, 144, temp1, 169)
 			if checkResult > -1
 				deleteConfirm.highlight = DELETE_NO
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if deleteConfirm.highlight == DELETE_NO
 						keyPress[0].start = true
 					end if
@@ -1364,15 +1364,15 @@ event ObjectUpdate
 			end if
 			
 			// Check if the back button is touched
-			tempValue0  = screen.xsize
-			tempValue0 -= 76
-			CheckTouchRect(tempValue0, 192, screen.xsize, screen.ysize)
+			temp0  = screen.xsize
+			temp0 -= 76
+			CheckTouchRect(temp0, 192, screen.xsize, screen.ysize)
 			if checkResult > -1
 				deleteConfirm.highlight = DELETE_BACK
 				object.backTouchPress = true
 			else
 				object.backTouchPress = false
-				if tempValue3 < 0
+				if temp3 < 0
 					if deleteConfirm.highlight == DELETE_BACK
 						keyPress[0].buttonB = true
 					end if
@@ -1429,7 +1429,7 @@ event ObjectUpdate
 		
 		if keyPress[0].buttonB == true
 			arrayPos0					  = object.selectedOption
-			object[+arrayPos0].SaveStatus = SAVE_NORMAL
+			object[+arrayPos0].saveStatus = SAVE_NORMAL
 
 			object.state = STATE_FADEOUT_DELETECONFIRM
 
@@ -1448,7 +1448,7 @@ event ObjectUpdate
 			object.fadeValue = 248
 
 			arrayPos0					  = object.selectedOption
-			object[+arrayPos0].SaveStatus = SAVE_NORMAL
+			object[+arrayPos0].saveStatus = SAVE_NORMAL
 			
 			if deleteConfirm.highlight == DELETE_YES
 				// Delete this save in the menu
@@ -1538,25 +1538,25 @@ event ObjectDraw
 	case STATE_FADEOUT_CHARACTERSELECT
 	case STATE_RETURN_TO_SAVESEL
 		DrawSpriteScreenFX(30, FX_INK, screen.xcenter, 84)
-		tempValue0  = screen.xcenter
-		tempValue0 -= 32
+		temp0  = screen.xcenter
+		temp0 -= 32
 		arrayPos0 = object.selectedOption
 		if object[+arrayPos0].playerListPos == PLAYER_SONIC_A
-			DrawSpriteScreenFX(31, FX_INK, tempValue0, 136)
-			DrawSpriteScreenFX(36, FX_INK, tempValue0, 164)
-			DrawSpriteScreenFX(33, FX_INK, tempValue0, 136)
+			DrawSpriteScreenFX(31, FX_INK, temp0, 136)
+			DrawSpriteScreenFX(36, FX_INK, temp0, 164)
+			DrawSpriteScreenFX(33, FX_INK, temp0, 136)
 		else
-			DrawSpriteScreenFX(31, FX_INK, tempValue0, 136)
-			DrawSpriteScreenFX(34, FX_INK, tempValue0, 164)
+			DrawSpriteScreenFX(31, FX_INK, temp0, 136)
+			DrawSpriteScreenFX(34, FX_INK, temp0, 164)
 		end if
-		tempValue0 += 64
+		temp0 += 64
 		if object[+arrayPos0].playerListPos == PLAYER_TAILS_A
-			DrawSpriteScreenFX(32, FX_INK, tempValue0, 136)
-			DrawSpriteScreenFX(37, FX_INK, tempValue0, 164)
-			DrawSpriteScreenFX(33, FX_INK, tempValue0, 136)
+			DrawSpriteScreenFX(32, FX_INK, temp0, 136)
+			DrawSpriteScreenFX(37, FX_INK, temp0, 164)
+			DrawSpriteScreenFX(33, FX_INK, temp0, 136)
 		else
-			DrawSpriteScreenFX(32, FX_INK, tempValue0, 136)
-			DrawSpriteScreenFX(35, FX_INK, tempValue0, 164)
+			DrawSpriteScreenFX(32, FX_INK, temp0, 136)
+			DrawSpriteScreenFX(35, FX_INK, temp0, 164)
 		end if
 		object.alpha = 255
 		CallFunction(LoadSaveMenu_DrawSaveFiles)
@@ -1564,35 +1564,35 @@ event ObjectDraw
 		
 	case STATE_CHARACTER_SELECTED
 		DrawSpriteScreenFX(30, FX_INK, screen.xcenter, 84)
-		tempValue0  = screen.xcenter
-		tempValue0 -= 32
+		temp0  = screen.xcenter
+		temp0 -= 32
 		arrayPos0 = object.selectedOption
 		
 		// Flash the border for the selected character
-		tempValue1   = object.fadeValue
-		tempValue1  &= 3
-		tempValue1 >>= 1
+		temp1   = object.fadeValue
+		temp1  &= 3
+		temp1 >>= 1
 		
 		if object[+arrayPos0].playerListPos == PLAYER_SONIC_A
-			if tempValue1 == 0
-				DrawSpriteScreenFX(31, FX_INK, tempValue0, 136)
+			if temp1 == 0
+				DrawSpriteScreenFX(31, FX_INK, temp0, 136)
 			end if
-			DrawSpriteScreenFX(36, FX_INK, tempValue0, 164)
-			DrawSpriteScreenFX(33, FX_INK, tempValue0, 136)
+			DrawSpriteScreenFX(36, FX_INK, temp0, 164)
+			DrawSpriteScreenFX(33, FX_INK, temp0, 136)
 		else
-			DrawSpriteScreenFX(31, FX_INK, tempValue0, 136)
-			DrawSpriteScreenFX(34, FX_INK, tempValue0, 164)
+			DrawSpriteScreenFX(31, FX_INK, temp0, 136)
+			DrawSpriteScreenFX(34, FX_INK, temp0, 164)
 		end if
-		tempValue0 += 64
+		temp0 += 64
 		if object[+arrayPos0].playerListPos == PLAYER_TAILS_A
-			if tempValue1 == 0
-				DrawSpriteScreenFX(32, FX_INK, tempValue0, 136)
+			if temp1 == 0
+				DrawSpriteScreenFX(32, FX_INK, temp0, 136)
 			end if
-			DrawSpriteScreenFX(37, FX_INK, tempValue0, 164)
-			DrawSpriteScreenFX(33, FX_INK, tempValue0, 136)
+			DrawSpriteScreenFX(37, FX_INK, temp0, 164)
+			DrawSpriteScreenFX(33, FX_INK, temp0, 136)
 		else
-			DrawSpriteScreenFX(32, FX_INK, tempValue0, 136)
-			DrawSpriteScreenFX(35, FX_INK, tempValue0, 164)
+			DrawSpriteScreenFX(32, FX_INK, temp0, 136)
+			DrawSpriteScreenFX(35, FX_INK, temp0, 164)
 		end if
 		object.alpha = 255
 		CallFunction(LoadSaveMenu_DrawSaveFiles)
@@ -1600,18 +1600,18 @@ event ObjectDraw
 		
 	case STATE_TOGGLE_DELETE_MODE
 		// Flash the delete button
-		tempValue0   = object.fadeValue
-		tempValue0  &= 3
-		tempValue0 >>= 1
+		temp0   = object.fadeValue
+		temp0  &= 3
+		temp0 >>= 1
 		
 		if object.saveOneStatus == SAVE_DELETE
-			if tempValue0 == 0
+			if temp0 == 0
 				DrawSpriteScreenXY(55, delete.xPos, delete.yPos)
 			else
 				DrawSpriteScreenXY(54, delete.xPos, delete.yPos)
 			end if
 		else
-			if tempValue0 == 0
+			if temp0 == 0
 				DrawSpriteScreenXY(53, delete.xPos, delete.yPos)
 			else
 				DrawSpriteScreenXY(52, delete.xPos, delete.yPos)
@@ -1654,13 +1654,13 @@ event ObjectDraw
 		
 	case STATE_DELETECONFIRM_SELECTED
 		// Flash the selected button
-		tempValue0   = object.fadeValue
-		tempValue0  &= 3
-		tempValue0 >>= 1
+		temp0   = object.fadeValue
+		temp0  &= 3
+		temp0 >>= 1
 		
 		DrawSpriteScreenFX(57, FX_INK, screen.xcenter, 84)
 		if deleteConfirm.highlight == DELETE_YES
-			if tempValue0 == 0
+			if temp0 == 0
 				DrawSpriteScreenFX(76, FX_INK, screen.xcenter, 112)
 			else
 				DrawSpriteScreenFX(75, FX_INK, screen.xcenter, 112)
@@ -1669,7 +1669,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(75, FX_INK, screen.xcenter, 112)
 		end if
 		if deleteConfirm.highlight == DELETE_NO
-			if tempValue0 == 0
+			if temp0 == 0
 				DrawSpriteScreenFX(78, FX_INK, screen.xcenter, 146)
 			else
 				DrawSpriteScreenFX(77, FX_INK, screen.xcenter, 146)

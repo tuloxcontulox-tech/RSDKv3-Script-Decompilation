@@ -8,16 +8,16 @@ private alias 1 : TEXT_CONTENT
 
 event ObjectDraw
 	object.drawOrder = 4
-	tempValue0   = object.xpos
-	tempValue0 >>= 16
-	tempValue0  -= screen.xoffset
-	tempValue1   = object.ypos
-	tempValue1 >>= 16
-	tempValue1  -= screen.yoffset
+	temp0   = object.xpos
+	temp0 >>= 16
+	temp0  -= screen.xoffset
+	temp1   = object.ypos
+	temp1 >>= 16
+	temp1  -= screen.yoffset
 	if object.propertyValue == TEXT_HEADER
-		DrawText(MENU_1, tempValue0, tempValue1, 192, 0, 0, 1)
+		DrawText(MENU_1, temp0, temp1, 192, 0, 0, 1)
 	else
-		DrawText(MENU_1, tempValue0, tempValue1, 114, 41, 1, -1)
+		DrawText(MENU_1, temp0, temp1, 114, 41, 1, -1)
 	end if
 end event
 

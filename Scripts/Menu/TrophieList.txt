@@ -31,33 +31,33 @@ event ObjectDraw
 		DrawSpriteFX(12, FX_SCALE, object.xpos, object.ypos)
 	end if
 
-	tempValue0   = object.xpos
-	tempValue0 >>= 16
-	tempValue0  -= screen.xoffset
-	tempValue0  += 20
+	temp0   = object.xpos
+	temp0 >>= 16
+	temp0  -= screen.xoffset
+	temp0  += 20
 
-	tempValue1   = object.ypos
-	tempValue1 >>= 16
-	tempValue1  -= screen.yoffset
-	tempValue1  -= 13
+	temp1   = object.ypos
+	temp1 >>= 16
+	temp1  -= screen.yoffset
+	temp1  -= 13
 
-	tempValue2   = object.propertyValue
-	tempValue2 <<= 1
+	temp2   = object.propertyValue
+	temp2 <<= 1
 	
 	object.SpriteSheet = object.helpTextSheet
 
-	DrawText(MENU_2, tempValue0, tempValue1, 128, 41, tempValue2, 1)
-	tempValue1 += 15
-	tempValue2++
-	DrawText(MENU_2, tempValue0, tempValue1, 92, 41, tempValue2, 1)
+	DrawText(MENU_2, temp0, temp1, 128, 41, temp2, 1)
+	temp1 += 15
+	temp2++
+	DrawText(MENU_2, temp0, temp1, 92, 41, temp2, 1)
 end event
 
 
 event ObjectStartup
 	LoadSpriteSheet("Menu/Trophies.gif")
-	tempValue0 = object.SpriteSheet
+	temp0 = object.SpriteSheet
 	LoadSpriteSheet("Menu/HelpText.gif")
-	tempValue1 = object.SpriteSheet
+	temp1 = object.SpriteSheet
 
 	SpriteFrame(-64, -64, 128, 128, 0, 0)		// #0  - 88 Miles Per Hour Icon
 	SpriteFrame(-64, -64, 128, 128, 128, 0)		// #1  - One Hug is Enough Icon
@@ -117,8 +117,8 @@ event ObjectStartup
 	arrayPos0 = 32
 	while arrayPos0 < 1056
 		if object[arrayPos0].type == TypeName[Trophie List]
-			object[arrayPos0].TrophieSheet  = tempValue0
-			object[arrayPos0].HelpTextSheet = tempValue1
+			object[arrayPos0].TrophieSheet  = temp0
+			object[arrayPos0].HelpTextSheet = temp1
 			object[arrayPos0].drawOrder = 2
 			object[arrayPos0].priority  = PRIORITY_ACTIVE
 			if screen.xsize >= 384
@@ -136,9 +136,9 @@ end event
 
 event RSDKDraw
 	object.scale = 128
-	tempValue0 = object.EntityNo
-	tempValue0--
-	DrawSpriteFX(tempValue0, FX_SCALE, object.xpos, object.ypos)
+	temp0 = object.EntityNo
+	temp0--
+	DrawSpriteFX(temp0, FX_SCALE, object.xpos, object.ypos)
 end event
 
 

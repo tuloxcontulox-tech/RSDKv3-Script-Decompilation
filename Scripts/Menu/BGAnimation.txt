@@ -36,8 +36,8 @@ event ObjectDraw
 	MatrixTranslateXYZ(MAT_WORLD, 0, 0, object.zPos)
 	
 	// Now, handle the rotating of the BG
-	tempValue0 = object.angleRounded
-	MatrixRotateXYZ(MAT_VIEW, 0, 0, tempValue0)
+	temp0 = object.angleRounded
+	MatrixRotateXYZ(MAT_VIEW, 0, 0, temp0)
 	
 	// Draw the rectangles here, notably before we draw the Sonic sprites
 	Draw3DScene()
@@ -117,9 +117,9 @@ event ObjectStartup
 	// Setting the color of the first rectangle, giving it a green of sorts (0x80E040)
 	FaceBuffer[0].Color   = 128
 	FaceBuffer[0].Color <<= 16
-	tempValue0   = 224
-	tempValue0 <<= 8
-	FaceBuffer[0].Color += tempValue0
+	temp0   = 224
+	temp0 <<= 8
+	FaceBuffer[0].Color += temp0
 	FaceBuffer[0].Color += 64
 	FaceBuffer[0].Color += 0x7F000000 // Half transparency
 	
@@ -156,9 +156,9 @@ event ObjectStartup
 	// Setting the color of the second rectangle, this one gets a cool orange (0xE0A060)
 	FaceBuffer[1].Color   = 224
 	FaceBuffer[1].Color <<= 16
-	tempValue0   = 160
-	tempValue0 <<= 8
-	FaceBuffer[1].Color += tempValue0
+	temp0   = 160
+	temp0 <<= 8
+	FaceBuffer[1].Color += temp0
 	FaceBuffer[1].Color += 96
 	FaceBuffer[1].Color += 0x7F000000 // Once again, half transparency
 	
@@ -195,9 +195,9 @@ event ObjectStartup
 	// Setting the color of the a rectangle one last time, the third one gets a nice blue (0x8080E0)
 	FaceBuffer[2].Color   = 128
 	FaceBuffer[2].Color <<= 16
-	tempValue0   = 128
-	tempValue0 <<= 8
-	FaceBuffer[2].Color += tempValue0
+	temp0   = 128
+	temp0 <<= 8
+	FaceBuffer[2].Color += temp0
 	FaceBuffer[2].Color += 224
 	FaceBuffer[2].Color += 0x7F000000
 end event

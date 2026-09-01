@@ -36,16 +36,16 @@ event ObjectUpdate
 			object.buttonPressed = 0
 		end if
 
-		tempValue0   = object.xpos
-		tempValue0 >>= 16
-		tempValue1   = tempValue0
+		temp0   = object.xpos
+		temp0 >>= 16
+		temp1   = temp0
 
-		tempValue0 -= 18
-		tempValue0 -= screen.xoffset
+		temp0 -= 18
+		temp0 -= screen.xoffset
 		
-		tempValue1 += 18
-		tempValue1 -= screen.xoffset
-		CheckTouchRect(tempValue0, 0, tempValue1, 48)
+		temp1 += 18
+		temp1 -= screen.xoffset
+		CheckTouchRect(temp0, 0, temp1, 48)
 		if checkResult > -1
 			object.buttonPressed = object.propertyValue
 			object.buttonPressed++
@@ -162,14 +162,14 @@ event ObjectStartup
 	SpriteFrame(-60, -37, 120, 74, 132, 163)	// #5 - Back Button Highlight
 #endplatform
 
-	tempValue0   = screen.xcenter
-	tempValue0  -= 160
-	tempValue0 <<= 16
+	temp0   = screen.xcenter
+	temp0  -= 160
+	temp0 <<= 16
 
 	arrayPos0 = 32
 	while arrayPos0 < 1056
 		if object[arrayPos0].type == TypeName[Help Buttons]
-			object[arrayPos0].xpos += tempValue0
+			object[arrayPos0].xpos += temp0
 		end if
 		arrayPos0++
 	loop

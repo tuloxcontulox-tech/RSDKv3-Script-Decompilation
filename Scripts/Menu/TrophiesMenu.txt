@@ -49,9 +49,9 @@ private alias 6 : ENGINE_EXIT_HIRESMODE
 event ObjectUpdate
 	switch object.state
 	case TROPHIES_SETUP
-		tempValue0  = 256
-		tempValue0 -= screen.xcenter
-		screen.xoffset = tempValue0
+		temp0  = 256
+		temp0 -= screen.xcenter
+		screen.xoffset = temp0
 		PlayMusic(1)
 		object.fade = 384
 		object.state++
@@ -98,20 +98,20 @@ event ObjectUpdate
 
 					object.touchYPos = TouchScreen[arrayPos0].ypos
 				else
-					tempValue0  = object.touchYPos
-					tempValue0 -= TouchScreen[arrayPos0].ypos
-					tempValue0 += object.dragPos
+					temp0  = object.touchYPos
+					temp0 -= TouchScreen[arrayPos0].ypos
+					temp0 += object.dragPos
 
 					object.yOffSet3 = object.yOffSet2
 					object.yOffSet2 = object.yOffSet1
 					object.yOffSet1 = object.dragYOffset
 
-					object.dragYOffset  = tempValue0
-					tempValue1  		= object.selectionPos
-					tempValue1 		  >>= 16
-					object.dragYOffset -= tempValue1
+					object.dragYOffset  = temp0
+					temp1  		= object.selectionPos
+					temp1 		  >>= 16
+					object.dragYOffset -= temp1
 
-					object.selectionPos   = tempValue0
+					object.selectionPos   = temp0
 					object.selectionPos <<= 16
 				end if
 			else
@@ -195,33 +195,33 @@ event ObjectDraw
 	if object.trophyTimer < -31
 		object.trophyTimer += 32
 	end if
-	tempValue1   = object.trophyTimer
-	tempValue1 >>= 1
-	while tempValue1 < screen.ysize
-		tempValue0   = object.trophyTimer
-		tempValue0 >>= 1
-		while tempValue0 < screen.xsize
-			DrawSpriteScreenXY(0, tempValue0, tempValue1)
-			tempValue0 += 64
+	temp1   = object.trophyTimer
+	temp1 >>= 1
+	while temp1 < screen.ysize
+		temp0   = object.trophyTimer
+		temp0 >>= 1
+		while temp0 < screen.xsize
+			DrawSpriteScreenXY(0, temp0, temp1)
+			temp0 += 64
 		loop
-		tempValue1 += 64
+		temp1 += 64
 	loop
-	tempValue0  = screen.xsize
-	tempValue0 -= 16
-	DrawRect(tempValue0, 56, 4, 176, 128, 128, 128, 128)
+	temp0  = screen.xsize
+	temp0 -= 16
+	DrawRect(temp0, 56, 4, 176, 128, 128, 128, 128)
 	
-	tempValue1   = object.selectionPos
-	tempValue1 >>= 16
-	if tempValue1 < 0
-		tempValue1 = 0
+	temp1   = object.selectionPos
+	temp1 >>= 16
+	if temp1 < 0
+		temp1 = 0
 	end if
-	if tempValue1 > 384
-		tempValue1 = 384
+	if temp1 > 384
+		temp1 = 384
 	end if
-	tempValue1 *= 160
-	tempValue1 /= 384
-	tempValue1 += 56
-	DrawRect(tempValue0, tempValue1, 4, 16, 0, 0, 0, 255)
+	temp1 *= 160
+	temp1 /= 384
+	temp1 += 56
+	DrawRect(temp0, temp1, 4, 16, 0, 0, 0, 255)
 end event
 
 

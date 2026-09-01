@@ -121,28 +121,28 @@ event ObjectUpdate
 				end if
 			end if
 
-			tempValue0  = object.currentSelection
-			tempValue0 -= object.buttonScroll
-			if tempValue0 < 1
+			temp0  = object.currentSelection
+			temp0 -= object.buttonScroll
+			if temp0 < 1
 				object.buttonScroll--
 				object.yOffsetCorrection = 3
 			end if
 
-			if tempValue0 > 4
+			if temp0 > 4
 				object.buttonScroll++
 				object.yOffsetCorrection = 0
 			end if
 			
 			//Button Movement across the screen
-			tempValue0  = object.buttonYOffset
-			tempValue0 -= 32
+			temp0  = object.buttonYOffset
+			temp0 -= 32
 
-			tempValue1   = object.buttonScroll
-			tempValue1  *= -60
-			tempValue1  -= tempValue0
-			tempValue1  += object.yOffsetCorrection
-			tempValue1 >>= 2
-			object.buttonYOffset += tempValue1
+			temp1   = object.buttonScroll
+			temp1  *= -60
+			temp1  -= temp0
+			temp1  += object.yOffsetCorrection
+			temp1 >>= 2
+			object.buttonYOffset += temp1
 
 #platform: Use_Origins
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
@@ -184,22 +184,22 @@ event ObjectUpdate
 						object.dragYOffset = TouchScreen[arrayPos0].ypos
 					else
 						//Dragging of buttons based on input
-						tempValue0  = TouchScreen[arrayPos0].ypos
-						tempValue0 -= object.dragYOffset
-						tempValue0 += object.dragPos
+						temp0  = TouchScreen[arrayPos0].ypos
+						temp0 -= object.dragYOffset
+						temp0 += object.dragPos
 
 						object.yOffSet3 = object.yOffSet2
 						object.yOffSet2 = object.yOffSet1
 						object.yOffSet1 = object.dragSmooth
 
-						object.dragSmooth    = tempValue0
+						object.dragSmooth    = temp0
 						object.dragSmooth   -= object.buttonYOffset
-						object.buttonYOffset = tempValue0
+						object.buttonYOffset = temp0
 					end if
 
-					tempValue0   = object.dragSmooth
-					tempValue0 >>= 2
-					if tempValue0 != 0
+					temp0   = object.dragSmooth
+					temp0 >>= 2
+					if temp0 != 0
 						object.currentSelection		= 0
 						object.dragCurrentSelection = 0
 					end if
@@ -257,19 +257,19 @@ event ObjectUpdate
 								object.buttonScroll = 0
 							end if
 
-							tempValue0  = object.maxButtonCount
-							tempValue0 -= 4
-							if object.buttonScroll > tempValue0
-								object.buttonScroll = tempValue0
+							temp0  = object.maxButtonCount
+							temp0 -= 4
+							if object.buttonScroll > temp0
+								object.buttonScroll = temp0
 							end if
 						end if
 					else
 						//Drag screen re-centering
-						tempValue0  = object.buttonYOffset
-						tempValue0 -= 32
+						temp0  = object.buttonYOffset
+						temp0 -= 32
 						object.recenterValue   = object.buttonScroll
 						object.recenterValue  *= -60
-						object.recenterValue  -= tempValue0
+						object.recenterValue  -= temp0
 						object.recenterValue >>= 2
 						if object.recenterValue < -4
 							object.recenterValue = -4

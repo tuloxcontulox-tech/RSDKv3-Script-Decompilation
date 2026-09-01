@@ -62,109 +62,109 @@ reserve function DemoMenu_StagePortraitMovement
 
 
 private function DemoMenu_StageTimeRecord
-	tempValue4  = tempValue0
-	tempValue4 += 4
-	tempValue2  = tempValue1
-	tempValue2 /= 6000
-	tempValue3  = tempValue2
-	tempValue3 /= 10
-	tempValue3 += 11
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 136)
+	temp4  = temp0
+	temp4 += 4
+	temp2  = temp1
+	temp2 /= 6000
+	temp3  = temp2
+	temp3 /= 10
+	temp3 += 11
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 136)
 
-	tempValue4 += 6
-	tempValue3  = tempValue2
-	tempValue3 %= 10
-	tempValue3 += 11
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 136)
+	temp4 += 6
+	temp3  = temp2
+	temp3 %= 10
+	temp3 += 11
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 136)
 
-	tempValue4 += 11
-	tempValue2  = tempValue1
-	tempValue2 /= 100
-	tempValue2 %= 60
-	tempValue3  = tempValue2
-	tempValue3 /= 10
-	tempValue3 += 11
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 136)
+	temp4 += 11
+	temp2  = temp1
+	temp2 /= 100
+	temp2 %= 60
+	temp3  = temp2
+	temp3 /= 10
+	temp3 += 11
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 136)
 
-	tempValue4 += 6
-	tempValue3  = tempValue2
-	tempValue3 %= 10
-	tempValue3 += 11
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 136)
+	temp4 += 6
+	temp3  = temp2
+	temp3 %= 10
+	temp3 += 11
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 136)
 
-	tempValue4 += 13
-	tempValue2  = tempValue1
-	tempValue2 %= 100
-	tempValue3  = tempValue2
-	tempValue3 /= 10
-	tempValue3 += 11
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 136)
+	temp4 += 13
+	temp2  = temp1
+	temp2 %= 100
+	temp3  = temp2
+	temp3 /= 10
+	temp3 += 11
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 136)
 
-	tempValue4 += 6
-	tempValue3  = tempValue2
-	tempValue3 %= 10
-	tempValue3 += 11
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 136)
+	temp4 += 6
+	temp3  = temp2
+	temp3 %= 10
+	temp3 += 11
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 136)
 end function
 
 
 private function DemoMenu_StageTotalTimeRecord
-	tempValue4  = tempValue0
-	tempValue2  = tempValue1
-	tempValue2 /= 6000
-	tempValue3  = tempValue2
-	tempValue3 /= 10
-	tempValue3 += object.frame
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 155)
+	temp4  = temp0
+	temp2  = temp1
+	temp2 /= 6000
+	temp3  = temp2
+	temp3 /= 10
+	temp3 += object.frame
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 155)
 
-	tempValue4 += 8
-	tempValue3  = tempValue2
-	tempValue3 %= 10
-	tempValue3 += object.frame
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 155)
+	temp4 += 8
+	temp3  = temp2
+	temp3 %= 10
+	temp3 += object.frame
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 155)
 
-	tempValue4 += 15
-	tempValue2  = tempValue1
-	tempValue2 /= 100
-	tempValue2 %= 60
-	tempValue3  = tempValue2
-	tempValue3 /= 10
-	tempValue3 += object.frame
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 155)
+	temp4 += 15
+	temp2  = temp1
+	temp2 /= 100
+	temp2 %= 60
+	temp3  = temp2
+	temp3 /= 10
+	temp3 += object.frame
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 155)
 
-	tempValue4 += 8
-	tempValue3  = tempValue2
-	tempValue3 %= 10
-	tempValue3 += object.frame
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 155)
+	temp4 += 8
+	temp3  = temp2
+	temp3 %= 10
+	temp3 += object.frame
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 155)
 
-	tempValue4 += 17
-	tempValue2  = tempValue1
-	tempValue2 %= 100
-	tempValue3  = tempValue2
-	tempValue3 /= 10
-	tempValue3 += object.frame
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 155)
+	temp4 += 17
+	temp2  = temp1
+	temp2 %= 100
+	temp3  = temp2
+	temp3 /= 10
+	temp3 += object.frame
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 155)
 	
-	tempValue4 += 8
-	tempValue3  = tempValue2
-	tempValue3 %= 10
-	tempValue3 += object.frame
-	DrawSpriteScreenFX(tempValue3, FX_INK, tempValue4, 155)
+	temp4 += 8
+	temp3  = temp2
+	temp3 %= 10
+	temp3 += object.frame
+	DrawSpriteScreenFX(temp3, FX_INK, temp4, 155)
 end function
 
 
 private function DemoMenu_StagePortraitMovement
-	Cos(tempValue4, object.rotation)
-	tempValue4 >>= 4
-	tempValue4  += tempValue2
-	Sin(tempValue5, object.rotation)
-	tempValue5  *= 3
-	tempValue5 >>= 6
-	tempValue5  += tempValue3
+	Cos(temp4, object.rotation)
+	temp4 >>= 4
+	temp4  += temp2
+	Sin(temp5, object.rotation)
+	temp5  *= 3
+	temp5 >>= 6
+	temp5  += temp3
 	object.rotation += 128
 	object.rotation &= 511
-	EditFrame(10, 2, 2, 64, 58, tempValue4, tempValue5)
+	EditFrame(10, 2, 2, 64, 58, temp4, temp5)
 end function
 
 
@@ -225,16 +225,16 @@ event ObjectUpdate
 		else
 
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
-			tempValue3  = checkResult
-			tempValue0  = screen.xcenter
-			tempValue0 -= 113
-			tempValue1  = screen.xcenter
-			tempValue1 -= 45
-			CheckTouchRect(tempValue0, 67, tempValue1, 157)
+			temp3  = checkResult
+			temp0  = screen.xcenter
+			temp0 -= 113
+			temp1  = screen.xcenter
+			temp1 -= 45
+			CheckTouchRect(temp0, 67, temp1, 157)
 			if checkResult > -1
 				object.currentButton = 0
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.currentButton == 0
 						keyPress[0].start = true
 					end if
@@ -245,15 +245,15 @@ event ObjectUpdate
 				end if
 			end if
 
-			tempValue0  = screen.xcenter
-			tempValue0 -= 35
-			tempValue1  = screen.xcenter
-			tempValue1 += 35
-			CheckTouchRect(tempValue0, 67, tempValue1, 157)
+			temp0  = screen.xcenter
+			temp0 -= 35
+			temp1  = screen.xcenter
+			temp1 += 35
+			CheckTouchRect(temp0, 67, temp1, 157)
 			if checkResult > -1
 				object.currentButton = 1
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.currentButton == 1
 						keyPress[0].start = true
 					end if
@@ -265,15 +265,15 @@ event ObjectUpdate
 			end if
 
 			if object.currentRecord <= object.bossUnlockRecord
-				tempValue0  = screen.xcenter
-				tempValue0 += 45
-				tempValue1  = screen.xcenter
-				tempValue1 += 113
-				CheckTouchRect(tempValue0, 67, tempValue1, 157)
+				temp0  = screen.xcenter
+				temp0 += 45
+				temp1  = screen.xcenter
+				temp1 += 113
+				CheckTouchRect(temp0, 67, temp1, 157)
 				if checkResult > -1
 					object.currentButton = 2
 				else
-					if tempValue3 < 0
+					if temp3 < 0
 						if object.currentButton == 2
 							keyPress[0].start = true
 						end if
@@ -403,102 +403,102 @@ end event
 
 
 event ObjectDraw
-	tempValue0  = screen.xcenter
-	tempValue0 -= 113
-	DrawSpriteScreenFX(0, FX_INK, tempValue0, 57)
+	temp0  = screen.xcenter
+	temp0 -= 113
+	DrawSpriteScreenFX(0, FX_INK, temp0, 57)
 
-	tempValue2 = 33
-	tempValue3 = 267
+	temp2 = 33
+	temp3 = 267
 	CallFunction(DemoMenu_StagePortraitMovement)
 
-	DrawSpriteScreenFX(10, FX_INK, tempValue0, 57)
-	DrawSpriteScreenFX(6, FX_INK, tempValue0, 134)
+	DrawSpriteScreenFX(10, FX_INK, temp0, 57)
+	DrawSpriteScreenFX(6, FX_INK, temp0, 134)
 
-	tempValue1 = SaveRAM[48]	// PPZ1DemoRecord
+	temp1 = SaveRAM[48]	// PPZ1DemoRecord
 	CallFunction(DemoMenu_StageTimeRecord)
 
-	tempValue0 += 78
-	DrawSpriteScreenFX(1, FX_INK, tempValue0, 57)
+	temp0 += 78
+	DrawSpriteScreenFX(1, FX_INK, temp0, 57)
 
-	tempValue2 = 33
-	tempValue3 = 396
+	temp2 = 33
+	temp3 = 396
 	CallFunction(DemoMenu_StagePortraitMovement)
 
-	DrawSpriteScreenFX(10, FX_INK, tempValue0, 57)
-	DrawSpriteScreenFX(6, FX_INK, tempValue0, 134)
+	DrawSpriteScreenFX(10, FX_INK, temp0, 57)
+	DrawSpriteScreenFX(6, FX_INK, temp0, 134)
 
-	tempValue1 = SaveRAM[49]	// QQZ2DemoRecord
+	temp1 = SaveRAM[49]	// QQZ2DemoRecord
 	CallFunction(DemoMenu_StageTimeRecord)
 
-	tempValue0 += 78
-	DrawSpriteScreenFX(2, FX_INK, tempValue0, 57)
+	temp0 += 78
+	DrawSpriteScreenFX(2, FX_INK, temp0, 57)
 
-	tempValue2 = 321
-	tempValue3 = 399
+	temp2 = 321
+	temp3 = 399
 	CallFunction(DemoMenu_StagePortraitMovement)
 
-	DrawSpriteScreenFX(10, FX_INK, tempValue0, 57)
+	DrawSpriteScreenFX(10, FX_INK, temp0, 57)
 
 	object.rotation += 129
 	object.rotation &= 511
 
-	tempValue0 = screen.xcenter
+	temp0 = screen.xcenter
 
-	tempValue1   = object.animationTimer
-	tempValue1  &= 3
-	tempValue1 >>= 1
-	tempValue1  += 7
+	temp1   = object.animationTimer
+	temp1  &= 3
+	temp1 >>= 1
+	temp1  += 7
 
 	switch object.currentButton
 	case 0
-		tempValue0 -= 113
-		DrawSpriteScreenFX(tempValue1, FX_INK, tempValue0, 57)
+		temp0 -= 113
+		DrawSpriteScreenFX(temp1, FX_INK, temp0, 57)
 		break
 
 	case 1
-		tempValue0 -= 35
-		DrawSpriteScreenFX(tempValue1, FX_INK, tempValue0, 57)
+		temp0 -= 35
+		DrawSpriteScreenFX(temp1, FX_INK, temp0, 57)
 		break
 
 	case 2
-		tempValue0 += 43
-		DrawSpriteScreenFX(tempValue1, FX_INK, tempValue0, 57)
+		temp0 += 43
+		DrawSpriteScreenFX(temp1, FX_INK, temp0, 57)
 		break
 
 	end switch
 
 	if object.currentRecord > object.bossUnlockRecord
-		tempValue0  = screen.xcenter
-		tempValue0 += 97
-		DrawSpriteScreenFX(9, FX_INK, tempValue0, 128)
+		temp0  = screen.xcenter
+		temp0 += 97
+		DrawSpriteScreenFX(9, FX_INK, temp0, 128)
 
-		tempValue0  = screen.xcenter
-		tempValue0 -= 113
-		DrawSpriteScreenFX(3, FX_INK, tempValue0, 155)
-		DrawSpriteScreenFX(4, FX_INK, tempValue0, 155)
+		temp0  = screen.xcenter
+		temp0 -= 113
+		DrawSpriteScreenFX(3, FX_INK, temp0, 155)
+		DrawSpriteScreenFX(4, FX_INK, temp0, 155)
 
-		tempValue0  += 44
+		temp0  += 44
 		object.frame = 21
-		tempValue1	 = object.currentRecord
+		temp1	 = object.currentRecord
 		CallFunction(DemoMenu_StageTotalTimeRecord)
 
-		tempValue0  += 114
-		DrawSpriteScreenFX(5, FX_INK, tempValue0, 154)
+		temp0  += 114
+		DrawSpriteScreenFX(5, FX_INK, temp0, 154)
 
-		tempValue0  += 11
+		temp0  += 11
 		object.frame = 31
-		tempValue1 	 = object.bossUnlockRecord
+		temp1 	 = object.bossUnlockRecord
 		CallFunction(DemoMenu_StageTotalTimeRecord)
 	else
-		tempValue0  = screen.xcenter
-		tempValue0 -= 113
-		DrawSpriteScreenFX(3, FX_INK, tempValue0, 155)
-		DrawSpriteScreenFX(4, FX_INK, tempValue0, 155)
+		temp0  = screen.xcenter
+		temp0 -= 113
+		DrawSpriteScreenFX(3, FX_INK, temp0, 155)
+		DrawSpriteScreenFX(4, FX_INK, temp0, 155)
 
-		tempValue0 += 44
+		temp0 += 44
 
 		object.frame = 21
-		tempValue1   = object.currentRecord
+		temp1   = object.currentRecord
 		CallFunction(DemoMenu_StageTotalTimeRecord)
 	end if
 end event

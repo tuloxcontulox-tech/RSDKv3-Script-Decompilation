@@ -143,16 +143,16 @@ event ObjectUpdate
 			
 			// Check if JP button is touched
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
-			tempValue3  = checkResult
-			tempValue0  = screen.xcenter
-			tempValue0 -= 90
-			tempValue1  = screen.xcenter
-			tempValue1 -= 22
-			CheckTouchRect(tempValue0, 112, tempValue1, 144)
+			temp3  = checkResult
+			temp0  = screen.xcenter
+			temp0 -= 90
+			temp1  = screen.xcenter
+			temp1 -= 22
+			CheckTouchRect(temp0, 112, temp1, 144)
 			if checkResult > -1
 				object.selectedOption = OST_JP
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == OST_JP
 						keyPress[0].start = true
 					end if
@@ -164,15 +164,15 @@ event ObjectUpdate
 			end if
 			
 			// Check if US button is touched
-			tempValue0  = screen.xcenter
-			tempValue0 += 22
-			tempValue1  = screen.xcenter
-			tempValue1 += 90
-			CheckTouchRect(tempValue0, 112, tempValue1, 144)
+			temp0  = screen.xcenter
+			temp0 += 22
+			temp1  = screen.xcenter
+			temp1 += 90
+			CheckTouchRect(temp0, 112, temp1, 144)
 			if checkResult > -1
 				object.selectedOption = OST_US
 			else
-				if tempValue3 < 0
+				if temp3 < 0
 					if object.selectedOption == OST_US
 						keyPress[0].start = true
 					end if
@@ -301,60 +301,60 @@ end event
 
 event ObjectDraw
 	// Animate and draw Eggman
-	tempValue0   = object.eggmanAnimTimer
-	tempValue0 >>= 5
-	DrawSpriteScreenFX(tempValue0, FX_INK, screen.xcenter, screen.ycenter)
+	temp0   = object.eggmanAnimTimer
+	temp0 >>= 5
+	DrawSpriteScreenFX(temp0, FX_INK, screen.xcenter, screen.ycenter)
 	object.eggmanAnimTimer++
 	object.eggmanAnimTimer &= 63
 	
 	// Oscillate and draw the music notes
-	Sin(tempValue0, object.noteOscillation)
-	tempValue0 >>= 6
-	tempValue0  += screen.ycenter
-	DrawSpriteScreenFX(6, FX_INK, screen.xcenter, tempValue0)
-	Sin(tempValue0, object.noteOscillation)
-	tempValue0 >>= 6
-	FlipSign(tempValue0)
-	tempValue0  += screen.ycenter
-	DrawSpriteScreenFX(7, FX_INK, screen.xcenter, tempValue0)
+	Sin(temp0, object.noteOscillation)
+	temp0 >>= 6
+	temp0  += screen.ycenter
+	DrawSpriteScreenFX(6, FX_INK, screen.xcenter, temp0)
+	Sin(temp0, object.noteOscillation)
+	temp0 >>= 6
+	FlipSign(temp0)
+	temp0  += screen.ycenter
+	DrawSpriteScreenFX(7, FX_INK, screen.xcenter, temp0)
 	object.noteOscillation += 2
 	object.noteOscillation &= 511
 	
 	// Set up the positioning for the buttons
-	tempValue0  = screen.xcenter
-	tempValue0 -= 56
-	tempValue1  = screen.xcenter
-	tempValue1 += 56
-	tempValue3  = screen.ycenter
-	tempValue3 += 8
+	temp0  = screen.xcenter
+	temp0 -= 56
+	temp1  = screen.xcenter
+	temp1 += 56
+	temp3  = screen.ycenter
+	temp3 += 8
 	
 	// Draw the JP button
 	if object.selectedOption == OST_JP
-		tempValue2   = object.animationTimer
-		tempValue2  &= 3
-		tempValue2 >>= 1
-		tempValue2  += 2
-		DrawSpriteScreenFX(tempValue2, FX_INK, tempValue0, tempValue3)
+		temp2   = object.animationTimer
+		temp2  &= 3
+		temp2 >>= 1
+		temp2  += 2
+		DrawSpriteScreenFX(temp2, FX_INK, temp0, temp3)
 	else
-		DrawSpriteScreenFX(3, FX_INK, tempValue0, tempValue3)
+		DrawSpriteScreenFX(3, FX_INK, temp0, temp3)
 	end if
 	
 	// Draw the US button
 	if object.selectedOption == OST_US
-		tempValue2   = object.animationTimer
-		tempValue2  &= 3
-		tempValue2 >>= 1
-		tempValue2  += 4
-		DrawSpriteScreenFX(tempValue2, FX_INK, tempValue1, tempValue3)
+		temp2   = object.animationTimer
+		temp2  &= 3
+		temp2 >>= 1
+		temp2  += 4
+		DrawSpriteScreenFX(temp2, FX_INK, temp1, temp3)
 	else
-		DrawSpriteScreenFX(5, FX_INK, tempValue1, tempValue3)
+		DrawSpriteScreenFX(5, FX_INK, temp1, temp3)
 	end if
 	
 	// Draw the border for the soundtrack that's currently playing
 	if Options.Soundtrack == OST_JP
-		DrawSpriteScreenFX(8, FX_INK, tempValue0, tempValue3)
+		DrawSpriteScreenFX(8, FX_INK, temp0, temp3)
 	else
-		DrawSpriteScreenFX(8, FX_INK, tempValue1, tempValue3)
+		DrawSpriteScreenFX(8, FX_INK, temp1, temp3)
 	end if
 end event
 

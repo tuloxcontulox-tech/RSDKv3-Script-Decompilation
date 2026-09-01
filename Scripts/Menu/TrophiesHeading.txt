@@ -4,21 +4,21 @@
 //-----This Object is normally only used by WP7 Data files----//
 
 event ObjectDraw
-	tempValue0   = object.xpos
-	tempValue0 >>= 16
-	tempValue0  -= screen.xoffset
+	temp0   = object.xpos
+	temp0 >>= 16
+	temp0  -= screen.xoffset
 
-	tempValue1   = object.ypos
-	tempValue1 >>= 16
-	tempValue1  -= screen.yoffset
+	temp1   = object.ypos
+	temp1 >>= 16
+	temp1  -= screen.yoffset
 
 	DrawRect(0, 0, screen.xsize, 47, 255, 255, 255, 255)
 	DrawRect(0, 46, screen.xsize, 1, 128, 128, 128, 128)
 	
-	DrawText(MENU_1, tempValue0, tempValue1, 192, 0, 0, 1)
-	tempValue2++
-	tempValue1 += 24
-	DrawText(MENU_1, tempValue0, tempValue1, 128, 0, 1, 1)
+	DrawText(MENU_1, temp0, temp1, 192, 0, 0, 1)
+	temp2++
+	temp1 += 24
+	DrawText(MENU_1, temp0, temp1, 128, 0, 1, 1)
 end event
 
 
