@@ -3,49 +3,49 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 
 // Aliases
-#alias Object.Value0	:	Object.Timer		//Also used for fading
-#alias Object.Value2	:	Object.YOffset
-#alias Object.Value3	:	Object.HelpPage
-#alias Object.Value4	:	Object.PageTimer
+private alias object.value0 : object.timer		//Also used for fading
+private alias object.value2 : object.yOffset
+private alias object.value3 : object.helpPage
+private alias object.value4 : object.pageTimer
 
 // States
-#alias 0	:	HELPMENU_SETUP
-#alias 1	:	HELPMENU_FADEIN
-#alias 2	:	HELPMENU_CONTROLS
-#alias 3	:	HELPMENU_PAGEDOWN
-#alias 4	:	HELPMENU_PAGEUP
-#alias 5	:	HELPMENU_LEAVE
+private alias 0 : HELPMENU_SETUP
+private alias 1 : HELPMENU_FADEIN
+private alias 2 : HELPMENU_CONTROLS
+private alias 3 : HELPMENU_PAGEDOWN
+private alias 4 : HELPMENU_PAGEUP
+private alias 5 : HELPMENU_LEAVE
 
 // Languages
-#alias 0	:	LANG_ENGLISH
-#alias 1	:	LANG_FRENCH
-#alias 2	:	LANG_ITALIAN
-#alias 3	:	LANG_DEUTSCH
-#alias 4	:	LANG_SPANISH
-#alias 5	:	LANG_JAPANESE
+private alias 0 : LANG_ENGLISH
+private alias 1 : LANG_FRENCH
+private alias 2 : LANG_ITALIAN
+private alias 3 : LANG_DEUTSCH
+private alias 4 : LANG_SPANISH
+private alias 5 : LANG_JAPANESE
 
 // Global SFX
-#alias 26	:	SFX_G_OUTTAHERE
-#alias 27	:	SFX_G_SELECT
+private alias 26 : SFX_G_OUTTAHERE
+private alias 27 : SFX_G_SELECT
 
 // Soundtrack
-#alias 0	:	OST_JP
+private alias 0 : OST_JP
 
 // Presentation Stages
-#alias 1	:	STAGE_P_MENU
+private alias 1 : STAGE_P_MENU
 
 // Engine & Callbacks
-#alias 5	:	ENGINE_ENTER_HIRESMODE
-#alias 6	:	ENGINE_EXIT_HIRESMODE
+private alias 5 : ENGINE_ENTER_HIRESMODE
+private alias 6 : ENGINE_EXIT_HIRESMODE
 
 // Priority
-#alias 1	:	PRIORITY_ACTIVE
+private alias 1 : PRIORITY_ACTIVE
 
 // Function declarations
-#function HelpMenu_PageLoad
+reserve function HelpMenu_PageLoad
 
-function HelpMenu_PageLoad
-	switch Object.HelpPage
+private function HelpMenu_PageLoad
+	switch object.helpPage
 	case 0
 		switch Engine.Language
 		case LANG_ENGLISH
@@ -248,169 +248,169 @@ function HelpMenu_PageLoad
 end function
 
 
-sub ObjectMain
-	switch Object.State
+event ObjectUpdate
+	switch object.state
 	case HELPMENU_SETUP
-		TempValue0  = 256
-		TempValue0 -= Screen.CenterX
-		Screen.XOffset  = TempValue0
-		Object.HelpPage = 0
+		tempValue0  = 256
+		tempValue0 -= screen.xcenter
+		screen.xoffset  = tempValue0
+		object.helpPage = 0
 		CallFunction(HelpMenu_PageLoad)
 		PlayMusic(1)
-		Object.Timer = 384
-		Object.State++
+		object.timer = 384
+		object.state++
 		SetScreenFade(0, 0, 0, 255)
 		break
 
 	case HELPMENU_FADEIN
-		if Object.Timer > 0
-			Object.Timer -= 8
+		if object.timer > 0
+			object.timer -= 8
 		else
-			Object.State++
+			object.state++
 		end if
-		SetScreenFade(0, 0, 0, Object.Timer)
+		SetScreenFade(0, 0, 0, object.timer)
 		break
 
 	case HELPMENU_CONTROLS
-		if KeyPress[0].Down == true
-			if Object.HelpPage < 8
+		if keyPress[0].down == true
+			if object.helpPage < 8
 				PlaySfx(SFX_G_SELECT, false)
-				Object.Timer = 256
-				Object.State = HELPMENU_PAGEDOWN
+				object.timer = 256
+				object.state = HELPMENU_PAGEDOWN
 			end if
 		end if
 
-		if KeyPress[0].Up == true
-			if Object.HelpPage > 0
+		if keyPress[0].up == true
+			if object.helpPage > 0
 				PlaySfx(SFX_G_SELECT, false)
-				Object.State = HELPMENU_PAGEUP
+				object.state = HELPMENU_PAGEUP
 			end if
 		end if
 		
-		if KeyPress[0].ButtonB == true
+		if keyPress[0].buttonB == true
 			PlaySfx(SFX_G_OUTTAHERE, false)
-			Object.State = HELPMENU_LEAVE
+			object.state = HELPMENU_LEAVE
 		end if
 		break
 
 	case HELPMENU_PAGEDOWN
-		if Object.Timer > 0
-			Cos(TempValue0, Object.Timer)
-			TempValue0 	 >>= 1
-			TempValue0 	  += 256
-			TempValue1	   = Object.YOffset
-			TempValue1	  += TempValue0
-			Screen.YOffset = TempValue1
+		if object.timer > 0
+			Cos(tempValue0, object.timer)
+			tempValue0 	 >>= 1
+			tempValue0 	  += 256
+			tempValue1	   = object.yOffset
+			tempValue1	  += tempValue0
+			screen.yoffset = tempValue1
 
-			TempValue1  += 256
-			TempValue1 >>= 9
-			if TempValue1 > Object.HelpPage
-				Object.HelpPage++
-				if Object.HelpPage == 2
-					SetActivePalette(1, 0, Screen.YSize)
+			tempValue1  += 256
+			tempValue1 >>= 9
+			if tempValue1 > object.helpPage
+				object.helpPage++
+				if object.helpPage == 2
+					SetActivePalette(1, 0, screen.ysize)
 				else
-					SetActivePalette(0, 0, Screen.YSize)
+					SetActivePalette(0, 0, screen.ysize)
 				end if
 				CallFunction(HelpMenu_PageLoad)
 			end if
 
-			Object.Timer -= 3
-			if Object.Timer < 0
-				Object.Timer = 0
+			object.timer -= 3
+			if object.timer < 0
+				object.timer = 0
 			end if
 		else
-			Object.YOffset += 512
-			Screen.YOffset = Object.YOffset
-			Object.State = HELPMENU_CONTROLS
+			object.yOffset += 512
+			screen.yoffset = object.yOffset
+			object.state = HELPMENU_CONTROLS
 		end if
 		break
 
 	case HELPMENU_PAGEUP
-		if Object.Timer < 256
-			Cos(TempValue0, Object.Timer)
-			TempValue0   >>= 1
-			TempValue0 	  -= 256
-			TempValue1 	   = Object.YOffset
-			TempValue1	  += TempValue0
-			Screen.YOffset = TempValue1
+		if object.timer < 256
+			Cos(tempValue0, object.timer)
+			tempValue0   >>= 1
+			tempValue0 	  -= 256
+			tempValue1 	   = object.yOffset
+			tempValue1	  += tempValue0
+			screen.yoffset = tempValue1
 
-			TempValue1  += 256
-			TempValue1 >>= 9
-			if TempValue1 < Object.HelpPage
-				Object.HelpPage--
-				if Object.HelpPage == 2
-					SetActivePalette(1, 0, Screen.YSize)
+			tempValue1  += 256
+			tempValue1 >>= 9
+			if tempValue1 < object.helpPage
+				object.helpPage--
+				if object.helpPage == 2
+					SetActivePalette(1, 0, screen.ysize)
 				else
-					SetActivePalette(0, 0, Screen.YSize)
+					SetActivePalette(0, 0, screen.ysize)
 				end if
 				CallFunction(HelpMenu_PageLoad)
 			end if
 			
-			Object.Timer += 3
-			if Object.Timer > 256
-				Object.Timer = 256
+			object.timer += 3
+			if object.timer > 256
+				object.timer = 256
 			end if
 		else
-			Object.YOffset -= 512
-			Screen.YOffset  = Object.YOffset
+			object.yOffset -= 512
+			screen.yoffset  = object.yOffset
 
-			Object.Timer = 0
-			Object.State = HELPMENU_CONTROLS
+			object.timer = 0
+			object.state = HELPMENU_CONTROLS
 		end if
 		break
 
 	case HELPMENU_LEAVE
-		if Object.Timer < 348
-			Object.Timer += 8
+		if object.timer < 348
+			object.timer += 8
 		else
-			Stage.ListPos = STAGE_P_MENU
-			Engine.State = ENGINE_EXIT_HIRESMODE
+			stage.listPos = STAGE_P_MENU
+			Engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, Object.Timer)
+		SetScreenFade(0, 0, 0, object.timer)
 		break
 
 	end switch
-end sub
+end event
 
 
-sub ObjectDraw
-	Object.PageTimer--
-	if Object.PageTimer < -31
-		Object.PageTimer += 32
+event ObjectDraw
+	object.pageTimer--
+	if object.pageTimer < -31
+		object.pageTimer += 32
 	end if
-	TempValue1   = Object.PageTimer
-	TempValue1 >>= 1
-	while TempValue1 < Screen.YSize
-		TempValue0   = Object.PageTimer
-		TempValue0 >>= 1
-		while TempValue0 < Screen.XSize
-			DrawSpriteScreenXY(0, TempValue0, TempValue1)
-			TempValue0 += 128
+	tempValue1   = object.pageTimer
+	tempValue1 >>= 1
+	while tempValue1 < screen.ysize
+		tempValue0   = object.pageTimer
+		tempValue0 >>= 1
+		while tempValue0 < screen.xsize
+			DrawSpriteScreenXY(0, tempValue0, tempValue1)
+			tempValue0 += 128
 		loop
-		TempValue1 += 128
+		tempValue1 += 128
 	loop
-end sub
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/HelpBG.gif")
 
 	SpriteFrame(0, 0, 128, 128, 1, 1)
 
 	if Engine.Language == LANG_JAPANESE
-		Object[59].XPos -= 0x100000
-		Object[60].XPos -= 0x100000
-		Object[61].XPos -= 0x100000
-		Object[62].XPos -= 0x100000
-		Object[63].XPos -= 0x100000
-		Object[64].XPos += 0x500000
-		Object[59].YPos += 0x180000
-		Object[60].YPos += 0x180000
-		Object[61].YPos += 0x180000
-		Object[62].YPos += 0x180000
-		Object[63].YPos += 0x180000
-		Object[64].YPos -= 0x2F0000
+		object[59].xpos -= 0x100000
+		object[60].xpos -= 0x100000
+		object[61].xpos -= 0x100000
+		object[62].xpos -= 0x100000
+		object[63].xpos -= 0x100000
+		object[64].xpos += 0x500000
+		object[59].ypos += 0x180000
+		object[60].ypos += 0x180000
+		object[61].ypos += 0x180000
+		object[62].ypos += 0x180000
+		object[63].ypos += 0x180000
+		object[64].ypos -= 0x2F0000
 	end if
 
 	LoadPalette("HelpPal1.act", 0, 0, 0, 256)
@@ -423,27 +423,27 @@ sub ObjectStartup
 		SetMusicTrack("US/DAGarden.ogg", 1, 117382)
 	end if
 
-	Engine.State		 = ENGINE_ENTER_HIRESMODE
+	Engine.state		 = ENGINE_ENTER_HIRESMODE
 	Screen.CameraEnabled = false
 
-	Object[0].Type		= TypeName[Help Menu]
-	Object[0].Priority  = PRIORITY_ACTIVE
-	Object[0].DrawOrder = 0
-end sub
+	object[0].type		= TypeName[Help Menu]
+	object[0].priority  = PRIORITY_ACTIVE
+	object[0].drawOrder = 0
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 	SpriteFrame(16, 0, 46, 30, 1, 677)	// Help
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

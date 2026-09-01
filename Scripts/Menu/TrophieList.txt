@@ -4,60 +4,60 @@
 //---This Object is normally only used by WP7 Data files------//
 
 // Aliases
-#alias Object.Value1		:	Object.AchievementUnlocked	//[[Actually i have no clue about this one]]
-#alias Object.Value2		:	Object.TrophieSheet
-#alias Object.Value3		:	Object.HelpTextSheet
+private alias object.value1 : object.achievementUnlocked	//[[Actually i have no clue about this one]]
+private alias object.value2 : object.trophieSheet
+private alias object.value3 : object.helpTextSheet
 
-#alias Object[0].Value2 	:	TrophiesMenu.SelectionPos
+private alias object[0].value2 : trophiesMenu.selectionPos
 
 // Priority
-#alias 1	:	PRIORITY_ACTIVE
+private alias 1 : PRIORITY_ACTIVE
 
 // Online Menus
-#alias 0	:	ONLINEMENU_ACHIEVEMENTS
+private alias 0 : ONLINEMENU_ACHIEVEMENTS
 
 
-sub ObjectDraw
-	Object.YPos  = Object.PropertyValue
-	Object.YPos *= 0x300000
-	Object.YPos -= TrophiesMenu.SelectionPos
-	Object.YPos += 0x480000
-	Object.Scale = 128
+event ObjectDraw
+	object.ypos  = object.propertyValue
+	object.ypos *= 0x300000
+	object.ypos -= trophiesMenu.selectionPos
+	object.ypos += 0x480000
+	object.scale = 128
 	
-	Object.SpriteSheet = Object.TrophieSheet
-	if Object.AchievementUnlocked == true
-		DrawSpriteFX(Object.Frame, FX_SCALE, Object.XPos, Object.YPos)
+	object.SpriteSheet = object.trophieSheet
+	if object.achievementUnlocked == true
+		DrawSpriteFX(object.frame, FX_SCALE, object.xpos, object.ypos)
 	else
-		DrawSpriteFX(12, FX_SCALE, Object.XPos, Object.YPos)
+		DrawSpriteFX(12, FX_SCALE, object.xpos, object.ypos)
 	end if
 
-	TempValue0   = Object.XPos
-	TempValue0 >>= 16
-	TempValue0  -= Screen.XOffset
-	TempValue0  += 20
+	tempValue0   = object.xpos
+	tempValue0 >>= 16
+	tempValue0  -= screen.xoffset
+	tempValue0  += 20
 
-	TempValue1   = Object.YPos
-	TempValue1 >>= 16
-	TempValue1  -= Screen.YOffset
-	TempValue1  -= 13
+	tempValue1   = object.ypos
+	tempValue1 >>= 16
+	tempValue1  -= screen.yoffset
+	tempValue1  -= 13
 
-	TempValue2   = Object.PropertyValue
-	TempValue2 <<= 1
+	tempValue2   = object.propertyValue
+	tempValue2 <<= 1
 	
-	Object.SpriteSheet = Object.HelpTextSheet
+	object.SpriteSheet = object.helpTextSheet
 
-	DrawText(MENU_2, TempValue0, TempValue1, 128, 41, TempValue2, 1)
-	TempValue1 += 15
-	TempValue2++
-	DrawText(MENU_2, TempValue0, TempValue1, 92, 41, TempValue2, 1)
-end sub
+	DrawText(MENU_2, tempValue0, tempValue1, 128, 41, tempValue2, 1)
+	tempValue1 += 15
+	tempValue2++
+	DrawText(MENU_2, tempValue0, tempValue1, 92, 41, tempValue2, 1)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/Trophies.gif")
-	TempValue0 = Object.SpriteSheet
+	tempValue0 = object.SpriteSheet
 	LoadSpriteSheet("Menu/HelpText.gif")
-	TempValue1 = Object.SpriteSheet
+	tempValue1 = object.SpriteSheet
 
 	SpriteFrame(-64, -64, 128, 128, 0, 0)		// #0  - 88 Miles Per Hour Icon
 	SpriteFrame(-64, -64, 128, 128, 128, 0)		// #1  - One Hug is Enough Icon
@@ -114,35 +114,35 @@ sub ObjectStartup
 	LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 
 	// Used to be below LoadSpriteSheet, moved here for consistency
-	ArrayPos0 = 32
-	while ArrayPos0 < 1056
-		if Object[ArrayPos0].Type == TypeName[Trophie List]
-			Object[ArrayPos0].TrophieSheet  = TempValue0
-			Object[ArrayPos0].HelpTextSheet = TempValue1
-			Object[ArrayPos0].DrawOrder = 2
-			Object[ArrayPos0].Priority  = PRIORITY_ACTIVE
-			if Screen.XSize >= 384
-				Object[ArrayPos0].XPos -= 0x100000
+	arrayPos0 = 32
+	while arrayPos0 < 1056
+		if object[arrayPos0].type == TypeName[Trophie List]
+			object[arrayPos0].TrophieSheet  = tempValue0
+			object[arrayPos0].HelpTextSheet = tempValue1
+			object[arrayPos0].drawOrder = 2
+			object[arrayPos0].priority  = PRIORITY_ACTIVE
+			if screen.xsize >= 384
+				object[arrayPos0].xpos -= 0x100000
 			end if
 		end if
-		ArrayPos0++
+		arrayPos0++
 	loop
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
-	Object.Scale = 128
-	TempValue0 = Object.EntityNo
-	TempValue0--
-	DrawSpriteFX(TempValue0, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+event RSDKDraw
+	object.scale = 128
+	tempValue0 = object.EntityNo
+	tempValue0--
+	DrawSpriteFX(tempValue0, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/Trophies.gif")
 
 	SpriteFrame(-64, -64, 128, 128, 0, 0)		// #0  - 88 Miles Per Hour Icon
@@ -160,4 +160,4 @@ sub RSDKLoad
 	SpriteFrame(-64, -64, 128, 128, 0, 384)		// #12 - Lock Icon
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

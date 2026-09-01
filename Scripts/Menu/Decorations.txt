@@ -4,13 +4,13 @@
 //---This Object is normally only used by Mobile Data files---//
 
 
-sub ObjectDraw
-	Object.Scale = 128
-	DrawSpriteFX(Object.PropertyValue, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+event ObjectDraw
+	object.scale = 128
+	DrawSpriteFX(object.propertyValue, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/MetalSonic.gif")
 
 	SpriteFrame(-32, -64, 64, 128, 191, 384)	// #0 - Blue Hexagon
@@ -19,21 +19,21 @@ sub ObjectStartup
 	SpriteFrame(-32, -20, 64, 39, 157, 343)		// #3 - ^
 	SpriteFrame(-20, -32, 39, 64, 114, 275)		// #4 - >
 	SpriteFrame(-32, -32, 64, 64, 49, 317)		// #5 - Red Diamond
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Global/Display.gif")
 	SpriteFrame(-16, -16, 32, 32, 1, 143)		// #0 - "Script" Icon
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

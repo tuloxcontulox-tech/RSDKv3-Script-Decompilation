@@ -3,42 +3,42 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 //-----This Object is normally only used by WP7 Data files----//
 
-sub ObjectDraw
-	TempValue0   = Object.XPos
-	TempValue0 >>= 16
-	TempValue0  -= Screen.XOffset
+event ObjectDraw
+	tempValue0   = object.xpos
+	tempValue0 >>= 16
+	tempValue0  -= screen.xoffset
 
-	TempValue1   = Object.YPos
-	TempValue1 >>= 16
-	TempValue1  -= Screen.YOffset
+	tempValue1   = object.ypos
+	tempValue1 >>= 16
+	tempValue1  -= screen.yoffset
 
-	DrawRect(0, 0, Screen.XSize, 47, 255, 255, 255, 255)
-	DrawRect(0, 46, Screen.XSize, 1, 128, 128, 128, 128)
+	DrawRect(0, 0, screen.xsize, 47, 255, 255, 255, 255)
+	DrawRect(0, 46, screen.xsize, 1, 128, 128, 128, 128)
 	
-	DrawText(MENU_1, TempValue0, TempValue1, 192, 0, 0, 1)
-	TempValue2++
-	TempValue1 += 24
-	DrawText(MENU_1, TempValue0, TempValue1, 128, 0, 1, 1)
-end sub
+	DrawText(MENU_1, tempValue0, tempValue1, 192, 0, 0, 1)
+	tempValue2++
+	tempValue1 += 24
+	DrawText(MENU_1, tempValue0, tempValue1, 128, 0, 1, 1)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/HelpText.gif")
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 	SpriteFrame(0, 0, 128, 16, 1, 52)		// Achievements
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

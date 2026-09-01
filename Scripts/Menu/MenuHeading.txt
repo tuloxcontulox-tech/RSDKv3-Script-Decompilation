@@ -3,211 +3,211 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 
 // Aliases
-#alias Object.PropertyValue	:	Object.Header
-#alias Object.Value0		:	Object.Timer
-#alias Object.Value1		:	Object.YOffset
-#alias Object.Value2		:	Object.XOffset
-#alias Object.Value3		:	Object.Angle
-#alias Object.Value4		:	Object.GFX1
-#alias Object.Value5		:	Object.GFX2
+private alias object.propertyValue : object.header
+private alias object.value0 : object.timer
+private alias object.value1 : object.yOffset
+private alias object.value2 : object.xOffset
+private alias object.value3 : object.angle
+private alias object.value4 : object.gFX1
+private alias object.value5 : object.gFX2
 
-// Object[1] is a blank object just to share values
-#alias Object[1].Value2		:	Object.MaxButtonCount
+// object[1] is a blank object just to share values
+private alias object[1].value2 : object.maxButtonCount
 
 //MenuHeading_CheckTouchBack Specific Values
-#alias Object.Value1		:	CurrentMenu.ButtonPressed	//Current Menu Button Pressed
-#alias Object[1].Value4		:	Object.BackTouchPress
+private alias object.value1 : currentMenu.buttonPressed	//Current Menu Button Pressed
+private alias object[1].value4 : object.backTouchPress
 
 // States
-#alias 0	:	MENUHEADING_IDLE
-#alias 1	:	MENUHEADING_LEAVE_SCREEN
-#alias 2	:	MENUHEADING_ENTER_SCREEN
+private alias 0 : MENUHEADING_IDLE
+private alias 1 : MENUHEADING_LEAVE_SCREEN
+private alias 2 : MENUHEADING_ENTER_SCREEN
 
 // Property Values
-#alias 5	:	MAINMENU_HEADER
-#alias 6	:	SAVESELECT_HEADER
-#alias 7	:	HELP&OPTIONS_HEADER
-#alias 8	:	EXTRAS_HEADER
-#alias 9	:	SOUNDTRACK_HEADER
-#alias 10	:	STAGESELECT_HEADER
+private alias 5 : MAINMENU_HEADER
+private alias 6 : SAVESELECT_HEADER
+private alias 7 : HELP&OPTIONS_HEADER
+private alias 8 : EXTRAS_HEADER
+private alias 9 : SOUNDTRACK_HEADER
+private alias 10 : STAGESELECT_HEADER
 
 // Ink Effects
-#alias 2	:	INK_ALPHA
+private alias 2 : INK_ALPHA
 
 // Languages
-#alias 0	:	LANG_ENGLISH
-#alias 1	:	LANG_FRENCH
-#alias 2	:	LANG_ITALIAN
-#alias 3	:	LANG_DEUTSCH
-#alias 4	:	LANG_SPANISH
-#alias 5	:	LANG_JAPANESE
+private alias 0 : LANG_ENGLISH
+private alias 1 : LANG_FRENCH
+private alias 2 : LANG_ITALIAN
+private alias 3 : LANG_DEUTSCH
+private alias 4 : LANG_SPANISH
+private alias 5 : LANG_JAPANESE
 
 //Engine & CallBacks
-#alias 2	:	MESSAGE_LOSTFOCUS
+private alias 2 : MESSAGE_LOSTFOCUS
 
 // Device Type
-#alias 0	:	RETRO_STANDARD
+private alias 0 : RETRO_STANDARD
 
 // Function declarations
-#function MenuHeading_CheckTouchBack
+reserve function MenuHeading_CheckTouchBack
 
 
-function MenuHeading_CheckTouchBack	//This is used by other scripts to check if the back touch button is pressed
+private function MenuHeading_CheckTouchBack	//This is used by other scripts to check if the back touch button is pressed
 	if Engine.Message == MESSAGE_LOSTFOCUS
-		CurrentMenu.ButtonPressed = -1
+		currentMenu.buttonPressed = -1
 	end if
 
-	TempValue0  = Screen.XSize
-	TempValue0 -= 76
-	CheckTouchRect(TempValue0, 192, Screen.XSize, Screen.YSize)
-	if CheckResult > -1
-		CurrentMenu.ButtonPressed = 5
-		Object.BackTouchPress = true
+	tempValue0  = screen.xsize
+	tempValue0 -= 76
+	CheckTouchRect(tempValue0, 192, screen.xsize, screen.ysize)
+	if checkResult > -1
+		currentMenu.buttonPressed = 5
+		object.backTouchPress = true
 	else
-		Object.BackTouchPress = false
-		if TempValue3 < 0
-			if CurrentMenu.ButtonPressed == 5
-				KeyPress[0].ButtonB = true
+		object.backTouchPress = false
+		if tempValue3 < 0
+			if currentMenu.buttonPressed == 5
+				keyPress[0].buttonB = true
 			end if
 		else
-			if CurrentMenu.ButtonPressed == 5
-				CurrentMenu.ButtonPressed = -1
+			if currentMenu.buttonPressed == 5
+				currentMenu.buttonPressed = -1
 			end if
 		end if
 	end if
 end function
 
 
-sub ObjectMain
-	switch Object.State
+event ObjectUpdate
+	switch object.state
 	case MENUHEADING_LEAVE_SCREEN
-		if Object.Timer < 16
-			Object.Timer++
-			Object.XOffset -= 16
+		if object.timer < 16
+			object.timer++
+			object.xOffset -= 16
 		else
-			Object.Frame = Object.Header
-			Object.Timer = 0
-			Object.State++
+			object.frame = object.header
+			object.timer = 0
+			object.state++
 		end if
 
-		if Object.Alpha == 255
-			Object.Alpha = 240
+		if object.alpha == 255
+			object.alpha = 240
 		else
-			if Object.Alpha > 0
-				Object.Alpha -= 16
+			if object.alpha > 0
+				object.alpha -= 16
 			end if
 		end if
 		break
 
 	case MENUHEADING_ENTER_SCREEN
-		if Object.Timer < 16
-			Object.Timer++
-			Object.XOffset += 16
+		if object.timer < 16
+			object.timer++
+			object.xOffset += 16
 		else
-			Object.Timer = 0
-			Object.State = MENUHEADING_IDLE
+			object.timer = 0
+			object.state = MENUHEADING_IDLE
 		end if
 
-		if Object.Header == MAINMENU_HEADER
-			if Object.Alpha == 240
-				Object.Alpha = 255
+		if object.header == MAINMENU_HEADER
+			if object.alpha == 240
+				object.alpha = 255
 			else
-				if Object.Alpha < 255
-					Object.Alpha += 16
+				if object.alpha < 255
+					object.alpha += 16
 				end if
 			end if
 		end if
 		break
 
 	end switch
-end sub
+end event
 
 
-sub ObjectDraw
+event ObjectDraw
 	//Draw BG Details
-	Object.YOffset--
-	Object.YOffset %= 240
-	Object.SpriteSheet = Object.GFX1
-	DrawSpriteScreenXY(1, Screen.CenterX, Object.YOffset)
-	DrawSpriteScreenXY(2, Screen.CenterX, Object.YOffset)
-	DrawSpriteScreenXY(0, Screen.CenterX, 20)
+	object.yOffset--
+	object.yOffset %= 240
+	object.SpriteSheet = object.gFX1
+	DrawSpriteScreenXY(1, screen.xcenter, object.yOffset)
+	DrawSpriteScreenXY(2, screen.xcenter, object.yOffset)
+	DrawSpriteScreenXY(0, screen.xcenter, 20)
 
 #platform: Use_Decomp	// Small decomp change to extend the SONIC THE HEDGEHOG CD bar for wider resolutions
-	TempValue0  = Screen.CenterX
-	TempValue0 += 200
-	DrawRect(TempValue0, 20, screen.XSize, 9, 0, 0, 0, 255)
+	tempValue0  = screen.xcenter
+	tempValue0 += 200
+	DrawRect(tempValue0, 20, screen.XSize, 9, 0, 0, 0, 255)
 #endplatform
 
-	TempValue0  = Screen.CenterX
-	TempValue0 += 12
-	DrawRect(0, 212, TempValue0, 13, 0, 0, 0, 255)
+	tempValue0  = screen.xcenter
+	tempValue0 += 12
+	DrawRect(0, 212, tempValue0, 13, 0, 0, 0, 255)
 
 	//Draw Menu Header
-	Object.SpriteSheet = Object.GFX2
-	TempValue0   = Screen.CenterX
-	TempValue0  -= 160
-	TempValue0 >>= 2
-	TempValue0  += Object.XOffset
-	DrawSpriteScreenXY(Object.Frame, TempValue0, 194)
+	object.SpriteSheet = object.gFX2
+	tempValue0   = screen.xcenter
+	tempValue0  -= 160
+	tempValue0 >>= 2
+	tempValue0  += object.xOffset
+	DrawSpriteScreenXY(object.frame, tempValue0, 194)
 
 	//Draw Detail Arrows (Standard) / Drag Arrows (Mobile)
-	Object.SpriteSheet = Object.GFX1
+	object.SpriteSheet = object.gFX1
 
-	Object.Angle += 4
-	Object.Angle &= 511
+	object.angle += 4
+	object.angle &= 511
 
-	TempValue0  = Screen.XSize
-	TempValue0 -= 40
+	tempValue0  = screen.xsize
+	tempValue0 -= 40
 	//Check if the menu needs dragging to reach all the buttons
-	if Object.MaxButtonCount > 4
-		Sin(TempValue1, Object.Angle)
-		TempValue1 >>= 6
-		TempValue1  += 96
-		DrawSpriteScreenFX(3, FX_INK, TempValue0, TempValue1)
+	if object.maxButtonCount > 4
+		Sin(tempValue1, object.angle)
+		tempValue1 >>= 6
+		tempValue1  += 96
+		DrawSpriteScreenFX(3, FX_INK, tempValue0, tempValue1)
 
-		Sin(TempValue1, Object.Angle)
-		TempValue1 /= -64
-		TempValue1 += 144
-		DrawSpriteScreenFX(4, FX_INK, 40, TempValue1)
+		Sin(tempValue1, object.angle)
+		tempValue1 /= -64
+		tempValue1 += 144
+		DrawSpriteScreenFX(4, FX_INK, 40, tempValue1)
 	end if
-end sub
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/MenuGfx1_EN.gif")
-	ArrayPos0 = 32
-	while ArrayPos0 < 1056
-		if Object[ArrayPos0].Type == TypeName[Menu Heading]
+	arrayPos0 = 32
+	while arrayPos0 < 1056
+		if object[arrayPos0].type == TypeName[Menu Heading]
 #platform: Use_Origins
 			if game.continueFlag == false	// they really duped the whole thing
-				Object[ArrayPos0].Frame		 = 5 // "Main Menu"
-				Object[ArrayPos0].Alpha		 = 255
-				Object[ArrayPos0].Header	 = MAINMENU_HEADER
-				Object[ArrayPos0].InkEffect	 = INK_ALPHA
-				Object[ArrayPos0].XOffset	 = -256
-				Object[ArrayPos0].State		 = MENUHEADING_ENTER_SCREEN
+				object[arrayPos0].frame		 = 5 // "Main Menu"
+				object[arrayPos0].alpha		 = 255
+				object[arrayPos0].Header	 = MAINMENU_HEADER
+				object[arrayPos0].inkEffect	 = INK_ALPHA
+				object[arrayPos0].XOffset	 = -256
+				object[arrayPos0].state		 = MENUHEADING_ENTER_SCREEN
 			else
-				Object[ArrayPos0].Frame		 = 6 // "Save Select"
-				Object[ArrayPos0].Alpha		 = 255
-				Object[ArrayPos0].Header	 = SAVESELECT_HEADER
-				Object[ArrayPos0].InkEffect	 = INK_ALPHA
-				Object[ArrayPos0].XOffset	 = -256
-				Object[ArrayPos0].State		 = MENUHEADING_ENTER_SCREEN
+				object[arrayPos0].frame		 = 6 // "Save Select"
+				object[arrayPos0].alpha		 = 255
+				object[arrayPos0].Header	 = SAVESELECT_HEADER
+				object[arrayPos0].inkEffect	 = INK_ALPHA
+				object[arrayPos0].XOffset	 = -256
+				object[arrayPos0].state		 = MENUHEADING_ENTER_SCREEN
 			end if
 			
 #endplatform
 
 #platform: Use_Standalone
-			Object[ArrayPos0].Frame		 = 5
-			Object[ArrayPos0].Alpha		 = 255
-			Object[ArrayPos0].Header	 = MAINMENU_HEADER
-			Object[ArrayPos0].InkEffect	 = INK_ALPHA
-			Object[ArrayPos0].XOffset	 = -256
-			Object[ArrayPos0].State		 = MENUHEADING_ENTER_SCREEN
+			object[arrayPos0].frame		 = 5
+			object[arrayPos0].alpha		 = 255
+			object[arrayPos0].Header	 = MAINMENU_HEADER
+			object[arrayPos0].inkEffect	 = INK_ALPHA
+			object[arrayPos0].XOffset	 = -256
+			object[arrayPos0].state		 = MENUHEADING_ENTER_SCREEN
 #endplatform
 
 			LoadSpriteSheet("Menu/MenuGfx1_EN.gif")
-			Object[ArrayPos0].GFX1 = Object[ArrayPos0].SpriteSheet
+			object[arrayPos0].GFX1 = object[arrayPos0].SpriteSheet
 			switch Engine.Language
 			case LANG_ENGLISH
 				LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
@@ -228,9 +228,9 @@ sub ObjectStartup
 				LoadSpriteSheet("Menu/MenuGfx2_JP.gif")
 				break
 			end switch
-			Object[ArrayPos0].GFX2 = Object[ArrayPos0].SpriteSheet
+			object[arrayPos0].GFX2 = object[arrayPos0].SpriteSheet
 		end if
-		ArrayPos0++
+		arrayPos0++
 	loop
 	//MenuGfx1
 	SpriteFrame(12, 0, 216, 9, 1, 225)		// #0 Sonic The Hedgehog CD Bar
@@ -245,17 +245,17 @@ sub ObjectStartup
 
 #platform: Use_Standalone
 	#platform: Standard
-		CheckResult = true
+		checkResult = true
 	#endplatform
 #endplatform
 
 #platform: Use_Standalone
 	#platform: Mobile
-		CheckResult = false
+		checkResult = false
 	#endplatform
 #endplatform
 
-	if CheckResult == true
+	if checkResult == true
 		SpriteFrame(-11, -36, 22, 72, 418, 366)		// #3 Up Arrow
 		SpriteFrame(-11, -36, 22, 72, 441, 366)		// #4 Down Arrow
 	else
@@ -337,22 +337,22 @@ sub ObjectStartup
 
 		break
 	end switch
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 	SpriteFrame(32, 0, 160, 30, 1, 615)			// #5 Main Menu
 
 	// Although used by the object, it's not to be set from the editor
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

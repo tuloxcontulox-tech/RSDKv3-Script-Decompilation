@@ -3,340 +3,340 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 
 // Aliases
-#alias Object.Value0			:	Object.Timer
-#alias Object.Value1			:	Object.CurrentButton
+private alias object.value0 : object.timer
+private alias object.value1 : object.currentButton
 
-//Object[+4] and [+ArrayPos0] are blank objects just to add values
-#alias Object[+4].Value1		:	Helper.VMCurrentButton
-#alias Object.Value2			:	Helper.FlickerState
+//object[+4] and [+arrayPos0] are blank objects just to add values
+private alias object[+4].value1 : helper.vMCurrentButton
+private alias object.value2 : helper.flickerState
 
-//Object[33] is MenuHeading
-#alias Object[33].State			:	MenuHeading.State
-#alias Object[33].PropertyValue	:	MenuHeading.Header
+//object[33] is MenuHeading
+private alias object[33].state : menuHeading.state
+private alias object[33].propertyValue : menuHeading.header
 
-//Object[-1] is MenuWindow
-#alias Object[-1].State			:	MenuWindow.State
-#alias Object[1].Value4			:	MenuWindow.BackTouchPress
+//object[-1] is MenuWindow
+private alias object[-1].state : menuWindow.state
+private alias object[1].value4 : menuWindow.backTouchPress
 
 // States
-#alias 0 	:	EXTRASMENU_ENTER_MENU
-#alias 1 	:	EXTRASMENU_CONTROLS
-#alias 2 	:	EXTRASMENU_SELECTED_OPTION
-#alias 3 	:	EXTRASMENU_LOAD_EXTRA_STAGE
-#alias 4 	:	EXTRASMENU_LOAD_VISUALMODE
-#alias 5 	:	EXTRASMENU_VISUALMODE_FADEIN
-#alias 6 	:	EXTRASMENU_VISUALMODE
-#alias 7 	:	EXTRASMENU_VISUALMODE_SELECTED
-#alias 8 	:	EXTRASMENU_VISUALMODE_VIDEOPLAY
-#alias 9 	:	EXTRASMENU_VISUALMODE_FADEOUT
-#alias 10	:	EXTRASMENU_VISUALMODE_RETURN
-#alias 11	:	EXTRASMENU_EXIT_MENU
-#alias 12	:	EXTRASMENU_FADEIN
-#alias 13	:	EXTRASMENU_RETURN_TO_TITLE
+private alias 0 : EXTRASMENU_ENTER_MENU
+private alias 1 : EXTRASMENU_CONTROLS
+private alias 2 : EXTRASMENU_SELECTED_OPTION
+private alias 3 : EXTRASMENU_LOAD_EXTRA_STAGE
+private alias 4 : EXTRASMENU_LOAD_VISUALMODE
+private alias 5 : EXTRASMENU_VISUALMODE_FADEIN
+private alias 6 : EXTRASMENU_VISUALMODE
+private alias 7 : EXTRASMENU_VISUALMODE_SELECTED
+private alias 8 : EXTRASMENU_VISUALMODE_VIDEOPLAY
+private alias 9 : EXTRASMENU_VISUALMODE_FADEOUT
+private alias 10 : EXTRASMENU_VISUALMODE_RETURN
+private alias 11 : EXTRASMENU_EXIT_MENU
+private alias 12 : EXTRASMENU_FADEIN
+private alias 13 : EXTRASMENU_RETURN_TO_TITLE
 
 // Menu Heading States
-#alias 1	:	MENUHEADING_LEAVE_SCREEN
+private alias 1 : MENUHEADING_LEAVE_SCREEN
 
 // Menu Heading Property Values
-#alias 5	:	MAINMENU_HEADER
+private alias 5 : MAINMENU_HEADER
 
 // Menu Window States
-#alias 3	:	MENUWINDOW_SHRINK
+private alias 3 : MENUWINDOW_SHRINK
 
 // Menu Button States
-#alias 1	:	MENUBUTTON_BUTTONS_IN
+private alias 1 : MENUBUTTON_BUTTONS_IN
 
 // Presentation Stages
-#alias 0	:	STAGE_P_TITLE
-#alias 3	:	STAGE_P_STAGESELECT
-#alias 4	:	STAGE_P_SOUNDTEST
-#alias 5	:	STAGE_P_DAGARDEN
+private alias 0 : STAGE_P_TITLE
+private alias 3 : STAGE_P_STAGESELECT
+private alias 4 : STAGE_P_SOUNDTEST
+private alias 5 : STAGE_P_DAGARDEN
 
 // Global SFX
-#alias 23	:	SFX_G_MENUBUTTON
-#alias 27	:	SFX_G_SELECT
+private alias 23 : SFX_G_MENUBUTTON
+private alias 27 : SFX_G_SELECT
 
 // Stage SFX
-#alias 1	:	SFX_S_BACKBUTTON
+private alias 1 : SFX_S_BACKBUTTON
 
 // Languages
-#alias 0	:	LANG_ENGLISH
-#alias 1	:	LANG_FRENCH
-#alias 2	:	LANG_ITALIAN
-#alias 3	:	LANG_DEUTSCH
-#alias 4	:	LANG_SPANISH
-#alias 5	:	LANG_JAPANESE
+private alias 0 : LANG_ENGLISH
+private alias 1 : LANG_FRENCH
+private alias 2 : LANG_ITALIAN
+private alias 3 : LANG_DEUTSCH
+private alias 4 : LANG_SPANISH
+private alias 5 : LANG_JAPANESE
 
 // Soundtrack
-#alias 0	:	OST_JP
+private alias 0 : OST_JP
 
 //Engine & CallBacks
-#alias 2	:	MESSAGE_LOSTFOCUS
+private alias 2 : MESSAGE_LOSTFOCUS
 
 // Function declarations
-#function ExtrasMenu_DrawUnlocks
+reserve function ExtrasMenu_DrawUnlocks
 
 
-function ExtrasMenu_DrawUnlocks
-	switch Helper[+ArrayPos0].FlickerState
+private function ExtrasMenu_DrawUnlocks
+	switch Helper[+arrayPos0].flickerState
 	case false
-		if ArrayPos0 == Object.CurrentButton
-			DrawSpriteScreenFX(9, FX_INK, Object.XPos, Object.YPos)
-			TempValue0  = ArrayPos0
-			TempValue0 += 14
-			DrawSpriteScreenFX(TempValue0, FX_INK, Object.XPos, Object.YPos)
+		if arrayPos0 == object.currentButton
+			DrawSpriteScreenFX(9, FX_INK, object.xpos, object.ypos)
+			tempValue0  = arrayPos0
+			tempValue0 += 14
+			DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
 		else
-			TempValue0  = ArrayPos0
-			TempValue0 += 10
-			DrawSpriteScreenFX(TempValue0, FX_INK, Object.XPos, Object.YPos)
+			tempValue0  = arrayPos0
+			tempValue0 += 10
+			DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 
 	case true
-		TempValue0   = Object.Timer
-		TempValue0  &= 3
-		TempValue0 >>= 1
-		DrawSpriteScreenFX(9, FX_INK, Object.XPos, Object.YPos)
-		if TempValue0 == 0
-			TempValue0  = ArrayPos0
-			TempValue0 += 14
-			DrawSpriteScreenFX(TempValue0, FX_INK, Object.XPos, Object.YPos)
+		tempValue0   = object.timer
+		tempValue0  &= 3
+		tempValue0 >>= 1
+		DrawSpriteScreenFX(9, FX_INK, object.xpos, object.ypos)
+		if tempValue0 == 0
+			tempValue0  = arrayPos0
+			tempValue0 += 14
+			DrawSpriteScreenFX(tempValue0, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 
 	end switch
 
-	DrawSpriteScreenFX(8, FX_INK, Object.XPos, Object.YPos)
-	switch ArrayPos0
+	DrawSpriteScreenFX(8, FX_INK, object.xpos, object.ypos)
+	switch arrayPos0
 	case 0
 		if Options.DAGardenFlag == true
-			DrawSpriteScreenFX(0, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
-			DrawSpriteScreenFX(1, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 
 	case 1
 		if Options.VisualModeFlag == true
-			DrawSpriteScreenFX(0, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
-			DrawSpriteScreenFX(1, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 
 	case 2
 		if Options.SoundTestFlag == true
-			DrawSpriteScreenFX(0, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
-			DrawSpriteScreenFX(1, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 		
 	case 3
 		if Options.StageSelectFlag == true
-			DrawSpriteScreenFX(0, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
-			DrawSpriteScreenFX(1, FX_INK, Object.XPos, Object.YPos)
+			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
 		end if
 		break
 	end switch
 end function
 
 
-sub ObjectMain
-	switch Object.State
+event ObjectUpdate
+	switch object.state
 	case EXTRASMENU_ENTER_MENU
 
 #platform: Use_Origins
-		if Options.PhysicalControls == false
-			Object.CurrentButton = -1
+		if options.physicalControls == false
+			object.currentButton = -1
 		end if
 #endplatform
 
 #platform: Mobile
-		if Options.PhysicalControls == false
-			Object.CurrentButton = -1
+		if options.physicalControls == false
+			object.currentButton = -1
 		end if
 #endplatform
 
-		Object.XPos  = Screen.CenterX
-		Object.XPos -= 126
-		if Object.Timer < 256
-			Object.Alpha  = Object.Timer
-			Object.Timer += 6
+		object.xpos  = screen.xcenter
+		object.xpos -= 126
+		if object.timer < 256
+			object.alpha  = object.timer
+			object.timer += 6
 		else
-			Object.Timer = 0
-			Object.Alpha = 255
-			Object.State++
+			object.timer = 0
+			object.alpha = 255
+			object.state++
 		end if
 		break
 
 	case EXTRASMENU_CONTROLS
 
 #platform: Standard
-		CheckResult = true
+		checkResult = true
 #endplatform
 
 #platform: Mobile
-		CheckEqual(Options.PhysicalControls, true)
+		CheckEqual(options.physicalControls, true)
 #endplatform
 
 #platform: Use_Origins
-		CheckEqual(Options.PhysicalControls, true)
+		CheckEqual(options.physicalControls, true)
 #endplatform
 		
-		// 2011 Steam lacks Options.PhysicalControls, so we force it here first and the other platforms can override it
-		if CheckResult == true
-			if KeyPress[0].Up == true
-				Object.CurrentButton--
-				if Object.CurrentButton < 0
-					Object.CurrentButton = 3
+		// 2011 Steam lacks options.physicalControls, so we force it here first and the other platforms can override it
+		if checkResult == true
+			if keyPress[0].up == true
+				object.currentButton--
+				if object.currentButton < 0
+					object.currentButton = 3
 				end if
 				PlaySfx(SFX_G_MENUBUTTON, false)
 			end if
 
-			if KeyPress[0].Down == true
-				Object.CurrentButton++
-				if Object.CurrentButton > 3
-					Object.CurrentButton = 0
+			if keyPress[0].down == true
+				object.currentButton++
+				if object.currentButton > 3
+					object.currentButton = 0
 				end if
 				PlaySfx(SFX_G_MENUBUTTON, false)
 			end if
 
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)		//Touch Behaviour Check
-			if CheckResult > -1
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)		//Touch Behaviour Check
+			if checkResult > -1
 #platform: Mobile
-				Options.PhysicalControls = false
-				Object.CurrentButton = -1
+				options.physicalControls = false
+				object.currentButton = -1
 #endplatform
 #platform: Use_Origins
-				Options.PhysicalControls = false
-				Object.CurrentButton = -1
+				options.physicalControls = false
+				object.currentButton = -1
 #endplatform
 			end if
 		else
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)		//Touch Press Reset
-			TempValue3 = CheckResult
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)		//Touch Press Reset
+			tempValue3 = checkResult
 
-			TempValue0 = 0
+			tempValue0 = 0
 			CallFunction(LoadSaveMenu_CheckTouchSave)				//D. A. Garden Touch Press
-			if CheckResult > -1
-				Object.CurrentButton = 0
+			if checkResult > -1
+				object.currentButton = 0
 			else
-				if TempValue3 < 0
-					if Object.CurrentButton == 0
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if object.currentButton == 0
+						keyPress[0].start = true
 					end if
 				else
-					if Object.CurrentButton == 0
-						Object.CurrentButton = -1
+					if object.currentButton == 0
+						object.currentButton = -1
 					end if
 				end if
 			end if
 
-			TempValue0 = 1
+			tempValue0 = 1
 			CallFunction(LoadSaveMenu_CheckTouchSave)				//Visual Mode Touch Press
-			if CheckResult > -1
-				Object.CurrentButton = 1
+			if checkResult > -1
+				object.currentButton = 1
 			else
-				if TempValue3 < 0
-					if Object.CurrentButton == 1
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if object.currentButton == 1
+						keyPress[0].start = true
 					end if
 				else
-					if Object.CurrentButton == 1
-						Object.CurrentButton = -1
+					if object.currentButton == 1
+						object.currentButton = -1
 					end if
 				end if
 			end if
 
-			TempValue0 = 2
+			tempValue0 = 2
 			CallFunction(LoadSaveMenu_CheckTouchSave)				//Sound Test Touch Press
-			if CheckResult > -1
-				Object.CurrentButton = 2
+			if checkResult > -1
+				object.currentButton = 2
 			else
-				if TempValue3 < 0
-					if Object.CurrentButton == 2
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if object.currentButton == 2
+						keyPress[0].start = true
 					end if
 				else
-					if Object.CurrentButton == 2
-						Object.CurrentButton = -1
+					if object.currentButton == 2
+						object.currentButton = -1
 					end if
 				end if
 			end if
 
-			TempValue0 = 3
+			tempValue0 = 3
 			CallFunction(LoadSaveMenu_CheckTouchSave)				//Stage Select Touch Press
-			if CheckResult > -1
-				Object.CurrentButton = 3
+			if checkResult > -1
+				object.currentButton = 3
 			else
-				if TempValue3 < 0
-					if Object.CurrentButton == 3
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if object.currentButton == 3
+						keyPress[0].start = true
 					end if
 				else
-					if Object.CurrentButton == 3
-						Object.CurrentButton = -1
+					if object.currentButton == 3
+						object.currentButton = -1
 					end if
 				end if
 			end if
 
 			CallFunction(MenuHeading_CheckTouchBack)				//Back Button Touch Press
-			if KeyPress[0].Up == true
-				Object.CurrentButton = 3
+			if keyPress[0].up == true
+				object.currentButton = 3
 #platform: Mobile
-				Options.PhysicalControls = true
+				options.physicalControls = true
 #endplatform
 
 #platform: Use_Origins
-				Options.PhysicalControls = true
+				options.physicalControls = true
 #endplatform
 			end if
 
-			if KeyPress[0].Down == true
-				Object.CurrentButton = 0
+			if keyPress[0].down == true
+				object.currentButton = 0
 #platform: Mobile
-				Options.PhysicalControls = true
+				options.physicalControls = true
 #endplatform
 
 #platform: Use_Origins
-				Options.PhysicalControls = true
+				options.physicalControls = true
 #endplatform
 			end if
 		end if
 
-		CheckResult = false
-		if Object.CurrentButton > -1
-			if KeyPress[0].Start == true
-				CheckResult = true
+		checkResult = false
+		if object.currentButton > -1
+			if keyPress[0].start == true
+				checkResult = true
 			end if
 
-			if KeyPress[0].ButtonA == true
-				CheckResult = true
+			if keyPress[0].buttonA == true
+				checkResult = true
 			end if
 		end if
 
-		if CheckResult == true
-			if Object.CurrentButton < 4
-				switch Object.CurrentButton
+		if checkResult == true
+			if object.currentButton < 4
+				switch object.currentButton
 				case 0
 					if Options.DAGardenFlag == true
-						ArrayPos0 = Object.CurrentButton
-						Helper[+ArrayPos0].FlickerState = true
-						Object.State++
+						arrayPos0 = object.currentButton
+						Helper[+arrayPos0].flickerState = true
+						object.state++
 						StopMusic()
 						PlaySfx(SFX_G_SELECT, false)
 					else
 #platform: Use_Origins
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 
 #platform: Mobile
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 					end if
@@ -344,20 +344,20 @@ sub ObjectMain
 
 				case 1
 					if Options.VisualModeFlag == true
-						ArrayPos0 = Object.CurrentButton
-						Helper[+ArrayPos0].FlickerState = true
-						Object.State++
+						arrayPos0 = object.currentButton
+						Helper[+arrayPos0].flickerState = true
+						object.state++
 						PlaySfx(SFX_G_SELECT, false)
 					else
 #platform: Use_Origins
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 
 #platform: Mobile
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 					end if
@@ -365,21 +365,21 @@ sub ObjectMain
 
 				case 2
 					if Options.SoundTestFlag == true
-						ArrayPos0 = Object.CurrentButton
-						Helper[+ArrayPos0].FlickerState = true
-						Object.State++
+						arrayPos0 = object.currentButton
+						Helper[+arrayPos0].flickerState = true
+						object.state++
 						StopMusic()
 						PlaySfx(SFX_G_SELECT, false)
 					else
 #platform: Use_Origins
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 
 #platform: Mobile
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 					end if
@@ -387,21 +387,21 @@ sub ObjectMain
 
 				case 3
 					if Options.StageSelectFlag == true
-						ArrayPos0 = Object.CurrentButton
-						Helper[+ArrayPos0].FlickerState = true
-						Object.State++
+						arrayPos0 = object.currentButton
+						Helper[+arrayPos0].flickerState = true
+						object.state++
 						StopMusic()
 						PlaySfx(SFX_G_SELECT, false)
 					else
 #platform: Use_Origins
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 
 #platform: Mobile
-						if Options.PhysicalControls == false
-							Object.CurrentButton = -1
+						if options.physicalControls == false
+							object.currentButton = -1
 						end if
 #endplatform
 					end if
@@ -412,48 +412,48 @@ sub ObjectMain
 		end if
 
 #platform: Use_Origins
-		if KeyPress[0].ButtonB == true
-			Object.State = EXTRASMENU_RETURN_TO_TITLE
-			Object.Timer = 0
+		if keyPress[0].buttonB == true
+			object.state = EXTRASMENU_RETURN_TO_TITLE
+			object.timer = 0
 			StopMusic()
 		end if
 #endplatform
 
 #platform: Use_Standalone
-		if KeyPress[0].ButtonB == true
-			Object.Timer = 248
-			Object.State = EXTRASMENU_EXIT_MENU
+		if keyPress[0].buttonB == true
+			object.timer = 248
+			object.state = EXTRASMENU_EXIT_MENU
 			PlayStageSfx(SFX_S_BACKBUTTON, false)
 		end if
 #endplatform
 		break
 
 	case EXTRASMENU_SELECTED_OPTION
-		if Object.Timer < 30
-			Object.Timer++
+		if object.timer < 30
+			object.timer++
 		else
-			Object.Timer = 0
-			ArrayPos0 = Object.CurrentButton
-			Helper[+ArrayPos0].FlickerState = false
-			switch Object.CurrentButton
+			object.timer = 0
+			arrayPos0 = object.currentButton
+			Helper[+arrayPos0].flickerState = false
+			switch object.currentButton
 			case 0
-				Object.State = EXTRASMENU_LOAD_EXTRA_STAGE
+				object.state = EXTRASMENU_LOAD_EXTRA_STAGE
 				break
 
 			case 1
-				Object.State = EXTRASMENU_LOAD_VISUALMODE
-				Object.YPos  = 40
-				Object.YPos *= Object.CurrentButton
-				Object.YPos += Screen.CenterY
-				Object.YPos -= 87
+				object.state = EXTRASMENU_LOAD_VISUALMODE
+				object.ypos  = 40
+				object.ypos *= object.currentButton
+				object.ypos += screen.ycenter
+				object.ypos -= 87
 				break
 
 			case 2
-				Object.State = EXTRASMENU_LOAD_EXTRA_STAGE
+				object.state = EXTRASMENU_LOAD_EXTRA_STAGE
 				break
 
 			case 3
-				Object.State = EXTRASMENU_LOAD_EXTRA_STAGE
+				object.state = EXTRASMENU_LOAD_EXTRA_STAGE
 				break
 
 			end switch
@@ -461,60 +461,60 @@ sub ObjectMain
 		break
 
 	case EXTRASMENU_LOAD_EXTRA_STAGE
-		if Object.Timer < 320
-			Object.Timer += 8
+		if object.timer < 320
+			object.timer += 8
 		else
 
 #platform: Use_Origins
 			game.callbackParam0 = true
-			EngineCallback(NOTIFY_LEVEL_SELECT_MENU)
+			engineCallback(NOTIFY_LEVEL_SELECT_MENU)
 			game.callbackParam0 = 0
-			EngineCallback(NOTIFY_PLAYER_SET)
-			Stage.PlayerListPos = PLAYER_SONIC
+			engineCallback(NOTIFY_PLAYER_SET)
+			Stage.playerListPos = PLAYER_SONIC
 #endplatform
 
-			switch Object.CurrentButton
+			switch object.currentButton
 			case 0
-				Stage.ListPos = STAGE_P_DAGARDEN
+				stage.listPos = STAGE_P_DAGARDEN
 				LoadStage()
 				break
 
 			case 2
-				Stage.ListPos = STAGE_P_SOUNDTEST
+				stage.listPos = STAGE_P_SOUNDTEST
 				LoadStage()
 				break
 
 			case 3
-				Stage.ListPos = STAGE_P_STAGESELECT
+				stage.listPos = STAGE_P_STAGESELECT
 				LoadStage()
 				break
 
 			end switch
 		end if
 
-		TempValue0 = Object.Timer
-		if TempValue0 > 255
-			TempValue0 = 255
+		tempValue0 = object.timer
+		if tempValue0 > 255
+			tempValue0 = 255
 		end if
-		SetScreenFade(0, 0, 0, TempValue0)
+		SetScreenFade(0, 0, 0, tempValue0)
 		break
 
 	case EXTRASMENU_LOAD_VISUALMODE
-		TempValue0  = Screen.CenterY
-		TempValue0 -= 87
-		if Object.YPos > TempValue0
-			Object.YPos -= 8
-			if Object.YPos < TempValue0
-				Object.YPos = TempValue0
+		tempValue0  = screen.ycenter
+		tempValue0 -= 87
+		if object.ypos > tempValue0
+			object.ypos -= 8
+			if object.ypos < tempValue0
+				object.ypos = tempValue0
 			end if
 		else
-			Object.State++
-			Object.Alpha = 0
-			Helper.VMCurrentButton = 0
+			object.state++
+			object.alpha = 0
+			helper.vMCurrentButton = 0
 
 #platform: Mobile
-			if Options.PhysicalControls == false
-				Helper.VMCurrentButton = -1
+			if options.physicalControls == false
+				helper.vMCurrentButton = -1
 			end if
 #endplatform
 
@@ -522,61 +522,61 @@ sub ObjectMain
 		break
 		
 	case EXTRASMENU_VISUALMODE_FADEIN
-		if Object.Timer < 256
-			Object.Alpha  = Object.Timer
-			Object.Timer += 8
+		if object.timer < 256
+			object.alpha  = object.timer
+			object.timer += 8
 		else
-			Object.Timer = 0
-			Object.Alpha = 255
-			Object.State++
+			object.timer = 0
+			object.alpha = 255
+			object.state++
 		end if
 		break
 
 	case EXTRASMENU_VISUALMODE
-		ArrayPos0 = Object.CurrentButton
+		arrayPos0 = object.currentButton
 #platform: Standard
-		CheckResult = true
+		checkResult = true
 #endplatform
 
 #platform: Mobile
-		CheckEqual(Options.PhysicalControls,true)
+		CheckEqual(options.physicalControls,true)
 #endplatform
 
 #platform: Use_Origins
-		CheckEqual(Options.PhysicalControls,true)
+		CheckEqual(options.physicalControls,true)
 #endplatform
 
-		// 2011 Steam lacks Options.PhysicalControls, so we force it here first and the other platforms can override it
-		if CheckResult == true
-			if KeyPress[0].Left == true
-				Helper.VMCurrentButton--
+		// 2011 Steam lacks options.physicalControls, so we force it here first and the other platforms can override it
+		if checkResult == true
+			if keyPress[0].left == true
+				helper.vMCurrentButton--
 				PlaySfx(SFX_G_MENUBUTTON, false)
-				if Helper.VMCurrentButton < 0
-					Helper.VMCurrentButton = 3
+				if helper.vMCurrentButton < 0
+					helper.vMCurrentButton = 3
 				end if
 			end if
 
-			if KeyPress[0].Right == true
-				Helper.VMCurrentButton++
+			if keyPress[0].right == true
+				helper.vMCurrentButton++
 				PlaySfx(SFX_G_MENUBUTTON, false)
-				if Helper.VMCurrentButton > 3
-					Helper.VMCurrentButton = 0
+				if helper.vMCurrentButton > 3
+					helper.vMCurrentButton = 0
 				end if
 			end if
 
-			if KeyPress[0].Up == true
-				Helper.VMCurrentButton -= 2
+			if keyPress[0].up == true
+				helper.vMCurrentButton -= 2
 				PlaySfx(SFX_G_MENUBUTTON, false)
-				if Helper.VMCurrentButton < 0
-					Helper.VMCurrentButton += 4
+				if helper.vMCurrentButton < 0
+					helper.vMCurrentButton += 4
 				end if
 			end if
 
-			if KeyPress[0].Down == true
-				Helper.VMCurrentButton += 2
+			if keyPress[0].down == true
+				helper.vMCurrentButton += 2
 				PlaySfx(SFX_G_MENUBUTTON, false)
-				if Helper.VMCurrentButton > 3
-					Helper.VMCurrentButton -= 4
+				if helper.vMCurrentButton > 3
+					helper.vMCurrentButton -= 4
 				end if
 			end if
 
@@ -584,174 +584,174 @@ sub ObjectMain
 
 #platform: Mobile
 		// Just to make it look neat, instead of continuing the code from an open if on another platform, we ask again for a check in the physical controls
-		if Options.PhysicalControls == true
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)		//Touch Behaviour Check
-			if CheckResult > -1
-				Options.PhysicalControls = false
-				Helper.VMCurrentButton = -1
+		if options.physicalControls == true
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)		//Touch Behaviour Check
+			if checkResult > -1
+				options.physicalControls = false
+				helper.vMCurrentButton = -1
 			end if
 
 		else
 			if Engine.Message == MESSAGE_LOSTFOCUS
-				Helper.VMCurrentButton = -1
+				helper.vMCurrentButton = -1
 			end if
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)		//Touch Input Reset
-			TempValue3 = CheckResult
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)		//Touch Input Reset
+			tempValue3 = checkResult
 
-			TempValue0  = Screen.CenterX
-			TempValue0 -= 88
-			TempValue1  = Screen.CenterX
-			TempValue1 -= 40
-			CheckTouchRect(TempValue0, 72, TempValue1, 120)			//Opening Touch Press
-			if CheckResult > -1
-				Helper.VMCurrentButton = 0
+			tempValue0  = screen.xcenter
+			tempValue0 -= 88
+			tempValue1  = screen.xcenter
+			tempValue1 -= 40
+			CheckTouchRect(tempValue0, 72, tempValue1, 120)			//Opening Touch Press
+			if checkResult > -1
+				helper.vMCurrentButton = 0
 			else
-				if TempValue3 < 0
-					if Helper.VMCurrentButton == 0
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if helper.vMCurrentButton == 0
+						keyPress[0].start = true
 					end if
 				else
-					if Helper.VMCurrentButton == 0
-						Helper.VMCurrentButton = -1
+					if helper.vMCurrentButton == 0
+						helper.vMCurrentButton = -1
 					end if
 				end if
 			end if
 
-			CheckTouchRect(TempValue0, 129, TempValue1, 177)		//Good Ending Touch Press
-			if CheckResult > -1
-				Helper.VMCurrentButton = 2
+			CheckTouchRect(tempValue0, 129, tempValue1, 177)		//Good Ending Touch Press
+			if checkResult > -1
+				helper.vMCurrentButton = 2
 			else
-				if TempValue3 < 0
-					if Helper.VMCurrentButton == 2
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if helper.vMCurrentButton == 2
+						keyPress[0].start = true
 					end if
 				else
-					if Helper.VMCurrentButton == 2
-						Helper.VMCurrentButton = -1
+					if helper.vMCurrentButton == 2
+						helper.vMCurrentButton = -1
 					end if
 				end if
 			end if
 			
-			TempValue0  = Screen.CenterX
-			TempValue0 += 40
-			TempValue1  = Screen.CenterX
-			TempValue1 += 88
-			CheckTouchRect(TempValue0, 72, TempValue1, 120)			//Pencil Test Touch Press
-			if CheckResult > -1
-				Helper.VMCurrentButton = 1
+			tempValue0  = screen.xcenter
+			tempValue0 += 40
+			tempValue1  = screen.xcenter
+			tempValue1 += 88
+			CheckTouchRect(tempValue0, 72, tempValue1, 120)			//Pencil Test Touch Press
+			if checkResult > -1
+				helper.vMCurrentButton = 1
 			else
-				if TempValue3 < 0
-					if Helper.VMCurrentButton == 1
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if helper.vMCurrentButton == 1
+						keyPress[0].start = true
 					end if
 				else
-					if Helper.VMCurrentButton == 1
-						Helper.VMCurrentButton = -1
+					if helper.vMCurrentButton == 1
+						helper.vMCurrentButton = -1
 					end if
 				end if
 			end if
 
-			CheckTouchRect(TempValue0, 129, TempValue1, 177)		//Bad Ending Touch Press
-			if CheckResult > -1
-				Helper.VMCurrentButton = 3
+			CheckTouchRect(tempValue0, 129, tempValue1, 177)		//Bad Ending Touch Press
+			if checkResult > -1
+				helper.vMCurrentButton = 3
 			else
-				if TempValue3 < 0
-					if Helper.VMCurrentButton == 3
-						KeyPress[0].Start = true
+				if tempValue3 < 0
+					if helper.vMCurrentButton == 3
+						keyPress[0].start = true
 					end if
 				else
-					if Helper.VMCurrentButton == 3
-						Helper.VMCurrentButton = -1
+					if helper.vMCurrentButton == 3
+						helper.vMCurrentButton = -1
 					end if
 				end if
 			end if
 
-			TempValue0  = Screen.XSize
-			TempValue0 -= 96
-			CheckTouchRect(TempValue0, 192, Screen.XSize, Screen.YSize)		//Back Touch Press
-			if CheckResult > -1
-				Helper.VMCurrentButton = 4
-				MenuWindow.BackTouchPress = true
+			tempValue0  = screen.xsize
+			tempValue0 -= 96
+			CheckTouchRect(tempValue0, 192, screen.xsize, screen.ysize)		//Back Touch Press
+			if checkResult > -1
+				helper.vMCurrentButton = 4
+				menuWindow.backTouchPress = true
 			else
-				MenuWindow.BackTouchPress = false
-				if TempValue3 < 0
-					if Helper.VMCurrentButton == 4
-						KeyPress[0].ButtonB = true
+				menuWindow.backTouchPress = false
+				if tempValue3 < 0
+					if helper.vMCurrentButton == 4
+						keyPress[0].buttonB = true
 					end if
 				else
-					if Helper.VMCurrentButton == 4
-						Helper.VMCurrentButton = -1
+					if helper.vMCurrentButton == 4
+						helper.vMCurrentButton = -1
 					end if
 				end if
 			end if
 			//Turn on Physical Controls
-			if KeyPress[0].Left == true
-				Helper.VMCurrentButton = 1
-				Options.PhysicalControls = true
+			if keyPress[0].left == true
+				helper.vMCurrentButton = 1
+				options.physicalControls = true
 			end if
 
-			if KeyPress[0].Right == true
-				Helper.VMCurrentButton = 0
-				Options.PhysicalControls = true
+			if keyPress[0].right == true
+				helper.vMCurrentButton = 0
+				options.physicalControls = true
 			end if
 
-			if KeyPress[0].Up == true
-				Helper.VMCurrentButton = 3
-				Options.PhysicalControls = true
+			if keyPress[0].up == true
+				helper.vMCurrentButton = 3
+				options.physicalControls = true
 			end if
 
-			if KeyPress[0].Down == true
-				Helper.VMCurrentButton = 0
-				Options.PhysicalControls = true
+			if keyPress[0].down == true
+				helper.vMCurrentButton = 0
+				options.physicalControls = true
 			end if
 		end if
 #endplatform
 
-		CheckResult = false
+		checkResult = false
 
-		if Helper.VMCurrentButton > -1
-			if KeyPress[0].Start == true
-				CheckResult = true
+		if helper.vMCurrentButton > -1
+			if keyPress[0].start == true
+				checkResult = true
 			end if
 
-			if KeyPress[0].ButtonA == true
-				CheckResult = true
+			if keyPress[0].buttonA == true
+				checkResult = true
 			end if
 		end if
 
-		if CheckResult == true
+		if checkResult == true
 			PlaySfx(SFX_G_SELECT, false)
 			StopMusic()
-			Object.State++
+			object.state++
 		end if
 
-		if KeyPress[0].ButtonB == true
-			Object.State = EXTRASMENU_VISUALMODE_FADEOUT
-			Object.Timer = 248
+		if keyPress[0].buttonB == true
+			object.state = EXTRASMENU_VISUALMODE_FADEOUT
+			object.timer = 248
 			PlayStageSfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
 	case EXTRASMENU_VISUALMODE_SELECTED
-		if Object.Timer < 30
-			Object.Timer++
+		if object.timer < 30
+			object.timer++
 		else
-			Object.Timer = 0
-			Object.State++
+			object.timer = 0
+			object.state++
 		end if
 
 		break
 
 	case EXTRASMENU_VISUALMODE_VIDEOPLAY
-		if Object.Timer < 384
-			Object.Timer += 8
+		if object.timer < 384
+			object.timer += 8
 		else
 #platform: Use_Origins
 			game.callbackParam0 = 1
-			EngineCallback(NOTIFY_EXTRAS_MODE)
+			engineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
-			switch Helper.VMCurrentButton
+			switch helper.vMCurrentButton
 			case 0
 				LoadVideo("Opening")
 				break
@@ -773,7 +773,7 @@ sub ObjectMain
 // it needed to reproduce separated videos depending of the soundtrack option
 // for the sake of clarity and simplicity, the mobile code got commented out
 //
-//			switch Helper.VMCurrentButton
+//			switch helper.vMCurrentButton
 //			case 0
 //				if Options.Soundtrack == OST_JP
 //					LoadVideo("Opening")
@@ -806,115 +806,115 @@ sub ObjectMain
 
 #platform: Use_Origins
 			game.callbackParam0 = 0
-			EngineCallback(NOTIFY_EXTRAS_MODE)
+			engineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 #platform: Mobile
-			Helper.VMCurrentButton = -1
+			helper.vMCurrentButton = -1
 #endplatform
 
-			Object.State = EXTRASMENU_FADEIN
+			object.state = EXTRASMENU_FADEIN
 		end if
 		
-		TempValue0 = Object.Timer
-		if TempValue0 > 255
-			TempValue0 = 255
+		tempValue0 = object.timer
+		if tempValue0 > 255
+			tempValue0 = 255
 		end if
-		SetScreenFade(0, 0, 0, TempValue0)
+		SetScreenFade(0, 0, 0, tempValue0)
 		break
 
 	case EXTRASMENU_VISUALMODE_FADEOUT
-		if Object.Timer > 0
-			Object.Alpha  = Object.Timer
-			Object.Timer -= 8
+		if object.timer > 0
+			object.alpha  = object.timer
+			object.timer -= 8
 		else
-			Object.Alpha = 0
-			Object.State++
+			object.alpha = 0
+			object.state++
 		end if
 		break
 
 	case EXTRASMENU_VISUALMODE_RETURN
-		TempValue0  = Object.CurrentButton
-		TempValue0 *= 40
-		TempValue0 += Screen.CenterY
-		TempValue0 -= 87
-		if Object.YPos < TempValue0
-			Object.YPos += 8
-			if Object.YPos > TempValue0
-				Object.YPos = TempValue0
+		tempValue0  = object.currentButton
+		tempValue0 *= 40
+		tempValue0 += screen.ycenter
+		tempValue0 -= 87
+		if object.ypos < tempValue0
+			object.ypos += 8
+			if object.ypos > tempValue0
+				object.ypos = tempValue0
 			end if
-			Object.Alpha = 0
+			object.alpha = 0
 		else
 #platform: Use_Origins
-			if Options.PhysicalControls == false
-				Object.CurrentButton = -1
+			if options.physicalControls == false
+				object.currentButton = -1
 			end if
 #endplatform
 
 #platform: Mobile
-			if Options.PhysicalControls == false
-				Object.CurrentButton = -1
+			if options.physicalControls == false
+				object.currentButton = -1
 			end if
 #endplatform
-			Object.State = EXTRASMENU_CONTROLS
-			Object.Alpha = 255
+			object.state = EXTRASMENU_CONTROLS
+			object.alpha = 255
 		end if
 		break
 
 	case EXTRASMENU_EXIT_MENU
-		if Object.Timer > 0
-			Object.Alpha  = Object.Timer
-			Object.Timer -= 8
+		if object.timer > 0
+			object.alpha  = object.timer
+			object.timer -= 8
 		else
-			Object.Type = TypeName[Blank Object]
-			MenuWindow.State = MENUWINDOW_SHRINK
+			object.type = TypeName[Blank Object]
+			menuWindow.state = MENUWINDOW_SHRINK
 			//All of this is MenuButton objects
-			Object[34].State = MENUBUTTON_BUTTONS_IN
-			Object[35].State = MENUBUTTON_BUTTONS_IN
-			Object[36].State = MENUBUTTON_BUTTONS_IN
-			Object[37].State = MENUBUTTON_BUTTONS_IN
-			Object[38].State = MENUBUTTON_BUTTONS_IN
-			Object[39].State = MENUBUTTON_BUTTONS_IN
-			Object[40].State = MENUBUTTON_BUTTONS_IN
-			Object[41].State = MENUBUTTON_BUTTONS_IN
-			Object[42].State = MENUBUTTON_BUTTONS_IN
+			object[34].state = MENUBUTTON_BUTTONS_IN
+			object[35].state = MENUBUTTON_BUTTONS_IN
+			object[36].state = MENUBUTTON_BUTTONS_IN
+			object[37].state = MENUBUTTON_BUTTONS_IN
+			object[38].state = MENUBUTTON_BUTTONS_IN
+			object[39].state = MENUBUTTON_BUTTONS_IN
+			object[40].state = MENUBUTTON_BUTTONS_IN
+			object[41].state = MENUBUTTON_BUTTONS_IN
+			object[42].state = MENUBUTTON_BUTTONS_IN
 			//End
-			MenuHeading.State  = MENUHEADING_LEAVE_SCREEN
-			MenuHeading.Header = MAINMENU_HEADER
+			menuHeading.state  = MENUHEADING_LEAVE_SCREEN
+			menuHeading.header = MAINMENU_HEADER
 		end if
 		break
 
 	case EXTRASMENU_FADEIN
-		if Object.Timer > 0
-			Object.Timer -= 8
+		if object.timer > 0
+			object.timer -= 8
 		else
-			Object.State = EXTRASMENU_VISUALMODE
+			object.state = EXTRASMENU_VISUALMODE
 			PlayMusic(Options.Soundtrack)
 		end if
-		TempValue0 = Object.Timer
-		if TempValue0 > 255
-			TempValue0 = 255
+		tempValue0 = object.timer
+		if tempValue0 > 255
+			tempValue0 = 255
 		end if
-		SetScreenFade(0, 0, 0, TempValue0)
+		SetScreenFade(0, 0, 0, tempValue0)
 		break
 
 #platform: Use_Origins
 	case EXTRASMENU_RETURN_TO_TITLE
-		Object.Timer += 4
-		if Object.Timer == 384
-			Stage.ActiveList = PRESENTATION_STAGE
-			Stage.ListPos	 = STAGE_P_TITLE
+		object.timer += 4
+		if object.timer == 384
+			stage.activeList = PRESENTATION_STAGE
+			stage.listPos	 = STAGE_P_TITLE
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, Object.Timer)
+		SetScreenFade(0, 0, 0, object.timer)
 		break
 #endplatform
 	end switch
-end sub
+end event
 
 
-sub ObjectDraw
-	switch Object.State
+event ObjectDraw
+	switch object.state
 	case EXTRASMENU_ENTER_MENU
 	case EXTRASMENU_CONTROLS
 	case EXTRASMENU_SELECTED_OPTION
@@ -923,26 +923,26 @@ sub ObjectDraw
 #platform: Use_Origins
 	case EXTRASMENU_RETURN_TO_TITLE
 #endplatform
-		Object.YPos  = Screen.CenterY
-		Object.YPos -= 87
-		ArrayPos0 = 0
+		object.ypos  = screen.ycenter
+		object.ypos -= 87
+		arrayPos0 = 0
 		CallFunction(ExtrasMenu_DrawUnlocks)		//Draw DA Garden
 		
-		Object.YPos += 40
-		ArrayPos0++
+		object.ypos += 40
+		arrayPos0++
 		CallFunction(ExtrasMenu_DrawUnlocks)		//Draw Visual Mode
 
-		Object.YPos += 40
-		ArrayPos0++
+		object.ypos += 40
+		arrayPos0++
 		CallFunction(ExtrasMenu_DrawUnlocks)		//Draw Sound Test
 
-		Object.YPos += 40
-		ArrayPos0++
+		object.ypos += 40
+		arrayPos0++
 		CallFunction(ExtrasMenu_DrawUnlocks)		//Draw Stage Select
 		break
 
 	case EXTRASMENU_LOAD_VISUALMODE
-		ArrayPos0 = Object.CurrentButton
+		arrayPos0 = object.currentButton
 		CallFunction(ExtrasMenu_DrawUnlocks)
 		break
 
@@ -952,104 +952,104 @@ sub ObjectDraw
 	case EXTRASMENU_VISUALMODE_FADEOUT
 	case EXTRASMENU_VISUALMODE_RETURN
 	case EXTRASMENU_FADEIN
-		TempValue0  = Screen.CenterX
-		TempValue0 -= 64
-		DrawSpriteScreenFX(4, FX_INK, TempValue0, 96)
+		tempValue0  = screen.xcenter
+		tempValue0 -= 64
+		DrawSpriteScreenFX(4, FX_INK, tempValue0, 96)
 
-		if Helper.VMCurrentButton == 0
-			DrawSpriteScreenFX(26, FX_INK, TempValue0, 96)
-			DrawSpriteScreenFX(22, FX_INK, TempValue0, 96)
+		if helper.vMCurrentButton == 0
+			DrawSpriteScreenFX(26, FX_INK, tempValue0, 96)
+			DrawSpriteScreenFX(22, FX_INK, tempValue0, 96)
 		else
-			DrawSpriteScreenFX(18, FX_INK, TempValue0, 96)
+			DrawSpriteScreenFX(18, FX_INK, tempValue0, 96)
 		end if
 
-		DrawSpriteScreenFX(6, FX_INK, TempValue0, 153)
+		DrawSpriteScreenFX(6, FX_INK, tempValue0, 153)
 
-		if Helper.VMCurrentButton == 2
-			DrawSpriteScreenFX(26, FX_INK, TempValue0, 153)
-			DrawSpriteScreenFX(24, FX_INK, TempValue0, 153)
+		if helper.vMCurrentButton == 2
+			DrawSpriteScreenFX(26, FX_INK, tempValue0, 153)
+			DrawSpriteScreenFX(24, FX_INK, tempValue0, 153)
 		else
-			DrawSpriteScreenFX(20, FX_INK, TempValue0, 153)
+			DrawSpriteScreenFX(20, FX_INK, tempValue0, 153)
 		end if
 
-		TempValue0 += 128
-		DrawSpriteScreenFX(5, FX_INK, TempValue0, 96)
-		if Helper.VMCurrentButton == 1
-			DrawSpriteScreenFX(26, FX_INK, TempValue0, 96)
-			DrawSpriteScreenFX(23, FX_INK, TempValue0, 96)
+		tempValue0 += 128
+		DrawSpriteScreenFX(5, FX_INK, tempValue0, 96)
+		if helper.vMCurrentButton == 1
+			DrawSpriteScreenFX(26, FX_INK, tempValue0, 96)
+			DrawSpriteScreenFX(23, FX_INK, tempValue0, 96)
 		else
-			DrawSpriteScreenFX(19, FX_INK, TempValue0, 96)
+			DrawSpriteScreenFX(19, FX_INK, tempValue0, 96)
 		end if
 
-		DrawSpriteScreenFX(7, FX_INK, TempValue0, 153)
-		if Helper.VMCurrentButton == 3
-			DrawSpriteScreenFX(26, FX_INK, TempValue0, 153)
-			DrawSpriteScreenFX(25, FX_INK, TempValue0, 153)
+		DrawSpriteScreenFX(7, FX_INK, tempValue0, 153)
+		if helper.vMCurrentButton == 3
+			DrawSpriteScreenFX(26, FX_INK, tempValue0, 153)
+			DrawSpriteScreenFX(25, FX_INK, tempValue0, 153)
 		else
-			DrawSpriteScreenFX(21, FX_INK, TempValue0, 153)
+			DrawSpriteScreenFX(21, FX_INK, tempValue0, 153)
 		end if
-		Object.Alpha = 255
+		object.alpha = 255
 		CallFunction(ExtrasMenu_DrawUnlocks)
 		break
 
 	case EXTRASMENU_VISUALMODE_SELECTED
-		TempValue1   = Object.Timer
-		TempValue1  &= 3
-		TempValue1 >>= 1
+		tempValue1   = object.timer
+		tempValue1  &= 3
+		tempValue1 >>= 1
 
-		TempValue0  = Screen.CenterX
-		TempValue0 -= 64
-		if Helper.VMCurrentButton == 0
-			if TempValue1 == 0
-				DrawSpriteScreenFX(4, FX_INK, TempValue0, 96)
-				DrawSpriteScreenFX(26, FX_INK, TempValue0, 96)
+		tempValue0  = screen.xcenter
+		tempValue0 -= 64
+		if helper.vMCurrentButton == 0
+			if tempValue1 == 0
+				DrawSpriteScreenFX(4, FX_INK, tempValue0, 96)
+				DrawSpriteScreenFX(26, FX_INK, tempValue0, 96)
 			end if
-			DrawSpriteScreenFX(22, FX_INK, TempValue0, 96)
+			DrawSpriteScreenFX(22, FX_INK, tempValue0, 96)
 		else
-			DrawSpriteScreenFX(4, FX_INK, TempValue0, 96)
-			DrawSpriteScreenFX(18, FX_INK, TempValue0, 96)
+			DrawSpriteScreenFX(4, FX_INK, tempValue0, 96)
+			DrawSpriteScreenFX(18, FX_INK, tempValue0, 96)
 		end if
 
-		if Helper.VMCurrentButton == 2
-			if TempValue1 == 0
-				DrawSpriteScreenFX(6, FX_INK, TempValue0, 153)
-				DrawSpriteScreenFX(26, FX_INK, TempValue0, 153)
+		if helper.vMCurrentButton == 2
+			if tempValue1 == 0
+				DrawSpriteScreenFX(6, FX_INK, tempValue0, 153)
+				DrawSpriteScreenFX(26, FX_INK, tempValue0, 153)
 			end if
-			DrawSpriteScreenFX(24, FX_INK, TempValue0, 153)
+			DrawSpriteScreenFX(24, FX_INK, tempValue0, 153)
 		else
-			DrawSpriteScreenFX(6, FX_INK, TempValue0, 153)
-			DrawSpriteScreenFX(20, FX_INK, TempValue0, 153)
+			DrawSpriteScreenFX(6, FX_INK, tempValue0, 153)
+			DrawSpriteScreenFX(20, FX_INK, tempValue0, 153)
 		end if
 		
-		TempValue0 += 128
-		if Helper.VMCurrentButton == 1
-			if TempValue1 == 0
-				DrawSpriteScreenFX(5, FX_INK, TempValue0, 96)
-				DrawSpriteScreenFX(26, FX_INK, TempValue0, 96)
+		tempValue0 += 128
+		if helper.vMCurrentButton == 1
+			if tempValue1 == 0
+				DrawSpriteScreenFX(5, FX_INK, tempValue0, 96)
+				DrawSpriteScreenFX(26, FX_INK, tempValue0, 96)
 			end if
-			DrawSpriteScreenFX(23, FX_INK, TempValue0, 96)
+			DrawSpriteScreenFX(23, FX_INK, tempValue0, 96)
 		else
-			DrawSpriteScreenFX(5, FX_INK, TempValue0, 96)
-			DrawSpriteScreenFX(19, FX_INK, TempValue0, 96)
+			DrawSpriteScreenFX(5, FX_INK, tempValue0, 96)
+			DrawSpriteScreenFX(19, FX_INK, tempValue0, 96)
 		end if
-		if Helper.VMCurrentButton == 3
-			if TempValue1 == 0
-				DrawSpriteScreenFX(7, FX_INK, TempValue0, 153)
-				DrawSpriteScreenFX(26, FX_INK, TempValue0, 153)
+		if helper.vMCurrentButton == 3
+			if tempValue1 == 0
+				DrawSpriteScreenFX(7, FX_INK, tempValue0, 153)
+				DrawSpriteScreenFX(26, FX_INK, tempValue0, 153)
 			end if
-			DrawSpriteScreenFX(25, FX_INK, TempValue0, 153)
+			DrawSpriteScreenFX(25, FX_INK, tempValue0, 153)
 		else
-			DrawSpriteScreenFX(7, FX_INK, TempValue0, 153)
-			DrawSpriteScreenFX(21, FX_INK, TempValue0, 153)
+			DrawSpriteScreenFX(7, FX_INK, tempValue0, 153)
+			DrawSpriteScreenFX(21, FX_INK, tempValue0, 153)
 		end if
-		Object.Alpha = 255
+		object.alpha = 255
 		CallFunction(ExtrasMenu_DrawUnlocks)
 		break
 	end switch
-end sub
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	switch Engine.Language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
@@ -1090,77 +1090,77 @@ sub ObjectStartup
 	SpriteFrame(45, 12, 13, 13, 488, 1)			// #8 - Orange Triangle
 	SpriteFrame(0, 0, 250, 37, 259, 421)		// #9 - Selection Border
 
-	ArrayPos0 = 32
-	ArrayPos1 = 48
-	TempValue0 = 0
-	TempValue1 = 0
-	while ArrayPos0 < 39
-		TempValue0 += SaveRAM[ArrayPos1]
-		ArrayPos1++
-		TempValue1 += SaveRAM[ArrayPos1]
-		ArrayPos1  += 5
-		TempValue0 += SaveRAM[ArrayPos1]
-		ArrayPos1  += 6
-		TempValue0 += SaveRAM[ArrayPos1]
-		ArrayPos1  += 6
-		ArrayPos0++
+	arrayPos0 = 32
+	arrayPos1 = 48
+	tempValue0 = 0
+	tempValue1 = 0
+	while arrayPos0 < 39
+		tempValue0 += SaveRAM[arrayPos1]
+		arrayPos1++
+		tempValue1 += SaveRAM[arrayPos1]
+		arrayPos1  += 5
+		tempValue0 += SaveRAM[arrayPos1]
+		arrayPos1  += 6
+		tempValue0 += SaveRAM[arrayPos1]
+		arrayPos1  += 6
+		arrayPos0++
 	loop
 
-	// TempValue0 will be used to check regular zones total time in time attack
-	// TempValue1 checks for special stages total time instead
-	if TempValue0 == 0
-		TempValue0 = 400000
+	// tempValue0 will be used to check regular zones total time in time attack
+	// tempValue1 checks for special stages total time instead
+	if tempValue0 == 0
+		tempValue0 = 400000
 
-		TempValue1 = 400000
+		tempValue1 = 400000
 	end if
 
-	if TempValue0 < 224757
+	if tempValue0 < 224757
 		SpriteFrame(64, 12, 128, 16, 1, 120)	// #10 - D. A. Garden
 		Options.DAGardenFlag = true
 	else
 		SpriteFrame(64, 12, 128, 16, 1, 426)	// #10 - Locked D. A. Garden
 	end if
 
-	if TempValue0 < 154612
+	if tempValue0 < 154612
 		SpriteFrame(64, 12, 128, 16, 1, 137)	// #11 - Visual Mode
 		Options.VisualModeFlag = true
 	else
 		SpriteFrame(64, 12, 128, 16, 130, 426)	// #11 - Locked Visual Mode
 	end if
 
-	if TempValue1 < 24207
+	if tempValue1 < 24207
 		SpriteFrame(64, 12, 128, 16, 1, 154)	// #12 - Sound Test
 		Options.SoundTestFlag = true
 	else
 		SpriteFrame(64, 12, 48, 16, 404, 285)	// #12 - Locked Sound Test
 	end if
 
-	if TempValue1 < 30125
+	if tempValue1 < 30125
 		SpriteFrame(64, 12, 128, 16, 1, 171)	// #13 - Stage Select
 		Options.StageSelectFlag = true
 	else
 		SpriteFrame(64, 12, 48, 16, 404, 285)	// #13 - Locked Stage Select
 	end if
 
-	if TempValue0 < 224757
+	if tempValue0 < 224757
 		SpriteFrame(64, 12, 128, 16, 130, 120)	// #14 - Select D. A. Garden
 	else
 		SpriteFrame(64, 12, 128, 16, 1, 426)	// #14 - Locked D. A. Garden
 	end if
 
-	if TempValue0 < 154612
+	if tempValue0 < 154612
 		SpriteFrame(64, 12, 128, 16, 130, 137)	// #15 - Select Visual Mode
 	else
 		SpriteFrame(64, 12, 128, 16, 130, 426)	// #15 - Locked Visual Mode
 	end if
 
-	if TempValue1 < 24207
+	if tempValue1 < 24207
 		SpriteFrame(64, 12, 128, 16, 130, 154)	// #16 - Select Sound Test
 	else
 		SpriteFrame(64, 12, 48, 16, 404, 285)	// #16 - Locked Sound Test
 	end if
 
-	if TempValue1 < 30125
+	if tempValue1 < 30125
 		SpriteFrame(64, 12, 128, 16, 130, 171)	// #17 - Select Stage Select
 	else
 		SpriteFrame(64, 12, 48, 16, 404, 285)	// #17 - Locked Stage Select
@@ -1177,21 +1177,21 @@ sub ObjectStartup
 	SpriteFrame(-48, 25, 96, 8, 292, 504)		// #25 - Bad Ending Text Highlight
 
 	SpriteFrame(-24, -24, 48, 48, 405, 88)		// #26 - Icon Border
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 	SpriteFrame(32, 0, 160, 30, 1, 708)			// #8 Extras
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

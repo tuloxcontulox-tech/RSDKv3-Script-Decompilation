@@ -4,98 +4,98 @@
 //-----This Object is normally only used by WP7 Data files----//
 
 // Aliases
-#alias Object.Value1	:	Object.InputCheck
+private alias object.value1 : object.inputCheck
 
-//Object[0] is Trophies Menu
-#alias Object[0].State	:	ThropiesMenu.State
+//object[0] is Trophies Menu
+private alias object[0].state : thropiesMenu.state
 
 // Thropies Menu States
-#alias 2	:	TROPHIES_CONTROLS
-#alias 5	:	TROPHIES_EXIT
+private alias 2 : TROPHIES_CONTROLS
+private alias 5 : TROPHIES_EXIT
 
 // Global SFX
-#alias 26	:	SFX_G_OUTTAHERE
+private alias 26 : SFX_G_OUTTAHERE
 
 //Engine & CallBacks
-#alias 2	:	MESSAGE_LOSTFOCUS
+private alias 2 : MESSAGE_LOSTFOCUS
 
 
-sub ObjectMain
-	if ThropiesMenu.State == TROPHIES_CONTROLS
+event ObjectUpdate
+	if thropiesMenu.state == TROPHIES_CONTROLS
 		if Engine.Message == MESSAGE_LOSTFOCUS
-			Object.InputCheck = 0
+			object.inputCheck = 0
 		end if
-		TempValue0   = Object.XPos
-		TempValue0 >>= 16
-		TempValue1   = TempValue0
-		TempValue0  -= 18
-		TempValue0  -= Screen.XOffset
-		TempValue1  += 18
-		TempValue1  -= Screen.XOffset
-		CheckTouchRect(TempValue0, 0, TempValue1, 48)
-		if CheckResult > -1
-			 Object.InputCheck = true
+		tempValue0   = object.xpos
+		tempValue0 >>= 16
+		tempValue1   = tempValue0
+		tempValue0  -= 18
+		tempValue0  -= screen.xoffset
+		tempValue1  += 18
+		tempValue1  -= screen.xoffset
+		CheckTouchRect(tempValue0, 0, tempValue1, 48)
+		if checkResult > -1
+			 object.inputCheck = true
 		else
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)
-			if CheckResult < 0
-				if Object.InputCheck == true
-					Object.InputCheck = false
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
+			if checkResult < 0
+				if object.inputCheck == true
+					object.inputCheck = false
 					PlaySfx(SFX_G_OUTTAHERE, false)
 					StopMusic()
-					ThropiesMenu.State = TROPHIES_EXIT
+					thropiesMenu.state = TROPHIES_EXIT
 				end if
 			else
-				 Object.InputCheck = false
+				 object.inputCheck = false
 			end if
 		end if
 	end if
-end sub
+end event
 
 
-sub ObjectDraw
-	Object.Scale = 128
-	if Object.InputCheck == true
-		DrawSpriteFX(1, FX_SCALE, Object.XPos, Object.YPos)
+event ObjectDraw
+	object.scale = 128
+	if object.inputCheck == true
+		DrawSpriteFX(1, FX_SCALE, object.xpos, object.ypos)
 	else
-		DrawSpriteFX(0, FX_SCALE, Object.XPos, Object.YPos)
+		DrawSpriteFX(0, FX_SCALE, object.xpos, object.ypos)
 	end if
-end sub
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/Trophies.gif")
 
 	SpriteFrame(-63, -39, 126, 78, 129, 385)	//#0 - Back Button
 	SpriteFrame(-60, -37, 120, 74, 260, 387)	//#1 - Pressed Back Button
 
-	TempValue0   = Screen.CenterX
-	TempValue0  -= 160
-	TempValue0 <<= 16
+	tempValue0   = screen.xcenter
+	tempValue0  -= 160
+	tempValue0 <<= 16
 
-	ArrayPos0 = 32
-	while ArrayPos0 < 1056
-		if Object[ArrayPos0].Type == TypeName[Exit Button]
-			Object[ArrayPos0].XPos += TempValue0
+	arrayPos0 = 32
+	while arrayPos0 < 1056
+		if object[arrayPos0].type == TypeName[Exit Button]
+			object[arrayPos0].xpos += tempValue0
 		end if
-		ArrayPos0++
+		arrayPos0++
 	loop
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
-	Object.Scale = 128
-	DrawSpriteFX(0, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+event RSDKDraw
+	object.scale = 128
+	DrawSpriteFX(0, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/Trophies.gif")
 
 	SpriteFrame(-63, -39, 126, 78, 129, 385)	//#0 - Back Button
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

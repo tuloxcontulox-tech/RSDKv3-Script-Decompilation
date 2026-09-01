@@ -3,104 +3,104 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 
 // Aliases
-#alias Object[0].State 	:	Object.HelpState
-#alias Object[0].Value0	:	Object.HelpFade
-#alias Object[0].Value1	:	Object.ButtonPressed
-#alias Object[0].Value3	:	Object.CurrentPage
+private alias object[0].state : object.helpState
+private alias object[0].value0 : object.helpFade
+private alias object[0].value1 : object.buttonPressed
+private alias object[0].value3 : object.currentPage
 
 // Global SFX
-#alias 26	:	SFX_G_OUTTAHERE
-#alias 27	:	SFX_G_SELECT
+private alias 26 : SFX_G_OUTTAHERE
+private alias 27 : SFX_G_SELECT
 
 //Engine & CallBacks
-#alias 2	:	MESSAGE_LOSTFOCUS
+private alias 2 : MESSAGE_LOSTFOCUS
 
 // Device Type
-#alias 1	:	RETRO_MOBILE
+private alias 1 : RETRO_MOBILE
 
 // Help Menu States
-#alias 2	:	HELPMENU_CONTROLS
-#alias 3	:	HELPMENU_PAGEDOWN
-#alias 4	:	HELPMENU_PAGEUP
-#alias 5	:	HELPMENU_LEAVE
+private alias 2 : HELPMENU_CONTROLS
+private alias 3 : HELPMENU_PAGEDOWN
+private alias 4 : HELPMENU_PAGEUP
+private alias 5 : HELPMENU_LEAVE
 
 // Property Values
-#alias 0	:	BUTTON_DOWN
-#alias 1	:	BUTTON_UP
-#alias 2	:	BUTTON_BACK
+private alias 0 : BUTTON_DOWN
+private alias 1 : BUTTON_UP
+private alias 2 : BUTTON_BACK
 
 
-sub ObjectMain
-	if Object.HelpState == HELPMENU_CONTROLS
+event ObjectUpdate
+	if object.helpState == HELPMENU_CONTROLS
 		if Engine.Message == MESSAGE_LOSTFOCUS
-			Object.ButtonPressed = 0
+			object.buttonPressed = 0
 		end if
 
-		TempValue0   = Object.XPos
-		TempValue0 >>= 16
-		TempValue1   = TempValue0
+		tempValue0   = object.xpos
+		tempValue0 >>= 16
+		tempValue1   = tempValue0
 
-		TempValue0 -= 18
-		TempValue0 -= Screen.XOffset
+		tempValue0 -= 18
+		tempValue0 -= screen.xoffset
 		
-		TempValue1 += 18
-		TempValue1 -= Screen.XOffset
-		CheckTouchRect(TempValue0, 0, TempValue1, 48)
-		if CheckResult > -1
-			Object.ButtonPressed = Object.PropertyValue
-			Object.ButtonPressed++
+		tempValue1 += 18
+		tempValue1 -= screen.xoffset
+		CheckTouchRect(tempValue0, 0, tempValue1, 48)
+		if checkResult > -1
+			object.buttonPressed = object.propertyValue
+			object.buttonPressed++
 		else
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)
-			if CheckResult < 0
-				switch Object.PropertyValue
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
+			if checkResult < 0
+				switch object.propertyValue
 				case BUTTON_DOWN
-					if Object.ButtonPressed == true
-						Object.ButtonPressed = 0
-						if Object.CurrentPage < 8
+					if object.buttonPressed == true
+						object.buttonPressed = 0
+						if object.currentPage < 8
 							PlaySfx(SFX_G_SELECT, false)
-							Object.HelpFade = 256
-							Object.HelpState = HELPMENU_PAGEDOWN
+							object.helpFade = 256
+							object.helpState = HELPMENU_PAGEDOWN
 						end if
 					end if
 					break
 
 				case BUTTON_UP
-					if Object.ButtonPressed == 2
-						Object.ButtonPressed = 0
-						if Object.CurrentPage > 0
+					if object.buttonPressed == 2
+						object.buttonPressed = 0
+						if object.currentPage > 0
 							PlaySfx(SFX_G_SELECT, false)
-							Object.HelpState = HELPMENU_PAGEUP
+							object.helpState = HELPMENU_PAGEUP
 						end if
 					end if
 					break
 
 				case BUTTON_BACK
-					if Object.ButtonPressed == 3
-						Object.ButtonPressed = 0
+					if object.buttonPressed == 3
+						object.buttonPressed = 0
 						PlaySfx(SFX_G_OUTTAHERE, false)
 						StopMusic()
-						Object.HelpState = HELPMENU_LEAVE
+						object.helpState = HELPMENU_LEAVE
 					end if
 					break
 
 				end switch
 			else
-				switch Object.PropertyValue
+				switch object.propertyValue
 				case BUTTON_DOWN
-					if Object.ButtonPressed == 1
-						Object.ButtonPressed = 0
+					if object.buttonPressed == 1
+						object.buttonPressed = 0
 					end if
 					break
 
 				case BUTTON_UP
-					if Object.ButtonPressed == 2
-						Object.ButtonPressed = 0
+					if object.buttonPressed == 2
+						object.buttonPressed = 0
 					end if
 					break
 
 				case BUTTON_BACK
-					if Object.ButtonPressed == 3
-						Object.ButtonPressed = 0
+					if object.buttonPressed == 3
+						object.buttonPressed = 0
 					end if
 					break
 
@@ -108,38 +108,38 @@ sub ObjectMain
 			end if
 		end if
 	end if
-end sub
+end event
 
 
-sub ObjectDraw
-	Object.Scale = 128
-	switch Object.PropertyValue
+event ObjectDraw
+	object.scale = 128
+	switch object.propertyValue
 	case BUTTON_DOWN
-		if Object.ButtonPressed == 1
-			DrawSpriteFX(1, FX_SCALE, Object.XPos, Object.YPos)
+		if object.buttonPressed == 1
+			DrawSpriteFX(1, FX_SCALE, object.xpos, object.ypos)
 		else
-			DrawSpriteFX(0, FX_SCALE, Object.XPos, Object.YPos)
+			DrawSpriteFX(0, FX_SCALE, object.xpos, object.ypos)
 		end if
 		break
 	case BUTTON_UP
-		if Object.ButtonPressed == 2
-			DrawSpriteFX(3, FX_SCALE, Object.XPos, Object.YPos)
+		if object.buttonPressed == 2
+			DrawSpriteFX(3, FX_SCALE, object.xpos, object.ypos)
 		else
-			DrawSpriteFX(2, FX_SCALE, Object.XPos, Object.YPos)
+			DrawSpriteFX(2, FX_SCALE, object.xpos, object.ypos)
 		end if
 		break
 	case BUTTON_BACK
-		if Object.ButtonPressed == 3
-			DrawSpriteFX(5, FX_SCALE, Object.XPos, Object.YPos)
+		if object.buttonPressed == 3
+			DrawSpriteFX(5, FX_SCALE, object.xpos, object.ypos)
 		else
-			DrawSpriteFX(4, FX_SCALE, Object.XPos, Object.YPos)
+			DrawSpriteFX(4, FX_SCALE, object.xpos, object.ypos)
 		end if
 		break
 	end switch
-end sub
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/Buttons.gif")
 
 	SpriteFrame(-63, -39, 126, 78, 1, 1)		// #0 - Down Button
@@ -162,49 +162,49 @@ sub ObjectStartup
 	SpriteFrame(-60, -37, 120, 74, 132, 163)	// #5 - Back Button Highlight
 #endplatform
 
-	TempValue0   = Screen.CenterX
-	TempValue0  -= 160
-	TempValue0 <<= 16
+	tempValue0   = screen.xcenter
+	tempValue0  -= 160
+	tempValue0 <<= 16
 
-	ArrayPos0 = 32
-	while ArrayPos0 < 1056
-		if Object[ArrayPos0].Type == TypeName[Help Buttons]
-			Object[ArrayPos0].XPos += TempValue0
+	arrayPos0 = 32
+	while arrayPos0 < 1056
+		if object[arrayPos0].type == TypeName[Help Buttons]
+			object[arrayPos0].xpos += tempValue0
 		end if
-		ArrayPos0++
+		arrayPos0++
 	loop
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKEdit
-	if Editor.ReturnVariable == true
-		switch Editor.VariableID
+event RSDKEdit
+	if editor.returnVariable == true
+		switch editor.variableID
 		case EDIT_VAR_PROPVAL // Property Value
-			CheckResult = Object.PropertyValue
+			checkResult = object.propertyValue
 			break
 		case 0 // Type
-			CheckResult = Object.PropertyValue
+			checkResult = object.propertyValue
 			break
 		end switch
 	else
-		switch Editor.VariableID
+		switch editor.variableID
 		case EDIT_VAR_PROPVAL // Property Value
-			Object.PropertyValue = Editor.VariableValue
+			object.propertyValue = editor.variableValue
 			break
 		case 0 // Type
-			Object.PropertyValue = Editor.VariableValue
+			object.propertyValue = editor.variableValue
 			break
 		end switch
 	end if
-end sub
+end event
 
 
-sub RSDKDraw
-	switch Object.PropertyValue
+event RSDKDraw
+	switch object.propertyValue
 	case 0
 		DrawSprite(0)
 		break
@@ -217,10 +217,10 @@ sub RSDKDraw
 		DrawSprite(4)
 		break
 	end switch
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/Buttons.gif")
 	SpriteFrame(-63, -39, 126, 78, 1, 1)		// #0 - Down Button
 	SpriteFrame(-60, -37, 120, 74, 132, 3)		// #1 - Down Button Highlight
@@ -234,4 +234,4 @@ sub RSDKLoad
 	AddEnumVariable("Down Button", 0)
 	AddEnumVariable("Up Button", 1)
 	AddEnumVariable("Back Button", 2)
-end sub
+end event
