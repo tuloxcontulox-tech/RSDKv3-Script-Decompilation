@@ -32,7 +32,7 @@ private alias 2 : BUTTON_BACK
 
 event ObjectUpdate
 	if object.helpState == HELPMENU_CONTROLS
-		if Engine.Message == MESSAGE_LOSTFOCUS
+		if engine.message == MESSAGE_LOSTFOCUS
 			object.buttonPressed = 0
 		end if
 

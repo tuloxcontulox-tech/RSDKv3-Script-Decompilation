@@ -592,7 +592,7 @@ event ObjectUpdate
 			end if
 
 		else
-			if Engine.Message == MESSAGE_LOSTFOCUS
+			if engine.message == MESSAGE_LOSTFOCUS
 				helper.vMCurrentButton = -1
 			end if
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)		//Touch Input Reset
@@ -775,7 +775,7 @@ event ObjectUpdate
 //
 //			switch helper.vMCurrentButton
 //			case 0
-//				if Options.Soundtrack == OST_JP
+//				if options.soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
 //					LoadVideo("OpeningUS")
@@ -787,7 +787,7 @@ event ObjectUpdate
 //				break
 //
 //			case 2
-//				if Options.Soundtrack == OST_JP
+//				if options.soundtrack == OST_JP
 //					LoadVideo("Good_Ending")
 //				else
 //					LoadVideo("Good_EndingUS")
@@ -795,7 +795,7 @@ event ObjectUpdate
 //				break
 //
 //			case 3
-//				if Options.Soundtrack == OST_JP
+//				if options.soundtrack == OST_JP
 //					LoadVideo("Bad_Ending")
 //				else
 //					LoadVideo("Bad_EndingUS")
@@ -889,7 +889,7 @@ event ObjectUpdate
 			object.timer -= 8
 		else
 			object.state = EXTRASMENU_VISUALMODE
-			PlayMusic(Options.Soundtrack)
+			PlayMusic(options.soundtrack)
 		end if
 		temp0 = object.timer
 		if temp0 > 255

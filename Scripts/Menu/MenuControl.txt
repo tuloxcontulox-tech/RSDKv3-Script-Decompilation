@@ -68,7 +68,7 @@ event ObjectUpdate
 		object.state = MENUCONTROL_BUTTONS_MOVEIN
 		object.fade  = 384
 		SetScreenFade(0, 0, 0, 255)
-		PlayMusic(Options.Soundtrack)
+		PlayMusic(options.soundtrack)
 		if Engine.FrameSkipTimer > -1
 			Engine.FrameSkipTimer = -1
 		end if
@@ -163,7 +163,7 @@ event ObjectUpdate
 #endplatform
 
 		else
-			if Engine.Message == MESSAGE_LOSTFOCUS
+			if engine.message == MESSAGE_LOSTFOCUS
 				object.currentSelection		= 0
 				object.dragCurrentSelection = 0
 			end if
@@ -330,7 +330,7 @@ event ObjectUpdate
 
 
 //			if Engine.PlatformID != RETRO_WP7
-//				if Options.Soundtrack == OST_JP
+//				if options.soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
 //					LoadVideo("OpeningUS")

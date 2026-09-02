@@ -53,7 +53,7 @@ reserve function MenuHeading_CheckTouchBack
 
 
 public function MenuHeading_CheckTouchBack	//This is used by other scripts to check if the back touch button is pressed
-	if Engine.Message == MESSAGE_LOSTFOCUS
+	if engine.message == MESSAGE_LOSTFOCUS
 		currentMenu.buttonPressed = -1
 	end if
 

@@ -64,14 +64,14 @@ event ObjectUpdate
 	case SOUNDMENU_INITIALIZE
 
 #platform: Standard
-		object.selectedOption = Options.Soundtrack
+		object.selectedOption = options.soundtrack
 #endplatform
 
 #platform: Mobile
 		if options.physicalControls == false
 			object.selectedOption = OST_NONE
 		else
-			object.selectedOption = Options.Soundtrack
+			object.selectedOption = options.soundtrack
 		end if
 #endplatform
 
@@ -79,7 +79,7 @@ event ObjectUpdate
 		if options.physicalControls == false
 			object.selectedOption = OST_NONE
 		else
-			object.selectedOption = Options.Soundtrack
+			object.selectedOption = options.soundtrack
 		end if
 #endplatform
 
@@ -223,14 +223,14 @@ event ObjectUpdate
 		end if
 
 		if checkResult == true
-			Options.Soundtrack = object.selectedOption
-			SaveRAM[38] = Options.Soundtrack
+			options.soundtrack = object.selectedOption
+			SaveRAM[38] = options.soundtrack
 			object.state = SOUNDMENU_OST_SELECTED
 			StopMusic()
 			PlaySfx(SFX_G_SELECT, false)
 			WriteSaveRAM()
 #platform: Use_Origins
-			game.callbackParam0 = Options.Soundtrack
+			game.callbackParam0 = options.soundtrack
 			engineCallback(NOTIFY_SOUND_TRACK)
 #endplatform
 		end if
@@ -248,7 +248,7 @@ event ObjectUpdate
 		else
 			object.animationTimer = 0
 			object.state = SOUNDMENU_BACK
-			PlayMusic(Options.Soundtrack)
+			PlayMusic(options.soundtrack)
 		end if
 		break
 		
@@ -351,7 +351,7 @@ event ObjectDraw
 	end if
 	
 	// Draw the border for the soundtrack that's currently playing
-	if Options.Soundtrack == OST_JP
+	if options.soundtrack == OST_JP
 		DrawSpriteScreenFX(8, FX_INK, temp0, temp3)
 	else
 		DrawSpriteScreenFX(8, FX_INK, temp1, temp3)

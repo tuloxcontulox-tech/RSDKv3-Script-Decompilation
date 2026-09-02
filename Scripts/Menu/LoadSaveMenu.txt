@@ -880,7 +880,7 @@ event ObjectUpdate
 		else
 			// Touch Controls
 			
-			if Engine.Message == MESSAGE_LOSTFOCUS
+			if engine.message == MESSAGE_LOSTFOCUS
 				object[+arrayPos0].playerListPos = PLAYER_NONE
 			end if
 			
@@ -1080,7 +1080,7 @@ event ObjectUpdate
 				LoadVideo("Opening")
 
 //	#platform: Mobile
-//				if Options.Soundtrack == OST_JP
+//				if options.soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
 //					LoadVideo("OpeningUS")
@@ -1321,7 +1321,7 @@ event ObjectUpdate
 		else
 			// Touch Controls
 			
-			if Engine.Message == MESSAGE_LOSTFOCUS
+			if engine.message == MESSAGE_LOSTFOCUS
 				deleteConfirm.highlight = DELETE_NONE
 			end if
 			
@@ -1740,7 +1740,7 @@ event ObjectStartup
 	SpriteFrame(64, 12, 144, 16, 259, 404)		// #29 - Special Stage
 	
 	ReadSaveRAM()
-	Options.Soundtrack = SaveRAM[38]
+	options.soundtrack = SaveRAM[38]
 	if SaveRAM[36] == true
 		Options.TailsUnlocked = true
 	end if

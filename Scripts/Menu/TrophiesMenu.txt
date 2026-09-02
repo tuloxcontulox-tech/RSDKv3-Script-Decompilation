@@ -180,7 +180,7 @@ event ObjectUpdate
 			object.fade += 8
 		else
 			stage.listPos = STAGE_P_MENU
-			Engine.state = ENGINE_EXIT_HIRESMODE
+			engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.fade)
@@ -233,14 +233,14 @@ event ObjectStartup
 	LoadPalette("HelpPal1.act", 0, 0, 0, 32)
 	LoadTextFont("Data/Game/HelpText.bin")
 
-	if Options.Soundtrack == OST_JP
+	if options.soundtrack == OST_JP
 		SetMusicTrack("JP/DAGarden.ogg", 1, 1)
 	else
 		SetMusicTrack("US/DAGarden.ogg", 1, 117382)
 	end if
 	
-	Engine.state		 = ENGINE_ENTER_HIRESMODE
-	Screen.CameraEnabled = false
+	engine.state		 = ENGINE_ENTER_HIRESMODE
+	screen.cameraEnabled = false
 
 	object[0].type		= TypeName[Trophies Menu]
 	object[0].priority  = PRIORITY_ACTIVE

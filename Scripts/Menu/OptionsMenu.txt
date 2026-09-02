@@ -411,7 +411,7 @@ event ObjectUpdate
 			switch object.currentSelection
 			case 0
 				if Options.DevMenuFlag == true
-					Engine.state = RESET_GAME
+					engine.state = RESET_GAME
 				else
 
 #platform: Use_Origins
@@ -435,7 +435,7 @@ event ObjectUpdate
 				break
 
 			case 3							//Unused
-				Engine.state = RESET_GAME
+				engine.state = RESET_GAME
 				break
 
 			end switch

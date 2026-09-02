@@ -343,7 +343,7 @@ event ObjectUpdate
 			switch object.currentSelection
 			case 0
 				if Options.DevMenuFlag == true
-					Engine.state = RESET_GAME
+					engine.state = RESET_GAME
 				else
 #platform: Use_Standalone
 					stage.listPos = STAGE_P_HELP
@@ -365,7 +365,7 @@ event ObjectUpdate
 				break
 
 			case 3 // Unused, seems to just be here to summon the Dev Menu though
-				Engine.state = RESET_GAME
+				engine.state = RESET_GAME
 				break
 			end switch
 		end if

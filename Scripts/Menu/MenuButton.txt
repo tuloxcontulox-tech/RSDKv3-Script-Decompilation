@@ -593,7 +593,7 @@ event ObjectUpdate
 			case Menu_Exit
 				engineCallback(CALLBACK_EXIT_SELECTED)
 #platform: Use_Decomp
-				Engine.state = ENGINE_EXITGAME
+				engine.state = ENGINE_EXITGAME
 #endplatform
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 

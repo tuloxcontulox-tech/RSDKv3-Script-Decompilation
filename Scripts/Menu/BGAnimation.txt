@@ -81,125 +81,125 @@ event ObjectStartup
 	MatrixRotateXYZ(MAT_VIEW, 0, 0, 0)
 	
 	// Three rectanlges, four edges per rectanlge, yup that makes 12 corners in total!
-	3DScene.NoVertices = 12
-	3DScene.NoFaces = 3
+	scene3D.vertexCount = 12
+	scene3D.faceCount = 3
 	
 	// Set the vertex coordinates for the first rectangle
 	
 	// 0 - Top left
-	VertexBuffer[0].x = -0xC800
-	VertexBuffer[0].y =  0xC800
-	VertexBuffer[0].z =  256
+	vertexBuffer[0].x = -0xC800
+	vertexBuffer[0].y =  0xC800
+	vertexBuffer[0].z =  256
 	
 	// 1 - Top right
-	VertexBuffer[1].x = 0xC00
-	VertexBuffer[1].y = 0xC800
-	VertexBuffer[1].z = 256
+	vertexBuffer[1].x = 0xC00
+	vertexBuffer[1].y = 0xC800
+	vertexBuffer[1].z = 256
 	
 	// 2 - Bottom left
-	VertexBuffer[2].x = -0xC800
-	VertexBuffer[2].y =  0x3000
-	VertexBuffer[2].z =  256
+	vertexBuffer[2].x = -0xC800
+	vertexBuffer[2].y =  0x3000
+	vertexBuffer[2].z =  256
 	
 	// 3 - Bottom right
-	VertexBuffer[3].x = 0xC00
-	VertexBuffer[3].y = 0x3000
-	VertexBuffer[3].z = 256
+	vertexBuffer[3].x = 0xC00
+	vertexBuffer[3].y = 0x3000
+	vertexBuffer[3].z = 256
 	
 	// Set the faces of the first rectangle
-	FaceBuffer[0].a = 0
-	FaceBuffer[0].b = 1
-	FaceBuffer[0].c = 2
-	FaceBuffer[0].d = 3
+	faceBuffer[0].a = 0
+	faceBuffer[0].b = 1
+	faceBuffer[0].c = 2
+	faceBuffer[0].d = 3
 	
-	FaceBuffer[0].Flag = FACE_FLAG_COLOURED_3D
+	faceBuffer[0].flag = FACE_FLAG_COLOURED_3D
 	
 	// Setting the color of the first rectangle, giving it a green of sorts (0x80E040)
-	FaceBuffer[0].Color   = 128
-	FaceBuffer[0].Color <<= 16
+	faceBuffer[0].color   = 128
+	faceBuffer[0].color <<= 16
 	temp0   = 224
 	temp0 <<= 8
-	FaceBuffer[0].Color += temp0
-	FaceBuffer[0].Color += 64
-	FaceBuffer[0].Color += 0x7F000000 // Half transparency
+	faceBuffer[0].color += temp0
+	faceBuffer[0].color += 64
+	faceBuffer[0].color += 0x7F000000 // Half transparency
 	
 	// Now, set up the second rectanlge
 	
 	// 4 - Top left
-	VertexBuffer[4].x = -0xC800
-	VertexBuffer[4].y =  0x3000
-	VertexBuffer[4].z =  256
+	vertexBuffer[4].x = -0xC800
+	vertexBuffer[4].y =  0x3000
+	vertexBuffer[4].z =  256
 	
 	// 5 - Top right
-	VertexBuffer[5].x = 0xC00
-	VertexBuffer[5].y = 0x3000
-	VertexBuffer[5].z = 256
+	vertexBuffer[5].x = 0xC00
+	vertexBuffer[5].y = 0x3000
+	vertexBuffer[5].z = 256
 	
 	// 6 - Bottom left
-	VertexBuffer[6].x = -0xC800
-	VertexBuffer[6].y = -0xC800
-	VertexBuffer[6].z =  256
+	vertexBuffer[6].x = -0xC800
+	vertexBuffer[6].y = -0xC800
+	vertexBuffer[6].z =  256
 	
 	// 7 - Bottom right
-	VertexBuffer[7].x =  0xC00
-	VertexBuffer[7].y = -0xC800
-	VertexBuffer[7].z =  256
+	vertexBuffer[7].x =  0xC00
+	vertexBuffer[7].y = -0xC800
+	vertexBuffer[7].z =  256
 	
 	// Set the faces of the second rectangle
-	FaceBuffer[1].a = 4
-	FaceBuffer[1].b = 5
-	FaceBuffer[1].c = 6
-	FaceBuffer[1].d = 7
+	faceBuffer[1].a = 4
+	faceBuffer[1].b = 5
+	faceBuffer[1].c = 6
+	faceBuffer[1].d = 7
 
-	FaceBuffer[1].Flag = FACE_FLAG_COLOURED_3D
+	faceBuffer[1].flag = FACE_FLAG_COLOURED_3D
 	
 	// Setting the color of the second rectangle, this one gets a cool orange (0xE0A060)
-	FaceBuffer[1].Color   = 224
-	FaceBuffer[1].Color <<= 16
+	faceBuffer[1].color   = 224
+	faceBuffer[1].color <<= 16
 	temp0   = 160
 	temp0 <<= 8
-	FaceBuffer[1].Color += temp0
-	FaceBuffer[1].Color += 96
-	FaceBuffer[1].Color += 0x7F000000 // Once again, half transparency
+	faceBuffer[1].color += temp0
+	faceBuffer[1].color += 96
+	faceBuffer[1].color += 0x7F000000 // Once again, half transparency
 	
 	// And last but not least, set up the third rectangle
 	
 	// 8 - Top left
-	VertexBuffer[8].x = 0xB00
-	VertexBuffer[8].y = 0xC800
-	VertexBuffer[8].z = 256
+	vertexBuffer[8].x = 0xB00
+	vertexBuffer[8].y = 0xC800
+	vertexBuffer[8].z = 256
 	
 	// 9 - Top right
-	VertexBuffer[9].x = 0xC800
-	VertexBuffer[9].y = 0xC800
-	VertexBuffer[9].z = 256
+	vertexBuffer[9].x = 0xC800
+	vertexBuffer[9].y = 0xC800
+	vertexBuffer[9].z = 256
 	
 	// 10 - Bottom left
-	VertexBuffer[10].x =  0xB00
-	VertexBuffer[10].y = -0xC800
-	VertexBuffer[10].z =  256
+	vertexBuffer[10].x =  0xB00
+	vertexBuffer[10].y = -0xC800
+	vertexBuffer[10].z =  256
 	
 	// 11 - Bottom right
-	VertexBuffer[11].x =  0xC800
-	VertexBuffer[11].y = -0xC800
-	VertexBuffer[11].z =  256
+	vertexBuffer[11].x =  0xC800
+	vertexBuffer[11].y = -0xC800
+	vertexBuffer[11].z =  256
 	
 	// Set the faces of the third rectangle
-	FaceBuffer[2].a = 8
-	FaceBuffer[2].b = 9
-	FaceBuffer[2].c = 10
-	FaceBuffer[2].d = 11
+	faceBuffer[2].a = 8
+	faceBuffer[2].b = 9
+	faceBuffer[2].c = 10
+	faceBuffer[2].d = 11
 	
-	FaceBuffer[2].Flag = FACE_FLAG_COLOURED_3D
+	faceBuffer[2].flag = FACE_FLAG_COLOURED_3D
 	
 	// Setting the color of the a rectangle one last time, the third one gets a nice blue (0x8080E0)
-	FaceBuffer[2].Color   = 128
-	FaceBuffer[2].Color <<= 16
+	faceBuffer[2].color   = 128
+	faceBuffer[2].color <<= 16
 	temp0   = 128
 	temp0 <<= 8
-	FaceBuffer[2].Color += temp0
-	FaceBuffer[2].Color += 224
-	FaceBuffer[2].Color += 0x7F000000
+	faceBuffer[2].color += temp0
+	faceBuffer[2].color += 224
+	faceBuffer[2].color += 0x7F000000
 end event
 
 
