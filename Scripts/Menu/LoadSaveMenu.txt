@@ -683,7 +683,7 @@ event ObjectUpdate
 			object.fadeValue		= 248
 
 			object.state = STATE_EXIT
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 		
@@ -784,7 +784,7 @@ event ObjectUpdate
 #platform: Use_Origins
 			// normally saveSlot is just forced to 0 on the title screen, but it looks like they were planning to do a bit more than that initially? not like it matters anyways though, cause this object's unused in origins and all
 			game.callbackParam0 = object.selectedOption
-			engineCallback(NOTIFY_SAVESLOT_SELECT)
+			// engineCallback(NOTIFY_SAVESLOT_SELECT)
 #endplatform
 
 			LoadStage()
@@ -997,7 +997,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state	 = STATE_FADEOUT_CHARACTERSELECT
 			object.fadeValue = 248
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 		
@@ -1068,13 +1068,13 @@ event ObjectUpdate
 #platform: Use_Origins
 			// normally saveSlot is just forced to 0 on the title screen, but it looks like they were planning to do a bit more than that initially? not like it matters anyways though, cause this object's unused in origins and all
 			game.callbackParam0 = object.selectedOption
-			engineCallback(NOTIFY_SAVESLOT_SELECT)
+			// engineCallback(NOTIFY_SAVESLOT_SELECT)
 #endplatform
 
 			LoadStage()
 			
 			if Stage.playerListPos == PLAYER_SONIC_A // PLAYER_SONIC in origins plus - why did they update this object in plus even if it's unused in origins? wish i knew..
-				LoadVideo("Opening")
+				// LoadVideo("Opening")
 
 //	#platform: Mobile
 //				if options.soundtrack == OST_JP
@@ -1412,7 +1412,7 @@ event ObjectUpdate
 
 		if checkResult == true
 			if deleteConfirm.highlight == DELETE_YES
-				PlayStageSfx(SFX_S_EVENT, false)
+				PlaySfx(SFX_S_EVENT, false)
 			else
 				PlaySfx(SFX_G_SELECT, false)
 			end if
@@ -1430,7 +1430,7 @@ event ObjectUpdate
 			object.fadeValue	  = 248
 			object.animationTimer = 0
 
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 		

@@ -423,7 +423,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.timer = 248
 			object.state = EXTRASMENU_EXIT_MENU
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 #endplatform
 		break
@@ -467,9 +467,9 @@ event ObjectUpdate
 
 #platform: Use_Origins
 			game.callbackParam0 = true
-			engineCallback(NOTIFY_LEVEL_SELECT_MENU)
+			// engineCallback(NOTIFY_LEVEL_SELECT_MENU)
 			game.callbackParam0 = 0
-			engineCallback(NOTIFY_PLAYER_SET)
+			// engineCallback(NOTIFY_PLAYER_SET)
 			Stage.playerListPos = PLAYER_SONIC
 #endplatform
 
@@ -725,7 +725,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = EXTRASMENU_VISUALMODE_FADEOUT
 			object.timer = 248
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
@@ -745,24 +745,24 @@ event ObjectUpdate
 		else
 #platform: Use_Origins
 			game.callbackParam0 = 1
-			engineCallback(NOTIFY_EXTRAS_MODE)
+			// engineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 			switch helper.vMCurrentButton
 			case 0
-				LoadVideo("Opening")
+				// LoadVideo("Opening")
 				break
 
 			case 1
-				LoadVideo("Pencil_Test")
+				// LoadVideo("Pencil_Test")
 				break
 
 			case 2
-				LoadVideo("Good_Ending")
+				// LoadVideo("Good_Ending")
 				break
 
 			case 3
-				LoadVideo("Bad_Ending")
+				// LoadVideo("Bad_Ending")
 				break
 
 			end switch
@@ -803,7 +803,7 @@ event ObjectUpdate
 
 #platform: Use_Origins
 			game.callbackParam0 = 0
-			engineCallback(NOTIFY_EXTRAS_MODE)
+			// engineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 #platform: Mobile

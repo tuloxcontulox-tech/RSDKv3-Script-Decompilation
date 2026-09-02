@@ -231,14 +231,14 @@ event ObjectUpdate
 			WriteSaveRAM()
 #platform: Use_Origins
 			game.callbackParam0 = options.soundtrack
-			engineCallback(NOTIFY_SOUND_TRACK)
+			// engineCallback(NOTIFY_SOUND_TRACK)
 #endplatform
 		end if
 		
 		if keyPress[0].buttonB == true
 			object.fadeValue = 248
 			object.state = SOUNDMENU_BACK
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 		

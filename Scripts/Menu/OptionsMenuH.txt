@@ -288,7 +288,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.timer = 248
 			object.state = OPTIONS_EXIT
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
@@ -352,7 +352,7 @@ event ObjectUpdate
 					if engine.deviceType == RETRO_MOBILE
 						stage.listPos = STAGE_P_HELP
 					else
-						engineCallback(CALLBACK_RETURNSTORE_SELECTED)
+						// engineCallback(CALLBACK_RETURNSTORE_SELECTED)
 					end if
 #endplatform
 					LoadStage()
@@ -498,7 +498,7 @@ event ObjectUpdate
 					SaveRAM[40]--
 					if SaveRAM[40] < false
 						SaveRAM[40] = true
-						HapticEffect(30, 0, 0, 0)
+						// HapticEffect(30, 0, 0, 0)
 					end if
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
@@ -731,7 +731,7 @@ event ObjectUpdate
 						options.hapticsEnabled = true
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
-						HapticEffect(30, 0, 0, 0)
+						// HapticEffect(30, 0, 0, 0)
 					end if
 				else
 					if object.optionCount == 9
@@ -799,7 +799,7 @@ event ObjectUpdate
 			options.hapticsEnabled	 = SaveRAM[40]
 			SaveRAM[32] = true
 			WriteSaveRAM()
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
@@ -897,7 +897,7 @@ event ObjectUpdate
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu F], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			GetVersionNumber(MENU_1, 1)
+			// GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0
@@ -947,7 +947,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_ABOUTMENU
 			object.timer = 248
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 

@@ -183,7 +183,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.timer = 248
 			object.state = OPTIONS_EXIT
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
@@ -205,16 +205,16 @@ event ObjectUpdate
 			object.state = OPTIONS_UNUSED2
 			switch object.currentSelection
 			case 0
-				engineCallback(CALLBACK_HOW_TO_PLAY)
+				// engineCallback(CALLBACK_HOW_TO_PLAY)
 				break
 			case 1
-				engineCallback(CALLBACK_CONTROLS)
+				// engineCallback(CALLBACK_CONTROLS)
 				break
 			case 2
-				engineCallback(CALLBACK_SETTINGS)
+				// engineCallback(CALLBACK_SETTINGS)
 				break
 			case 3
-				engineCallback(CALLBACK_STAFF_CREDITS)
+				// engineCallback(CALLBACK_STAFF_CREDITS)
 				break
 			end switch
 		end if
@@ -356,7 +356,7 @@ event ObjectUpdate
 			options.originalControls = SaveRAM[35]
 			SaveRAM[32] = true
 			WriteSaveRAM()
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
@@ -450,7 +450,7 @@ event ObjectUpdate
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			GetVersionNumber(MENU_1, 1)
+			// GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0
@@ -499,7 +499,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_ABOUTMENU
 			object.timer = 248
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 

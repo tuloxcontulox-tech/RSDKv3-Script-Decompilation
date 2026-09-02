@@ -356,7 +356,7 @@ event ObjectUpdate
 #platform: Use_Standalone
 			object.timer = 248
 			object.state = OPTIONS_EXIT
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 #endplatform
 
 		end if
@@ -523,7 +523,7 @@ event ObjectUpdate
 			SaveRAM[32]				 = true
 			WriteSaveRAM()
 			game.callbackParam0 = options.originalControls
-			engineCallback(NOTIFY_SPIN_DASH_TYPE)
+			// engineCallback(NOTIFY_SPIN_DASH_TYPE)
 
 			PlaySfx(SFX_G_SELECT, false)
 			StopMusic()
@@ -533,7 +533,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_RETURN_TO_TITLE_ALT
 			object.timer = 0
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 			StopMusic()
 		end if
 #endplatform
@@ -892,7 +892,7 @@ event ObjectUpdate
 			SaveRAM[32]				 = true
 			WriteSaveRAM()
 
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 #endplatform
 
@@ -1001,7 +1001,7 @@ event ObjectUpdate
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			GetVersionNumber(MENU_1, 1)
+			// GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0
@@ -1055,7 +1055,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_ABOUTMENU
 			object.timer = 248
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 

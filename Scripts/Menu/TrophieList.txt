@@ -46,10 +46,10 @@ event ObjectDraw
 	
 	object.spriteSheet = object.helpTextSheet
 
-	DrawText(MENU_2, temp0, temp1, 128, 41, temp2, 1)
+	// DrawText(MENU_2, temp0, temp1, 128, 41, temp2, 1)
 	temp1 += 15
 	temp2++
-	DrawText(MENU_2, temp0, temp1, 92, 41, temp2, 1)
+	// DrawText(MENU_2, temp0, temp1, 92, 41, temp2, 1)
 end event
 
 
@@ -111,7 +111,7 @@ event ObjectStartup
 	AddMenuEntry(MENU_2, "Saviour of the Planet", 0)
 	AddMenuEntry(MENU_2, "Destroy all the robot transporters and Metal Sonic holograms in the past.", 0)
 
-	LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
+	// LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 
 	// Used to be below LoadSpriteSheet, moved here for consistency
 	arrayPos0 = 32

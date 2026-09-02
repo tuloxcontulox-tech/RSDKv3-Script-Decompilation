@@ -330,7 +330,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.fade  = 248
 			object.state = DEMOMENU_BACK
-			PlayStageSfx(SFX_S_BACKBUTTON, false)
+			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
 		break
 
