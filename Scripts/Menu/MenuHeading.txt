@@ -53,9 +53,6 @@ reserve function MenuHeading_CheckTouchBack
 
 
 public function MenuHeading_CheckTouchBack	//This is used by other scripts to check if the back touch button is pressed
-	if engine.message == MESSAGE_LOSTFOCUS
-		currentMenu.buttonPressed = -1
-	end if
 
 	temp0  = screen.xsize
 	temp0 -= 76
@@ -127,7 +124,7 @@ event ObjectDraw
 	//Draw BG Details
 	object.yOffset--
 	object.yOffset %= 240
-	object.SpriteSheet = object.gFX1
+	object.spriteSheet = object.gFX1
 	DrawSpriteScreenXY(1, screen.xcenter, object.yOffset)
 	DrawSpriteScreenXY(2, screen.xcenter, object.yOffset)
 	DrawSpriteScreenXY(0, screen.xcenter, 20)
@@ -135,7 +132,7 @@ event ObjectDraw
 #platform: Use_Decomp	// Small decomp change to extend the SONIC THE HEDGEHOG CD bar for wider resolutions
 	temp0  = screen.xcenter
 	temp0 += 200
-	DrawRect(temp0, 20, screen.XSize, 9, 0, 0, 0, 255)
+	DrawRect(temp0, 20, screen.xsize, 9, 0, 0, 0, 255)
 #endplatform
 
 	temp0  = screen.xcenter
@@ -143,7 +140,7 @@ event ObjectDraw
 	DrawRect(0, 212, temp0, 13, 0, 0, 0, 255)
 
 	//Draw Menu Header
-	object.SpriteSheet = object.gFX2
+	object.spriteSheet = object.gFX2
 	temp0   = screen.xcenter
 	temp0  -= 160
 	temp0 >>= 2
@@ -151,7 +148,7 @@ event ObjectDraw
 	DrawSpriteScreenXY(object.frame, temp0, 194)
 
 	//Draw Detail Arrows (Standard) / Drag Arrows (Mobile)
-	object.SpriteSheet = object.gFX1
+	object.spriteSheet = object.gFX1
 
 	object.angle += 4
 	object.angle &= 511
@@ -208,7 +205,7 @@ event ObjectStartup
 
 			LoadSpriteSheet("Menu/MenuGfx1_EN.gif")
 			object[arrayPos0].GFX1 = object[arrayPos0].SpriteSheet
-			switch Engine.Language
+			switch engine.language
 			case LANG_ENGLISH
 				LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 				break
@@ -238,9 +235,9 @@ event ObjectStartup
 	SpriteFrame(8, 0, 8, 240, 503, 1)		// #1 Vertical Line 1
 	SpriteFrame(8, 240, 8, 240, 503, 1)		// #2 Vertical Line
 
-// Slight modification, in origins this was a normal "if Engine.DeviceType == RETRO_STANDARD", written like this to help with compatibility
+// Slight modification, in origins this was a normal "if engine.deviceType == RETRO_STANDARD", written like this to help with compatibility
 #platform: Use_Origins
-	CheckEqual(Engine.DeviceType, RETRO_STANDARD)
+	CheckEqual(engine.deviceType, RETRO_STANDARD)
 #endplatform
 
 #platform: Use_Standalone
@@ -259,7 +256,7 @@ event ObjectStartup
 		SpriteFrame(-11, -36, 22, 72, 418, 366)		// #3 Up Arrow
 		SpriteFrame(-11, -36, 22, 72, 441, 366)		// #4 Down Arrow
 	else
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 		case LANG_JAPANESE
 			SpriteFrame(-11, -36, 22, 72, 418, 1)		// #3 Up Arrow
@@ -289,7 +286,7 @@ event ObjectStartup
 		end switch
 	end if
 	//MenuGfx2
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 	case LANG_JAPANESE
 		SpriteFrame(32, 0, 160, 30, 1, 615)			// #5 Main Menu

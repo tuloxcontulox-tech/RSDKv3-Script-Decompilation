@@ -109,7 +109,7 @@ private function ExtrasMenu_DrawUnlocks
 	DrawSpriteScreenFX(8, FX_INK, object.xpos, object.ypos)
 	switch arrayPos0
 	case 0
-		if Options.DAGardenFlag == true
+		if options.daGardenFlag == true
 			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
 			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
@@ -117,7 +117,7 @@ private function ExtrasMenu_DrawUnlocks
 		break
 
 	case 1
-		if Options.VisualModeFlag == true
+		if options.visualModeFlag == true
 			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
 			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
@@ -125,7 +125,7 @@ private function ExtrasMenu_DrawUnlocks
 		break
 
 	case 2
-		if Options.SoundTestFlag == true
+		if options.soundTestFlag == true
 			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
 			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
@@ -133,7 +133,7 @@ private function ExtrasMenu_DrawUnlocks
 		break
 		
 	case 3
-		if Options.StageSelectFlag == true
+		if options.stageSelectFlag == true
 			DrawSpriteScreenFX(0, FX_INK, object.xpos, object.ypos)
 		else
 			DrawSpriteScreenFX(1, FX_INK, object.xpos, object.ypos)
@@ -321,7 +321,7 @@ event ObjectUpdate
 			if object.currentButton < 4
 				switch object.currentButton
 				case 0
-					if Options.DAGardenFlag == true
+					if options.daGardenFlag == true
 						arrayPos0 = object.currentButton
 						helper[+arrayPos0].flickerState = true
 						object.state++
@@ -343,7 +343,7 @@ event ObjectUpdate
 					break
 
 				case 1
-					if Options.VisualModeFlag == true
+					if options.visualModeFlag == true
 						arrayPos0 = object.currentButton
 						helper[+arrayPos0].flickerState = true
 						object.state++
@@ -364,7 +364,7 @@ event ObjectUpdate
 					break
 
 				case 2
-					if Options.SoundTestFlag == true
+					if options.soundTestFlag == true
 						arrayPos0 = object.currentButton
 						helper[+arrayPos0].flickerState = true
 						object.state++
@@ -386,7 +386,7 @@ event ObjectUpdate
 					break
 
 				case 3
-					if Options.StageSelectFlag == true
+					if options.stageSelectFlag == true
 						arrayPos0 = object.currentButton
 						helper[+arrayPos0].flickerState = true
 						object.state++
@@ -592,9 +592,6 @@ event ObjectUpdate
 			end if
 
 		else
-			if engine.message == MESSAGE_LOSTFOCUS
-				helper.vMCurrentButton = -1
-			end if
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)		//Touch Input Reset
 			temp3 = checkResult
 
@@ -1050,7 +1047,7 @@ end event
 
 
 event ObjectStartup
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break
@@ -1116,28 +1113,28 @@ event ObjectStartup
 
 	if temp0 < 224757
 		SpriteFrame(64, 12, 128, 16, 1, 120)	// #10 - D. A. Garden
-		Options.DAGardenFlag = true
+		options.daGardenFlag = true
 	else
 		SpriteFrame(64, 12, 128, 16, 1, 426)	// #10 - Locked D. A. Garden
 	end if
 
 	if temp0 < 154612
 		SpriteFrame(64, 12, 128, 16, 1, 137)	// #11 - Visual Mode
-		Options.VisualModeFlag = true
+		options.visualModeFlag = true
 	else
 		SpriteFrame(64, 12, 128, 16, 130, 426)	// #11 - Locked Visual Mode
 	end if
 
 	if temp1 < 24207
 		SpriteFrame(64, 12, 128, 16, 1, 154)	// #12 - Sound Test
-		Options.SoundTestFlag = true
+		options.soundTestFlag = true
 	else
 		SpriteFrame(64, 12, 48, 16, 404, 285)	// #12 - Locked Sound Test
 	end if
 
 	if temp1 < 30125
 		SpriteFrame(64, 12, 128, 16, 1, 171)	// #13 - Stage Select
-		Options.StageSelectFlag = true
+		options.stageSelectFlag = true
 	else
 		SpriteFrame(64, 12, 48, 16, 404, 285)	// #13 - Locked Stage Select
 	end if

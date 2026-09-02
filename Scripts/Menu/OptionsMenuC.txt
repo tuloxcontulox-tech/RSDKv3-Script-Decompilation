@@ -173,7 +173,7 @@ event ObjectUpdate
 				switch object.currentSelection
 				case 0
 				case 3
-					Music.Volume = 0
+					music.volume = 0
 					break
 
 				end switch
@@ -284,9 +284,9 @@ event ObjectUpdate
 				SaveRAM[33] -= 10
 				if SaveRAM[33] < 0
 					SaveRAM[33] = 0
-					Engine.BGMVolume = SaveRAM[33]
+					options.bgmVolume = SaveRAM[33]
 				else
-					Engine.BGMVolume = SaveRAM[33]
+					options.bgmVolume = SaveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -296,9 +296,9 @@ event ObjectUpdate
 				SaveRAM[33] += 10
 				if SaveRAM[33] > 100
 					SaveRAM[33] = 100
-					Engine.BGMVolume = SaveRAM[33]
+					options.bgmVolume = SaveRAM[33]
 				else
-					Engine.BGMVolume = SaveRAM[33]
+					options.bgmVolume = SaveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -310,10 +310,10 @@ event ObjectUpdate
 				SaveRAM[34] -= 10
 				if SaveRAM[34] < 0
 					SaveRAM[34] = 0
-					Engine.SFXVolume = SaveRAM[34]
+					options.sfxVolume = SaveRAM[34]
 				else
 					PlaySfx(SFX_G_MENUBUTTON, false)
-					Engine.SFXVolume = SaveRAM[34]
+					options.sfxVolume = SaveRAM[34]
 				end if
 			end if
 
@@ -324,7 +324,7 @@ event ObjectUpdate
 					SaveRAM[34] = 100
 				else
 					PlaySfx(SFX_G_MENUBUTTON, false)
-					Engine.SFXVolume = SaveRAM[34]
+					options.sfxVolume = SaveRAM[34]
 				end if
 			end if
 			break
@@ -353,7 +353,7 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_SETTINGS
 			object.timer = 248
-			Options.OriginalControls = SaveRAM[35]
+			options.originalControls = SaveRAM[35]
 			SaveRAM[32] = true
 			WriteSaveRAM()
 			PlayStageSfx(SFX_S_BACKBUTTON, false)
@@ -370,7 +370,7 @@ event ObjectUpdate
 		break
 
 	case OPTIONS_UNUSED2
-		Music.Volume = 100
+		music.volume = 100
 		if object.timer > 0
 			object.timer -= 8
 		else
@@ -446,7 +446,7 @@ event ObjectUpdate
 				object.ypos = temp0
 			end if
 		else
-			temp0 = object.EntityNo
+			temp0 = object.entityNo
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
@@ -666,7 +666,7 @@ end event
 
 
 event ObjectStartup
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break
@@ -692,7 +692,7 @@ event ObjectStartup
 		SaveRAM[34] = 100
 		SaveRAM[35] = 0
 	end if
-	Options.OriginalControls = SaveRAM[35]
+	options.originalControls = SaveRAM[35]
 
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #0  - Gear
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #1  - Gear Again

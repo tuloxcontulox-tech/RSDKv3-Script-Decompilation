@@ -342,14 +342,14 @@ event ObjectUpdate
 		else
 			switch object.currentSelection
 			case 0
-				if Options.DevMenuFlag == true
+				if options.devMenuFlag == true
 					engine.state = RESET_GAME
 				else
 #platform: Use_Standalone
 					stage.listPos = STAGE_P_HELP
 #endplatform
 #platform: Use_Origins
-					if Engine.DeviceType == RETRO_MOBILE
+					if engine.deviceType == RETRO_MOBILE
 						stage.listPos = STAGE_P_HELP
 					else
 						engineCallback(CALLBACK_RETURNSTORE_SELECTED)
@@ -430,9 +430,9 @@ event ObjectUpdate
 					SaveRAM[33] -= 10
 					if SaveRAM[33] < 0
 						SaveRAM[33] = 0
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 					else
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -442,9 +442,9 @@ event ObjectUpdate
 					SaveRAM[33] += 10
 					if SaveRAM[33] > 100
 						SaveRAM[33] = 100
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 					else
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -456,10 +456,10 @@ event ObjectUpdate
 					SaveRAM[34] -= 10
 					if SaveRAM[34] < 0
 						SaveRAM[34] = 0
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 					else
 						PlaySfx(SFX_G_MENUBUTTON, false)
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 					end if
 				end if
 
@@ -470,7 +470,7 @@ event ObjectUpdate
 						SaveRAM[34] = 100
 					else
 						PlaySfx(SFX_G_MENUBUTTON, false)
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 					end if
 				end if
 				break
@@ -540,9 +540,9 @@ event ObjectUpdate
 					SaveRAM[33] -= 10
 					if SaveRAM[33] < 0
 						SaveRAM[33] = 0
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 					else
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -553,9 +553,9 @@ event ObjectUpdate
 						SaveRAM[33] -= 10
 						if SaveRAM[33] < 0
 							SaveRAM[33] = 0
-							Engine.BGMVolume = SaveRAM[33]
+							options.bgmVolume = SaveRAM[33]
 						else
-							Engine.BGMVolume = SaveRAM[33]
+							options.bgmVolume = SaveRAM[33]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -574,9 +574,9 @@ event ObjectUpdate
 					SaveRAM[34] -= 10
 					if SaveRAM[34] < 0
 						SaveRAM[34] = 0
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 					else
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -587,9 +587,9 @@ event ObjectUpdate
 						SaveRAM[34] -= 10
 						if SaveRAM[34] < 0
 							SaveRAM[34] = 0
-							Engine.SFXVolume = SaveRAM[34]
+							options.sfxVolume = SaveRAM[34]
 						else
-							Engine.SFXVolume = SaveRAM[34]
+							options.sfxVolume = SaveRAM[34]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -613,9 +613,9 @@ event ObjectUpdate
 					SaveRAM[33] += 10
 					if SaveRAM[33] > 100
 						SaveRAM[33] = 100
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 					else
-						Engine.BGMVolume = SaveRAM[33]
+						options.bgmVolume = SaveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -626,9 +626,9 @@ event ObjectUpdate
 						SaveRAM[33] += 10
 						if SaveRAM[33] > 100
 							SaveRAM[33] = 100
-							Engine.BGMVolume = SaveRAM[33]
+							options.bgmVolume = SaveRAM[33]
 						else
-							Engine.BGMVolume = SaveRAM[33]
+							options.bgmVolume = SaveRAM[33]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -648,9 +648,9 @@ event ObjectUpdate
 					SaveRAM[34] += 10
 					if SaveRAM[34] > 100
 						SaveRAM[34] = 100
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 					else
-						Engine.SFXVolume = SaveRAM[34]
+						options.sfxVolume = SaveRAM[34]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -661,9 +661,9 @@ event ObjectUpdate
 						SaveRAM[34] += 10
 						if SaveRAM[34] > 100
 							SaveRAM[34] = 100
-							Engine.SFXVolume = SaveRAM[34]
+							options.sfxVolume = SaveRAM[34]
 						else
-							Engine.SFXVolume = SaveRAM[34]
+							options.sfxVolume = SaveRAM[34]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -728,7 +728,7 @@ event ObjectUpdate
 				if temp3 < 0
 					if object.optionCount == 9
 						SaveRAM[40] = true
-						Engine.HapticsEnabled = true
+						options.hapticsEnabled = true
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
 						HapticEffect(30, 0, 0, 0)
@@ -751,7 +751,7 @@ event ObjectUpdate
 				if temp3 < 0
 					if object.optionCount == 10
 						SaveRAM[40] = false
-						Engine.HapticsEnabled = false
+						options.hapticsEnabled = false
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
 					end if
@@ -795,8 +795,8 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_SETTINGS
 			object.timer = 248
-			Options.OriginalControls = SaveRAM[35]
-			Engine.HapticsEnabled	 = SaveRAM[40]
+			options.originalControls = SaveRAM[35]
+			options.hapticsEnabled	 = SaveRAM[40]
 			SaveRAM[32] = true
 			WriteSaveRAM()
 			PlayStageSfx(SFX_S_BACKBUTTON, false)
@@ -893,7 +893,7 @@ event ObjectUpdate
 				object.ypos = temp0
 			end if
 		else
-			temp0  = object.EntityNo
+			temp0  = object.entityNo
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu F], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
@@ -1149,7 +1149,7 @@ end event
 
 
 event ObjectStartup
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break
@@ -1176,8 +1176,8 @@ event ObjectStartup
 		SaveRAM[35] = 0
 		SaveRAM[40] = true
 	end if
-	Options.OriginalControls = SaveRAM[35]
-	Engine.HapticsEnabled	 = SaveRAM[40]
+	options.originalControls = SaveRAM[35]
+	options.hapticsEnabled	 = SaveRAM[40]
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #0 - Gear
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #1 - Gear Again
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #2 - Why is this a Gear again
@@ -1189,7 +1189,7 @@ event ObjectStartup
 	SpriteFrame(45, 12, 13, 13, 488, 1)				// #8 - Triangle detail
 	SpriteFrame(0, 0, 250, 37, 259, 421)			// #9 - Selection Border
 
-	if Options.DevMenuFlag == true
+	if options.devMenuFlag == true
 		SpriteFrame(64, 12, 66, 16, 259, 598)		// #10 - Dev Menu
 	else
 		SpriteFrame(64, 12, 128, 16, 1, 188)		// #10 - Instructions
@@ -1199,7 +1199,7 @@ event ObjectStartup
 	SpriteFrame(64, 12, 128, 16, 1, 222)			// #12 - Staff Credits
 	SpriteFrame(64, 12, 128, 16, 1, 239)			// #13 - About
 
-	if Options.DevMenuFlag == true
+	if options.devMenuFlag == true
 		SpriteFrame(64, 12, 66, 16, 326, 598)		// #14 - Dev Menu Highlight
 	else
 		SpriteFrame(64, 12, 128, 16, 130, 188)		// #14 - Instructions Highlight

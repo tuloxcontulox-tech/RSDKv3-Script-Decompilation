@@ -370,14 +370,14 @@ event ObjectUpdate
 		if object.fade < 320
 			object.fade += 8
 		else
-			Options.GameMode	  = MODE_TRIAL
+			options.gameMode	  = MODE_TRIAL
 			Player.score		  = 0
 			Player.lives		  = 3
 			Player.scoreBonus	  = 50000
 			Transporter_Destroyed = false
 			MetalSonic_Destroyed  = false
 			
-			TimeAttack.Round = object.currentButton
+			timeAttack.round = object.currentButton
 			stage.activeList = REGULAR_STAGE
 			switch object.currentButton
 			case 0

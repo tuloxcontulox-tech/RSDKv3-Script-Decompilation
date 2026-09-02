@@ -360,7 +360,7 @@ end event
 
 
 event ObjectStartup
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break

@@ -47,7 +47,7 @@ reserve function HelpMenu_PageLoad
 private function HelpMenu_PageLoad
 	switch object.helpPage
 	case 0
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg1_EN.txt", 1)
 			break
@@ -69,7 +69,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 1
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg2_EN.txt", 1)
 			break
@@ -91,7 +91,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 2
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg3_EN.txt", 1)
 			break
@@ -113,7 +113,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 3
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg4_EN.txt", 1)
 			break
@@ -135,7 +135,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 4
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg5_EN.txt", 1)
 			break
@@ -157,7 +157,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 5
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg6_EN.txt", 1)
 			break
@@ -179,7 +179,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 6
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg7_EN.txt", 1)
 			break
@@ -201,7 +201,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 7
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg8_EN.txt", 1)
 			break
@@ -223,7 +223,7 @@ private function HelpMenu_PageLoad
 		end switch
 		break
 	case 8
-		switch Engine.Language
+		switch engine.language
 		case LANG_ENGLISH
 			LoadTextFile(MENU_1, "Data/Game/EN_Help/SCD_Pg9_EN.txt", 1)
 			break
@@ -398,7 +398,7 @@ event ObjectStartup
 
 	SpriteFrame(0, 0, 128, 128, 1, 1)
 
-	if Engine.Language == LANG_JAPANESE
+	if engine.language == LANG_JAPANESE
 		object[59].xpos -= 0x100000
 		object[60].xpos -= 0x100000
 		object[61].xpos -= 0x100000

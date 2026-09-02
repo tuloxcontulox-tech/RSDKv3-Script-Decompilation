@@ -32,9 +32,6 @@ private alias 2 : BUTTON_BACK
 
 event ObjectUpdate
 	if object.helpState == HELPMENU_CONTROLS
-		if engine.message == MESSAGE_LOSTFOCUS
-			object.buttonPressed = 0
-		end if
 
 		temp0   = object.xpos
 		temp0 >>= 16
@@ -148,7 +145,7 @@ event ObjectStartup
 	SpriteFrame(-60, -37, 120, 74, 132, 83)		// #3 - Up Button Highlight
 	
 #platform: Use_Origins
-	if Engine.DeviceType == RETRO_MOBILE
+	if engine.deviceType == RETRO_MOBILE
 		SpriteFrame(-63, -39, 126, 78, 1, 161)	// #4 - Back Button
 		SpriteFrame(-60, -37, 120, 74, 132, 163)// #5 - Back Button Highlight
 	else

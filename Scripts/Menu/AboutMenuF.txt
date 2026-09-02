@@ -202,7 +202,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(47, FX_INK, temp0, 136)
 			DrawSpriteScreenFX(45, FX_INK, temp0, 110)
 			DrawSpriteScreenFX(49, FX_INK, temp0, 162)
-			if SegaID.LoggedIn == false
+			if segaID.loggedIn == false
 				DrawSpriteScreenFX(51, FX_INK, temp0, 162)
 			else
 				DrawSpriteScreenFX(53, FX_INK, temp0, 162)
@@ -217,7 +217,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(temp2, FX_INK, temp0, 110)
 			DrawSpriteScreenFX(47, FX_INK, temp0, 136)
 			DrawSpriteScreenFX(49, FX_INK, temp0, 162)
-			if SegaID.LoggedIn == false
+			if segaID.loggedIn == false
 				DrawSpriteScreenFX(51, FX_INK, temp0, 162)
 			else
 				DrawSpriteScreenFX(53, FX_INK, temp0, 162)
@@ -232,7 +232,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(temp2, FX_INK, temp0, 136)
 			DrawSpriteScreenFX(45, FX_INK, temp0, 110)
 			DrawSpriteScreenFX(49, FX_INK, temp0, 162)
-			if SegaID.LoggedIn == false
+			if segaID.loggedIn == false
 				DrawSpriteScreenFX(51, FX_INK, temp0, 162)
 			else
 				DrawSpriteScreenFX(53, FX_INK, temp0, 162)
@@ -245,7 +245,7 @@ event ObjectDraw
 			temp2 >>= 1
 			temp2  += 48
 			DrawSpriteScreenFX(temp2, FX_INK, temp0, 162)
-			if SegaID.LoggedIn == false
+			if segaID.loggedIn == false
 				temp2 += 2
 				DrawSpriteScreenFX(temp2, FX_INK, temp0, 162)
 			else

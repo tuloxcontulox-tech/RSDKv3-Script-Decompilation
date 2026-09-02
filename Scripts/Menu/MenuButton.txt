@@ -33,8 +33,8 @@ private alias object[0].value7 : menuControl.smoothDrag
 
 // MenuWindow Aliases
 private alias object[61].state : menuWindow.state
-private alias object[61].xpos : menuWindow.xPos
-private alias object[61].ypos : menuWindow.yPos
+private alias object[61].xpos : menuWindow.xpos
+private alias object[61].ypos : menuWindow.ypos
 private alias object[61].value1 : menuWindow.baseWidth
 private alias object[61].value2 : menuWindow.baseHeight
 private alias object[61].value3 : menuWindow.baseXOffset
@@ -133,12 +133,12 @@ reserve function MenuButton_SetupMenuWindow
 
 private function MenuButton_SetupMenuWindow
 	ResetObjectEntity(61, TypeName[Menu Window], 0, object.xpos, object.ypos)
-	menuWindow.xPos		  += 0x480000
+	menuWindow.xpos		  += 0x480000
 	menuWindow.baseWidth   = 144
 	menuWindow.baseHeight  = 21
-	menuWindow.baseXOffset = menuWindow.xPos
-	menuWindow.baseYOffset = menuWindow.yPos
-	menuWindow.entityPos   = object.EntityNo
+	menuWindow.baseXOffset = menuWindow.xpos
+	menuWindow.baseYOffset = menuWindow.ypos
+	menuWindow.entityPos   = object.entityNo
 end function
 
 
@@ -262,7 +262,7 @@ event ObjectUpdate
 								break
 
 							case Menu_TimeAttack
-								if Engine.TrialMode == false
+								if engine.trialMode == false
 									StopMusic()
 									object[34].state = MENUBUTTON_BUTTONS_OUT
 									object[34].Timer = 0
@@ -309,15 +309,15 @@ event ObjectUpdate
 				end if
 
 				if object.propertyValue == Menu_Achievements
-					if Engine.OnlineActive == false
+					if engine.onlineActive == false
 						checkResult = false
 					end if
 				end if
 
 				if checkResult == true
 					PlaySfx(SFX_G_SELECT, false)
-					if Engine.TrialMode == true
-						if Engine.PlatformID != RETRO_ANDROID
+					if engine.trialMode == true
+						if engine.deviceType != RETRO_ANDROID
 							if object.propertyValue == Menu_LoadSaveMenu
 								StopMusic()
 							end if
@@ -357,7 +357,7 @@ event ObjectUpdate
 						break
 
 					case Menu_TimeAttack
-						if Engine.TrialMode == false
+						if engine.trialMode == false
 							object[34].state = MENUBUTTON_BUTTONS_OUT
 							object[34].Timer = 0
 							object[35].state = MENUBUTTON_BUTTONS_OUT
@@ -387,7 +387,7 @@ event ObjectUpdate
 			end if
 		end if
 
-		if Engine.PlatformID == RETRO_WP7
+		if engine.deviceType == RETRO_WP7
 			if keyPress[0].buttonB == true
 				engineCallback(CALLBACK_EXIT_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
@@ -405,7 +405,7 @@ event ObjectUpdate
 			object.timer = 0
 			switch object.propertyValue
 			case Menu_LoadSaveMenu
-				if Engine.TrialMode == false
+				if engine.trialMode == false
 					menuHeading.state  = MENUHEADING_LEAVE_SCREEN
 					menuHeading.header = SAVESELECT_HEADER
 
@@ -427,7 +427,7 @@ event ObjectUpdate
 					menuControl.state	= MENUCONTROL_ENTER_DEMO
 					menuControl.fade 	= 0
 
-					Options.GameMode		 = MODE_NOSAVE
+					options.gameMode		 = MODE_NOSAVE
 					Player.score			 = 0
 					Player.lives			 = 3
 					Player.scoreBonus		 = 50000
@@ -459,7 +459,7 @@ event ObjectUpdate
 				break
 
 			case Menu_TimeAttack
-				if Engine.TrialMode == false
+				if engine.trialMode == false
 					object.state = MENUBUTTON_BLANK
 
 					menuControl.state = MENUCONTROL_ENTER_TIMEATTACK
@@ -476,7 +476,7 @@ event ObjectUpdate
 				break
 
 			case Menu_Achievements
-				if Engine.PlatformID != RETRO_WP7
+				if engine.deviceType != RETRO_WP7
 					LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 					object.state = MENUBUTTON_CONFIRM_SELECTION
 
@@ -493,7 +493,7 @@ event ObjectUpdate
 				break
 
 			case Menu_LeaderBoards
-				if Engine.PlatformID!=RETRO_WP7
+				if engine.deviceType!=RETRO_WP7
 					LoadOnlineMenu(ONLINEMENU_LEADERBOARDS)
 					object.state   = MENUBUTTON_CONFIRM_SELECTION
 
@@ -502,7 +502,7 @@ event ObjectUpdate
 					menuControl.currentDrag = 0
 #endplatform
 				else
-					if Engine.TrialMode == false
+					if engine.trialMode == false
 						object.state   = MENUBUTTON_BLANK
 
 						menuControl.state = MENUCONTROL_ENTER_LEADERBOARDS
@@ -527,7 +527,7 @@ event ObjectUpdate
 	#endplatform
 
 	#platform: Mobile
-				if Options.HapticsMenu == true
+				if options.hapticsMenu == true
 					ResetObjectEntity(62, TypeName[Options Menu H], 0, 0, 0)
 				else
 					ResetObjectEntity(62, TypeName[Options Menu], 0, 0, 0)
@@ -536,7 +536,7 @@ event ObjectUpdate
 #endplatform
 
 #platform: Use_Origins
-				if Options.DevMenuFlag == true
+				if options.devMenuFlag == true
 					ResetObjectEntity(62, TypeName[Options Menu H], 0, 0, 0)
 				else
 					ResetObjectEntity(62, TypeName[Options Menu], 0, 0, 0)
@@ -720,7 +720,7 @@ end event
 
 
 event ObjectStartup
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break
@@ -752,10 +752,10 @@ event ObjectStartup
 		arrayPos0++
 	loop
 
-	switch Engine.PlatformID
+	switch engine.deviceType
 	case RETRO_WIN
 	case RETRO_OSX
-		if Options.DevMenuFlag == true
+		if options.devMenuFlag == true
 			object[34].propertyValue = Menu_LoadSaveMenu
 			object[35].propertyValue = Menu_TimeAttack
 			object[36].propertyValue = Menu_Help&Options
@@ -764,7 +764,7 @@ event ObjectStartup
 			object[39].propertyValue = Menu_Exit
 			object.buttonCount = 6
 		else
-			if Engine.TrialMode == true
+			if engine.trialMode == true
 				object[34].propertyValue = Menu_LoadSaveMenu
 				object[35].propertyValue = Menu_TimeAttack
 				object[36].propertyValue = Menu_Achievements
@@ -789,7 +789,7 @@ event ObjectStartup
 		break
 
 	case RETRO_XBOX_360
-		if Engine.TrialMode == true
+		if engine.trialMode == true
 			object[34].propertyValue = Menu_LoadSaveMenu
 			object[35].propertyValue = Menu_TimeAttack
 			object[36].propertyValue = Menu_Achievements
@@ -813,7 +813,7 @@ event ObjectStartup
 		break
 
 	case RETRO_PS3
-		if Engine.TrialMode == true
+		if engine.trialMode == true
 			object[34].propertyValue = Menu_LoadSaveMenu
 			object[35].propertyValue = Menu_TimeAttack
 			object[36].propertyValue = Menu_Achievements
@@ -835,7 +835,7 @@ event ObjectStartup
 		break
 
 	case RETRO_ANDROID
-		if Engine.TrialMode == true
+		if engine.trialMode == true
 			object[34].propertyValue = Menu_LoadSaveMenu
 			object[35].propertyValue = Menu_Help&Options
 			object[36].propertyValue = Menu_Soundtrack
@@ -843,7 +843,7 @@ event ObjectStartup
 			object[38].propertyValue = Menu_Exit
 			object.buttonCount = 5
 		else
-			if Engine.OnlineActive == true
+			if engine.onlineActive == true
 				object[34].propertyValue = Menu_LoadSaveMenu
 				object[35].propertyValue = Menu_TimeAttack
 				object[36].propertyValue = Menu_LeaderBoards
@@ -871,7 +871,7 @@ event ObjectStartup
 		break
 
 	case RETRO_iOS
-		if Engine.OnlineActive == true
+		if engine.onlineActive == true
 			object[34].propertyValue = Menu_LoadSaveMenu
 			object[35].propertyValue = Menu_TimeAttack
 			object[36].propertyValue = Menu_LeaderBoards
@@ -890,7 +890,7 @@ event ObjectStartup
 		break
 
 	case RETRO_WP7
-		if Engine.TrialMode == true
+		if engine.trialMode == true
 			object[34].propertyValue = Menu_LoadSaveMenu
 			object[35].propertyValue = Menu_Help&Options
 			object[36].propertyValue = Menu_Soundtrack
@@ -898,7 +898,7 @@ event ObjectStartup
 			object[38].propertyValue = Menu_Exit
 			object.buttonCount = 5
 		else
-			if Engine.OnlineActive == true
+			if engine.onlineActive == true
 				object[34].propertyValue = Menu_LoadSaveMenu
 				object[35].propertyValue = Menu_TimeAttack
 				object[36].propertyValue = Menu_LeaderBoards
@@ -952,14 +952,14 @@ event ObjectStartup
 	loop
 	
 	// #3 - Achievements/Trophies/Game Center
-	if Engine.PlatformID == RETRO_PS3
+	if engine.deviceType == RETRO_PS3
 		SpriteFrame(19, -7, 128, 16, 1, 513)
 	else
 #platform: Use_Standalone
 		SpriteFrame(19, -7, 128, 16, 1, temp1)
 #endplatform
 #platform: Use_Origins
-		if Engine.PlatformID != RETRO_IOS
+		if engine.deviceType != RETRO_IOS
 			SpriteFrame(19, -7, 128, 16, 1, temp1)
 		else
 			SpriteFrame(19, -7, 128, 16, 291, 615)
@@ -970,7 +970,7 @@ event ObjectStartup
 	temp1 += 17
 	temp0++
 	// #4 - Leaderboards
-	if Engine.OnlineActive == false
+	if engine.onlineActive == false
 		SpriteFrame(19, -7, 128, 16, 130, 460)
 	else
 		SpriteFrame(19, -7, 128, 16, 1, temp1)
@@ -1004,14 +1004,14 @@ event ObjectStartup
 	loop
 
 	// (#13 Standard, #14 Mobile) - Achievements/Trophies/Game Center
-	if Engine.PlatformID == RETRO_PS3
+	if engine.deviceType == RETRO_PS3
 		SpriteFrame(19, -7, 128, 16, 130, 513)
 	else
 #platform: Use_Standalone
 		SpriteFrame(19, -7, 128, 16, 130, temp1)
 #endplatform
 #platform: Use_Origins
-		if Engine.PlatformID != RETRO_IOS
+		if engine.deviceType != RETRO_IOS
 			SpriteFrame(19, -7, 128, 16, 130, temp1)
 		else
 			SpriteFrame(19, -7, 128, 16, 291, 632)
@@ -1114,7 +1114,7 @@ event ObjectStartup
 						menuHeading.header = HELP&OPTIONS_HEADER
 
 						CallFunction(MenuButton_SetupMenuWindow)
-						if Options.DevMenuFlag == true
+						if options.devMenuFlag == true
 							ResetObjectEntity(62,TypeName[Options Menu H], 0, 0, 0)
 						else
 							ResetObjectEntity(62,TypeName[Options Menu], 0, 0, 0)

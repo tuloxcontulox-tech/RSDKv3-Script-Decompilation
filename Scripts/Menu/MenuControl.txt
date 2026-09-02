@@ -69,9 +69,6 @@ event ObjectUpdate
 		object.fade  = 384
 		SetScreenFade(0, 0, 0, 255)
 		PlayMusic(options.soundtrack)
-		if Engine.FrameSkipTimer > -1
-			Engine.FrameSkipTimer = -1
-		end if
 		break
 
 	case MENUCONTROL_BUTTONS_MOVEIN
@@ -101,7 +98,7 @@ event ObjectUpdate
 		// 2011 Steam lacks options.physicalControls, so we force it here first and the other platforms can override it
 		if checkResult == true
 #platform: Use_Origins
-			Menu.ExitFlag = true
+			menu.exitFlag = true
 #endplatform
 			if keyPress[0].up == true
 				object.currentSelection--
@@ -163,10 +160,6 @@ event ObjectUpdate
 #endplatform
 
 		else
-			if engine.message == MESSAGE_LOSTFOCUS
-				object.currentSelection		= 0
-				object.dragCurrentSelection = 0
-			end if
 
 			if object.dragCurrentSelection > 0
 				object.currentSelection = object.dragCurrentSelection
@@ -329,7 +322,7 @@ event ObjectUpdate
 			LoadVideo("Opening")
 
 
-//			if Engine.PlatformID != RETRO_WP7
+//			if engine.deviceType != RETRO_WP7
 //				if options.soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
@@ -383,7 +376,7 @@ event ObjectStartup
 	object[0].ButtonYOffset = 32
 
 #platform: Use_Origins	// they have in mind a mobile release or this is for Switch?
-	if Engine.DeviceType == RETRO_STANDARD
+	if engine.deviceType == RETRO_STANDARD
 		object[0].CurrentSelection = 1
 		options.physicalControls   = true
 	else

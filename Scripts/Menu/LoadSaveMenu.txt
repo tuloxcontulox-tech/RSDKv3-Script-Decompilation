@@ -37,8 +37,8 @@ private alias object.scale : object.scoreBonus
 private alias object.value7 : object.goodFutureList
 
 // Delete Button
-private alias object[+1].xpos : delete.xPos
-private alias object[+1].ypos : delete.yPos
+private alias object[+1].xpos : delete.xpos
+private alias object[+1].ypos : delete.ypos
 
 // States
 private alias 0 : STATE_INITIALIZE
@@ -284,29 +284,29 @@ private function LoadSaveMenu_DrawDeleteNoSave
 	// Draw the Delete button
 	if object.saveMode >= SAVEMODE_DELETE
 		if object.selectedOption == BUTTON_DELETE
-			DrawSpriteScreenXY(55, delete.xPos, delete.yPos)
+			DrawSpriteScreenXY(55, delete.xpos, delete.ypos)
 		else
-			DrawSpriteScreenXY(54, delete.xPos, delete.yPos)
+			DrawSpriteScreenXY(54, delete.xpos, delete.ypos)
 		end if
 	else
 		if object.selectedOption == BUTTON_DELETE
-			DrawSpriteScreenXY(53, delete.xPos, delete.yPos)
+			DrawSpriteScreenXY(53, delete.xpos, delete.ypos)
 		else
-			DrawSpriteScreenXY(52, delete.xPos, delete.yPos)
+			DrawSpriteScreenXY(52, delete.xpos, delete.ypos)
 		end if
 	end if
 	
 	// Slide the Delete button in or out
 	if object.showDeleteButton == true
-		if delete.yPos > 14
-			delete.yPos -= 2
-			DrawRect(delete.xPos, 32, 64, 18, 96, 96, 128, 255)
+		if delete.ypos > 14
+			delete.ypos -= 2
+			DrawRect(delete.xpos, 32, 64, 18, 96, 96, 128, 255)
 		end if
 	else
-		if delete.yPos < 32
-			delete.yPos += 2
+		if delete.ypos < 32
+			delete.ypos += 2
 		end if
-		DrawRect(delete.xPos, 32, 64, 18, 96, 96, 128, 255)
+		DrawRect(delete.xpos, 32, 64, 18, 96, 96, 128, 255)
 	end if
 end function
 
@@ -387,9 +387,9 @@ event ObjectUpdate
 			loop
 		end if
 		
-		delete.xPos  = screen.xcenter
-		delete.xPos -= 120
-		delete.yPos  = 32
+		delete.xpos  = screen.xcenter
+		delete.xpos -= 120
+		delete.ypos  = 32
 		
 		if object.fadeValue < 256
 			object.alpha	  = object.fadeValue
@@ -478,7 +478,7 @@ event ObjectUpdate
 			
 			// Check if the delete button is touched
 			if object.showDeleteButton == true
-				temp0  = delete.xPos
+				temp0  = delete.xpos
 				temp0 -= 4
 				temp1  = temp0
 				temp1 += 72
@@ -631,7 +631,7 @@ event ObjectUpdate
 					if object[+arrayPos0].stageListPos > 0 // Is this save used?
 						StopMusic()
 					else
-						if Options.TailsUnlocked == 2 // I have no idea what this means, this will always be false
+						if options.tailsUnlocked == 2 // I have no idea what this means, this will always be false
 							StopMusic()
 						end if
 					end if
@@ -697,7 +697,7 @@ event ObjectUpdate
 			if object[+arrayPos0].stageListPos > 0 // Is this save used?
 				object.state = STATE_LOAD_SAVE
 			else
-				if Options.TailsUnlocked < 2 // I have no idea what this means, this will always be true
+				if options.tailsUnlocked < 2 // I have no idea what this means, this will always be true
 					object.state = STATE_NEW_GAME_SELECTED
 
 					object.ypos  = 40
@@ -717,8 +717,8 @@ event ObjectUpdate
 		else
 			arrayPos0 = object.selectedOption
 
-			Options.GameMode = MODE_SAVEGAME
-			Options.SaveSlot = object.selectedOption
+			options.gameMode = MODE_SAVEGAME
+			options.saveSlot = object.selectedOption
 
 			Player.lives		= object[+arrayPos0].lives
 			Player.score		= object[+arrayPos0].score
@@ -735,7 +735,7 @@ event ObjectUpdate
 			SpecialStage.timeStones	= object[+arrayPos0].timeStones
 			specialStage.listPos	= object[+arrayPos0].specialListPos
 
-			LampPost.Check = 0
+			lampPost.check = 0
 
 			stage.activeList	= REGULAR_STAGE
 			stage.listPos		= object[+arrayPos0].stageListPos
@@ -747,8 +747,8 @@ event ObjectUpdate
 			end if
 
 			if stage.listPos >= 80	// Check if the save is on a special stage
-				SpecialStage.NextZone	= stage.listPos
-				SpecialStage.NextZone  -= 80
+				specialStage.nextZone	= stage.listPos
+				specialStage.nextZone  -= 80
 				stage.activeList		= SPECIAL_STAGE
 
 #platform: Use_Origins
@@ -757,11 +757,11 @@ event ObjectUpdate
 
 				stage.listPos			= specialStage.listPos
 
-				temp0   = SpecialStage.NextZone
+				temp0   = specialStage.nextZone
 				temp0  %= 10
 				temp0 >>= 2
 				if temp0 == 1
-					temp1   = SpecialStage.NextZone
+					temp1   = specialStage.nextZone
 					temp1  /= 10
 					temp1 <<= 1
 					GetBit(temp0, good_Future_List, temp1)
@@ -880,9 +880,6 @@ event ObjectUpdate
 		else
 			// Touch Controls
 			
-			if engine.message == MESSAGE_LOSTFOCUS
-				object[+arrayPos0].playerListPos = PLAYER_NONE
-			end if
 			
 			// Check if Sonic is pressed
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
@@ -980,7 +977,7 @@ event ObjectUpdate
 			checkResult = true
 		end if
 		if checkResult == true
-			if Options.TailsUnlocked == true
+			if options.tailsUnlocked == true
 				PlaySfx(SFX_G_SELECT, false)
 				StopMusic()
 				object.state = STATE_CHARACTER_SELECTED
@@ -1037,8 +1034,8 @@ event ObjectUpdate
 			SaveRAM[arrayPos1] = 0		// Destroyed Metal Sonic Projectors
 			WriteSaveRAM()
 
-			Options.GameMode = MODE_SAVEGAME
-			Options.SaveSlot = object.selectedOption
+			options.gameMode = MODE_SAVEGAME
+			options.saveSlot = object.selectedOption
 
 			Player.lives		= 3
 			Player.score		= 0
@@ -1055,7 +1052,7 @@ event ObjectUpdate
 			SpecialStage.timeStones	= 0
 			specialStage.listPos	= STAGE_S_SS1
 
-			LampPost.Check   = 0
+			lampPost.check   = 0
 			stage.activeList = REGULAR_STAGE
 
 			arrayPos0 = object.selectedOption
@@ -1321,9 +1318,6 @@ event ObjectUpdate
 		else
 			// Touch Controls
 			
-			if engine.message == MESSAGE_LOSTFOCUS
-				deleteConfirm.highlight = DELETE_NONE
-			end if
 			
 			// Check if YES is touched
 			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
@@ -1606,15 +1600,15 @@ event ObjectDraw
 		
 		if object.saveOneStatus == SAVE_DELETE
 			if temp0 == 0
-				DrawSpriteScreenXY(55, delete.xPos, delete.yPos)
+				DrawSpriteScreenXY(55, delete.xpos, delete.ypos)
 			else
-				DrawSpriteScreenXY(54, delete.xPos, delete.yPos)
+				DrawSpriteScreenXY(54, delete.xpos, delete.ypos)
 			end if
 		else
 			if temp0 == 0
-				DrawSpriteScreenXY(53, delete.xPos, delete.yPos)
+				DrawSpriteScreenXY(53, delete.xpos, delete.ypos)
 			else
-				DrawSpriteScreenXY(52, delete.xPos, delete.yPos)
+				DrawSpriteScreenXY(52, delete.xpos, delete.ypos)
 			end if
 		end if
 		
@@ -1686,7 +1680,7 @@ end event
 
 
 event ObjectStartup
-	switch Engine.Language
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break
@@ -1742,13 +1736,13 @@ event ObjectStartup
 	ReadSaveRAM()
 	options.soundtrack = SaveRAM[38]
 	if SaveRAM[36] == true
-		Options.TailsUnlocked = true
+		options.tailsUnlocked = true
 	end if
 	
 	SpriteFrame(-112, 0, 224, 16, 1, 477)		// #30 - Player Select
 	
 	SpriteFrame(-16, -20, 32, 40, 26, 357)		// #31 - Sonic
-	if Options.TailsUnlocked == true
+	if options.tailsUnlocked == true
 		SpriteFrame(-16, -12, 32, 32, 59, 365)	// #32 - Tails
 	else
 		SpriteFrame(-16, -12, 32, 32, 72, 332)	// #32 - Locked Tails
@@ -1757,7 +1751,7 @@ event ObjectStartup
 	SpriteFrame(-24, -24, 48, 48, 405, 88)		// #33 - Character Border
 	
 	SpriteFrame(-14, 0, 27, 8, 454, 88)			// #34 - Sonic Name
-	if Options.TailsUnlocked == true
+	if options.tailsUnlocked == true
 		// Bug Details:
 		// This works fine everywhere else, but in the Blit releases of the game, this sprite was
 		// extended in the JP spritesheet to match the width of (unused) Japanese text sprites
@@ -1768,7 +1762,7 @@ event ObjectStartup
 	end if
 	
 	SpriteFrame(-14, 0, 27, 8, 454, 97)			// #36 - Sonic Name Highlight
-	if Options.TailsUnlocked == true
+	if options.tailsUnlocked == true
 		// Bug Details: Same as above
 		SpriteFrame(-12, 0, 24, 8, 482, 97)		// #37 - Tails Name Highlight
 	else

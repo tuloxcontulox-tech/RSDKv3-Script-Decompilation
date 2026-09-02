@@ -22,9 +22,6 @@ private alias 2 : MESSAGE_LOSTFOCUS
 
 event ObjectUpdate
 	if thropiesMenu.state == TROPHIES_CONTROLS
-		if engine.message == MESSAGE_LOSTFOCUS
-			object.inputCheck = 0
-		end if
 		temp0   = object.xpos
 		temp0 >>= 16
 		temp1   = temp0
