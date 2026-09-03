@@ -11,7 +11,7 @@ private alias object.value5 : object.sFXDecreaseTimer
 private alias object.value6 : object.sFXIncreaseTimer
 
 //object[+arrayPos0] can be the BlankObjects 63, 64, 65 and 66. Depending of the CurrentSelection value
-private alias object[+ArrayPos0].value2 : object.flickerText
+private alias object[+arrayPos0].value2 : object.flickerText
 
 //object[+4] is Empty, only used to set the Maximum amount of options for the controls
 private alias object[+4].value1 : object.optionCount
@@ -78,7 +78,7 @@ private alias 10 : CALLBACK_CONTROLS
 private alias 12 : CALLBACK_SETTINGS
 private alias 15 : CALLBACK_STAFF_CREDITS
 
-// SaveRAM Values
+// saveRAM Values
 // 32	:	SavedSettings
 // 33	:	BGM
 // 34	:	SFX
@@ -173,7 +173,7 @@ event ObjectUpdate
 				switch object.currentSelection
 				case 0
 				case 3
-					Music.volume = 0
+					music.volume = 0
 					break
 
 				end switch
@@ -281,24 +281,24 @@ event ObjectUpdate
 		case 0	// BGM
 			if keyPress[0].left == true
 				object.bGMDecreaseTimer = 10
-				SaveRAM[33] -= 10
-				if SaveRAM[33] < 0
-					SaveRAM[33] = 0
-					options.bgmVolume = SaveRAM[33]
+				saveRAM[33] -= 10
+				if saveRAM[33] < 0
+					saveRAM[33] = 0
+					options.bgmVolume = saveRAM[33]
 				else
-					options.bgmVolume = SaveRAM[33]
+					options.bgmVolume = saveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
 
 			if keyPress[0].right == true
 				object.bGMIncreaseTimer = 10
-				SaveRAM[33] += 10
-				if SaveRAM[33] > 100
-					SaveRAM[33] = 100
-					options.bgmVolume = SaveRAM[33]
+				saveRAM[33] += 10
+				if saveRAM[33] > 100
+					saveRAM[33] = 100
+					options.bgmVolume = saveRAM[33]
 				else
-					options.bgmVolume = SaveRAM[33]
+					options.bgmVolume = saveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -307,41 +307,41 @@ event ObjectUpdate
 		case 1	// SFX
 			if keyPress[0].left == true
 				object.sFXDecreaseTimer = 10
-				SaveRAM[34] -= 10
-				if SaveRAM[34] < 0
-					SaveRAM[34] = 0
-					options.sfxVolume = SaveRAM[34]
+				saveRAM[34] -= 10
+				if saveRAM[34] < 0
+					saveRAM[34] = 0
+					options.sfxVolume = saveRAM[34]
 				else
 					PlaySfx(SFX_G_MENUBUTTON, false)
-					options.sfxVolume = SaveRAM[34]
+					options.sfxVolume = saveRAM[34]
 				end if
 			end if
 
 			if keyPress[0].right == true
 				object.sFXIncreaseTimer = 10
-				SaveRAM[34] += 10
-				if SaveRAM[34] > 100
-					SaveRAM[34] = 100
+				saveRAM[34] += 10
+				if saveRAM[34] > 100
+					saveRAM[34] = 100
 				else
 					PlaySfx(SFX_G_MENUBUTTON, false)
-					options.sfxVolume = SaveRAM[34]
+					options.sfxVolume = saveRAM[34]
 				end if
 			end if
 			break
 
 		case 2	// Control Type
 			if keyPress[0].left == true
-				SaveRAM[35]--
-				if SaveRAM[35] < 0
-					SaveRAM[35] = 1
+				saveRAM[35]--
+				if saveRAM[35] < 0
+					saveRAM[35] = 1
 				end if
 				PlaySfx(SFX_G_MENUBUTTON, false)
 			end if
 
 			if keyPress[0].right == true
-				SaveRAM[35]++
-				if SaveRAM[35] > 1
-					SaveRAM[35] = 0
+				saveRAM[35]++
+				if saveRAM[35] > 1
+					saveRAM[35] = 0
 				end if
 				PlaySfx(SFX_G_MENUBUTTON, false)
 			end if
@@ -353,8 +353,8 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_SETTINGS
 			object.timer = 248
-			options.originalControls = SaveRAM[35]
-			SaveRAM[32] = true
+			options.originalControls = saveRAM[35]
+			saveRAM[32] = true
 			WriteSaveRAM()
 			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
@@ -370,7 +370,7 @@ event ObjectUpdate
 		break
 
 	case OPTIONS_UNUSED2
-		Music.volume = 100
+		music.volume = 100
 		if object.timer > 0
 			object.timer -= 8
 		else
@@ -590,7 +590,7 @@ event ObjectDraw
 		DrawSpriteScreenFX(33, FX_INK, temp0, 110)
 		DrawSpriteScreenFX(35, FX_INK, temp0, 151)
 #endplatform
-		if SaveRAM[35] == 0
+		if saveRAM[35] == 0
 			DrawSpriteScreenFX(37, FX_INK, temp0, 169)
 			temp0 += 132
 			DrawSpriteScreenFX(39, FX_INK, temp0, 134)
@@ -620,7 +620,7 @@ event ObjectDraw
 		temp1 -= 42
 		DrawSpriteScreenFX(18, FX_INK, temp1, 76)
 
-		temp0  = SaveRAM[33]
+		temp0  = saveRAM[33]
 		temp0 /= 10
 		temp0 += 18
 		DrawSpriteScreenFX(temp0, FX_INK, temp1, 76)
@@ -645,7 +645,7 @@ event ObjectDraw
 		temp1 -= 42
 		DrawSpriteScreenFX(18, FX_INK, temp1, 105)
 
-		temp0  = SaveRAM[34]
+		temp0  = saveRAM[34]
 		temp0 /= 10
 		temp0 += 18
 		DrawSpriteScreenFX(temp0, FX_INK, temp1, 105)
@@ -687,12 +687,12 @@ event ObjectStartup
 		break
 	end switch
 
-	if SaveRAM[32] == false
-		SaveRAM[33] = 100
-		SaveRAM[34] = 100
-		SaveRAM[35] = 0
+	if saveRAM[32] == false
+		saveRAM[33] = 100
+		saveRAM[34] = 100
+		saveRAM[35] = 0
 	end if
-	options.originalControls = SaveRAM[35]
+	options.originalControls = saveRAM[35]
 
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #0  - Gear
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #1  - Gear Again

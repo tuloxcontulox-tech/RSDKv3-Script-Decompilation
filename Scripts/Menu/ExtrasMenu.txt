@@ -470,22 +470,22 @@ event ObjectUpdate
 			// EngineCallback(NOTIFY_LEVEL_SELECT_MENU)
 			game.callbackParam0 = 0
 			// EngineCallback(NOTIFY_PLAYER_SET)
-			Stage.playerListPos = PLAYER_SONIC
+			stage.playerListPos = PLAYER_SONIC
 #endplatform
 
 			switch object.currentButton
 			case 0
-				Stage.listPos = STAGE_P_DAGARDEN
+				stage.listPos = STAGE_P_DAGARDEN
 				LoadStage()
 				break
 
 			case 2
-				Stage.listPos = STAGE_P_SOUNDTEST
+				stage.listPos = STAGE_P_SOUNDTEST
 				LoadStage()
 				break
 
 			case 3
-				Stage.listPos = STAGE_P_STAGESELECT
+				stage.listPos = STAGE_P_STAGESELECT
 				LoadStage()
 				break
 
@@ -899,8 +899,8 @@ event ObjectUpdate
 	case EXTRASMENU_RETURN_TO_TITLE
 		object.timer += 4
 		if object.timer == 384
-			Stage.activeList = PRESENTATION_STAGE
-			Stage.listPos	 = STAGE_P_TITLE
+			stage.activeList = PRESENTATION_STAGE
+			stage.listPos	 = STAGE_P_TITLE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.timer)
@@ -1092,13 +1092,13 @@ event ObjectStartup
 	temp0 = 0
 	temp1 = 0
 	while arrayPos0 < 39
-		temp0 += SaveRAM[arrayPos1]
+		temp0 += saveRAM[arrayPos1]
 		arrayPos1++
-		temp1 += SaveRAM[arrayPos1]
+		temp1 += saveRAM[arrayPos1]
 		arrayPos1  += 5
-		temp0 += SaveRAM[arrayPos1]
+		temp0 += saveRAM[arrayPos1]
 		arrayPos1  += 6
-		temp0 += SaveRAM[arrayPos1]
+		temp0 += saveRAM[arrayPos1]
 		arrayPos1  += 6
 		arrayPos0++
 	loop

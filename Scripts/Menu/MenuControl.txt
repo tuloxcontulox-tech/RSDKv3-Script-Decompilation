@@ -174,10 +174,10 @@ event ObjectUpdate
 					if object.dragEnabled == false
 						object.dragEnabled = true
 						object.dragPos	   = object.buttonYOffset
-						object.dragYOffset = TouchScreen[arrayPos0].yPos
+						object.dragYOffset = touchScreen[arrayPos0].yPos
 					else
 						//Dragging of buttons based on input
-						temp0  = TouchScreen[arrayPos0].yPos
+						temp0  = touchScreen[arrayPos0].yPos
 						temp0 -= object.dragYOffset
 						temp0 += object.dragPos
 
@@ -309,7 +309,7 @@ event ObjectUpdate
 		if object.fade < 320
 			object.fade += 8
 		else
-			Stage.listPos = STAGE_P_TATTACK
+			stage.listPos = STAGE_P_TATTACK
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.fade)
@@ -330,8 +330,8 @@ event ObjectUpdate
 //				end if
 //			end if
 
-			Stage.activeList = REGULAR_STAGE
-			Stage.listPos	 = STAGE_R_PPZ1A
+			stage.activeList = REGULAR_STAGE
+			stage.listPos	 = STAGE_R_PPZ1A
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.fade)
@@ -347,7 +347,7 @@ event ObjectUpdate
 			if object.fade < 320
 				object.fade += 8
 			else
-				Stage.listPos = STAGE_P_THROPIES
+				stage.listPos = STAGE_P_THROPIES
 				LoadStage()
 			end if
 			SetScreenFade(0, 0, 0, object.fade)
@@ -358,7 +358,7 @@ event ObjectUpdate
 			if object.fade < 320
 				object.fade += 8
 			else
-				Stage.listPos = STAGE_P_LEADERBOARDS
+				stage.listPos = STAGE_P_LEADERBOARDS
 				LoadStage()
 			end if
 			SetScreenFade(0, 0, 0, object.fade)
@@ -370,8 +370,8 @@ end event
 
 
 event ObjectStartup
-	SetMusicTrack("JP/SpecialStage.ogg", 0, 1)
-	SetMusicTrack("US/SpecialStage.ogg", 1, 270972)
+	SetMusicTrack("JP/specialStage.ogg", 0, 1)
+	SetMusicTrack("US/specialStage.ogg", 1, 270972)
 	object[0].type = TypeName[Menu Control]
 	object[0].buttonYOffset = 32
 

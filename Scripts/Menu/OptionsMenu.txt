@@ -15,7 +15,7 @@ private alias object.value7 : object.touchDelay
 private alias object[+4].value1 : object.optionCount
 
 //object[+arrayPos0] can be the BlankObjects 63, 64, 65 and 66. Depending of the CurrentSelection value
-private alias object[+ArrayPos0].value2 : object.flickerText
+private alias object[+arrayPos0].value2 : object.flickerText
 
 // MenuHeading Aliases
 private alias object[33].state : menuHeading.state
@@ -86,7 +86,7 @@ private alias 2 : INK_ALPHA
 // DeviceType
 private alias 1 : MOBILE
 
-// SaveRAM Values
+// saveRAM Values
 // 32	:	SavedSettings
 // 33	:	BGM
 // 34	:	SFX
@@ -138,10 +138,10 @@ event ObjectUpdate
 		object.state = OPTIONS_SETTINGS_CONTROLS
 		object.currentSelection = 1
 		ReadSaveRAM()
-		if SaveRAM[32] == false
-			SaveRAM[33] = 100	// BGM
-			SaveRAM[34] = 100	// SFX
-			SaveRAM[35] = 0		// Control Type
+		if saveRAM[32] == false
+			saveRAM[33] = 100	// BGM
+			saveRAM[34] = 100	// SFX
+			saveRAM[35] = 0		// Control Type
 		end if
 		object.state = OPTIONS_SETTINGS_SETUP
 
@@ -376,10 +376,10 @@ event ObjectUpdate
 
 			case 1
 				ReadSaveRAM()
-				if SaveRAM[32] == false	// SavedSettings
-					SaveRAM[33] = 100	// BGM
-					SaveRAM[34] = 100	// SFX
-					SaveRAM[35] = 0		// Control Type
+				if saveRAM[32] == false	// SavedSettings
+					saveRAM[33] = 100	// BGM
+					saveRAM[34] = 100	// SFX
+					saveRAM[35] = 0		// Control Type
 				end if
 				object.state = OPTIONS_SETTINGS_SETUP
 				object.ypos  = 40
@@ -416,21 +416,21 @@ event ObjectUpdate
 
 #platform: Use_Origins
 					if engine.deviceType == MOBILE
-						Stage.listPos = STAGE_P_HELP
+						stage.listPos = STAGE_P_HELP
 					else
-						Stage.listPos = STAGE_P_APPLETV
+						stage.listPos = STAGE_P_APPLETV
 					end if
 #endplatform
 
 #platform: Use_Standalone
-					Stage.listPos = STAGE_P_HELP
+					stage.listPos = STAGE_P_HELP
 #endplatform
 					LoadStage()
 				end if
 				break
 
 			case 2
-				Stage.listPos = STAGE_P_STAFFCREDITS
+				stage.listPos = STAGE_P_STAFFCREDITS
 				LoadStage()
 				break
 
@@ -500,17 +500,17 @@ event ObjectUpdate
 
 		// Control Type
 		if keyPress[0].left == true
-			SaveRAM[35]--
-			if SaveRAM[35] < 0
-				SaveRAM[35] = 1
+			saveRAM[35]--
+			if saveRAM[35] < 0
+				saveRAM[35] = 1
 			end if
 			PlaySfx(SFX_G_MENUBUTTON, false)
 		end if
 
 		if keyPress[0].right == true
-			SaveRAM[35]++
-			if SaveRAM[35] > 1
-				SaveRAM[35] = 0
+			saveRAM[35]++
+			if saveRAM[35] > 1
+				saveRAM[35] = 0
 			end if
 			PlaySfx(SFX_G_MENUBUTTON, false)
 		end if
@@ -519,8 +519,8 @@ event ObjectUpdate
 		if keyPress[0].buttonA == true
 			object.state = OPTIONS_RETURN_TO_TITLE_ALT
 			object.timer = 0
-			options.originalControls = SaveRAM[35]
-			SaveRAM[32]				 = true
+			options.originalControls = saveRAM[35]
+			saveRAM[32]				 = true
 			WriteSaveRAM()
 			game.callbackParam0 = options.originalControls
 			// EngineCallback(NOTIFY_SPIN_DASH_TYPE)
@@ -568,24 +568,24 @@ event ObjectUpdate
 		case 0	// BGM
 			if keyPress[0].left == true
 				object.bGMDecreaseTimer = 10
-				SaveRAM[33] -= 10
-				if SaveRAM[33] < 0
-					SaveRAM[33] = 0
-					options.bgmVolume = SaveRAM[33]
+				saveRAM[33] -= 10
+				if saveRAM[33] < 0
+					saveRAM[33] = 0
+					options.bgmVolume = saveRAM[33]
 				else
-					options.bgmVolume = SaveRAM[33]
+					options.bgmVolume = saveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
 
 			if keyPress[0].right == true
 				object.bGMIncreaseTimer = 10
-				SaveRAM[33] += 10
-				if SaveRAM[33] > 100
-					SaveRAM[33] = 100
-					options.bgmVolume = SaveRAM[33]
+				saveRAM[33] += 10
+				if saveRAM[33] > 100
+					saveRAM[33] = 100
+					options.bgmVolume = saveRAM[33]
 				else
-					options.bgmVolume = SaveRAM[33]
+					options.bgmVolume = saveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -594,41 +594,41 @@ event ObjectUpdate
 		case 1	// SFX
 			if keyPress[0].left == true
 				object.sFXDecreaseTimer = 10
-				SaveRAM[34] -= 10
-				if SaveRAM[34] < 0
-					SaveRAM[34] = 0
-					options.sfxVolume = SaveRAM[34]
+				saveRAM[34] -= 10
+				if saveRAM[34] < 0
+					saveRAM[34] = 0
+					options.sfxVolume = saveRAM[34]
 				else
 					PlaySfx(SFX_G_MENUBUTTON, false)
-					options.sfxVolume = SaveRAM[34]
+					options.sfxVolume = saveRAM[34]
 				end if
 			end if
 
 			if keyPress[0].right == true
 				object.sFXIncreaseTimer = 10
-				SaveRAM[34] += 10
-				if SaveRAM[34] > 100
-					SaveRAM[34] = 100
+				saveRAM[34] += 10
+				if saveRAM[34] > 100
+					saveRAM[34] = 100
 				else
 					PlaySfx(SFX_G_MENUBUTTON, false)
-					options.sfxVolume = SaveRAM[34]
+					options.sfxVolume = saveRAM[34]
 				end if
 			end if
 			break
 
 		case 2	// Control Type
 			if keyPress[0].left == true
-				SaveRAM[35]--
-				if SaveRAM[35] < 0
-					SaveRAM[35] = 1
+				saveRAM[35]--
+				if saveRAM[35] < 0
+					saveRAM[35] = 1
 				end if
 				PlaySfx(SFX_G_MENUBUTTON, false)
 			end if
 
 			if keyPress[0].right == true
-				SaveRAM[35]++
-				if SaveRAM[35] > 1
-					SaveRAM[35] = 0
+				saveRAM[35]++
+				if saveRAM[35] > 1
+					saveRAM[35] = 0
 				end if
 				PlaySfx(SFX_G_MENUBUTTON, false)
 			end if
@@ -666,12 +666,12 @@ event ObjectUpdate
 			object.optionCount = 3
 			object.bGMDecreaseTimer = 10
 			if object.touchDelay == 23
-				SaveRAM[33] -= 10
-				if SaveRAM[33] < 0
-					SaveRAM[33] = 0
-					options.bgmVolume = SaveRAM[33]
+				saveRAM[33] -= 10
+				if saveRAM[33] < 0
+					saveRAM[33] = 0
+					options.bgmVolume = saveRAM[33]
 				else
-					options.bgmVolume = SaveRAM[33]
+					options.bgmVolume = saveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -679,12 +679,12 @@ event ObjectUpdate
 			if temp3 < 0
 				if object.optionCount == 3
 					object.bGMDecreaseTimer = 0
-					SaveRAM[33] -= 10
-					if SaveRAM[33] < 0
-						SaveRAM[33] = 0
-						options.bgmVolume = SaveRAM[33]
+					saveRAM[33] -= 10
+					if saveRAM[33] < 0
+						saveRAM[33] = 0
+						options.bgmVolume = saveRAM[33]
 					else
-						options.bgmVolume = SaveRAM[33]
+						options.bgmVolume = saveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 					object.optionCount = -1
@@ -702,12 +702,12 @@ event ObjectUpdate
 			object.optionCount		= 4
 			object.sFXDecreaseTimer = 10
 			if object.touchDelay == 23
-				SaveRAM[34] -= 10
-				if SaveRAM[34] < 0
-					SaveRAM[34] = 0
-					options.sfxVolume = SaveRAM[34]
+				saveRAM[34] -= 10
+				if saveRAM[34] < 0
+					saveRAM[34] = 0
+					options.sfxVolume = saveRAM[34]
 				else
-					options.sfxVolume = SaveRAM[34]
+					options.sfxVolume = saveRAM[34]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -715,12 +715,12 @@ event ObjectUpdate
 			if temp3 < 0
 				if object.optionCount == 4
 					object.sFXDecreaseTimer = 0
-					SaveRAM[34] -= 10
-					if SaveRAM[34] < 0
-						SaveRAM[34] = 0
-						options.sfxVolume = SaveRAM[34]
+					saveRAM[34] -= 10
+					if saveRAM[34] < 0
+						saveRAM[34] = 0
+						options.sfxVolume = saveRAM[34]
 					else
-						options.sfxVolume = SaveRAM[34]
+						options.sfxVolume = saveRAM[34]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 					object.optionCount = -1
@@ -742,12 +742,12 @@ event ObjectUpdate
 			object.optionCount		= 5
 			object.bGMIncreaseTimer = 10
 			if object.touchDelay == 23
-				SaveRAM[33] += 10
-				if SaveRAM[33] > 100
-					SaveRAM[33] = 100
-					options.bgmVolume = SaveRAM[33]
+				saveRAM[33] += 10
+				if saveRAM[33] > 100
+					saveRAM[33] = 100
+					options.bgmVolume = saveRAM[33]
 				else
-					options.bgmVolume = SaveRAM[33]
+					options.bgmVolume = saveRAM[33]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -755,12 +755,12 @@ event ObjectUpdate
 			if temp3 < 0
 				if object.optionCount == 5
 					object.bGMIncreaseTimer = 0
-					SaveRAM[33] += 10
-					if SaveRAM[33] > 100
-						SaveRAM[33] = 100
-						options.bgmVolume = SaveRAM[33]
+					saveRAM[33] += 10
+					if saveRAM[33] > 100
+						saveRAM[33] = 100
+						options.bgmVolume = saveRAM[33]
 					else
-						options.bgmVolume = SaveRAM[33]
+						options.bgmVolume = saveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 					object.optionCount = -1
@@ -778,12 +778,12 @@ event ObjectUpdate
 			object.optionCount		= 6
 			object.sFXIncreaseTimer = 10
 			if object.touchDelay == 23
-				SaveRAM[34] += 10
-				if SaveRAM[34] > 100
-					SaveRAM[34] = 100
-					options.sfxVolume = SaveRAM[34]
+				saveRAM[34] += 10
+				if saveRAM[34] > 100
+					saveRAM[34] = 100
+					options.sfxVolume = saveRAM[34]
 				else
-					options.sfxVolume = SaveRAM[34]
+					options.sfxVolume = saveRAM[34]
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 			end if
@@ -791,12 +791,12 @@ event ObjectUpdate
 			if temp3 < 0
 				if object.optionCount == 6
 					object.sFXIncreaseTimer = 0
-					SaveRAM[34] += 10
-					if SaveRAM[34] > 100
-						SaveRAM[34] = 100
-						options.sfxVolume = SaveRAM[34]
+					saveRAM[34] += 10
+					if saveRAM[34] > 100
+						saveRAM[34] = 100
+						options.sfxVolume = saveRAM[34]
 					else
-						options.sfxVolume = SaveRAM[34]
+						options.sfxVolume = saveRAM[34]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 					object.optionCount = -1
@@ -819,7 +819,7 @@ event ObjectUpdate
 		else
 			if temp3 < 0
 				if object.optionCount == 7
-					SaveRAM[35] = 0
+					saveRAM[35] = 0
 					PlaySfx(SFX_G_MENUBUTTON, false)
 					object.optionCount = -1
 				end if
@@ -841,7 +841,7 @@ event ObjectUpdate
 		else
 			if temp3 < 0
 				if object.optionCount == 8
-					SaveRAM[35] = 1
+					saveRAM[35] = 1
 					PlaySfx(SFX_G_MENUBUTTON, false)
 					object.optionCount = -1
 				end if
@@ -888,8 +888,8 @@ event ObjectUpdate
 			object.state = OPTIONS_EXIT_SETTINGS
 			object.timer = 248
 			
-			options.originalControls = SaveRAM[35]
-			SaveRAM[32]				 = true
+			options.originalControls = saveRAM[35]
+			saveRAM[32]				 = true
 			WriteSaveRAM()
 
 			PlaySfx(SFX_S_BACKBUTTON, false)
@@ -1073,8 +1073,8 @@ event ObjectUpdate
 	case OPTIONS_RETURN_TO_TITLE
 		object.timer += 4
 		if object.timer == 384
-			Stage.activeList = PRESENTATION_STAGE
-			Stage.listPos	 = STAGE_P_TITLE
+			stage.activeList = PRESENTATION_STAGE
+			stage.listPos	 = STAGE_P_TITLE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.timer)
@@ -1083,8 +1083,8 @@ event ObjectUpdate
 	case OPTIONS_RETURN_TO_TITLE_ALT
 		object.timer += 4
 		if object.timer == 384
-			Stage.activeList = PRESENTATION_STAGE
-			Stage.listPos = STAGE_P_TITLE
+			stage.activeList = PRESENTATION_STAGE
+			stage.listPos = STAGE_P_TITLE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.timer)
@@ -1218,7 +1218,7 @@ event ObjectDraw
 		end if
 
 		//Controls Drawing
-		if SaveRAM[35] == 0
+		if saveRAM[35] == 0
 			DrawSpriteScreenFX(37, FX_INK, temp0, 169)
 			temp0 += 132
 			DrawSpriteScreenFX(39, FX_INK, temp0, 134)
@@ -1249,7 +1249,7 @@ event ObjectDraw
 		temp1 -= 42
 		DrawSpriteScreenFX(18, FX_INK, temp1, 76)
 
-		temp0  = SaveRAM[33]
+		temp0  = saveRAM[33]
 		temp0 /= 10
 		temp0 += 18
 		DrawSpriteScreenFX(temp0, FX_INK, temp1, 76)
@@ -1275,7 +1275,7 @@ event ObjectDraw
 		temp1 -= 42
 		DrawSpriteScreenFX(18, FX_INK, temp1, 105)
 
-		temp0  = SaveRAM[34]
+		temp0  = saveRAM[34]
 		temp0 /= 10
 		temp0 += 18
 		DrawSpriteScreenFX(temp0, FX_INK, temp1, 105)
@@ -1283,7 +1283,7 @@ event ObjectDraw
 
 #platform: Use_Origins
 		DrawSpriteScreenFX(36,FX_INK,temp0,110)
-		if SaveRAM[35] == 0
+		if saveRAM[35] == 0
 			DrawSpriteScreenFX(37, FX_INK, temp0, 128)
 			temp0 += 132
 			DrawSpriteScreenFX(39, FX_INK, temp0, 93)
@@ -1306,7 +1306,7 @@ event ObjectDraw
 		end if
 		temp1 -= 42
 
-		temp0  = SaveRAM[33]
+		temp0  = saveRAM[33]
 		temp0 /= 10
 		temp0 += 18
 
@@ -1362,12 +1362,12 @@ event ObjectStartup
 		break
 	end switch
 	
-	if SaveRAM[32] == false
-		SaveRAM[33] = 100
-		SaveRAM[34] = 100
-		SaveRAM[35] = 0
+	if saveRAM[32] == false
+		saveRAM[33] = 100
+		saveRAM[34] = 100
+		saveRAM[35] = 0
 	end if
-	options.originalControls = SaveRAM[35]
+	options.originalControls = saveRAM[35]
 
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #0 - Gear
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #1 - Gear Again

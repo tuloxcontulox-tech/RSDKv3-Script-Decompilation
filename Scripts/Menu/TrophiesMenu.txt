@@ -96,10 +96,10 @@ event ObjectUpdate
 					object.dragPos     = object.selectionPos
 					object.dragPos   >>= 16
 
-					object.touchYPos = TouchScreen[arrayPos0].yPos
+					object.touchYPos = touchScreen[arrayPos0].yPos
 				else
 					temp0  = object.touchYPos
-					temp0 -= TouchScreen[arrayPos0].yPos
+					temp0 -= touchScreen[arrayPos0].yPos
 					temp0 += object.dragPos
 
 					object.yOffSet3 = object.yOffSet2
@@ -179,7 +179,7 @@ event ObjectUpdate
 		if object.fade < 348
 			object.fade += 8
 		else
-			Stage.listPos = STAGE_P_MENU
+			stage.listPos = STAGE_P_MENU
 			engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if

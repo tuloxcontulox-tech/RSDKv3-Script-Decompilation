@@ -428,12 +428,12 @@ event ObjectUpdate
 					menuControl.fade 	= 0
 
 					options.gameMode		 = MODE_NOSAVE
-					Player.score			 = 0
-					Player.lives			 = 3
-					Player.scoreBonus		 = 50000
-					Transporter_Destroyed	 = false
-					MetalSonic_Destroyed	 = false
-					Good_Future				 = false
+					player.score			 = 0
+					player.lives			 = 3
+					player.scoreBonus		 = 50000
+					// Transporter_Destroyed	 = false
+					// MetalSonic_Destroyed	 = false
+					// Good_Future				 = false
 #endplatform
 
 #platform: Mobile

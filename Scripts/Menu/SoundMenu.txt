@@ -224,7 +224,7 @@ event ObjectUpdate
 
 		if checkResult == true
 			Options.soundtrack = object.selectedOption
-			SaveRAM[38] = Options.soundtrack
+			saveRAM[38] = Options.soundtrack
 			object.state = SOUNDMENU_OST_SELECTED
 			StopMusic()
 			PlaySfx(SFX_G_SELECT, false)
@@ -287,8 +287,8 @@ event ObjectUpdate
 	case SOUNDMENU_RETURN_TO_TITLE
 		object.fadeValue += 4
 		if object.fadeValue == 384
-			Stage.activeList = PRESENTATION_STAGE
-			Stage.listPos = STAGE_P_TITLE
+			stage.activeList = PRESENTATION_STAGE
+			stage.listPos = STAGE_P_TITLE
 			StopMusic()
 			LoadStage()
 		end if

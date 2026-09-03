@@ -13,7 +13,7 @@ private alias object.value6 : object.sFXIncreaseTimer
 private alias object.value7 : object.touchDelay
 
 //object[+arrayPos0] can be the BlankObjects 63, 64, 65 and 66. Depending of the CurrentSelection value
-private alias object[+ArrayPos0].value2 : object.flickerText
+private alias object[+arrayPos0].value2 : object.flickerText
 
 //object[+4] is Empty, only used to set the Maximum amount of options for the controls
 private alias object[+4].value1 : object.optionCount
@@ -86,7 +86,7 @@ private alias 1 : MOBILE
 // Callbacks
 private alias 5 : CALLBACK_RETURNSTORE_SELECTED
 
-// SaveRAM Values
+// saveRAM Values
 // 32	:	SavedSettings
 // 33	:	BGM
 // 34	:	SFX
@@ -306,11 +306,11 @@ event ObjectUpdate
 
 			case 1
 				ReadSaveRAM()
-				if SaveRAM[32] == false
-					SaveRAM[33] = 100
-					SaveRAM[34] = 100
-					SaveRAM[35] = 0
-					SaveRAM[40] = true	// Haptics
+				if saveRAM[32] == false
+					saveRAM[33] = 100
+					saveRAM[34] = 100
+					saveRAM[35] = 0
+					saveRAM[40] = true	// Haptics
 				end if
 
 				object.state = OPTIONS_SETTINGS_SETUP
@@ -346,11 +346,11 @@ event ObjectUpdate
 					engine.state = RESET_GAME
 				else
 #platform: Use_Standalone
-					Stage.listPos = STAGE_P_HELP
+					stage.listPos = STAGE_P_HELP
 #endplatform
 #platform: Use_Origins
 					if engine.deviceType == MOBILE
-						Stage.listPos = STAGE_P_HELP
+						stage.listPos = STAGE_P_HELP
 					else
 						// EngineCallback(CALLBACK_RETURNSTORE_SELECTED)
 					end if
@@ -360,7 +360,7 @@ event ObjectUpdate
 				break
 
 			case 2
-				Stage.listPos = STAGE_P_STAFFCREDITS
+				stage.listPos = STAGE_P_STAFFCREDITS
 				LoadStage()
 				break
 
@@ -427,24 +427,24 @@ event ObjectUpdate
 			case 0	// BGM
 				if keyPress[0].left == true
 					object.bGMDecreaseTimer = 10
-					SaveRAM[33] -= 10
-					if SaveRAM[33] < 0
-						SaveRAM[33] = 0
-						options.bgmVolume = SaveRAM[33]
+					saveRAM[33] -= 10
+					if saveRAM[33] < 0
+						saveRAM[33] = 0
+						options.bgmVolume = saveRAM[33]
 					else
-						options.bgmVolume = SaveRAM[33]
+						options.bgmVolume = saveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
 
 				if keyPress[0].right == true
 					object.bGMIncreaseTimer = 10
-					SaveRAM[33] += 10
-					if SaveRAM[33] > 100
-						SaveRAM[33] = 100
-						options.bgmVolume = SaveRAM[33]
+					saveRAM[33] += 10
+					if saveRAM[33] > 100
+						saveRAM[33] = 100
+						options.bgmVolume = saveRAM[33]
 					else
-						options.bgmVolume = SaveRAM[33]
+						options.bgmVolume = saveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -453,41 +453,41 @@ event ObjectUpdate
 			case 1	// SFX
 				if keyPress[0].left == true
 					object.sFXDecreaseTimer = 10
-					SaveRAM[34] -= 10
-					if SaveRAM[34] < 0
-						SaveRAM[34] = 0
-						options.sfxVolume = SaveRAM[34]
+					saveRAM[34] -= 10
+					if saveRAM[34] < 0
+						saveRAM[34] = 0
+						options.sfxVolume = saveRAM[34]
 					else
 						PlaySfx(SFX_G_MENUBUTTON, false)
-						options.sfxVolume = SaveRAM[34]
+						options.sfxVolume = saveRAM[34]
 					end if
 				end if
 
 				if keyPress[0].right == true
 					object.sFXIncreaseTimer = 10
-					SaveRAM[34] += 10
-					if SaveRAM[34] > 100
-						SaveRAM[34] = 100
+					saveRAM[34] += 10
+					if saveRAM[34] > 100
+						saveRAM[34] = 100
 					else
 						PlaySfx(SFX_G_MENUBUTTON, false)
-						options.sfxVolume = SaveRAM[34]
+						options.sfxVolume = saveRAM[34]
 					end if
 				end if
 				break
 
 			case 2	// Control Type
 				if keyPress[0].left == true
-					SaveRAM[35]--
-					if SaveRAM[35] < 0
-						SaveRAM[35] = 1
+					saveRAM[35]--
+					if saveRAM[35] < 0
+						saveRAM[35] = 1
 					end if
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 
 				if keyPress[0].right == true
-					SaveRAM[35]++
-					if SaveRAM[35] > 1
-						SaveRAM[35] = 0
+					saveRAM[35]++
+					if saveRAM[35] > 1
+						saveRAM[35] = 0
 					end if
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
@@ -495,18 +495,18 @@ event ObjectUpdate
 
 			case 3	// Haptics
 				if keyPress[0].left == true
-					SaveRAM[40]--
-					if SaveRAM[40] < false
-						SaveRAM[40] = true
+					saveRAM[40]--
+					if saveRAM[40] < false
+						saveRAM[40] = true
 						// HapticEffect(30, 0, 0, 0)
 					end if
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
 
 				if keyPress[0].right == true
-					SaveRAM[40]++
-					if SaveRAM[40] > true
-						SaveRAM[40] = false
+					saveRAM[40]++
+					if saveRAM[40] > true
+						saveRAM[40] = false
 					end if
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
@@ -537,12 +537,12 @@ event ObjectUpdate
 				object.optionCount		= 3
 				object.bGMDecreaseTimer = 10
 				if object.touchDelay == 23
-					SaveRAM[33] -= 10
-					if SaveRAM[33] < 0
-						SaveRAM[33] = 0
-						options.bgmVolume = SaveRAM[33]
+					saveRAM[33] -= 10
+					if saveRAM[33] < 0
+						saveRAM[33] = 0
+						options.bgmVolume = saveRAM[33]
 					else
-						options.bgmVolume = SaveRAM[33]
+						options.bgmVolume = saveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -550,12 +550,12 @@ event ObjectUpdate
 				if temp3 < 0
 					if object.optionCount == 3
 						object.bGMDecreaseTimer = 0
-						SaveRAM[33] -= 10
-						if SaveRAM[33] < 0
-							SaveRAM[33] = 0
-							options.bgmVolume = SaveRAM[33]
+						saveRAM[33] -= 10
+						if saveRAM[33] < 0
+							saveRAM[33] = 0
+							options.bgmVolume = saveRAM[33]
 						else
-							options.bgmVolume = SaveRAM[33]
+							options.bgmVolume = saveRAM[33]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -571,12 +571,12 @@ event ObjectUpdate
 				object.optionCount		= 4
 				object.sFXDecreaseTimer = 10
 				if object.touchDelay == 23
-					SaveRAM[34] -= 10
-					if SaveRAM[34] < 0
-						SaveRAM[34] = 0
-						options.sfxVolume = SaveRAM[34]
+					saveRAM[34] -= 10
+					if saveRAM[34] < 0
+						saveRAM[34] = 0
+						options.sfxVolume = saveRAM[34]
 					else
-						options.sfxVolume = SaveRAM[34]
+						options.sfxVolume = saveRAM[34]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -584,12 +584,12 @@ event ObjectUpdate
 				if temp3 < 0
 					if object.optionCount == 4
 						object.sFXDecreaseTimer = 0
-						SaveRAM[34] -= 10
-						if SaveRAM[34] < 0
-							SaveRAM[34] = 0
-							options.sfxVolume = SaveRAM[34]
+						saveRAM[34] -= 10
+						if saveRAM[34] < 0
+							saveRAM[34] = 0
+							options.sfxVolume = saveRAM[34]
 						else
-							options.sfxVolume = SaveRAM[34]
+							options.sfxVolume = saveRAM[34]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -610,12 +610,12 @@ event ObjectUpdate
 				object.optionCount		= 5
 				object.bGMIncreaseTimer = 10
 				if object.touchDelay == 23
-					SaveRAM[33] += 10
-					if SaveRAM[33] > 100
-						SaveRAM[33] = 100
-						options.bgmVolume = SaveRAM[33]
+					saveRAM[33] += 10
+					if saveRAM[33] > 100
+						saveRAM[33] = 100
+						options.bgmVolume = saveRAM[33]
 					else
-						options.bgmVolume = SaveRAM[33]
+						options.bgmVolume = saveRAM[33]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -623,12 +623,12 @@ event ObjectUpdate
 				if temp3 < 0
 					if object.optionCount == 5
 						object.bGMIncreaseTimer = 0
-						SaveRAM[33] += 10
-						if SaveRAM[33] > 100
-							SaveRAM[33] = 100
-							options.bgmVolume = SaveRAM[33]
+						saveRAM[33] += 10
+						if saveRAM[33] > 100
+							saveRAM[33] = 100
+							options.bgmVolume = saveRAM[33]
 						else
-							options.bgmVolume = SaveRAM[33]
+							options.bgmVolume = saveRAM[33]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -645,12 +645,12 @@ event ObjectUpdate
 				object.optionCount		= 6
 				object.sFXIncreaseTimer = 10
 				if object.touchDelay == 23
-					SaveRAM[34] += 10
-					if SaveRAM[34] > 100
-						SaveRAM[34] = 100
-						options.sfxVolume = SaveRAM[34]
+					saveRAM[34] += 10
+					if saveRAM[34] > 100
+						saveRAM[34] = 100
+						options.sfxVolume = saveRAM[34]
 					else
-						options.sfxVolume = SaveRAM[34]
+						options.sfxVolume = saveRAM[34]
 						PlaySfx(SFX_G_MENUBUTTON, false)
 					end if
 				end if
@@ -658,12 +658,12 @@ event ObjectUpdate
 				if temp3 < 0
 					if object.optionCount == 6
 						object.sFXIncreaseTimer = 0
-						SaveRAM[34] += 10
-						if SaveRAM[34] > 100
-							SaveRAM[34] = 100
-							options.sfxVolume = SaveRAM[34]
+						saveRAM[34] += 10
+						if saveRAM[34] > 100
+							saveRAM[34] = 100
+							options.sfxVolume = saveRAM[34]
 						else
-							options.sfxVolume = SaveRAM[34]
+							options.sfxVolume = saveRAM[34]
 							PlaySfx(SFX_G_MENUBUTTON, false)
 						end if
 						object.optionCount = -1
@@ -685,7 +685,7 @@ event ObjectUpdate
 			else
 				if temp3 < 0
 					if object.optionCount == 7
-						SaveRAM[35] = 0
+						saveRAM[35] = 0
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
 					end if
@@ -706,7 +706,7 @@ event ObjectUpdate
 			else
 				if temp3 < 0
 					if object.optionCount == 8
-						SaveRAM[35] = 1
+						saveRAM[35] = 1
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
 					end if
@@ -727,7 +727,7 @@ event ObjectUpdate
 			else
 				if temp3 < 0
 					if object.optionCount == 9
-						SaveRAM[40] = true
+						saveRAM[40] = true
 						options.hapticsEnabled = true
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
@@ -750,7 +750,7 @@ event ObjectUpdate
 			else
 				if temp3 < 0
 					if object.optionCount == 10
-						SaveRAM[40] = false
+						saveRAM[40] = false
 						options.hapticsEnabled = false
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
@@ -795,9 +795,9 @@ event ObjectUpdate
 		if keyPress[0].buttonB == true
 			object.state = OPTIONS_EXIT_SETTINGS
 			object.timer = 248
-			options.originalControls = SaveRAM[35]
-			options.hapticsEnabled	 = SaveRAM[40]
-			SaveRAM[32] = true
+			options.originalControls = saveRAM[35]
+			options.hapticsEnabled	 = saveRAM[40]
+			saveRAM[32] = true
 			WriteSaveRAM()
 			PlaySfx(SFX_S_BACKBUTTON, false)
 		end if
@@ -1027,7 +1027,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(45, FX_INK, temp0, 164)
 		end if
 		temp0 = screen.xcenter
-		if SaveRAM[40] == true
+		if saveRAM[40] == true
 			temp0 += 18
 		else
 			temp0 += 71
@@ -1074,7 +1074,7 @@ event ObjectDraw
 		end if
 
 		//Controls Drawing
-		if SaveRAM[35] == 0
+		if saveRAM[35] == 0
 			DrawSpriteScreenFX(37, FX_INK, temp0, 148)
 			temp0 += 135
 			DrawSpriteScreenFX(39, FX_INK, temp0, 132)
@@ -1104,7 +1104,7 @@ event ObjectDraw
 
 		temp1 -= 42
 		DrawSpriteScreenFX(18, FX_INK, temp1, 74)
-		temp0  = SaveRAM[33]
+		temp0  = saveRAM[33]
 		temp0 /= 10
 		temp0 += 18
 		DrawSpriteScreenFX(temp0, FX_INK, temp1, 74)
@@ -1127,7 +1127,7 @@ event ObjectDraw
 		end if
 		temp1 -= 42
 		DrawSpriteScreenFX(18, FX_INK, temp1, 103)
-		temp0  = SaveRAM[34]
+		temp0  = saveRAM[34]
 		temp0 /= 10
 		temp0 += 18
 		DrawSpriteScreenFX(temp0, FX_INK, temp1, 103)
@@ -1170,14 +1170,14 @@ event ObjectStartup
 		break
 	end switch
 	
-	if SaveRAM[32] == false
-		SaveRAM[33] = 100
-		SaveRAM[34] = 100
-		SaveRAM[35] = 0
-		SaveRAM[40] = true
+	if saveRAM[32] == false
+		saveRAM[33] = 100
+		saveRAM[34] = 100
+		saveRAM[35] = 0
+		saveRAM[40] = true
 	end if
-	options.originalControls = SaveRAM[35]
-	options.hapticsEnabled	 = SaveRAM[40]
+	options.originalControls = saveRAM[35]
+	options.hapticsEnabled	 = saveRAM[40]
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #0 - Gear
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #1 - Gear Again
 	SpriteFrame(4, 2, 32, 32, 479, 34)				// #2 - Why is this a Gear again

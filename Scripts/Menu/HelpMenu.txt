@@ -363,7 +363,7 @@ event ObjectUpdate
 		if object.timer < 348
 			object.timer += 8
 		else
-			Stage.listPos = STAGE_P_MENU
+			stage.listPos = STAGE_P_MENU
 			engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if
