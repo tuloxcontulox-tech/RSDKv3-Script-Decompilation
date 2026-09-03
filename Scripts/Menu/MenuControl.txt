@@ -58,7 +58,7 @@ private alias 0 : OST_JP
 private alias 2 : MESSAGE_LOSTFOCUS
 
 // Device Type
-private alias 0 : RETRO_STANDARD
+private alias 0 : STANDARD
 
 
 event ObjectUpdate
@@ -322,7 +322,7 @@ event ObjectUpdate
 			// LoadVideo("Opening")
 
 
-//			if engine.deviceType != RETRO_WP7
+//			if engine.deviceType != MOBILE
 //				if Options.Soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
@@ -376,7 +376,7 @@ event ObjectStartup
 	object[0].buttonYOffset = 32
 
 #platform: Use_Origins	// they have in mind a mobile release or this is for Switch?
-	if engine.deviceType == RETRO_STANDARD
+	if engine.deviceType == STANDARD
 		object[0].currentSelection = 1
 		options.physicalControls   = true
 	else

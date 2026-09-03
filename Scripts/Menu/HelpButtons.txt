@@ -16,7 +16,7 @@ private alias 27 : SFX_G_SELECT
 private alias 2 : MESSAGE_LOSTFOCUS
 
 // Device Type
-private alias 1 : RETRO_MOBILE
+private alias 1 : MOBILE
 
 // Help Menu States
 private alias 2 : HELPMENU_CONTROLS
@@ -145,7 +145,7 @@ event ObjectStartup
 	SpriteFrame(-60, -37, 120, 74, 132, 83)		// #3 - Up Button Highlight
 	
 #platform: Use_Origins
-	if engine.deviceType == RETRO_MOBILE
+	if engine.deviceType == MOBILE
 		SpriteFrame(-63, -39, 126, 78, 1, 161)	// #4 - Back Button
 		SpriteFrame(-60, -37, 120, 74, 132, 163)// #5 - Back Button Highlight
 	else

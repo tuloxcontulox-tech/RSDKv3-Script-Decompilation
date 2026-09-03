@@ -317,7 +317,7 @@ event ObjectUpdate
 				if checkResult == true
 					PlaySfx(SFX_G_SELECT, false)
 					if engine.trialMode == true
-						if engine.deviceType != RETRO_ANDROID
+						if engine.deviceType != MOBILE
 							if object.propertyValue == menu_LoadSaveMenu
 								StopMusic()
 							end if
@@ -387,7 +387,7 @@ event ObjectUpdate
 			end if
 		end if
 
-		if engine.deviceType == RETRO_WP7
+		if engine.deviceType == MOBILE
 			if keyPress[0].buttonB == true
 				// EngineCallback(CALLBACK_EXIT_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
@@ -476,7 +476,7 @@ event ObjectUpdate
 				break
 
 			case menu_Achievements
-				if engine.deviceType != RETRO_WP7
+				if engine.deviceType != MOBILE
 					// LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 					object.state = MENUBUTTON_CONFIRM_SELECTION
 
@@ -493,7 +493,7 @@ event ObjectUpdate
 				break
 
 			case menu_LeaderBoards
-				if engine.deviceType!=RETRO_WP7
+				if engine.deviceType!=MOBILE
 					// LoadOnlineMenu(ONLINEMENU_LEADERBOARDS)
 					object.state   = MENUBUTTON_CONFIRM_SELECTION
 
@@ -753,8 +753,7 @@ event ObjectStartup
 	loop
 
 	switch engine.deviceType
-	case RETRO_WIN
-	case RETRO_OSX
+	case STANDARD
 		if options.devMenuFlag == true
 			object[34].propertyValue = menu_LoadSaveMenu
 			object[35].propertyValue = menu_TimeAttack
@@ -788,53 +787,7 @@ event ObjectStartup
 		end if
 		break
 
-	case RETRO_XBOX_360
-		if engine.trialMode == true
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_TimeAttack
-			object[36].propertyValue = menu_Achievements
-			object[37].propertyValue = menu_LeaderBoards
-			object[38].propertyValue = menu_Help&Options
-			object[39].propertyValue = menu_Soundtrack
-			object[40].propertyValue = menu_UnlockFullGame
-			object[41].propertyValue = menu_Exit
-			object.buttonCount = 8
-		else
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_TimeAttack
-			object[36].propertyValue = menu_Achievements
-			object[37].propertyValue = menu_LeaderBoards
-			object[38].propertyValue = menu_Help&Options
-			object[39].propertyValue = menu_Soundtrack
-			object[40].propertyValue = menu_Extras
-			object[41].propertyValue = menu_Exit
-			object.buttonCount = 8
-		end if
-		break
-
-	case RETRO_PS3
-		if engine.trialMode == true
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_TimeAttack
-			object[36].propertyValue = menu_Achievements
-			object[37].propertyValue = menu_LeaderBoards
-			object[38].propertyValue = menu_Help&Options
-			object[39].propertyValue = menu_Soundtrack
-			object[40].propertyValue = menu_UnlockFullGame
-			object.buttonCount = 7
-		else
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_TimeAttack
-			object[36].propertyValue = menu_Achievements
-			object[37].propertyValue = menu_LeaderBoards
-			object[38].propertyValue = menu_Help&Options
-			object[39].propertyValue = menu_Soundtrack
-			object[40].propertyValue = menu_Extras
-			object.buttonCount = 7
-		end if
-		break
-
-	case RETRO_ANDROID
+	case MOBILE
 		if engine.trialMode == true
 			object[34].propertyValue = menu_LoadSaveMenu
 			object[35].propertyValue = menu_Help&Options
@@ -857,66 +810,10 @@ event ObjectStartup
 				object[34].propertyValue = menu_LoadSaveMenu
 				object[35].propertyValue = menu_TimeAttack
 				object[36].propertyValue = menu_Help&Options
-				object[37].propertyValue = menu_MoreGames
-				object[38].propertyValue = menu_Soundtrack
-				object[39].propertyValue = menu_Extras
-				object[40].propertyValue = menu_Exit
-				object.buttonCount = 7
 				object[37].propertyValue = menu_Soundtrack
 				object[38].propertyValue = menu_Extras
 				object[39].propertyValue = menu_Exit
 				object.buttonCount = 6
-			end if
-		end if
-		break
-
-	case RETRO_iOS
-		if engine.onlineActive == true
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_TimeAttack
-			object[36].propertyValue = menu_LeaderBoards
-			object[37].propertyValue = menu_Help&Options
-			object[38].propertyValue = menu_Soundtrack
-			object[39].propertyValue = menu_Extras
-			object.buttonCount = 6
-		else
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_TimeAttack
-			object[36].propertyValue = menu_Help&Options
-			object[37].propertyValue = menu_Soundtrack
-			object[38].propertyValue = menu_Extras
-			object.buttonCount = 5
-		end if
-		break
-
-	case RETRO_WP7
-		if engine.trialMode == true
-			object[34].propertyValue = menu_LoadSaveMenu
-			object[35].propertyValue = menu_Help&Options
-			object[36].propertyValue = menu_Soundtrack
-			object[37].propertyValue = menu_MoreGames
-			object[38].propertyValue = menu_Exit
-			object.buttonCount = 5
-		else
-			if engine.onlineActive == true
-				object[34].propertyValue = menu_LoadSaveMenu
-				object[35].propertyValue = menu_TimeAttack
-				object[36].propertyValue = menu_LeaderBoards
-				object[37].propertyValue = menu_Achievements
-				object[38].propertyValue = menu_Help&Options
-				object[39].propertyValue = menu_Soundtrack
-				object[40].propertyValue = menu_Extras
-				object[41].propertyValue = menu_Exit
-				object.buttonCount = 8
-			else
-				object[34].propertyValue = menu_LoadSaveMenu
-				object[35].propertyValue = menu_TimeAttack
-				object[36].propertyValue = menu_Help&Options
-				object[37].propertyValue = menu_MoreGames
-				object[38].propertyValue = menu_Soundtrack
-				object[39].propertyValue = menu_Extras
-				object[40].propertyValue = menu_Exit
-				object.buttonCount = 7
 			end if
 		end if
 		break
@@ -952,14 +849,14 @@ event ObjectStartup
 	loop
 	
 	// #3 - Achievements/Trophies/Game Center
-	if engine.deviceType == RETRO_PS3
+	if engine.deviceType == STANDARD
 		SpriteFrame(19, -7, 128, 16, 1, 513)
 	else
 #platform: Use_Standalone
 		SpriteFrame(19, -7, 128, 16, 1, temp1)
 #endplatform
 #platform: Use_Origins
-		if engine.deviceType != RETRO_IOS
+		if engine.deviceType != MOBILE
 			SpriteFrame(19, -7, 128, 16, 1, temp1)
 		else
 			SpriteFrame(19, -7, 128, 16, 291, 615)
@@ -1004,14 +901,14 @@ event ObjectStartup
 	loop
 
 	// (#13 Standard, #14 Mobile) - Achievements/Trophies/Game Center
-	if engine.deviceType == RETRO_PS3
+	if engine.deviceType == STANDARD
 		SpriteFrame(19, -7, 128, 16, 130, 513)
 	else
 #platform: Use_Standalone
 		SpriteFrame(19, -7, 128, 16, 130, temp1)
 #endplatform
 #platform: Use_Origins
-		if engine.deviceType != RETRO_IOS
+		if engine.deviceType != MOBILE
 			SpriteFrame(19, -7, 128, 16, 130, temp1)
 		else
 			SpriteFrame(19, -7, 128, 16, 291, 632)

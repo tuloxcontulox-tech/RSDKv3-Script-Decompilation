@@ -84,7 +84,7 @@ private alias 5 : LANG_JAPANESE
 private alias 2 : INK_ALPHA
 
 // DeviceType
-private alias 1 : RETRO_MOBILE
+private alias 1 : MOBILE
 
 // SaveRAM Values
 // 32	:	SavedSettings
@@ -415,7 +415,7 @@ event ObjectUpdate
 				else
 
 #platform: Use_Origins
-					if engine.deviceType == RETRO_MOBILE
+					if engine.deviceType == MOBILE
 						Stage.listPos = STAGE_P_HELP
 					else
 						Stage.listPos = STAGE_P_APPLETV

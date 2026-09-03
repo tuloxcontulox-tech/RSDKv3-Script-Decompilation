@@ -81,7 +81,7 @@ private alias 4 : LANG_SPANISH
 private alias 5 : LANG_JAPANESE
 
 // Device Type
-private alias 1 : RETRO_MOBILE
+private alias 1 : MOBILE
 
 // Callbacks
 private alias 5 : CALLBACK_RETURNSTORE_SELECTED
@@ -349,7 +349,7 @@ event ObjectUpdate
 					Stage.listPos = STAGE_P_HELP
 #endplatform
 #platform: Use_Origins
-					if engine.deviceType == RETRO_MOBILE
+					if engine.deviceType == MOBILE
 						Stage.listPos = STAGE_P_HELP
 					else
 						// EngineCallback(CALLBACK_RETURNSTORE_SELECTED)

@@ -46,7 +46,7 @@ private alias 5 : LANG_JAPANESE
 private alias 2 : MESSAGE_LOSTFOCUS
 
 // Device Type
-private alias 0 : RETRO_STANDARD
+private alias 0 : STANDARD
 
 // Function declarations
 reserve function MenuHeading_CheckTouchBack
@@ -235,9 +235,9 @@ event ObjectStartup
 	SpriteFrame(8, 0, 8, 240, 503, 1)		// #1 Vertical Line 1
 	SpriteFrame(8, 240, 8, 240, 503, 1)		// #2 Vertical Line
 
-// Slight modification, in origins this was a normal "if engine.deviceType == RETRO_STANDARD", written like this to help with compatibility
+// Slight modification, in origins this was a normal "if engine.deviceType == STANDARD", written like this to help with compatibility
 #platform: Use_Origins
-	CheckEqual(engine.deviceType, RETRO_STANDARD)
+	CheckEqual(engine.deviceType, STANDARD)
 #endplatform
 
 #platform: Use_Standalone
