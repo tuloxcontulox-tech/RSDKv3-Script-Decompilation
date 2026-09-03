@@ -231,7 +231,7 @@ event ObjectUpdate
 			WriteSaveRAM()
 #platform: Use_Origins
 			game.callbackParam0 = Options.soundtrack
-			EngineCallback(NOTIFY_SOUND_TRACK)
+			// EngineCallback(NOTIFY_SOUND_TRACK)
 #endplatform
 		end if
 		

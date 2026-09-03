@@ -523,7 +523,7 @@ event ObjectUpdate
 			SaveRAM[32]				 = true
 			WriteSaveRAM()
 			game.callbackParam0 = options.originalControls
-			EngineCallback(NOTIFY_SPIN_DASH_TYPE)
+			// EngineCallback(NOTIFY_SPIN_DASH_TYPE)
 
 			PlaySfx(SFX_G_SELECT, false)
 			StopMusic()
@@ -1001,7 +1001,7 @@ event ObjectUpdate
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			GetVersionNumber(MENU_1, 1)
+			// GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0

@@ -205,16 +205,16 @@ event ObjectUpdate
 			object.state = OPTIONS_UNUSED2
 			switch object.currentSelection
 			case 0
-				EngineCallback(CALLBACK_HOW_TO_PLAY)
+				// EngineCallback(CALLBACK_HOW_TO_PLAY)
 				break
 			case 1
-				EngineCallback(CALLBACK_CONTROLS)
+				// EngineCallback(CALLBACK_CONTROLS)
 				break
 			case 2
-				EngineCallback(CALLBACK_SETTINGS)
+				// EngineCallback(CALLBACK_SETTINGS)
 				break
 			case 3
-				EngineCallback(CALLBACK_STAFF_CREDITS)
+				// EngineCallback(CALLBACK_STAFF_CREDITS)
 				break
 			end switch
 		end if
@@ -450,7 +450,7 @@ event ObjectUpdate
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			GetVersionNumber(MENU_1, 1)
+			// GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0

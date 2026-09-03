@@ -467,9 +467,9 @@ event ObjectUpdate
 
 #platform: Use_Origins
 			game.callbackParam0 = true
-			EngineCallback(NOTIFY_LEVEL_SELECT_MENU)
+			// EngineCallback(NOTIFY_LEVEL_SELECT_MENU)
 			game.callbackParam0 = 0
-			EngineCallback(NOTIFY_PLAYER_SET)
+			// EngineCallback(NOTIFY_PLAYER_SET)
 			Stage.playerListPos = PLAYER_SONIC
 #endplatform
 
@@ -745,24 +745,24 @@ event ObjectUpdate
 		else
 #platform: Use_Origins
 			game.callbackParam0 = 1
-			EngineCallback(NOTIFY_EXTRAS_MODE)
+			// EngineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 			switch helper.vMCurrentButton
 			case 0
-				LoadVideo("Opening")
+				// LoadVideo("Opening")
 				break
 
 			case 1
-				LoadVideo("Pencil_Test")
+				// LoadVideo("Pencil_Test")
 				break
 
 			case 2
-				LoadVideo("Good_Ending")
+				// LoadVideo("Good_Ending")
 				break
 
 			case 3
-				LoadVideo("Bad_Ending")
+				// LoadVideo("Bad_Ending")
 				break
 
 			end switch
@@ -803,7 +803,7 @@ event ObjectUpdate
 
 #platform: Use_Origins
 			game.callbackParam0 = 0
-			EngineCallback(NOTIFY_EXTRAS_MODE)
+			// EngineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 #platform: Mobile

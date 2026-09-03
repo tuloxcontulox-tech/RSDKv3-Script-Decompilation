@@ -389,7 +389,7 @@ event ObjectUpdate
 
 		if engine.deviceType == RETRO_WP7
 			if keyPress[0].buttonB == true
-				EngineCallback(CALLBACK_EXIT_SELECTED)
+				// EngineCallback(CALLBACK_EXIT_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state		= MENUCONTROL_CONTROLS
@@ -468,7 +468,7 @@ event ObjectUpdate
 					object.state = MENUBUTTON_CONFIRM_SELECTION
 
 					menuControl.state = MENUCONTROL_CONTROLS
-					EngineCallback(CALLBACK_FULL_VERSION_ONLY)
+					// EngineCallback(CALLBACK_FULL_VERSION_ONLY)
 #platform: Mobile
 					menuControl.currentDrag = 0
 #endplatform
@@ -477,7 +477,7 @@ event ObjectUpdate
 
 			case menu_Achievements
 				if engine.deviceType != RETRO_WP7
-					LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
+					// LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 					object.state = MENUBUTTON_CONFIRM_SELECTION
 
 					menuControl.state = MENUCONTROL_CONTROLS
@@ -494,7 +494,7 @@ event ObjectUpdate
 
 			case menu_LeaderBoards
 				if engine.deviceType!=RETRO_WP7
-					LoadOnlineMenu(ONLINEMENU_LEADERBOARDS)
+					// LoadOnlineMenu(ONLINEMENU_LEADERBOARDS)
 					object.state   = MENUBUTTON_CONFIRM_SELECTION
 
 					menuControl.state = MENUCONTROL_CONTROLS
@@ -511,7 +511,7 @@ event ObjectUpdate
 						object.state  = MENUBUTTON_CONFIRM_SELECTION
 
 						menuControl.state = MENUCONTROL_CONTROLS
-						EngineCallback(CALLBACK_FULL_VERSION_ONLY)
+						// EngineCallback(CALLBACK_FULL_VERSION_ONLY)
 					end if
 				end if
 				break
@@ -571,7 +571,7 @@ event ObjectUpdate
 				break
 
 			case menu_UnlockFullGame
-				EngineCallback(CALLBACK_BUY_FULL_GAME_SELECTED)
+				// EngineCallback(CALLBACK_BUY_FULL_GAME_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state = MENUCONTROL_CONTROLS
@@ -581,7 +581,7 @@ event ObjectUpdate
 				break
 
 			case menu_Store
-				EngineCallback(CALLBACK_RETURNSTORE_SELECTED)
+				// EngineCallback(CALLBACK_RETURNSTORE_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state = MENUCONTROL_CONTROLS
@@ -591,7 +591,7 @@ event ObjectUpdate
 				break
 
 			case menu_Exit
-				EngineCallback(CALLBACK_EXIT_SELECTED)
+				// EngineCallback(CALLBACK_EXIT_SELECTED)
 #platform: Use_Decomp
 				engine.state = ENGINE_EXITGAME
 #endplatform
@@ -623,7 +623,7 @@ event ObjectUpdate
 
 #platform: Mobile
 			case menu_MoreGames
-				EngineCallback(CALLBACK_MOREGAMES)
+				// EngineCallback(CALLBACK_MOREGAMES)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state		= MENUCONTROL_CONTROLS

@@ -784,7 +784,7 @@ event ObjectUpdate
 #platform: Use_Origins
 			// normally saveSlot is just forced to 0 on the title screen, but it looks like they were planning to do a bit more than that initially? not like it matters anyways though, cause this object's unused in origins and all
 			game.callbackParam0 = object.selectedOption
-			EngineCallback(NOTIFY_SAVESLOT_SELECT)
+			// EngineCallback(NOTIFY_SAVESLOT_SELECT)
 #endplatform
 
 			LoadStage()
@@ -1068,13 +1068,13 @@ event ObjectUpdate
 #platform: Use_Origins
 			// normally saveSlot is just forced to 0 on the title screen, but it looks like they were planning to do a bit more than that initially? not like it matters anyways though, cause this object's unused in origins and all
 			game.callbackParam0 = object.selectedOption
-			EngineCallback(NOTIFY_SAVESLOT_SELECT)
+			// EngineCallback(NOTIFY_SAVESLOT_SELECT)
 #endplatform
 
 			LoadStage()
 			
 			if Stage.playerListPos == PLAYER_SONIC_A // PLAYER_SONIC in origins plus - why did they update this object in plus even if it's unused in origins? wish i knew..
-				LoadVideo("Opening")
+				// LoadVideo("Opening")
 
 //	#platform: Mobile
 //				if Options.Soundtrack == OST_JP

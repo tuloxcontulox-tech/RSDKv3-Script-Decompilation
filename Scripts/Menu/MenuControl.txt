@@ -319,7 +319,7 @@ event ObjectUpdate
 		if object.fade < 320
 			object.fade += 8
 		else
-			LoadVideo("Opening")
+			// LoadVideo("Opening")
 
 
 //			if engine.deviceType != RETRO_WP7

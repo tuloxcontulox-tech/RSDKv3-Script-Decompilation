@@ -415,7 +415,7 @@ event ObjectStartup
 
 	LoadPalette("HelpPal1.act", 0, 0, 0, 256)
 	LoadPalette("HelpPal2.act", 1, 0, 0, 256)
-	LoadTextFont("Data/Game/HelpText.bin")
+	// LoadTextFont("Data/Game/HelpText.bin")
 
 	if Options.soundtrack == OST_JP
 		SetMusicTrack("JP/DAGarden.ogg", 1, 1)

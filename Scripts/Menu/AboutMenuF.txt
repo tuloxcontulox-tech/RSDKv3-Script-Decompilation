@@ -154,15 +154,15 @@ event ObjectUpdate
 					object.state = ABOUTMENU_CONTROLS
 					switch object.buttonSelected
 					case 0
-						EngineCallback(CALLBACK_TERMS_SELECTED)
+						// EngineCallback(CALLBACK_TERMS_SELECTED)
 						break
 
 					case 1
-						EngineCallback(CALLBACK_PRIVACY_SELECTED)
+						// EngineCallback(CALLBACK_PRIVACY_SELECTED)
 						break
 
 					case 2
-						EngineCallback(CALLBACK_FACEBOOK_LOG)
+						// EngineCallback(CALLBACK_FACEBOOK_LOG)
 						break
 
 					end switch
