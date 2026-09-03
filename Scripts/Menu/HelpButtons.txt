@@ -166,7 +166,7 @@ event ObjectStartup
 	arrayPos0 = 32
 	while arrayPos0 < 1056
 		if object[arrayPos0].type == TypeName[Help Buttons]
-			object[arrayPos0].xpos += temp0
+			object[arrayPos0].xPos += temp0
 		end if
 		arrayPos0++
 	loop

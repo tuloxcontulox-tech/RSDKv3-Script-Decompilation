@@ -15,10 +15,10 @@ event ObjectDraw
 	DrawRect(0, 0, screen.xsize, 47, 255, 255, 255, 255)
 	DrawRect(0, 46, screen.xsize, 1, 128, 128, 128, 128)
 	
-	// DrawText(MENU_1, temp0, temp1, 192, 0, 0, 1)
+	DrawText(MENU_1, temp0, temp1, 192, 0, 0, 1)
 	temp2++
 	temp1 += 24
-	// DrawText(MENU_1, temp0, temp1, 128, 0, 1, 1)
+	DrawText(MENU_1, temp0, temp1, 128, 0, 1, 1)
 end event
 
 

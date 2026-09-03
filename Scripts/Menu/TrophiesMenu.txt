@@ -96,10 +96,10 @@ event ObjectUpdate
 					object.dragPos     = object.selectionPos
 					object.dragPos   >>= 16
 
-					object.touchYPos = TouchScreen[arrayPos0].ypos
+					object.touchYPos = TouchScreen[arrayPos0].yPos
 				else
 					temp0  = object.touchYPos
-					temp0 -= TouchScreen[arrayPos0].ypos
+					temp0 -= TouchScreen[arrayPos0].yPos
 					temp0 += object.dragPos
 
 					object.yOffSet3 = object.yOffSet2
@@ -179,7 +179,7 @@ event ObjectUpdate
 		if object.fade < 348
 			object.fade += 8
 		else
-			stage.listPos = STAGE_P_MENU
+			Stage.listPos = STAGE_P_MENU
 			engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if
@@ -231,9 +231,9 @@ event ObjectStartup
 
 	LoadPalette("Trophies.act", 0, 0, 0, 256)
 	LoadPalette("HelpPal1.act", 0, 0, 0, 32)
-	// LoadTextFont("Data/Game/HelpText.bin")
+	LoadTextFont("Data/Game/HelpText.bin")
 
-	if options.soundtrack == OST_JP
+	if Options.soundtrack == OST_JP
 		SetMusicTrack("JP/DAGarden.ogg", 1, 1)
 	else
 		SetMusicTrack("US/DAGarden.ogg", 1, 117382)

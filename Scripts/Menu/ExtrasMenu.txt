@@ -78,7 +78,7 @@ reserve function ExtrasMenu_DrawUnlocks
 
 
 private function ExtrasMenu_DrawUnlocks
-	switch helper[+arrayPos0].flickerState
+	switch Helper[+arrayPos0].flickerState
 	case false
 		if arrayPos0 == object.currentButton
 			DrawSpriteScreenFX(9, FX_INK, object.xpos, object.ypos)
@@ -323,7 +323,7 @@ event ObjectUpdate
 				case 0
 					if options.daGardenFlag == true
 						arrayPos0 = object.currentButton
-						helper[+arrayPos0].flickerState = true
+						Helper[+arrayPos0].flickerState = true
 						object.state++
 						StopMusic()
 						PlaySfx(SFX_G_SELECT, false)
@@ -345,7 +345,7 @@ event ObjectUpdate
 				case 1
 					if options.visualModeFlag == true
 						arrayPos0 = object.currentButton
-						helper[+arrayPos0].flickerState = true
+						Helper[+arrayPos0].flickerState = true
 						object.state++
 						PlaySfx(SFX_G_SELECT, false)
 					else
@@ -366,7 +366,7 @@ event ObjectUpdate
 				case 2
 					if options.soundTestFlag == true
 						arrayPos0 = object.currentButton
-						helper[+arrayPos0].flickerState = true
+						Helper[+arrayPos0].flickerState = true
 						object.state++
 						StopMusic()
 						PlaySfx(SFX_G_SELECT, false)
@@ -388,7 +388,7 @@ event ObjectUpdate
 				case 3
 					if options.stageSelectFlag == true
 						arrayPos0 = object.currentButton
-						helper[+arrayPos0].flickerState = true
+						Helper[+arrayPos0].flickerState = true
 						object.state++
 						StopMusic()
 						PlaySfx(SFX_G_SELECT, false)
@@ -434,7 +434,7 @@ event ObjectUpdate
 		else
 			object.timer = 0
 			arrayPos0 = object.currentButton
-			helper[+arrayPos0].flickerState = false
+			Helper[+arrayPos0].flickerState = false
 			switch object.currentButton
 			case 0
 				object.state = EXTRASMENU_LOAD_EXTRA_STAGE
@@ -467,25 +467,25 @@ event ObjectUpdate
 
 #platform: Use_Origins
 			game.callbackParam0 = true
-			// engineCallback(NOTIFY_LEVEL_SELECT_MENU)
+			EngineCallback(NOTIFY_LEVEL_SELECT_MENU)
 			game.callbackParam0 = 0
-			// engineCallback(NOTIFY_PLAYER_SET)
+			EngineCallback(NOTIFY_PLAYER_SET)
 			Stage.playerListPos = PLAYER_SONIC
 #endplatform
 
 			switch object.currentButton
 			case 0
-				stage.listPos = STAGE_P_DAGARDEN
+				Stage.listPos = STAGE_P_DAGARDEN
 				LoadStage()
 				break
 
 			case 2
-				stage.listPos = STAGE_P_SOUNDTEST
+				Stage.listPos = STAGE_P_SOUNDTEST
 				LoadStage()
 				break
 
 			case 3
-				stage.listPos = STAGE_P_STAGESELECT
+				Stage.listPos = STAGE_P_STAGESELECT
 				LoadStage()
 				break
 
@@ -745,24 +745,24 @@ event ObjectUpdate
 		else
 #platform: Use_Origins
 			game.callbackParam0 = 1
-			// engineCallback(NOTIFY_EXTRAS_MODE)
+			EngineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 			switch helper.vMCurrentButton
 			case 0
-				// LoadVideo("Opening")
+				LoadVideo("Opening")
 				break
 
 			case 1
-				// LoadVideo("Pencil_Test")
+				LoadVideo("Pencil_Test")
 				break
 
 			case 2
-				// LoadVideo("Good_Ending")
+				LoadVideo("Good_Ending")
 				break
 
 			case 3
-				// LoadVideo("Bad_Ending")
+				LoadVideo("Bad_Ending")
 				break
 
 			end switch
@@ -772,7 +772,7 @@ event ObjectUpdate
 //
 //			switch helper.vMCurrentButton
 //			case 0
-//				if options.soundtrack == OST_JP
+//				if Options.Soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
 //					LoadVideo("OpeningUS")
@@ -784,7 +784,7 @@ event ObjectUpdate
 //				break
 //
 //			case 2
-//				if options.soundtrack == OST_JP
+//				if Options.Soundtrack == OST_JP
 //					LoadVideo("Good_Ending")
 //				else
 //					LoadVideo("Good_EndingUS")
@@ -792,7 +792,7 @@ event ObjectUpdate
 //				break
 //
 //			case 3
-//				if options.soundtrack == OST_JP
+//				if Options.Soundtrack == OST_JP
 //					LoadVideo("Bad_Ending")
 //				else
 //					LoadVideo("Bad_EndingUS")
@@ -803,7 +803,7 @@ event ObjectUpdate
 
 #platform: Use_Origins
 			game.callbackParam0 = 0
-			// engineCallback(NOTIFY_EXTRAS_MODE)
+			EngineCallback(NOTIFY_EXTRAS_MODE)
 #endplatform
 
 #platform: Mobile
@@ -886,7 +886,7 @@ event ObjectUpdate
 			object.timer -= 8
 		else
 			object.state = EXTRASMENU_VISUALMODE
-			PlayMusic(options.soundtrack)
+			PlayMusic(Options.soundtrack)
 		end if
 		temp0 = object.timer
 		if temp0 > 255
@@ -899,8 +899,8 @@ event ObjectUpdate
 	case EXTRASMENU_RETURN_TO_TITLE
 		object.timer += 4
 		if object.timer == 384
-			stage.activeList = PRESENTATION_STAGE
-			stage.listPos	 = STAGE_P_TITLE
+			Stage.activeList = PRESENTATION_STAGE
+			Stage.listPos	 = STAGE_P_TITLE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.timer)

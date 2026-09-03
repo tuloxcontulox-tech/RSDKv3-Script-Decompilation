@@ -363,7 +363,7 @@ event ObjectUpdate
 		if object.timer < 348
 			object.timer += 8
 		else
-			stage.listPos = STAGE_P_MENU
+			Stage.listPos = STAGE_P_MENU
 			engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if
@@ -399,25 +399,25 @@ event ObjectStartup
 	SpriteFrame(0, 0, 128, 128, 1, 1)
 
 	if engine.language == LANG_JAPANESE
-		object[59].xpos -= 0x100000
-		object[60].xpos -= 0x100000
-		object[61].xpos -= 0x100000
-		object[62].xpos -= 0x100000
-		object[63].xpos -= 0x100000
-		object[64].xpos += 0x500000
-		object[59].ypos += 0x180000
-		object[60].ypos += 0x180000
-		object[61].ypos += 0x180000
-		object[62].ypos += 0x180000
-		object[63].ypos += 0x180000
-		object[64].ypos -= 0x2F0000
+		object[59].xPos -= 0x100000
+		object[60].xPos -= 0x100000
+		object[61].xPos -= 0x100000
+		object[62].xPos -= 0x100000
+		object[63].xPos -= 0x100000
+		object[64].xPos += 0x500000
+		object[59].yPos += 0x180000
+		object[60].yPos += 0x180000
+		object[61].yPos += 0x180000
+		object[62].yPos += 0x180000
+		object[63].yPos += 0x180000
+		object[64].yPos -= 0x2F0000
 	end if
 
 	LoadPalette("HelpPal1.act", 0, 0, 0, 256)
 	LoadPalette("HelpPal2.act", 1, 0, 0, 256)
-	// LoadTextFont("Data/Game/HelpText.bin")
+	LoadTextFont("Data/Game/HelpText.bin")
 
-	if options.soundtrack == OST_JP
+	if Options.soundtrack == OST_JP
 		SetMusicTrack("JP/DAGarden.ogg", 1, 1)
 	else
 		SetMusicTrack("US/DAGarden.ogg", 1, 117382)

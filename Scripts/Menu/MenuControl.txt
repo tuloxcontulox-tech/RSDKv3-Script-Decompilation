@@ -68,7 +68,7 @@ event ObjectUpdate
 		object.state = MENUCONTROL_BUTTONS_MOVEIN
 		object.fade  = 384
 		SetScreenFade(0, 0, 0, 255)
-		PlayMusic(options.soundtrack)
+		PlayMusic(Options.soundtrack)
 		break
 
 	case MENUCONTROL_BUTTONS_MOVEIN
@@ -98,7 +98,7 @@ event ObjectUpdate
 		// 2011 Steam lacks options.physicalControls, so we force it here first and the other platforms can override it
 		if checkResult == true
 #platform: Use_Origins
-			menu.exitFlag = true
+			Menu.exitFlag = true
 #endplatform
 			if keyPress[0].up == true
 				object.currentSelection--
@@ -174,10 +174,10 @@ event ObjectUpdate
 					if object.dragEnabled == false
 						object.dragEnabled = true
 						object.dragPos	   = object.buttonYOffset
-						object.dragYOffset = TouchScreen[arrayPos0].ypos
+						object.dragYOffset = TouchScreen[arrayPos0].yPos
 					else
 						//Dragging of buttons based on input
-						temp0  = TouchScreen[arrayPos0].ypos
+						temp0  = TouchScreen[arrayPos0].yPos
 						temp0 -= object.dragYOffset
 						temp0 += object.dragPos
 
@@ -309,7 +309,7 @@ event ObjectUpdate
 		if object.fade < 320
 			object.fade += 8
 		else
-			stage.listPos = STAGE_P_TATTACK
+			Stage.listPos = STAGE_P_TATTACK
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.fade)
@@ -319,19 +319,19 @@ event ObjectUpdate
 		if object.fade < 320
 			object.fade += 8
 		else
-			// LoadVideo("Opening")
+			LoadVideo("Opening")
 
 
 //			if engine.deviceType != RETRO_WP7
-//				if options.soundtrack == OST_JP
+//				if Options.Soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
 //					LoadVideo("OpeningUS")
 //				end if
 //			end if
 
-			stage.activeList = REGULAR_STAGE
-			stage.listPos	 = STAGE_R_PPZ1A
+			Stage.activeList = REGULAR_STAGE
+			Stage.listPos	 = STAGE_R_PPZ1A
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.fade)
@@ -347,7 +347,7 @@ event ObjectUpdate
 			if object.fade < 320
 				object.fade += 8
 			else
-				stage.listPos = STAGE_P_THROPIES
+				Stage.listPos = STAGE_P_THROPIES
 				LoadStage()
 			end if
 			SetScreenFade(0, 0, 0, object.fade)
@@ -358,7 +358,7 @@ event ObjectUpdate
 			if object.fade < 320
 				object.fade += 8
 			else
-				stage.listPos = STAGE_P_LEADERBOARDS
+				Stage.listPos = STAGE_P_LEADERBOARDS
 				LoadStage()
 			end if
 			SetScreenFade(0, 0, 0, object.fade)
@@ -373,11 +373,11 @@ event ObjectStartup
 	SetMusicTrack("JP/SpecialStage.ogg", 0, 1)
 	SetMusicTrack("US/SpecialStage.ogg", 1, 270972)
 	object[0].type = TypeName[Menu Control]
-	object[0].ButtonYOffset = 32
+	object[0].buttonYOffset = 32
 
 #platform: Use_Origins	// they have in mind a mobile release or this is for Switch?
 	if engine.deviceType == RETRO_STANDARD
-		object[0].CurrentSelection = 1
+		object[0].currentSelection = 1
 		options.physicalControls   = true
 	else
 		options.physicalControls   = false
@@ -386,7 +386,7 @@ event ObjectStartup
 
 #platform: Use_Standalone
 	#platform: Standard
-		object[0].CurrentSelection = 1
+		object[0].currentSelection = 1
 	#endplatform
 #endplatform
 #platform: Use_Standalone
@@ -395,7 +395,7 @@ event ObjectStartup
 	#endplatform
 #endplatform
 
-	object[0].DragCurrentSelection = 0
+	object[0].dragCurrentSelection = 0
 end event
 
 

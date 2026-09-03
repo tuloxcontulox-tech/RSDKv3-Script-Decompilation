@@ -13,7 +13,7 @@ private alias object.value6 : object.sFXIncreaseTimer
 private alias object.value7 : object.touchDelay
 
 //object[+arrayPos0] can be the BlankObjects 63, 64, 65 and 66. Depending of the CurrentSelection value
-private alias object[+arrayPos0].value2 : object.flickerText
+private alias object[+ArrayPos0].value2 : object.flickerText
 
 //object[+4] is Empty, only used to set the Maximum amount of options for the controls
 private alias object[+4].value1 : object.optionCount
@@ -346,13 +346,13 @@ event ObjectUpdate
 					engine.state = RESET_GAME
 				else
 #platform: Use_Standalone
-					stage.listPos = STAGE_P_HELP
+					Stage.listPos = STAGE_P_HELP
 #endplatform
 #platform: Use_Origins
 					if engine.deviceType == RETRO_MOBILE
-						stage.listPos = STAGE_P_HELP
+						Stage.listPos = STAGE_P_HELP
 					else
-						// engineCallback(CALLBACK_RETURNSTORE_SELECTED)
+						EngineCallback(CALLBACK_RETURNSTORE_SELECTED)
 					end if
 #endplatform
 					LoadStage()
@@ -360,7 +360,7 @@ event ObjectUpdate
 				break
 
 			case 2
-				stage.listPos = STAGE_P_STAFFCREDITS
+				Stage.listPos = STAGE_P_STAFFCREDITS
 				LoadStage()
 				break
 
@@ -498,7 +498,7 @@ event ObjectUpdate
 					SaveRAM[40]--
 					if SaveRAM[40] < false
 						SaveRAM[40] = true
-						// HapticEffect(30, 0, 0, 0)
+						HapticEffect(30, 0, 0, 0)
 					end if
 					PlaySfx(SFX_G_MENUBUTTON, false)
 				end if
@@ -731,7 +731,7 @@ event ObjectUpdate
 						options.hapticsEnabled = true
 						PlaySfx(SFX_G_MENUBUTTON, false)
 						object.optionCount = -1
-						// HapticEffect(30, 0, 0, 0)
+						HapticEffect(30, 0, 0, 0)
 					end if
 				else
 					if object.optionCount == 9
@@ -893,11 +893,11 @@ event ObjectUpdate
 				object.ypos = temp0
 			end if
 		else
-			temp0  = object.entityNo
+			temp0  = object.entityPos
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu F], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			// GetVersionNumber(MENU_1, 1)
+			GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0

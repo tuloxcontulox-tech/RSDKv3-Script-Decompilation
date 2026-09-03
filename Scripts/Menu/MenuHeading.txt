@@ -179,16 +179,16 @@ event ObjectStartup
 			if game.continueFlag == false	// they really duped the whole thing
 				object[arrayPos0].frame		 = 5 // "Main Menu"
 				object[arrayPos0].alpha		 = 255
-				object[arrayPos0].Header	 = MAINMENU_HEADER
+				object[arrayPos0].header	 = MAINMENU_HEADER
 				object[arrayPos0].inkEffect	 = INK_ALPHA
-				object[arrayPos0].XOffset	 = -256
+				object[arrayPos0].xOffset	 = -256
 				object[arrayPos0].state		 = MENUHEADING_ENTER_SCREEN
 			else
 				object[arrayPos0].frame		 = 6 // "Save Select"
 				object[arrayPos0].alpha		 = 255
-				object[arrayPos0].Header	 = SAVESELECT_HEADER
+				object[arrayPos0].header	 = SAVESELECT_HEADER
 				object[arrayPos0].inkEffect	 = INK_ALPHA
-				object[arrayPos0].XOffset	 = -256
+				object[arrayPos0].xOffset	 = -256
 				object[arrayPos0].state		 = MENUHEADING_ENTER_SCREEN
 			end if
 			
@@ -197,14 +197,14 @@ event ObjectStartup
 #platform: Use_Standalone
 			object[arrayPos0].frame		 = 5
 			object[arrayPos0].alpha		 = 255
-			object[arrayPos0].Header	 = MAINMENU_HEADER
+			object[arrayPos0].header	 = MAINMENU_HEADER
 			object[arrayPos0].inkEffect	 = INK_ALPHA
-			object[arrayPos0].XOffset	 = -256
+			object[arrayPos0].xOffset	 = -256
 			object[arrayPos0].state		 = MENUHEADING_ENTER_SCREEN
 #endplatform
 
 			LoadSpriteSheet("Menu/MenuGfx1_EN.gif")
-			object[arrayPos0].GFX1 = object[arrayPos0].SpriteSheet
+			object[arrayPos0].GFX1 = object[arrayPos0].spriteSheet
 			switch engine.language
 			case LANG_ENGLISH
 				LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
@@ -225,7 +225,7 @@ event ObjectStartup
 				LoadSpriteSheet("Menu/MenuGfx2_JP.gif")
 				break
 			end switch
-			object[arrayPos0].GFX2 = object[arrayPos0].SpriteSheet
+			object[arrayPos0].GFX2 = object[arrayPos0].spriteSheet
 		end if
 		arrayPos0++
 	loop

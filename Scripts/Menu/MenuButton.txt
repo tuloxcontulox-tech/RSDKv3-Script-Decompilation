@@ -33,8 +33,8 @@ private alias object[0].value7 : menuControl.smoothDrag
 
 // MenuWindow Aliases
 private alias object[61].state : menuWindow.state
-private alias object[61].xpos : menuWindow.xpos
-private alias object[61].ypos : menuWindow.ypos
+private alias object[61].xpos : menuWindow.xPos
+private alias object[61].ypos : menuWindow.yPos
 private alias object[61].value1 : menuWindow.baseWidth
 private alias object[61].value2 : menuWindow.baseHeight
 private alias object[61].value3 : menuWindow.baseXOffset
@@ -80,17 +80,17 @@ private alias 9 : SOUNDTRACK_HEADER
 private alias 10 : STAGESELECT_HEADER
 
 // Menus
-private alias 1 : Menu_LoadSaveMenu
-private alias 2 : Menu_TimeAttack
-private alias 3 : Menu_Achievements
-private alias 4 : Menu_LeaderBoards
-private alias 5 : Menu_Help&Options
-private alias 6 : Menu_Extras
-private alias 7 : Menu_UnlockFullGame
-private alias 8 : Menu_Store
-private alias 9 : Menu_Exit
-private alias 10 : Menu_Soundtrack
-private alias 11 : Menu_MoreGames
+private alias 1 : menu_LoadSaveMenu
+private alias 2 : menu_TimeAttack
+private alias 3 : menu_Achievements
+private alias 4 : menu_LeaderBoards
+private alias 5 : menu_Help&Options
+private alias 6 : menu_Extras
+private alias 7 : menu_UnlockFullGame
+private alias 8 : menu_Store
+private alias 9 : menu_Exit
+private alias 10 : menu_Soundtrack
+private alias 11 : menu_MoreGames
 
 // Ink Effects
 private alias 2 : INK_ALPHA
@@ -133,12 +133,12 @@ reserve function MenuButton_SetupMenuWindow
 
 private function MenuButton_SetupMenuWindow
 	ResetObjectEntity(61, TypeName[Menu Window], 0, object.xpos, object.ypos)
-	menuWindow.xpos		  += 0x480000
+	menuWindow.xPos		  += 0x480000
 	menuWindow.baseWidth   = 144
 	menuWindow.baseHeight  = 21
-	menuWindow.baseXOffset = menuWindow.xpos
-	menuWindow.baseYOffset = menuWindow.ypos
-	menuWindow.entityPos   = object.entityNo
+	menuWindow.baseXOffset = menuWindow.xPos
+	menuWindow.baseYOffset = menuWindow.yPos
+	menuWindow.entityPos   = object.entityPos
 end function
 
 
@@ -235,55 +235,55 @@ event ObjectUpdate
 							PlaySfx(SFX_G_SELECT, false)
 							menuControl.state = MENUCONTROL_BLANK
 							switch object.propertyValue
-							case Menu_LoadSaveMenu
-							case Menu_Help&Options
-							case Menu_Extras
-							case Menu_Soundtrack		//All of this is MenuButton
+							case menu_LoadSaveMenu
+							case menu_Help&Options
+							case menu_Extras
+							case menu_Soundtrack		//All of this is MenuButton
 								object[34].state = MENUBUTTON_BUTTONS_OUT
-								object[34].Timer = 0
+								object[34].timer = 0
 								object[35].state = MENUBUTTON_BUTTONS_OUT
-								object[35].Timer = 0
+								object[35].timer = 0
 								object[36].state = MENUBUTTON_BUTTONS_OUT
-								object[36].Timer = 0
+								object[36].timer = 0
 								object[37].state = MENUBUTTON_BUTTONS_OUT
-								object[37].Timer = 0
+								object[37].timer = 0
 								object[38].state = MENUBUTTON_BUTTONS_OUT
-								object[38].Timer = 0
+								object[38].timer = 0
 								object[39].state = MENUBUTTON_BUTTONS_OUT
-								object[39].Timer = 0
+								object[39].timer = 0
 								object[40].state = MENUBUTTON_BUTTONS_OUT
-								object[40].Timer = 0
+								object[40].timer = 0
 								object[41].state = MENUBUTTON_BUTTONS_OUT
-								object[41].Timer = 0
+								object[41].timer = 0
 								object[42].state = MENUBUTTON_BUTTONS_OUT
-								object[42].Timer = 0
+								object[42].timer = 0
 								object[43].state = MENUBUTTON_BUTTONS_OUT
-								object[43].Timer = 0
+								object[43].timer = 0
 								break
 
-							case Menu_TimeAttack
+							case menu_TimeAttack
 								if engine.trialMode == false
 									StopMusic()
 									object[34].state = MENUBUTTON_BUTTONS_OUT
-									object[34].Timer = 0
+									object[34].timer = 0
 									object[35].state = MENUBUTTON_BUTTONS_OUT
-									object[35].Timer = 0
+									object[35].timer = 0
 									object[36].state = MENUBUTTON_BUTTONS_OUT
-									object[36].Timer = 0
+									object[36].timer = 0
 									object[37].state = MENUBUTTON_BUTTONS_OUT
-									object[37].Timer = 0
+									object[37].timer = 0
 									object[38].state = MENUBUTTON_BUTTONS_OUT
-									object[38].Timer = 0
+									object[38].timer = 0
 									object[39].state = MENUBUTTON_BUTTONS_OUT
-									object[39].Timer = 0
+									object[39].timer = 0
 									object[40].state = MENUBUTTON_BUTTONS_OUT
-									object[40].Timer = 0
+									object[40].timer = 0
 									object[41].state = MENUBUTTON_BUTTONS_OUT
-									object[41].Timer = 0
+									object[41].timer = 0
 									object[42].state = MENUBUTTON_BUTTONS_OUT
-									object[42].Timer = 0
+									object[42].timer = 0
 									object[43].state = MENUBUTTON_BUTTONS_OUT
-									object[43].Timer = 0
+									object[43].timer = 0
 								end if
 								break
 
@@ -308,7 +308,7 @@ event ObjectUpdate
 					checkResult = true
 				end if
 
-				if object.propertyValue == Menu_Achievements
+				if object.propertyValue == menu_Achievements
 					if engine.onlineActive == false
 						checkResult = false
 					end if
@@ -318,66 +318,66 @@ event ObjectUpdate
 					PlaySfx(SFX_G_SELECT, false)
 					if engine.trialMode == true
 						if engine.deviceType != RETRO_ANDROID
-							if object.propertyValue == Menu_LoadSaveMenu
+							if object.propertyValue == menu_LoadSaveMenu
 								StopMusic()
 							end if
 						end if
 					else
-						if object.propertyValue == Menu_TimeAttack
+						if object.propertyValue == menu_TimeAttack
 							StopMusic()
 						end if
 					end if
 
 					menuControl.state = MENUCONTROL_BLANK
 					switch object.propertyValue
-					case Menu_LoadSaveMenu
-					case Menu_Help&Options
-					case Menu_Extras
-					case Menu_Soundtrack
+					case menu_LoadSaveMenu
+					case menu_Help&Options
+					case menu_Extras
+					case menu_Soundtrack
 						object[34].state = MENUBUTTON_BUTTONS_OUT
-						object[34].Timer = 0
+						object[34].timer = 0
 						object[35].state = MENUBUTTON_BUTTONS_OUT
-						object[35].Timer = 0
+						object[35].timer = 0
 						object[36].state = MENUBUTTON_BUTTONS_OUT
-						object[36].Timer = 0
+						object[36].timer = 0
 						object[37].state = MENUBUTTON_BUTTONS_OUT
-						object[37].Timer = 0
+						object[37].timer = 0
 						object[38].state = MENUBUTTON_BUTTONS_OUT
-						object[38].Timer = 0
+						object[38].timer = 0
 						object[39].state = MENUBUTTON_BUTTONS_OUT
-						object[39].Timer = 0
+						object[39].timer = 0
 						object[40].state = MENUBUTTON_BUTTONS_OUT
-						object[40].Timer = 0
+						object[40].timer = 0
 						object[41].state = MENUBUTTON_BUTTONS_OUT
-						object[41].Timer = 0
+						object[41].timer = 0
 						object[42].state = MENUBUTTON_BUTTONS_OUT
-						object[42].Timer = 0
+						object[42].timer = 0
 						object[43].state = MENUBUTTON_BUTTONS_OUT
-						object[43].Timer = 0
+						object[43].timer = 0
 						break
 
-					case Menu_TimeAttack
+					case menu_TimeAttack
 						if engine.trialMode == false
 							object[34].state = MENUBUTTON_BUTTONS_OUT
-							object[34].Timer = 0
+							object[34].timer = 0
 							object[35].state = MENUBUTTON_BUTTONS_OUT
-							object[35].Timer = 0
+							object[35].timer = 0
 							object[36].state = MENUBUTTON_BUTTONS_OUT
-							object[36].Timer = 0
+							object[36].timer = 0
 							object[37].state = MENUBUTTON_BUTTONS_OUT
-							object[37].Timer = 0
+							object[37].timer = 0
 							object[38].state = MENUBUTTON_BUTTONS_OUT
-							object[38].Timer = 0
+							object[38].timer = 0
 							object[39].state = MENUBUTTON_BUTTONS_OUT
-							object[39].Timer = 0
+							object[39].timer = 0
 							object[40].state = MENUBUTTON_BUTTONS_OUT
-							object[40].Timer = 0
+							object[40].timer = 0
 							object[41].state = MENUBUTTON_BUTTONS_OUT
-							object[41].Timer = 0
+							object[41].timer = 0
 							object[42].state = MENUBUTTON_BUTTONS_OUT
-							object[42].Timer = 0
+							object[42].timer = 0
 							object[43].state = MENUBUTTON_BUTTONS_OUT
-							object[43].Timer = 0
+							object[43].timer = 0
 						end if
 						break
 
@@ -389,7 +389,7 @@ event ObjectUpdate
 
 		if engine.deviceType == RETRO_WP7
 			if keyPress[0].buttonB == true
-				// engineCallback(CALLBACK_EXIT_SELECTED)
+				EngineCallback(CALLBACK_EXIT_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state		= MENUCONTROL_CONTROLS
@@ -404,7 +404,7 @@ event ObjectUpdate
 		else
 			object.timer = 0
 			switch object.propertyValue
-			case Menu_LoadSaveMenu
+			case menu_LoadSaveMenu
 				if engine.trialMode == false
 					menuHeading.state  = MENUHEADING_LEAVE_SCREEN
 					menuHeading.header = SAVESELECT_HEADER
@@ -458,7 +458,7 @@ event ObjectUpdate
 				end if
 				break
 
-			case Menu_TimeAttack
+			case menu_TimeAttack
 				if engine.trialMode == false
 					object.state = MENUBUTTON_BLANK
 
@@ -468,16 +468,16 @@ event ObjectUpdate
 					object.state = MENUBUTTON_CONFIRM_SELECTION
 
 					menuControl.state = MENUCONTROL_CONTROLS
-					// engineCallback(CALLBACK_FULL_VERSION_ONLY)
+					EngineCallback(CALLBACK_FULL_VERSION_ONLY)
 #platform: Mobile
 					menuControl.currentDrag = 0
 #endplatform
 				end if
 				break
 
-			case Menu_Achievements
+			case menu_Achievements
 				if engine.deviceType != RETRO_WP7
-					// LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
+					LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 					object.state = MENUBUTTON_CONFIRM_SELECTION
 
 					menuControl.state = MENUCONTROL_CONTROLS
@@ -492,9 +492,9 @@ event ObjectUpdate
 				end if
 				break
 
-			case Menu_LeaderBoards
+			case menu_LeaderBoards
 				if engine.deviceType!=RETRO_WP7
-					// LoadOnlineMenu(ONLINEMENU_LEADERBOARDS)
+					LoadOnlineMenu(ONLINEMENU_LEADERBOARDS)
 					object.state   = MENUBUTTON_CONFIRM_SELECTION
 
 					menuControl.state = MENUCONTROL_CONTROLS
@@ -511,12 +511,12 @@ event ObjectUpdate
 						object.state  = MENUBUTTON_CONFIRM_SELECTION
 
 						menuControl.state = MENUCONTROL_CONTROLS
-						// engineCallback(CALLBACK_FULL_VERSION_ONLY)
+						EngineCallback(CALLBACK_FULL_VERSION_ONLY)
 					end if
 				end if
 				break
 
-			case Menu_Help&Options
+			case menu_Help&Options
 				menuHeading.state  = MENUHEADING_LEAVE_SCREEN
 				menuHeading.header = HELP&OPTIONS_HEADER
 
@@ -553,7 +553,7 @@ event ObjectUpdate
 				object.type = TypeName[Blank Object]
 				break
 
-			case Menu_Extras
+			case menu_Extras
 				menuHeading.state  = MENUHEADING_LEAVE_SCREEN
 				menuHeading.header = EXTRAS_HEADER
 
@@ -570,8 +570,8 @@ event ObjectUpdate
 				object.type = TypeName[Blank Object]
 				break
 
-			case Menu_UnlockFullGame
-				// engineCallback(CALLBACK_BUY_FULL_GAME_SELECTED)
+			case menu_UnlockFullGame
+				EngineCallback(CALLBACK_BUY_FULL_GAME_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state = MENUCONTROL_CONTROLS
@@ -580,8 +580,8 @@ event ObjectUpdate
 #endplatform
 				break
 
-			case Menu_Store
-				// engineCallback(CALLBACK_RETURNSTORE_SELECTED)
+			case menu_Store
+				EngineCallback(CALLBACK_RETURNSTORE_SELECTED)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state = MENUCONTROL_CONTROLS
@@ -590,8 +590,8 @@ event ObjectUpdate
 #endplatform
 				break
 
-			case Menu_Exit
-				// engineCallback(CALLBACK_EXIT_SELECTED)
+			case menu_Exit
+				EngineCallback(CALLBACK_EXIT_SELECTED)
 #platform: Use_Decomp
 				engine.state = ENGINE_EXITGAME
 #endplatform
@@ -603,7 +603,7 @@ event ObjectUpdate
 #endplatform
 				break
 
-			case Menu_Soundtrack
+			case menu_Soundtrack
 				menuHeading.state  = MENUHEADING_LEAVE_SCREEN
 				menuHeading.header = SOUNDTRACK_HEADER
 
@@ -622,8 +622,8 @@ event ObjectUpdate
 				break
 
 #platform: Mobile
-			case Menu_MoreGames
-				// engineCallback(CALLBACK_MOREGAMES)
+			case menu_MoreGames
+				EngineCallback(CALLBACK_MOREGAMES)
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
 				menuControl.state		= MENUCONTROL_CONTROLS
@@ -659,7 +659,7 @@ event ObjectUpdate
 		break
 
 	case MENUBUTTON_RESET	//Used by MenuWindow
-		if object.propertyValue == Menu_Extras
+		if object.propertyValue == menu_Extras
 			if prevMenuButton.state == MENUBUTTON_CONFIRM_SELECTION
 				object.state = MENUBUTTON_CONFIRM_SELECTION
 
@@ -746,8 +746,8 @@ event ObjectStartup
 	while arrayPos0 < 1056
 		if object[arrayPos0].type == TypeName[Menu Button]
 			object[arrayPos0].priority		  = PRIORITY_ACTIVE
-			object[arrayPos0].ButtonLeaveXPos = object[arrayPos0].xpos
-			object[arrayPos0].ButtonLeaveYPos = object[arrayPos0].ButtonLeaveYPos
+			object[arrayPos0].buttonLeaveXPos = object[arrayPos0].xPos
+			object[arrayPos0].buttonLeaveYPos = object[arrayPos0].buttonLeaveYPos
 		end if
 		arrayPos0++
 	loop
@@ -756,33 +756,33 @@ event ObjectStartup
 	case RETRO_WIN
 	case RETRO_OSX
 		if options.devMenuFlag == true
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_Help&Options
-			object[37].propertyValue = Menu_Soundtrack
-			object[38].propertyValue = Menu_Extras
-			object[39].propertyValue = Menu_Exit
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_Help&Options
+			object[37].propertyValue = menu_Soundtrack
+			object[38].propertyValue = menu_Extras
+			object[39].propertyValue = menu_Exit
 			object.buttonCount = 6
 		else
 			if engine.trialMode == true
-				object[34].propertyValue = Menu_LoadSaveMenu
-				object[35].propertyValue = Menu_TimeAttack
-				object[36].propertyValue = Menu_Achievements
-				object[37].propertyValue = Menu_LeaderBoards
-				object[38].propertyValue = Menu_Help&Options
-				object[39].propertyValue = Menu_Soundtrack
-				object[40].propertyValue = Menu_UnlockFullGame
-				object[41].propertyValue = Menu_Exit
+				object[34].propertyValue = menu_LoadSaveMenu
+				object[35].propertyValue = menu_TimeAttack
+				object[36].propertyValue = menu_Achievements
+				object[37].propertyValue = menu_LeaderBoards
+				object[38].propertyValue = menu_Help&Options
+				object[39].propertyValue = menu_Soundtrack
+				object[40].propertyValue = menu_UnlockFullGame
+				object[41].propertyValue = menu_Exit
 				object.buttonCount = 8
 			else
-				object[34].propertyValue = Menu_LoadSaveMenu
-				object[35].propertyValue = Menu_TimeAttack
-				object[36].propertyValue = Menu_Achievements
-				object[37].propertyValue = Menu_LeaderBoards
-				object[38].propertyValue = Menu_Help&Options
-				object[39].propertyValue = Menu_Soundtrack
-				object[40].propertyValue = Menu_Extras
-				object[41].propertyValue = Menu_Exit
+				object[34].propertyValue = menu_LoadSaveMenu
+				object[35].propertyValue = menu_TimeAttack
+				object[36].propertyValue = menu_Achievements
+				object[37].propertyValue = menu_LeaderBoards
+				object[38].propertyValue = menu_Help&Options
+				object[39].propertyValue = menu_Soundtrack
+				object[40].propertyValue = menu_Extras
+				object[41].propertyValue = menu_Exit
 				object.buttonCount = 8
 			end if
 		end if
@@ -790,81 +790,81 @@ event ObjectStartup
 
 	case RETRO_XBOX_360
 		if engine.trialMode == true
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_Achievements
-			object[37].propertyValue = Menu_LeaderBoards
-			object[38].propertyValue = Menu_Help&Options
-			object[39].propertyValue = Menu_Soundtrack
-			object[40].propertyValue = Menu_UnlockFullGame
-			object[41].propertyValue = Menu_Exit
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_Achievements
+			object[37].propertyValue = menu_LeaderBoards
+			object[38].propertyValue = menu_Help&Options
+			object[39].propertyValue = menu_Soundtrack
+			object[40].propertyValue = menu_UnlockFullGame
+			object[41].propertyValue = menu_Exit
 			object.buttonCount = 8
 		else
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_Achievements
-			object[37].propertyValue = Menu_LeaderBoards
-			object[38].propertyValue = Menu_Help&Options
-			object[39].propertyValue = Menu_Soundtrack
-			object[40].propertyValue = Menu_Extras
-			object[41].propertyValue = Menu_Exit
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_Achievements
+			object[37].propertyValue = menu_LeaderBoards
+			object[38].propertyValue = menu_Help&Options
+			object[39].propertyValue = menu_Soundtrack
+			object[40].propertyValue = menu_Extras
+			object[41].propertyValue = menu_Exit
 			object.buttonCount = 8
 		end if
 		break
 
 	case RETRO_PS3
 		if engine.trialMode == true
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_Achievements
-			object[37].propertyValue = Menu_LeaderBoards
-			object[38].propertyValue = Menu_Help&Options
-			object[39].propertyValue = Menu_Soundtrack
-			object[40].propertyValue = Menu_UnlockFullGame
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_Achievements
+			object[37].propertyValue = menu_LeaderBoards
+			object[38].propertyValue = menu_Help&Options
+			object[39].propertyValue = menu_Soundtrack
+			object[40].propertyValue = menu_UnlockFullGame
 			object.buttonCount = 7
 		else
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_Achievements
-			object[37].propertyValue = Menu_LeaderBoards
-			object[38].propertyValue = Menu_Help&Options
-			object[39].propertyValue = Menu_Soundtrack
-			object[40].propertyValue = Menu_Extras
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_Achievements
+			object[37].propertyValue = menu_LeaderBoards
+			object[38].propertyValue = menu_Help&Options
+			object[39].propertyValue = menu_Soundtrack
+			object[40].propertyValue = menu_Extras
 			object.buttonCount = 7
 		end if
 		break
 
 	case RETRO_ANDROID
 		if engine.trialMode == true
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_Help&Options
-			object[36].propertyValue = Menu_Soundtrack
-			object[37].propertyValue = Menu_UnlockFullGame
-			object[38].propertyValue = Menu_Exit
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_Help&Options
+			object[36].propertyValue = menu_Soundtrack
+			object[37].propertyValue = menu_UnlockFullGame
+			object[38].propertyValue = menu_Exit
 			object.buttonCount = 5
 		else
 			if engine.onlineActive == true
-				object[34].propertyValue = Menu_LoadSaveMenu
-				object[35].propertyValue = Menu_TimeAttack
-				object[36].propertyValue = Menu_LeaderBoards
-				object[37].propertyValue = Menu_Achievements
-				object[38].propertyValue = Menu_Help&Options
-				object[39].propertyValue = Menu_Soundtrack
-				object[40].propertyValue = Menu_Extras
-				object[41].propertyValue = Menu_Exit
+				object[34].propertyValue = menu_LoadSaveMenu
+				object[35].propertyValue = menu_TimeAttack
+				object[36].propertyValue = menu_LeaderBoards
+				object[37].propertyValue = menu_Achievements
+				object[38].propertyValue = menu_Help&Options
+				object[39].propertyValue = menu_Soundtrack
+				object[40].propertyValue = menu_Extras
+				object[41].propertyValue = menu_Exit
 				object.buttonCount = 8
 			else
-				object[34].propertyValue = Menu_LoadSaveMenu
-				object[35].propertyValue = Menu_TimeAttack
-				object[36].propertyValue = Menu_Help&Options
-				object[37].propertyValue = Menu_MoreGames
-				object[38].propertyValue = Menu_Soundtrack
-				object[39].propertyValue = Menu_Extras
-				object[40].propertyValue = Menu_Exit
+				object[34].propertyValue = menu_LoadSaveMenu
+				object[35].propertyValue = menu_TimeAttack
+				object[36].propertyValue = menu_Help&Options
+				object[37].propertyValue = menu_MoreGames
+				object[38].propertyValue = menu_Soundtrack
+				object[39].propertyValue = menu_Extras
+				object[40].propertyValue = menu_Exit
 				object.buttonCount = 7
-				object[37].propertyValue = Menu_Soundtrack
-				object[38].propertyValue = Menu_Extras
-				object[39].propertyValue = Menu_Exit
+				object[37].propertyValue = menu_Soundtrack
+				object[38].propertyValue = menu_Extras
+				object[39].propertyValue = menu_Exit
 				object.buttonCount = 6
 			end if
 		end if
@@ -872,50 +872,50 @@ event ObjectStartup
 
 	case RETRO_iOS
 		if engine.onlineActive == true
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_LeaderBoards
-			object[37].propertyValue = Menu_Help&Options
-			object[38].propertyValue = Menu_Soundtrack
-			object[39].propertyValue = Menu_Extras
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_LeaderBoards
+			object[37].propertyValue = menu_Help&Options
+			object[38].propertyValue = menu_Soundtrack
+			object[39].propertyValue = menu_Extras
 			object.buttonCount = 6
 		else
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_TimeAttack
-			object[36].propertyValue = Menu_Help&Options
-			object[37].propertyValue = Menu_Soundtrack
-			object[38].propertyValue = Menu_Extras
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_TimeAttack
+			object[36].propertyValue = menu_Help&Options
+			object[37].propertyValue = menu_Soundtrack
+			object[38].propertyValue = menu_Extras
 			object.buttonCount = 5
 		end if
 		break
 
 	case RETRO_WP7
 		if engine.trialMode == true
-			object[34].propertyValue = Menu_LoadSaveMenu
-			object[35].propertyValue = Menu_Help&Options
-			object[36].propertyValue = Menu_Soundtrack
-			object[37].propertyValue = Menu_MoreGames
-			object[38].propertyValue = Menu_Exit
+			object[34].propertyValue = menu_LoadSaveMenu
+			object[35].propertyValue = menu_Help&Options
+			object[36].propertyValue = menu_Soundtrack
+			object[37].propertyValue = menu_MoreGames
+			object[38].propertyValue = menu_Exit
 			object.buttonCount = 5
 		else
 			if engine.onlineActive == true
-				object[34].propertyValue = Menu_LoadSaveMenu
-				object[35].propertyValue = Menu_TimeAttack
-				object[36].propertyValue = Menu_LeaderBoards
-				object[37].propertyValue = Menu_Achievements
-				object[38].propertyValue = Menu_Help&Options
-				object[39].propertyValue = Menu_Soundtrack
-				object[40].propertyValue = Menu_Extras
-				object[41].propertyValue = Menu_Exit
+				object[34].propertyValue = menu_LoadSaveMenu
+				object[35].propertyValue = menu_TimeAttack
+				object[36].propertyValue = menu_LeaderBoards
+				object[37].propertyValue = menu_Achievements
+				object[38].propertyValue = menu_Help&Options
+				object[39].propertyValue = menu_Soundtrack
+				object[40].propertyValue = menu_Extras
+				object[41].propertyValue = menu_Exit
 				object.buttonCount = 8
 			else
-				object[34].propertyValue = Menu_LoadSaveMenu
-				object[35].propertyValue = Menu_TimeAttack
-				object[36].propertyValue = Menu_Help&Options
-				object[37].propertyValue = Menu_MoreGames
-				object[38].propertyValue = Menu_Soundtrack
-				object[39].propertyValue = Menu_Extras
-				object[40].propertyValue = Menu_Exit
+				object[34].propertyValue = menu_LoadSaveMenu
+				object[35].propertyValue = menu_TimeAttack
+				object[36].propertyValue = menu_Help&Options
+				object[37].propertyValue = menu_MoreGames
+				object[38].propertyValue = menu_Soundtrack
+				object[39].propertyValue = menu_Extras
+				object[40].propertyValue = menu_Exit
 				object.buttonCount = 7
 			end if
 		end if
@@ -926,8 +926,8 @@ event ObjectStartup
 	arrayPos0  = 34
 	temp0 = 0
 	while temp0 < object.buttonCount
-		object[arrayPos0].ButtonYPos = temp0
-		object[arrayPos0].ButtonYPos++
+		object[arrayPos0].buttonYPos = temp0
+		object[arrayPos0].buttonYPos++
 		arrayPos0++
 		temp0++
 	loop
@@ -1041,25 +1041,25 @@ event ObjectStartup
 #platform: Use_Origins
 	if game.mainMenuMode != MAINMENUMODE_NONE
 		object[34].state  = MENUBUTTON_BUTTONS_OUT
-		object[34].Timer = 0
+		object[34].timer = 0
 		object[35].state = MENUBUTTON_BUTTONS_OUT
-		object[35].Timer = 0
+		object[35].timer = 0
 		object[36].state = MENUBUTTON_BUTTONS_OUT
-		object[36].Timer = 0
+		object[36].timer = 0
 		object[37].state = MENUBUTTON_BUTTONS_OUT
-		object[37].Timer = 0
+		object[37].timer = 0
 		object[38].state = MENUBUTTON_BUTTONS_OUT
-		object[38].Timer = 0
+		object[38].timer = 0
 		object[39].state = MENUBUTTON_BUTTONS_OUT
-		object[39].Timer = 0
+		object[39].timer = 0
 		object[40].state = MENUBUTTON_BUTTONS_OUT
-		object[40].Timer = 0
+		object[40].timer = 0
 		object[41].state = MENUBUTTON_BUTTONS_OUT
-		object[41].Timer = 0
+		object[41].timer = 0
 		object[42].state = MENUBUTTON_BUTTONS_OUT
-		object[42].Timer = 0
+		object[42].timer = 0
 		object[43].state = MENUBUTTON_BUTTONS_OUT
-		object[43].Timer = 0
+		object[43].timer = 0
 
 		if game.mainMenuMode == MAINMENUMODE_VISUALMODE
 			menuHeading.state  = MENUHEADING_IDLE

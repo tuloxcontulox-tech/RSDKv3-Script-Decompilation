@@ -20,7 +20,7 @@ private alias object[-1].state : menuWindow.state
 private alias object[1].value4 : object.backTouchPress
 
 // Save File State
-private alias object.rotation : object.saveStatus // Meant to be used with [+arrayPos0]
+private alias object.rotation : object.saveStatus // Meant to be used with [+ArrayPos0]
 private alias object.rotation : object.saveOneStatus
 private alias object[+1].rotation : object.saveTwoStatus
 private alias object[+2].rotation : object.saveThreeStatus
@@ -37,8 +37,8 @@ private alias object.scale : object.scoreBonus
 private alias object.value7 : object.goodFutureList
 
 // Delete Button
-private alias object[+1].xpos : delete.xpos
-private alias object[+1].ypos : delete.ypos
+private alias object[+1].xpos : delete.xPos
+private alias object[+1].ypos : delete.yPos
 
 // States
 private alias 0 : STATE_INITIALIZE
@@ -284,29 +284,29 @@ private function LoadSaveMenu_DrawDeleteNoSave
 	// Draw the Delete button
 	if object.saveMode >= SAVEMODE_DELETE
 		if object.selectedOption == BUTTON_DELETE
-			DrawSpriteScreenXY(55, delete.xpos, delete.ypos)
+			DrawSpriteScreenXY(55, delete.xPos, delete.yPos)
 		else
-			DrawSpriteScreenXY(54, delete.xpos, delete.ypos)
+			DrawSpriteScreenXY(54, delete.xPos, delete.yPos)
 		end if
 	else
 		if object.selectedOption == BUTTON_DELETE
-			DrawSpriteScreenXY(53, delete.xpos, delete.ypos)
+			DrawSpriteScreenXY(53, delete.xPos, delete.yPos)
 		else
-			DrawSpriteScreenXY(52, delete.xpos, delete.ypos)
+			DrawSpriteScreenXY(52, delete.xPos, delete.yPos)
 		end if
 	end if
 	
 	// Slide the Delete button in or out
 	if object.showDeleteButton == true
-		if delete.ypos > 14
-			delete.ypos -= 2
-			DrawRect(delete.xpos, 32, 64, 18, 96, 96, 128, 255)
+		if delete.yPos > 14
+			delete.yPos -= 2
+			DrawRect(delete.xPos, 32, 64, 18, 96, 96, 128, 255)
 		end if
 	else
-		if delete.ypos < 32
-			delete.ypos += 2
+		if delete.yPos < 32
+			delete.yPos += 2
 		end if
-		DrawRect(delete.xpos, 32, 64, 18, 96, 96, 128, 255)
+		DrawRect(delete.xPos, 32, 64, 18, 96, 96, 128, 255)
 	end if
 end function
 
@@ -387,9 +387,9 @@ event ObjectUpdate
 			loop
 		end if
 		
-		delete.xpos  = screen.xcenter
-		delete.xpos -= 120
-		delete.ypos  = 32
+		delete.xPos  = screen.xcenter
+		delete.xPos -= 120
+		delete.yPos  = 32
 		
 		if object.fadeValue < 256
 			object.alpha	  = object.fadeValue
@@ -478,7 +478,7 @@ event ObjectUpdate
 			
 			// Check if the delete button is touched
 			if object.showDeleteButton == true
-				temp0  = delete.xpos
+				temp0  = delete.xPos
 				temp0 -= 4
 				temp1  = temp0
 				temp1 += 72
@@ -724,58 +724,58 @@ event ObjectUpdate
 			Player.score		= object[+arrayPos0].score
 			Player.scoreBonus	= object[+arrayPos0].scoreBonus
 
-			good_Future_List  = object[+arrayPos0].goodFutureList
-			good_Future_List &= 0xFFFF	// 0b1111111111111111
+			Good_Future_List  = object[+arrayPos0].goodFutureList
+			Good_Future_List &= 0xFFFF	// 0b1111111111111111
 			Good_Future_Count = 0
 			Good_Future		  = false
 
-			metalSonic_List   = object[+arrayPos0].goodFutureList
-			metalSonic_List >>= 16
+			MetalSonic_List   = object[+arrayPos0].goodFutureList
+			MetalSonic_List >>= 16
 
 			SpecialStage.timeStones	= object[+arrayPos0].timeStones
-			specialStage.listPos	= object[+arrayPos0].specialListPos
+			SpecialStage.listPos	= object[+arrayPos0].specialListPos
 
-			lampPost.check = 0
+			LampPost.check = 0
 
-			stage.activeList	= REGULAR_STAGE
-			stage.listPos		= object[+arrayPos0].stageListPos
-			stage.listPos--
-			if stage.listPos < 0
-				stage.listPos	= 0
+			Stage.activeList	= REGULAR_STAGE
+			Stage.listPos		= object[+arrayPos0].stageListPos
+			Stage.listPos--
+			if Stage.listPos < 0
+				Stage.listPos	= 0
 				Player.lives	= 3
 				Player.score	= 0
 			end if
 
-			if stage.listPos >= 80	// Check if the save is on a special stage
-				specialStage.nextZone	= stage.listPos
-				specialStage.nextZone  -= 80
-				stage.activeList		= SPECIAL_STAGE
+			if Stage.listPos >= 80	// Check if the save is on a special stage
+				SpecialStage.nextZone	= Stage.listPos
+				SpecialStage.nextZone  -= 80
+				Stage.activeList		= SPECIAL_STAGE
 
 #platform: Use_Origins
-				stage.activeList		= 3
+				Stage.activeList		= 3
 #endplatform
 
-				stage.listPos			= specialStage.listPos
+				Stage.listPos			= SpecialStage.listPos
 
-				temp0   = specialStage.nextZone
+				temp0   = SpecialStage.nextZone
 				temp0  %= 10
 				temp0 >>= 2
 				if temp0 == 1
-					temp1   = specialStage.nextZone
+					temp1   = SpecialStage.nextZone
 					temp1  /= 10
 					temp1 <<= 1
-					GetBit(temp0, good_Future_List, temp1)
+					GetBit(temp0, Good_Future_List, temp1)
 					Good_Future_Count += temp0
 				end if
 			else
-				temp0   = stage.listPos
+				temp0   = Stage.listPos
 				temp0  %= 10
 				temp0 >>= 2
 				if temp0 == 1
-					temp1   = stage.listPos
+					temp1   = Stage.listPos
 					temp1  /= 10
 					temp1 <<= 1
-					GetBit(temp0, good_Future_List, temp1)
+					GetBit(temp0, Good_Future_List, temp1)
 					Good_Future_Count += temp0
 				end if
 			end if
@@ -784,7 +784,7 @@ event ObjectUpdate
 #platform: Use_Origins
 			// normally saveSlot is just forced to 0 on the title screen, but it looks like they were planning to do a bit more than that initially? not like it matters anyways though, cause this object's unused in origins and all
 			game.callbackParam0 = object.selectedOption
-			// engineCallback(NOTIFY_SAVESLOT_SELECT)
+			EngineCallback(NOTIFY_SAVESLOT_SELECT)
 #endplatform
 
 			LoadStage()
@@ -1019,9 +1019,9 @@ event ObjectUpdate
 			arrayPos1 <<= 3
 			SaveRAM[arrayPos1] = object[+arrayPos0].playerListPos	// Character
 			arrayPos1++
-			SaveRAM[arrayPos1] = 3		// lives
+			SaveRAM[arrayPos1] = 3		// Lives
 			arrayPos1++
-			SaveRAM[arrayPos1] = 0		// score
+			SaveRAM[arrayPos1] = 0		// Score
 			arrayPos1++
 			SaveRAM[arrayPos1] = 1		// Stage List Pos, gets down by one below this
 			arrayPos1++
@@ -1029,7 +1029,7 @@ event ObjectUpdate
 			arrayPos1++
 			SaveRAM[arrayPos1] = 0		// Special Stage Pos
 			arrayPos1++
-			SaveRAM[arrayPos1] = 50000	// score Bonus
+			SaveRAM[arrayPos1] = 50000	// Score Bonus
 			arrayPos1++
 			SaveRAM[arrayPos1] = 0		// Destroyed Metal Sonic Projectors
 			WriteSaveRAM()
@@ -1041,26 +1041,26 @@ event ObjectUpdate
 			Player.score		= 0
 			Player.scoreBonus	= 50000
 
-			good_Future_List	= 0
+			Good_Future_List	= 0
 			Good_Future_Count	= 0
 			Good_Future			= false
 
 			Transporter_Destroyed	= false
 			MetalSonic_Destroyed	= false
-			metalSonic_List			= 0
+			MetalSonic_List			= 0
 
 			SpecialStage.timeStones	= 0
-			specialStage.listPos	= STAGE_S_SS1
+			SpecialStage.listPos	= STAGE_S_SS1
 
-			lampPost.check   = 0
-			stage.activeList = REGULAR_STAGE
+			LampPost.check   = 0
+			Stage.activeList = REGULAR_STAGE
 
 			arrayPos0 = object.selectedOption
 
-			stage.listPos = object[+arrayPos0].stageListPos
-			stage.listPos--
-			if stage.listPos < 0
-				stage.listPos = STAGE_R_PPZ1A
+			Stage.listPos = object[+arrayPos0].stageListPos
+			Stage.listPos--
+			if Stage.listPos < 0
+				Stage.listPos = STAGE_R_PPZ1A
 			end if
 
 			Stage.playerListPos = object[+arrayPos0].playerListPos
@@ -1068,16 +1068,16 @@ event ObjectUpdate
 #platform: Use_Origins
 			// normally saveSlot is just forced to 0 on the title screen, but it looks like they were planning to do a bit more than that initially? not like it matters anyways though, cause this object's unused in origins and all
 			game.callbackParam0 = object.selectedOption
-			// engineCallback(NOTIFY_SAVESLOT_SELECT)
+			EngineCallback(NOTIFY_SAVESLOT_SELECT)
 #endplatform
 
 			LoadStage()
 			
 			if Stage.playerListPos == PLAYER_SONIC_A // PLAYER_SONIC in origins plus - why did they update this object in plus even if it's unused in origins? wish i knew..
-				// LoadVideo("Opening")
+				LoadVideo("Opening")
 
 //	#platform: Mobile
-//				if options.soundtrack == OST_JP
+//				if Options.Soundtrack == OST_JP
 //					LoadVideo("Opening")
 //				else
 //					LoadVideo("OpeningUS")
@@ -1600,15 +1600,15 @@ event ObjectDraw
 		
 		if object.saveOneStatus == SAVE_DELETE
 			if temp0 == 0
-				DrawSpriteScreenXY(55, delete.xpos, delete.ypos)
+				DrawSpriteScreenXY(55, delete.xPos, delete.yPos)
 			else
-				DrawSpriteScreenXY(54, delete.xpos, delete.ypos)
+				DrawSpriteScreenXY(54, delete.xPos, delete.yPos)
 			end if
 		else
 			if temp0 == 0
-				DrawSpriteScreenXY(53, delete.xpos, delete.ypos)
+				DrawSpriteScreenXY(53, delete.xPos, delete.yPos)
 			else
-				DrawSpriteScreenXY(52, delete.xpos, delete.ypos)
+				DrawSpriteScreenXY(52, delete.xPos, delete.yPos)
 			end if
 		end if
 		
@@ -1734,7 +1734,7 @@ event ObjectStartup
 	SpriteFrame(64, 12, 144, 16, 259, 404)		// #29 - Special Stage
 	
 	ReadSaveRAM()
-	options.soundtrack = SaveRAM[38]
+	Options.soundtrack = SaveRAM[38]
 	if SaveRAM[36] == true
 		options.tailsUnlocked = true
 	end if

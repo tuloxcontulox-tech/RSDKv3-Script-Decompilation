@@ -57,7 +57,7 @@ end event
 event ObjectStartup
 	// So this is removing the stage's FG layer but,
 	// the stage's configuration in the act file already has it set up like that anyway...
-	Stage[0].ActiveLayer = 9
+	Stage[0].activeLayer = 9
 	
 	LoadSpriteSheet("Menu/MenuGfx1_EN.gif")
 	

@@ -377,19 +377,19 @@ event ObjectUpdate
 			Transporter_Destroyed = false
 			MetalSonic_Destroyed  = false
 			
-			timeAttack.round = object.currentButton
-			stage.activeList = REGULAR_STAGE
+			TimeAttack.round = object.currentButton
+			Stage.activeList = REGULAR_STAGE
 			switch object.currentButton
 			case 0
-				stage.listPos = STAGE_R_PPZ1A
+				Stage.listPos = STAGE_R_PPZ1A
 				Good_Future = false
 				break
 			case 1
-				stage.listPos = STAGE_R_QQZ2A
+				Stage.listPos = STAGE_R_QQZ2A
 				Good_Future = false
 				break
 			case 2
-				stage.listPos = STAGE_R_QQZ3C
+				Stage.listPos = STAGE_R_QQZ3C
 				Good_Future = true
 				break
 			end switch

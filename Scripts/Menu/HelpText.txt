@@ -15,9 +15,9 @@ event ObjectDraw
 	temp1 >>= 16
 	temp1  -= screen.yoffset
 	if object.propertyValue == TEXT_HEADER
-		// DrawText(MENU_1, temp0, temp1, 192, 0, 0, 1)
+		DrawText(MENU_1, temp0, temp1, 192, 0, 0, 1)
 	else
-		// DrawText(MENU_1, temp0, temp1, 114, 41, 1, -1)
+		DrawText(MENU_1, temp0, temp1, 114, 41, 1, -1)
 	end if
 end event
 

@@ -154,15 +154,15 @@ event ObjectUpdate
 					object.state = ABOUTMENU_CONTROLS
 					switch object.buttonSelected
 					case 0
-						// engineCallback(CALLBACK_TERMS_SELECTED)
+						EngineCallback(CALLBACK_TERMS_SELECTED)
 						break
 
 					case 1
-						// engineCallback(CALLBACK_PRIVACY_SELECTED)
+						EngineCallback(CALLBACK_PRIVACY_SELECTED)
 						break
 
 					case 2
-						// engineCallback(CALLBACK_FACEBOOK_LOG)
+						EngineCallback(CALLBACK_FACEBOOK_LOG)
 						break
 
 					end switch
@@ -202,7 +202,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(47, FX_INK, temp0, 136)
 			DrawSpriteScreenFX(45, FX_INK, temp0, 110)
 			DrawSpriteScreenFX(49, FX_INK, temp0, 162)
-			if segaID.loggedIn == false
+			if SegaID.loggedIn == false
 				DrawSpriteScreenFX(51, FX_INK, temp0, 162)
 			else
 				DrawSpriteScreenFX(53, FX_INK, temp0, 162)
@@ -217,7 +217,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(temp2, FX_INK, temp0, 110)
 			DrawSpriteScreenFX(47, FX_INK, temp0, 136)
 			DrawSpriteScreenFX(49, FX_INK, temp0, 162)
-			if segaID.loggedIn == false
+			if SegaID.loggedIn == false
 				DrawSpriteScreenFX(51, FX_INK, temp0, 162)
 			else
 				DrawSpriteScreenFX(53, FX_INK, temp0, 162)
@@ -232,7 +232,7 @@ event ObjectDraw
 			DrawSpriteScreenFX(temp2, FX_INK, temp0, 136)
 			DrawSpriteScreenFX(45, FX_INK, temp0, 110)
 			DrawSpriteScreenFX(49, FX_INK, temp0, 162)
-			if segaID.loggedIn == false
+			if SegaID.loggedIn == false
 				DrawSpriteScreenFX(51, FX_INK, temp0, 162)
 			else
 				DrawSpriteScreenFX(53, FX_INK, temp0, 162)
@@ -245,7 +245,7 @@ event ObjectDraw
 			temp2 >>= 1
 			temp2  += 48
 			DrawSpriteScreenFX(temp2, FX_INK, temp0, 162)
-			if segaID.loggedIn == false
+			if SegaID.loggedIn == false
 				temp2 += 2
 				DrawSpriteScreenFX(temp2, FX_INK, temp0, 162)
 			else

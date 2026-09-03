@@ -64,14 +64,14 @@ event ObjectUpdate
 	case SOUNDMENU_INITIALIZE
 
 #platform: Standard
-		object.selectedOption = options.soundtrack
+		object.selectedOption = Options.soundtrack
 #endplatform
 
 #platform: Mobile
 		if options.physicalControls == false
 			object.selectedOption = OST_NONE
 		else
-			object.selectedOption = options.soundtrack
+			object.selectedOption = Options.soundtrack
 		end if
 #endplatform
 
@@ -79,7 +79,7 @@ event ObjectUpdate
 		if options.physicalControls == false
 			object.selectedOption = OST_NONE
 		else
-			object.selectedOption = options.soundtrack
+			object.selectedOption = Options.soundtrack
 		end if
 #endplatform
 
@@ -223,15 +223,15 @@ event ObjectUpdate
 		end if
 
 		if checkResult == true
-			options.soundtrack = object.selectedOption
-			SaveRAM[38] = options.soundtrack
+			Options.soundtrack = object.selectedOption
+			SaveRAM[38] = Options.soundtrack
 			object.state = SOUNDMENU_OST_SELECTED
 			StopMusic()
 			PlaySfx(SFX_G_SELECT, false)
 			WriteSaveRAM()
 #platform: Use_Origins
-			game.callbackParam0 = options.soundtrack
-			// engineCallback(NOTIFY_SOUND_TRACK)
+			game.callbackParam0 = Options.soundtrack
+			EngineCallback(NOTIFY_SOUND_TRACK)
 #endplatform
 		end if
 		
@@ -248,7 +248,7 @@ event ObjectUpdate
 		else
 			object.animationTimer = 0
 			object.state = SOUNDMENU_BACK
-			PlayMusic(options.soundtrack)
+			PlayMusic(Options.soundtrack)
 		end if
 		break
 		
@@ -287,8 +287,8 @@ event ObjectUpdate
 	case SOUNDMENU_RETURN_TO_TITLE
 		object.fadeValue += 4
 		if object.fadeValue == 384
-			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = STAGE_P_TITLE
+			Stage.activeList = PRESENTATION_STAGE
+			Stage.listPos = STAGE_P_TITLE
 			StopMusic()
 			LoadStage()
 		end if
@@ -351,7 +351,7 @@ event ObjectDraw
 	end if
 	
 	// Draw the border for the soundtrack that's currently playing
-	if options.soundtrack == OST_JP
+	if Options.soundtrack == OST_JP
 		DrawSpriteScreenFX(8, FX_INK, temp0, temp3)
 	else
 		DrawSpriteScreenFX(8, FX_INK, temp1, temp3)

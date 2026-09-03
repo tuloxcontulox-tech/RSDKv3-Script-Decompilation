@@ -133,10 +133,10 @@ event ObjectUpdate
 				object.state = ABOUTMENU_CONTROLS
 				switch object.buttonSelected
 				case 0
-					// engineCallback(CALLBACK_TERMS_SELECTED)
+					EngineCallback(CALLBACK_TERMS_SELECTED)
 					break
 				case 1
-					// engineCallback(CALLBACK_PRIVACY_SELECTED)
+					EngineCallback(CALLBACK_PRIVACY_SELECTED)
 					break
 				end switch
 				object.buttonSelected = -1

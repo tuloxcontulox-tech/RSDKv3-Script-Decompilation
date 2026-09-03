@@ -46,10 +46,10 @@ event ObjectDraw
 	
 	object.spriteSheet = object.helpTextSheet
 
-	// DrawText(MENU_2, temp0, temp1, 128, 41, temp2, 1)
+	DrawText(MENU_2, temp0, temp1, 128, 41, temp2, 1)
 	temp1 += 15
 	temp2++
-	// DrawText(MENU_2, temp0, temp1, 92, 41, temp2, 1)
+	DrawText(MENU_2, temp0, temp1, 92, 41, temp2, 1)
 end event
 
 
@@ -102,8 +102,8 @@ event ObjectStartup
 	AddMenuEntry(MENU_2, "Treasure Hunter", 0)
 	AddMenuEntry(MENU_2, "Collect all the Time Stones.", 0)
 
-	AddMenuEntry(MENU_2, "Dr. Eggman Got Served", 0)
-	AddMenuEntry(MENU_2, "Destroy Dr. Eggman's final machine.", 0)
+	AddMenuEntry(MENU_2, "Dr. eggman Got Served", 0)
+	AddMenuEntry(MENU_2, "Destroy Dr. eggman's final machine.", 0)
 
 	AddMenuEntry(MENU_2, "Just In Time!", 0)
 	AddMenuEntry(MENU_2, "Complete the Time Attack mode in under 25 minutes.", 0)
@@ -111,18 +111,18 @@ event ObjectStartup
 	AddMenuEntry(MENU_2, "Saviour of the Planet", 0)
 	AddMenuEntry(MENU_2, "Destroy all the robot transporters and Metal Sonic holograms in the past.", 0)
 
-	// LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
+	LoadOnlineMenu(ONLINEMENU_ACHIEVEMENTS)
 
 	// Used to be below LoadSpriteSheet, moved here for consistency
 	arrayPos0 = 32
 	while arrayPos0 < 1056
 		if object[arrayPos0].type == TypeName[Trophie List]
-			object[arrayPos0].TrophieSheet  = temp0
-			object[arrayPos0].HelpTextSheet = temp1
+			object[arrayPos0].trophieSheet  = temp0
+			object[arrayPos0].helpTextSheet = temp1
 			object[arrayPos0].drawOrder = 2
 			object[arrayPos0].priority  = PRIORITY_ACTIVE
 			if screen.xsize >= 384
-				object[arrayPos0].xpos -= 0x100000
+				object[arrayPos0].xPos -= 0x100000
 			end if
 		end if
 		arrayPos0++
@@ -136,7 +136,7 @@ end event
 
 event RSDKDraw
 	object.scale = 128
-	temp0 = object.entityNo
+	temp0 = object.entityPos
 	temp0--
 	DrawSpriteFX(temp0, FX_SCALE, object.xpos, object.ypos)
 end event

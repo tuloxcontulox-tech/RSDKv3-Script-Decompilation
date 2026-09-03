@@ -11,7 +11,7 @@ private alias object.value5 : object.sFXDecreaseTimer
 private alias object.value6 : object.sFXIncreaseTimer
 
 //object[+arrayPos0] can be the BlankObjects 63, 64, 65 and 66. Depending of the CurrentSelection value
-private alias object[+arrayPos0].value2 : object.flickerText
+private alias object[+ArrayPos0].value2 : object.flickerText
 
 //object[+4] is Empty, only used to set the Maximum amount of options for the controls
 private alias object[+4].value1 : object.optionCount
@@ -173,7 +173,7 @@ event ObjectUpdate
 				switch object.currentSelection
 				case 0
 				case 3
-					music.volume = 0
+					Music.volume = 0
 					break
 
 				end switch
@@ -205,16 +205,16 @@ event ObjectUpdate
 			object.state = OPTIONS_UNUSED2
 			switch object.currentSelection
 			case 0
-				// engineCallback(CALLBACK_HOW_TO_PLAY)
+				EngineCallback(CALLBACK_HOW_TO_PLAY)
 				break
 			case 1
-				// engineCallback(CALLBACK_CONTROLS)
+				EngineCallback(CALLBACK_CONTROLS)
 				break
 			case 2
-				// engineCallback(CALLBACK_SETTINGS)
+				EngineCallback(CALLBACK_SETTINGS)
 				break
 			case 3
-				// engineCallback(CALLBACK_STAFF_CREDITS)
+				EngineCallback(CALLBACK_STAFF_CREDITS)
 				break
 			end switch
 		end if
@@ -370,7 +370,7 @@ event ObjectUpdate
 		break
 
 	case OPTIONS_UNUSED2
-		music.volume = 100
+		Music.volume = 100
 		if object.timer > 0
 			object.timer -= 8
 		else
@@ -446,11 +446,11 @@ event ObjectUpdate
 				object.ypos = temp0
 			end if
 		else
-			temp0 = object.entityNo
+			temp0 = object.entityPos
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			// GetVersionNumber(MENU_1, 1)
+			GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0

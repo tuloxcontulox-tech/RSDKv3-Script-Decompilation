@@ -15,7 +15,7 @@ private alias object.value7 : object.touchDelay
 private alias object[+4].value1 : object.optionCount
 
 //object[+arrayPos0] can be the BlankObjects 63, 64, 65 and 66. Depending of the CurrentSelection value
-private alias object[+arrayPos0].value2 : object.flickerText
+private alias object[+ArrayPos0].value2 : object.flickerText
 
 // MenuHeading Aliases
 private alias object[33].state : menuHeading.state
@@ -416,21 +416,21 @@ event ObjectUpdate
 
 #platform: Use_Origins
 					if engine.deviceType == RETRO_MOBILE
-						stage.listPos = STAGE_P_HELP
+						Stage.listPos = STAGE_P_HELP
 					else
-						stage.listPos = STAGE_P_APPLETV
+						Stage.listPos = STAGE_P_APPLETV
 					end if
 #endplatform
 
 #platform: Use_Standalone
-					stage.listPos = STAGE_P_HELP
+					Stage.listPos = STAGE_P_HELP
 #endplatform
 					LoadStage()
 				end if
 				break
 
 			case 2
-				stage.listPos = STAGE_P_STAFFCREDITS
+				Stage.listPos = STAGE_P_STAFFCREDITS
 				LoadStage()
 				break
 
@@ -523,7 +523,7 @@ event ObjectUpdate
 			SaveRAM[32]				 = true
 			WriteSaveRAM()
 			game.callbackParam0 = options.originalControls
-			// engineCallback(NOTIFY_SPIN_DASH_TYPE)
+			EngineCallback(NOTIFY_SPIN_DASH_TYPE)
 
 			PlaySfx(SFX_G_SELECT, false)
 			StopMusic()
@@ -997,11 +997,11 @@ event ObjectUpdate
 				object.ypos = temp0
 			end if
 		else
-			temp0  = object.entityNo
+			temp0  = object.entityPos
 			temp0 += 10
 			ResetObjectEntity(temp0, TypeName[About Menu], 0, 0, 0)
 			SetupMenu(MENU_1, 0, 3, 1)
-			// GetVersionNumber(MENU_1, 1)
+			GetVersionNumber(MENU_1, 1)
 			object[+10].inkEffect = INK_ALPHA
 			object.state++
 			object.alpha = 0
@@ -1073,8 +1073,8 @@ event ObjectUpdate
 	case OPTIONS_RETURN_TO_TITLE
 		object.timer += 4
 		if object.timer == 384
-			stage.activeList = PRESENTATION_STAGE
-			stage.listPos	 = STAGE_P_TITLE
+			Stage.activeList = PRESENTATION_STAGE
+			Stage.listPos	 = STAGE_P_TITLE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.timer)
@@ -1083,8 +1083,8 @@ event ObjectUpdate
 	case OPTIONS_RETURN_TO_TITLE_ALT
 		object.timer += 4
 		if object.timer == 384
-			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = STAGE_P_TITLE
+			Stage.activeList = PRESENTATION_STAGE
+			Stage.listPos = STAGE_P_TITLE
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.timer)
