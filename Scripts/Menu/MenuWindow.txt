@@ -3,111 +3,111 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 
 // Aliases
-#alias Object.Value0		:	Object.Timer
-#alias Object.Value1		:	Object.Width
-#alias Object.Value2		:	Object.Height
-#alias Object.Value3		:	Object.XOffset
-#alias Object.Value4		:	Object.YOffset
-#alias Object.Value5		:	Object.EntityPos
+private alias object.value0 : object.timer
+private alias object.value1 : object.width
+private alias object.value2 : object.height
+private alias object.value3 : object.xOffset
+private alias object.value4 : object.yOffset
+private alias object.value5 : object.entityPos
 
-//Object[1] is a blank object just to share values
-#alias Object[1].Value4		:	Object.BackTouchPress
+//object[1] is a blank object just to share values
+private alias object[1].value4 : object.backTouchPress
 
 // States
-#alias 0	:	MENUWINDOW_EXPAND
-#alias 1	:	MENUWINDOW_SCALEDOWN
-#alias 2	:	MENUWINDOW_BLANK
-#alias 3	:	MENUWINDOW_SHRINK
-#alias 4	:	MENUWINDOW_FIT_IN_BUTTON
-#alias 5	:	MENUWINDOW_SOUNDTRACK_EXPAND
-#alias 6	:	MENUWINDOW_SOUNDTRACK_SHRINK
+private alias 0 : MENUWINDOW_EXPAND
+private alias 1 : MENUWINDOW_SCALEDOWN
+private alias 2 : MENUWINDOW_BLANK
+private alias 3 : MENUWINDOW_SHRINK
+private alias 4 : MENUWINDOW_FIT_IN_BUTTON
+private alias 5 : MENUWINDOW_SOUNDTRACK_EXPAND
+private alias 6 : MENUWINDOW_SOUNDTRACK_SHRINK
 
 // Menu Button States
-#alias 7	:	MENUBUTTON_RESET
+private alias 7 : MENUBUTTON_RESET
 
 // Languages
-#alias 0	:	LANG_ENGLISH
-#alias 1	:	LANG_FRENCH
-#alias 2	:	LANG_ITALIAN
-#alias 3	:	LANG_DEUTSCH
-#alias 4	:	LANG_SPANISH
-#alias 5	:	LANG_JAPANESE
+private alias 0 : LANG_ENGLISH
+private alias 1 : LANG_FRENCH
+private alias 2 : LANG_ITALIAN
+private alias 3 : LANG_DEUTSCH
+private alias 4 : LANG_SPANISH
+private alias 5 : LANG_JAPANESE
 
 // Ink Effects
-#alias 2	:	INK_ALPHA
+private alias 2 : INK_ALPHA
 
 
-sub ObjectMain
-	switch Object.State
+event ObjectUpdate
+	switch object.state
 	case MENUWINDOW_EXPAND
-		if Object.Timer < 14
-			Object.Timer++
+		if object.timer < 14
+			object.timer++
 			//Width
-			TempValue0    = 300
-			TempValue0   -= Object.Width
-			TempValue0  >>= 3
-			Object.Width += TempValue0
+			temp0    = 300
+			temp0   -= object.width
+			temp0  >>= 3
+			object.width += temp0
 			//Height
-			TempValue0     = 224
-			TempValue0    -= Object.Height
-			TempValue0   >>= 3
-			Object.Height += TempValue0
+			temp0     = 224
+			temp0    -= object.height
+			temp0   >>= 3
+			object.height += temp0
 			//XPos
-			TempValue0   = Screen.CenterX
-			TempValue0 <<= 16
-			TempValue0  -= Object.XPos
-			TempValue0 >>= 2
-			Object.XPos += TempValue0
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			temp0  -= object.xpos
+			temp0 >>= 2
+			object.xpos += temp0
 			//YPos
-			TempValue0   = Screen.CenterY
-			TempValue0  -= 6
-			TempValue0 <<= 16
-			TempValue0  -= Object.YPos
-			TempValue0 >>= 2
-			Object.YPos += TempValue0
+			temp0   = screen.ycenter
+			temp0  -= 6
+			temp0 <<= 16
+			temp0  -= object.ypos
+			temp0 >>= 2
+			object.ypos += temp0
 		else
-			Object.Timer = 0
-			Object.State++
+			object.timer = 0
+			object.state++
 		end if
 		break
 		
 	case MENUWINDOW_SCALEDOWN
-		if Object.Timer < 30
-			Object.Timer++
+		if object.timer < 30
+			object.timer++
 			// Width
-			TempValue0    = 256
-			TempValue0   -= Object.Width
-			TempValue0  >>= 2
-			Object.Width += TempValue0
+			temp0    = 256
+			temp0   -= object.width
+			temp0  >>= 2
+			object.width += temp0
 			// Height
-			TempValue0     = 160
-			TempValue0    -= Object.Height
-			TempValue0   >>= 2
-			Object.Height += TempValue0
+			temp0     = 160
+			temp0    -= object.height
+			temp0   >>= 2
+			object.height += temp0
 			// XPos
-			TempValue0   = Screen.CenterX
-			TempValue0 <<= 16
-			if Object.XPos > TempValue0
-				Object.XPos -= 0x10000
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			if object.xpos > temp0
+				object.xpos -= 0x10000
 			end if
 
-			if Object.XPos < TempValue0
-				Object.XPos += 0x10000
+			if object.xpos < temp0
+				object.xpos += 0x10000
 			end if
 			// YPos
-			TempValue0   = Screen.CenterY
-			TempValue0  -= 8
-			TempValue0 <<= 16
-			if Object.YPos > TempValue0
-				Object.YPos -= 0x10000
+			temp0   = screen.ycenter
+			temp0  -= 8
+			temp0 <<= 16
+			if object.ypos > temp0
+				object.ypos -= 0x10000
 			end if
 
-			if Object.YPos < TempValue0
-				Object.YPos += 0x10000
+			if object.ypos < temp0
+				object.ypos += 0x10000
 			end if
 		else
-			Object.Timer = 0
-			Object.State++
+			object.timer = 0
+			object.state++
 		end if
 		break
 
@@ -116,241 +116,241 @@ sub ObjectMain
 		break
 
 	case MENUWINDOW_SHRINK
-		if Object.Timer < 14
-			Object.Timer++
+		if object.timer < 14
+			object.timer++
 			// Width
-			TempValue0   = 132
-			TempValue0  -= Object.Width
-			TempValue0 >>= 3
-			Object.Width += TempValue0
+			temp0   = 132
+			temp0  -= object.width
+			temp0 >>= 3
+			object.width += temp0
 			// Height
-			TempValue0   = 18
-			TempValue0  -= Object.Height
-			TempValue0 >>= 3
-			Object.Height += TempValue0
+			temp0   = 18
+			temp0  -= object.height
+			temp0 >>= 3
+			object.height += temp0
 			// XPos
-			TempValue0   = Object.XOffset
-			TempValue0  -= Object.XPos
-			TempValue0 >>= 2
-			Object.XPos += TempValue0
+			temp0   = object.xOffset
+			temp0  -= object.xpos
+			temp0 >>= 2
+			object.xpos += temp0
 			// YPos
-			TempValue0   = Object.YOffset
-			TempValue0  -= Object.YPos
-			TempValue0 >>= 2
-			Object.YPos += TempValue0
+			temp0   = object.yOffset
+			temp0  -= object.ypos
+			temp0 >>= 2
+			object.ypos += temp0
 		else
-			Object.Timer = 0
-			Object.State++
+			object.timer = 0
+			object.state++
 		end if
 		break
 		
 	case MENUWINDOW_FIT_IN_BUTTON
-		if Object.Timer < 14
-			Object.Timer++
+		if object.timer < 14
+			object.timer++
 			// Width
-			TempValue0   = 144
-			TempValue0  -= Object.Width
-			TempValue0 >>= 3
-			Object.Width += TempValue0
+			temp0   = 144
+			temp0  -= object.width
+			temp0 >>= 3
+			object.width += temp0
 			// Height
-			TempValue0   = 21
-			TempValue0   -= Object.Height
-			TempValue0 >>= 3
-			Object.Height += TempValue0
+			temp0   = 21
+			temp0   -= object.height
+			temp0 >>= 3
+			object.height += temp0
 			// XPos
-			if Object.XPos > Object.XOffset
-				Object.XPos -= 0x10000
+			if object.xpos > object.xOffset
+				object.xpos -= 0x10000
 			end if
 
-			if Object.XPos < Object.XOffset
-				Object.XPos += 0x10000
+			if object.xpos < object.xOffset
+				object.xpos += 0x10000
 			end if
 			// YPos
-			if Object.YPos > Object.YOffset
-				Object.YPos -= 0x10000
+			if object.ypos > object.yOffset
+				object.ypos -= 0x10000
 			end if
 
-			if Object.YPos < Object.YOffset
-				Object.YPos += 0x10000
+			if object.ypos < object.yOffset
+				object.ypos += 0x10000
 			end if
 		else
-			Object.Timer++
-			if Object.Timer == 16
-				Object.Timer = 0
-				Object.Type = TypeName[Blank Object]
+			object.timer++
+			if object.timer == 16
+				object.timer = 0
+				object.type = TypeName[Blank Object]
 			end if
 
-			ArrayPos0 = Object.EntityPos
-			Object[ArrayPos0].Type = TypeName[Menu Button]
-			Object[ArrayPos0].State = MENUBUTTON_RESET
+			arrayPos0 = object.entityPos
+			object[arrayPos0].type = TypeName[Menu Button]
+			object[arrayPos0].state = MENUBUTTON_RESET
 		end if
 		break
 
 	case MENUWINDOW_SOUNDTRACK_EXPAND
-		if Object.Timer < 14
-			Object.Timer++
+		if object.timer < 14
+			object.timer++
 			// Width
-			TempValue0    = 300
-			TempValue0   -= Object.Width
-			TempValue0  >>= 3
-			Object.Width += TempValue0
+			temp0    = 300
+			temp0   -= object.width
+			temp0  >>= 3
+			object.width += temp0
 			// Height
-			TempValue0     = 192
-			TempValue0    -= Object.Height
-			TempValue0   >>= 3
-			Object.Height += TempValue0
+			temp0     = 192
+			temp0    -= object.height
+			temp0   >>= 3
+			object.height += temp0
 			// XPos
-			TempValue0   = Screen.CenterX
-			TempValue0 <<= 16
-			TempValue0  -= Object.XPos
-			TempValue0 >>= 2
-			Object.XPos += TempValue0
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			temp0  -= object.xpos
+			temp0 >>= 2
+			object.xpos += temp0
 			// YPos
-			TempValue0   = Screen.CenterY
-			TempValue0  -= 6
-			TempValue0 <<= 16
-			TempValue0  -= Object.YPos
-			TempValue0 >>= 2
-			Object.YPos += TempValue0
+			temp0   = screen.ycenter
+			temp0  -= 6
+			temp0 <<= 16
+			temp0  -= object.ypos
+			temp0 >>= 2
+			object.ypos += temp0
 		else
-			Object.Timer = 0
-			Object.State++
+			object.timer = 0
+			object.state++
 		end if
 		break
 
 	case MENUWINDOW_SOUNDTRACK_SHRINK
-		if Object.Timer < 30
-			Object.Timer++
+		if object.timer < 30
+			object.timer++
 			// Width
-			TempValue0    = 256
-			TempValue0   -= Object.Width
-			TempValue0  >>= 2
-			Object.Width += TempValue0
+			temp0    = 256
+			temp0   -= object.width
+			temp0  >>= 2
+			object.width += temp0
 			// Height
-			TempValue0     = 128
-			TempValue0    -= Object.Height
-			TempValue0   >>= 2
-			Object.Height += TempValue0
+			temp0     = 128
+			temp0    -= object.height
+			temp0   >>= 2
+			object.height += temp0
 			// XPos
-			TempValue0   = Screen.CenterX
-			TempValue0 <<= 16
-			if Object.XPos > TempValue0
-				Object.XPos -= 0x10000
+			temp0   = screen.xcenter
+			temp0 <<= 16
+			if object.xpos > temp0
+				object.xpos -= 0x10000
 			end if
-			if Object.XPos < TempValue0
-				Object.XPos += 0x10000
+			if object.xpos < temp0
+				object.xpos += 0x10000
 			end if
 			// YPos
-			TempValue0   = Screen.CenterY
-			TempValue0  -= 8
-			TempValue0 <<= 16
-			if Object.YPos > TempValue0
-				Object.YPos -= 0x10000
+			temp0   = screen.ycenter
+			temp0  -= 8
+			temp0 <<= 16
+			if object.ypos > temp0
+				object.ypos -= 0x10000
 			end if
-			if Object.YPos < TempValue0
-				Object.YPos += 0x10000
+			if object.ypos < temp0
+				object.ypos += 0x10000
 			end if
 		else
-			Object.Timer = 0
-			Object.State = MENUWINDOW_BLANK
+			object.timer = 0
+			object.state = MENUWINDOW_BLANK
 		end if
 		break
 
 	end switch
-end sub
+end event
 
 
-sub ObjectDraw
+event ObjectDraw
 	//Upper Left Border
-	TempValue0  = Object.Width
-	TempValue0 *= -0x8000
-	TempValue0 += Object.XPos
-	TempValue1  = Object.Height
-	TempValue1 *= -0x8000
-	TempValue1 += Object.YPos
-	DrawSpriteXY(0, TempValue0, TempValue1)
+	temp0  = object.width
+	temp0 *= -0x8000
+	temp0 += object.xpos
+	temp1  = object.height
+	temp1 *= -0x8000
+	temp1 += object.ypos
+	DrawSpriteXY(0, temp0, temp1)
 
 	//Upper Right Border
-	TempValue0   = Object.Width
-	TempValue0 <<= 15
-	TempValue0  += Object.XPos
-	DrawSpriteXY(1, TempValue0, TempValue1)
+	temp0   = object.width
+	temp0 <<= 15
+	temp0  += object.xpos
+	DrawSpriteXY(1, temp0, temp1)
 
 	//Bottom Left Border
-	TempValue0   = Object.Width
-	TempValue0  *= -0x8000
-	TempValue0  += Object.XPos
-	TempValue1   = Object.Height
-	TempValue1 <<= 15
-	TempValue1  += Object.YPos
-	DrawSpriteXY(2, TempValue0, TempValue1)
+	temp0   = object.width
+	temp0  *= -0x8000
+	temp0  += object.xpos
+	temp1   = object.height
+	temp1 <<= 15
+	temp1  += object.ypos
+	DrawSpriteXY(2, temp0, temp1)
 
 	//Bottom Right Border
-	TempValue0   = Object.Width
-	TempValue0 <<= 15
-	TempValue0  += Object.XPos
-	DrawSpriteXY(3, TempValue0, TempValue1)
+	temp0   = object.width
+	temp0 <<= 15
+	temp0  += object.xpos
+	DrawSpriteXY(3, temp0, temp1)
 
 	//Menu Filling
-	TempValue0   = Object.Width
-	TempValue0  *= -0x8000
-	TempValue0  += Object.XPos
-	TempValue0 >>= 16
-	TempValue1   = Object.Height
-	TempValue1  *= -0x8000
-	TempValue1  += Object.YPos
-	TempValue1  += 0xA0000
-	TempValue1 >>= 16
-	TempValue2   = Object.Width
-	TempValue2  -= 2
-	TempValue3   = Object.Height
-	TempValue3  -= 21
-	DrawRect(TempValue0, TempValue1, TempValue2, TempValue3, 96, 96, 128, 255)
+	temp0   = object.width
+	temp0  *= -0x8000
+	temp0  += object.xpos
+	temp0 >>= 16
+	temp1   = object.height
+	temp1  *= -0x8000
+	temp1  += object.ypos
+	temp1  += 0xA0000
+	temp1 >>= 16
+	temp2   = object.width
+	temp2  -= 2
+	temp3   = object.height
+	temp3  -= 21
+	DrawRect(temp0, temp1, temp2, temp3, 96, 96, 128, 255)
 
 	//Menu Shadow
-	TempValue0   = Object.Width
-	TempValue0 <<= 15
-	TempValue0  += Object.XPos
-	TempValue0  -= 0x20000
-	TempValue0 >>= 16
-	TempValue2   = 2
-	DrawRect(TempValue0, TempValue1, TempValue2, TempValue3, 0, 0, 0, 255)
+	temp0   = object.width
+	temp0 <<= 15
+	temp0  += object.xpos
+	temp0  -= 0x20000
+	temp0 >>= 16
+	temp2   = 2
+	DrawRect(temp0, temp1, temp2, temp3, 0, 0, 0, 255)
 
-	Object.InkEffect = INK_ALPHA
-	switch Object.State
+	object.inkEffect = INK_ALPHA
+	switch object.state
 	case MENUWINDOW_EXPAND
 	case MENUWINDOW_SCALEDOWN
 	case MENUWINDOW_SOUNDTRACK_EXPAND
 	case MENUWINDOW_SOUNDTRACK_SHRINK
-		if Object.Alpha < 248
-			Object.Alpha += 5
+		if object.alpha < 248
+			object.alpha += 5
 		end if
 		break
 
 	case MENUWINDOW_BLANK
-		Object.Alpha = 255
+		object.alpha = 255
 		break
 
 	case MENUWINDOW_SHRINK
 	case MENUWINDOW_FIT_IN_BUTTON
-		if Object.Alpha > 0
-			Object.Alpha -= 8
+		if object.alpha > 0
+			object.alpha -= 8
 		end if
 		break
 		
 	end switch
-	TempValue0  = Screen.XSize
-	TempValue0 -= 48
-	if Object.BackTouchPress == true
-		DrawSpriteScreenFX(5, FX_INK, TempValue0, 225)
+	temp0  = screen.xsize
+	temp0 -= 48
+	if object.backTouchPress == true
+		DrawSpriteScreenFX(5, FX_INK, temp0, 225)
 	else
-		DrawSpriteScreenFX(4, FX_INK, TempValue0, 225)
+		DrawSpriteScreenFX(4, FX_INK, temp0, 225)
 	end if
-end sub
+end event
 
 
-sub ObjectStartup
-	switch Engine.Language
+event ObjectStartup
+	switch engine.language
 	case LANG_ENGLISH
 		LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 		break
@@ -379,21 +379,21 @@ sub ObjectStartup
 
 	SpriteFrame(-32, -24, 64, 24, 404, 146)		// #4 - Back Button
 	SpriteFrame(-32, -24, 64, 24, 404, 171)		// #5 - Back Button Highlight
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Global/Display.gif")
 	SpriteFrame(-16, -16, 32, 32, 1, 143)		// #0 - "Script" Icon
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

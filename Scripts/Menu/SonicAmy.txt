@@ -4,32 +4,32 @@
 //---This Object is normally only used by Mobile Data files---//
 
 
-sub ObjectDraw
-	Object.Scale   = Object.PropertyValue
-	Object.Scale <<= 1
-	DrawSpriteFX(0, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+event ObjectDraw
+	object.scale   = object.propertyValue
+	object.scale <<= 1
+	DrawSpriteFX(0, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/SonicAmy.gif")
 
 	SpriteFrame(-127, -127, 254, 254, 1, 1)	// #0 - Sonic and Amy
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/SonicAmy.gif")
 	SpriteFrame(-127, -127, 254, 254, 1, 1)	// #0 - Sonic and Amy
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

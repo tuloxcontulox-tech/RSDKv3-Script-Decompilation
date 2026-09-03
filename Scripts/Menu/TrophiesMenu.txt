@@ -4,264 +4,264 @@
 //-----This Object is normally only used by WP7 Data files----//
 
 // Aliases
-#alias Object.Value0 	:	Object.Fade
-#alias Object.Value1 	:	Object.TrophyTimer
-#alias Object.Value2 	:	Object.SelectionPos
-#alias Object.Value3	:	Object.DragEnabled
-#alias Object.Value4	:	Object.TouchYPos
-#alias Object.Value5	:	Object.DragYOffset
+private alias object.value0 : object.fade
+private alias object.value1 : object.trophyTimer
+private alias object.value2 : object.selectionPos
+private alias object.value3 : object.dragEnabled
+private alias object.value4 : object.touchYPos
+private alias object.value5 : object.dragYOffset
 
-// Object[1] is a blank object only used to share values across the menu objects
-#alias Object[1].Value0	:	Object.DragPos
-#alias Object[1].Value4	:	Object.YOffSet1	//in other scripts this is used to check inputs
-#alias Object[1].Value5	:	Object.YOffSet2
-#alias Object[1].Value6	:	Object.YOffSet3
+// object[1] is a blank object only used to share values across the menu objects
+private alias object[1].value0 : object.dragPos
+private alias object[1].value4 : object.yOffSet1	//in other scripts this is used to check inputs
+private alias object[1].value5 : object.yOffSet2
+private alias object[1].value6 : object.yOffSet3
 
 // States
-#alias 0	:	TROPHIES_SETUP
-#alias 1	:	TROPHIES_FADEIN
-#alias 2	:	TROPHIES_CONTROLS
-#alias 5	:	TROPHIES_EXIT
+private alias 0 : TROPHIES_SETUP
+private alias 1 : TROPHIES_FADEIN
+private alias 2 : TROPHIES_CONTROLS
+private alias 5 : TROPHIES_EXIT
 
 // Presentation Stage
-#alias 1	:	STAGE_P_MENU
+private alias 1 : STAGE_P_MENU
 
 //Engine & CallBacks
-#alias 2	:	MESSAGE_LOSTFOCUS
+private alias 2 : MESSAGE_LOSTFOCUS
 
 // Soundtrack
-#alias 0	:	OST_JP
+private alias 0 : OST_JP
 
 // SFX
-#alias 26	:	SFX_G_OUTTAHERE
+private alias 26 : SFX_G_OUTTAHERE
 
 // Priority
-#alias 1	:	PRIORITY_ACTIVE
+private alias 1 : PRIORITY_ACTIVE
 
 // Callbacks & Engine States
-#alias 0	:	CALLBACK_DISPLAYLOGOS
-#alias 7	:	CALLBACK_EXIT_SELECTED
+private alias 0 : CALLBACK_DISPLAYLOGOS
+private alias 7 : CALLBACK_EXIT_SELECTED
 
-#alias 5	:	ENGINE_ENTER_HIRESMODE
-#alias 6	:	ENGINE_EXIT_HIRESMODE
+private alias 5 : ENGINE_ENTER_HIRESMODE
+private alias 6 : ENGINE_EXIT_HIRESMODE
 
 
-sub ObjectMain
-	switch Object.State
+event ObjectUpdate
+	switch object.state
 	case TROPHIES_SETUP
-		TempValue0  = 256
-		TempValue0 -= Screen.CenterX
-		Screen.XOffset = TempValue0
+		temp0  = 256
+		temp0 -= screen.xcenter
+		screen.xoffset = temp0
 		PlayMusic(1)
-		Object.Fade = 384
-		Object.State++
+		object.fade = 384
+		object.state++
 		SetScreenFade(0, 0, 0, 255)
 		break
 
 	case TROPHIES_FADEIN
-		if Object.Fade > 0
-			Object.Fade -= 8
+		if object.fade > 0
+			object.fade -= 8
 		else
-			Object.State++
+			object.state++
 		end if
-		SetScreenFade(0, 0, 0, Object.Fade)
+		SetScreenFade(0, 0, 0, object.fade)
 		break
 
 	case TROPHIES_CONTROLS
-		if Options.PhysicalControls == true
-			if KeyDown[0].Down == true
-				Object.SelectionPos += 0x40000
-				if Object.SelectionPos > 0x1800000
-					Object.SelectionPos = 0x1800000
+		if options.physicalControls == true
+			if keyDown[0].down == true
+				object.selectionPos += 0x40000
+				if object.selectionPos > 0x1800000
+					object.selectionPos = 0x1800000
 				end if
 			end if
 
-			if KeyDown[0].Up == true
-				Object.SelectionPos -= 0x40000
-				if Object.SelectionPos < 0
-					Object.SelectionPos = 0
+			if keyDown[0].up == true
+				object.selectionPos -= 0x40000
+				if object.selectionPos < 0
+					object.selectionPos = 0
 				end if
 			end if
 
-			CheckTouchRect(0, 0, Screen.XSize, Screen.YSize)
-			if CheckResult > -1
-				Options.PhysicalControls = false
+			CheckTouchRect(0, 0, screen.xsize, screen.ysize)
+			if checkResult > -1
+				options.physicalControls = false
 			end if
 		else
-			CheckTouchRect(0, 48, Screen.XSize, Screen.YSize)
-			if CheckResult > -1
-				ArrayPos0 = CheckResult
-				if Object.DragEnabled == false
-					Object.DragEnabled = true
-					Object.DragPos     = Object.SelectionPos
-					Object.DragPos   >>= 16
+			CheckTouchRect(0, 48, screen.xsize, screen.ysize)
+			if checkResult > -1
+				arrayPos0 = checkResult
+				if object.dragEnabled == false
+					object.dragEnabled = true
+					object.dragPos     = object.selectionPos
+					object.dragPos   >>= 16
 
-					Object.TouchYPos = TouchScreen[ArrayPos0].YPos
+					object.touchYPos = TouchScreen[arrayPos0].yPos
 				else
-					TempValue0  = Object.TouchYPos
-					TempValue0 -= TouchScreen[ArrayPos0].YPos
-					TempValue0 += Object.DragPos
+					temp0  = object.touchYPos
+					temp0 -= TouchScreen[arrayPos0].yPos
+					temp0 += object.dragPos
 
-					Object.YOffSet3 = Object.YOffSet2
-					Object.YOffSet2 = Object.YOffSet1
-					Object.YOffSet1 = Object.DragYOffset
+					object.yOffSet3 = object.yOffSet2
+					object.yOffSet2 = object.yOffSet1
+					object.yOffSet1 = object.dragYOffset
 
-					Object.DragYOffset  = TempValue0
-					TempValue1  		= Object.SelectionPos
-					TempValue1 		  >>= 16
-					Object.DragYOffset -= TempValue1
+					object.dragYOffset  = temp0
+					temp1  		= object.selectionPos
+					temp1 		  >>= 16
+					object.dragYOffset -= temp1
 
-					Object.SelectionPos   = TempValue0
-					Object.SelectionPos <<= 16
+					object.selectionPos   = temp0
+					object.selectionPos <<= 16
 				end if
 			else
-				if Object.DragEnabled == true
-					Object.DragEnabled   = false
-					Object.DragYOffset  += Object.YOffSet1
-					Object.DragYOffset  += Object.YOffSet2
-					Object.DragYOffset  += Object.YOffSet3
-					Object.DragYOffset >>= 2
-					Object.DragYOffset <<= 16
+				if object.dragEnabled == true
+					object.dragEnabled   = false
+					object.dragYOffset  += object.yOffSet1
+					object.dragYOffset  += object.yOffSet2
+					object.dragYOffset  += object.yOffSet3
+					object.dragYOffset >>= 2
+					object.dragYOffset <<= 16
 				end if
 
-				if Object.DragYOffset != 0
-					Object.SelectionPos += Object.DragYOffset
-					if Object.SelectionPos < 0
-						Object.DragYOffset = 0
+				if object.dragYOffset != 0
+					object.selectionPos += object.dragYOffset
+					if object.selectionPos < 0
+						object.dragYOffset = 0
 					end if
 
-					if Object.SelectionPos > 0x1800000
-						Object.DragYOffset = 0
+					if object.selectionPos > 0x1800000
+						object.dragYOffset = 0
 					end if
 
-					if Object.DragYOffset > 0
-						Object.DragYOffset -= 0x2000
-						if Object.DragYOffset < 0
-							Object.DragYOffset = 0
+					if object.dragYOffset > 0
+						object.dragYOffset -= 0x2000
+						if object.dragYOffset < 0
+							object.dragYOffset = 0
 						end if
 					else
-						Object.DragYOffset += 0x2000
-						if Object.DragYOffset > 0
-							Object.DragYOffset = 0
+						object.dragYOffset += 0x2000
+						if object.dragYOffset > 0
+							object.dragYOffset = 0
 						end if
 					end if
 				else
-					if Object.SelectionPos < 0
-						Object.SelectionPos  *= 224
-						Object.SelectionPos >>= 8
+					if object.selectionPos < 0
+						object.selectionPos  *= 224
+						object.selectionPos >>= 8
 					end if
 
-					if Object.SelectionPos > 0x1800000
-						Object.SelectionPos  -= 0x1800000
-						Object.SelectionPos  *= 224
-						Object.SelectionPos >>= 8
-						Object.SelectionPos  += 0x1800000
+					if object.selectionPos > 0x1800000
+						object.selectionPos  -= 0x1800000
+						object.selectionPos  *= 224
+						object.selectionPos >>= 8
+						object.selectionPos  += 0x1800000
 					end if
 				end if
 			end if
-			if KeyPress[0].Up == true
-				Options.PhysicalControls = true
+			if keyPress[0].up == true
+				options.physicalControls = true
 			end if
 
-			if KeyPress[0].Down == true
-				Options.PhysicalControls = true
+			if keyPress[0].down == true
+				options.physicalControls = true
 			end if
 		end if
 
-		if KeyPress[0].ButtonB == true
+		if keyPress[0].buttonB == true
 			PlaySfx(SFX_G_OUTTAHERE, false)
 			StopMusic()
-			Object.State = TROPHIES_EXIT
+			object.state = TROPHIES_EXIT
 		end if
 		break
 		
 	case TROPHIES_EXIT
-		if Object.Fade < 348
-			Object.Fade += 8
+		if object.fade < 348
+			object.fade += 8
 		else
-			Stage.ListPos = STAGE_P_MENU
-			Engine.State = ENGINE_EXIT_HIRESMODE
+			Stage.listPos = STAGE_P_MENU
+			engine.state = ENGINE_EXIT_HIRESMODE
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, Object.Fade)
+		SetScreenFade(0, 0, 0, object.fade)
 		break
 
 	end switch
-end sub
+end event
 
 
-sub ObjectDraw
-	Object.TrophyTimer--
-	if Object.TrophyTimer < -31
-		Object.TrophyTimer += 32
+event ObjectDraw
+	object.trophyTimer--
+	if object.trophyTimer < -31
+		object.trophyTimer += 32
 	end if
-	TempValue1   = Object.TrophyTimer
-	TempValue1 >>= 1
-	while TempValue1 < Screen.YSize
-		TempValue0   = Object.TrophyTimer
-		TempValue0 >>= 1
-		while TempValue0 < Screen.XSize
-			DrawSpriteScreenXY(0, TempValue0, TempValue1)
-			TempValue0 += 64
+	temp1   = object.trophyTimer
+	temp1 >>= 1
+	while temp1 < screen.ysize
+		temp0   = object.trophyTimer
+		temp0 >>= 1
+		while temp0 < screen.xsize
+			DrawSpriteScreenXY(0, temp0, temp1)
+			temp0 += 64
 		loop
-		TempValue1 += 64
+		temp1 += 64
 	loop
-	TempValue0  = Screen.XSize
-	TempValue0 -= 16
-	DrawRect(TempValue0, 56, 4, 176, 128, 128, 128, 128)
+	temp0  = screen.xsize
+	temp0 -= 16
+	DrawRect(temp0, 56, 4, 176, 128, 128, 128, 128)
 	
-	TempValue1   = Object.SelectionPos
-	TempValue1 >>= 16
-	if TempValue1 < 0
-		TempValue1 = 0
+	temp1   = object.selectionPos
+	temp1 >>= 16
+	if temp1 < 0
+		temp1 = 0
 	end if
-	if TempValue1 > 384
-		TempValue1 = 384
+	if temp1 > 384
+		temp1 = 384
 	end if
-	TempValue1 *= 160
-	TempValue1 /= 384
-	TempValue1 += 56
-	DrawRect(TempValue0, TempValue1, 4, 16, 0, 0, 0, 255)
-end sub
+	temp1 *= 160
+	temp1 /= 384
+	temp1 += 56
+	DrawRect(temp0, temp1, 4, 16, 0, 0, 0, 255)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/Trophies.gif")
 	SpriteFrame(0, 0, 64, 64, 385, 385)		// #0 - White Space
 
 	LoadPalette("Trophies.act", 0, 0, 0, 256)
 	LoadPalette("HelpPal1.act", 0, 0, 0, 32)
-	LoadTextFont("Data/Game/HelpText.bin")
+	// LoadTextFont("Data/Game/HelpText.bin")
 
-	if Options.Soundtrack == OST_JP
+	if Options.soundtrack == OST_JP
 		SetMusicTrack("JP/DAGarden.ogg", 1, 1)
 	else
 		SetMusicTrack("US/DAGarden.ogg", 1, 117382)
 	end if
 	
-	Engine.State		 = ENGINE_ENTER_HIRESMODE
-	Screen.CameraEnabled = false
+	engine.state		 = ENGINE_ENTER_HIRESMODE
+	screen.cameraEnabled = false
 
-	Object[0].Type		= TypeName[Trophies Menu]
-	Object[0].Priority  = PRIORITY_ACTIVE
-	Object[0].DrawOrder = 0
+	object[0].type		= TypeName[Trophies Menu]
+	object[0].priority  = PRIORITY_ACTIVE
+	object[0].drawOrder = 0
 
-	LoadTextFile(MENU_1, "Data/Game/Trophies.txt", 1)
-end sub
+	LoadTextFile(MENU_1, "Data/Game/Trophies.txt")
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKDraw
+event RSDKDraw
 	DrawSprite(0)
-end sub
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MenuGfx2_EN.gif")
 	SpriteFrame(16, 0, 63, 30, 1, 513)	// Options
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "unused")
-end sub
+end event

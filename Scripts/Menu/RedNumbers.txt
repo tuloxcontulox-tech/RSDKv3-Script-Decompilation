@@ -4,14 +4,14 @@
 //-----Used on iOS version of the game, Origins leftover------//
 
 
-sub ObjectDraw
-	Object.Scale = 160
+event ObjectDraw
+	object.scale = 160
 
-	DrawSpriteFX(Object.PropertyValue, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+	DrawSpriteFX(object.propertyValue, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/MetalSonic.gif")
 
 	SpriteFrame(-24, -24, 48, 48,  68, 258)	// #0 - Number 1
@@ -19,20 +19,20 @@ sub ObjectStartup
 	SpriteFrame(-24, -24, 48, 48,  68, 308)	// #2 - Number 3
 	SpriteFrame(-24, -24, 48, 48, 118, 308)	// #3 - Number 4
 	SpriteFrame(-24, -24, 48, 48, 168, 308)	// #4 - Number 5
-end sub
+end event
 
-sub RSDKDraw
-	Object.Scale = 160
+event RSDKDraw
+	object.scale = 160
 
-	DrawSpriteFX(Object.PropertyValue, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+	DrawSpriteFX(object.propertyValue, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MetalSonic.gif")
 	SpriteFrame(-24, -24, 48, 48,  68, 258)	// #0 - Number 1
 	SpriteFrame(-24, -24, 48, 48, 118, 258)	// #1 - Number 2
@@ -41,5 +41,4 @@ sub RSDKLoad
 	SpriteFrame(-24, -24, 48, 48, 168, 308)	// #4 - Number 5
 
 	SetVariableAlias(ALIAS_VAR_PROPVAL, "number")
-end sub
-
+end event

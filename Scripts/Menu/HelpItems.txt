@@ -3,13 +3,13 @@
 //-------Unpacked By Rubberduckycooly's Script Unpacker-------//
 
 
-sub ObjectDraw
-	Object.Scale = 320
-	DrawSpriteFX(Object.PropertyValue, FX_SCALE, Object.XPos, Object.YPos)
-end sub
+event ObjectDraw
+	object.scale = 320
+	DrawSpriteFX(object.propertyValue, FX_SCALE, object.xpos, object.ypos)
+end event
 
 
-sub ObjectStartup
+event ObjectStartup
 	LoadSpriteSheet("Menu/MetalSonic.gif")
 	
 	SpriteFrame(-8, -8, 16, 16, 204, 184)		// #0 - Ring
@@ -21,42 +21,42 @@ sub ObjectStartup
 	SpriteFrame(-8, -32, 16, 64, 204, 201)		// #6 - Lamp Post
 	SpriteFrame(-16, -32, 32, 64, 196, 52)		// #7 - Past Post
 	SpriteFrame(-16, -32, 32, 64, 196, 117)		// #8 - Future Post
-end sub
+end event
 
 
 // ========================
-// Editor Subs
+// Editor Events
 // ========================
 
-sub RSDKEdit
-	if Editor.ReturnVariable == true
-		switch Editor.VariableID
+event RSDKEdit
+	if editor.returnVariable == true
+		switch editor.variableID
 		case EDIT_VAR_PROPVAL // Property Value
-			CheckResult = Object.PropertyValue
+			checkResult = object.propertyValue
 			break
 		case 0 // Frame
-			CheckResult = Object.PropertyValue
+			checkResult = object.propertyValue
 			break
 		end switch
 	else
-		switch Editor.VariableID
+		switch editor.variableID
 		case EDIT_VAR_PROPVAL // Property Value
-			Object.PropertyValue = Editor.VariableValue
+			object.propertyValue = editor.variableValue
 			break
 		case 0 // Frame
-			Object.PropertyValue = Editor.VariableValue
+			object.propertyValue = editor.variableValue
 			break
 		end switch
 	end if
-end sub
+end event
 
 
-sub RSDKDraw
-	DrawSprite(Object.PropertyValue)
-end sub
+event RSDKDraw
+	DrawSprite(object.propertyValue)
+end event
 
 
-sub RSDKLoad
+event RSDKLoad
 	LoadSpriteSheet("Menu/MetalSonic.gif")
 	SpriteFrame(-8, -8, 16, 16, 204, 184)		// #0 - Ring
 	SpriteFrame(-16, -15, 32, 30, 223, 183)		// #1 - Ring Monitor
@@ -79,4 +79,4 @@ sub RSDKLoad
 	AddEnumVariable("Lamp Post", 6)
 	AddEnumVariable("Past Post", 7)
 	AddEnumVariable("Future Post", 8)
-end sub
+end event
